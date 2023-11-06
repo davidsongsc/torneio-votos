@@ -152,8 +152,76 @@ textarea {
   padding: 5px; /* Adiciona espaço interno às células */
   text-align: center; /* Centraliza o conteúdo nas células */
 }
+.tela-painel-votos {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.votante-lista-seletor {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  background-color: #bfbfbf;
+  color: black;
+  box-shadow: 1px 1px;
+  border-radius: 5px;
+  margin: 6px;
+  padding: 10px;
+  width: 150px;
+  height: 90px;
+}
+.votante-lista-seletor img {
+  width: 50px;
+  height: 50px;
+  border-radius: 5px;
+  box-shadow: 1px 1px;
+}
+.form-votacao-indica {
+  text-align: center;
+}
+/* Estilize o rótulo dos radio buttons */
+.radio-label {
+  display: block;
+  margin-bottom: 10px;
+  position: relative;
+  cursor: pointer;
+}
 
-div img{
-  width: 400px;
-  height: 400px;
+/* Estilize os radio buttons ocultos */
+.radio-input {
+  display: none;
+}
+
+/* Estilize a aparência do radio button personalizado */
+.radio-custom {
+  width: 20px;
+  height: 20px;
+  border: 2px solid #333; /* Cor da borda não marcada */
+  border-radius: 50%; /* Torna o radio button redondo */
+  position: absolute;
+  right: 45px;
+  top: 30px;
+}
+
+/* Estilize o radio button quando marcado */
+.radio-input:checked + .radio-custom {
+  border-color: #007bff; /* Cor da borda quando marcado */
+  background-color: #007bff; /* Cor de fundo quando marcado */
+}
+
+/* Estilize o ponto interno do radio button quando marcado */
+.radio-input:checked + .radio-custom::before {
+  content: "\2022"; /* Ponto para indicar seleção */
+  font-size: 20px;
+  line-height: 20px;
+  color: #fff; /* Cor do ponto quando marcado */
+  text-align: center;
+  display: block;
+  border-radius: 50%;
+  background: transparent; /* Fundo transparente quando marcado */
+}
+
+.btn-voto {
+  border-radius: 5px;
+  font-size: x-large;
 }

@@ -14,8 +14,12 @@ const Votar: React.FC = () => {
         { id: 1, name: 'Fulano', imagem: 'perfil', votes: 15 },
         { id: 2, name: 'Ciclano', imagem: 'perfil', votes: 10 },
         { id: 3, name: 'Beltrano', imagem: 'perfil', votes: 5 },
-        { id: 4, name: 'Outro Candidato', imagem: 'perfil', votes: 8 },
-        { id: 5, name: 'Mais Um', imagem: 'perfil', votes: 3 },
+        { id: 4, name: 'Lucia Cleides', imagem: 'perfil', votes: 8 },
+        { id: 5, name: 'Marta Rosa', imagem: 'perfil', votes: 3 },
+        { id: 6, name: 'barc', imagem: 'perfil', votes: 10 },
+        { id: 7, name: 'Beltrano', imagem: 'perfil', votes: 5 },
+        { id: 8, name: 'Maestro ', imagem: 'perfil', votes: 8 },
+        { id: 9, name: 'Endora', imagem: 'perfil', votes: 3 },
         // Adicione mais pessoas conforme necessário
     ];
 
@@ -44,38 +48,43 @@ const Votar: React.FC = () => {
     const sortedPessoas = [...filteredPessoas].sort((a, b) => b.votes - a.votes);
 
     // Exibir apenas os 3 primeiros candidatos
-    const top3Pessoas = sortedPessoas.slice(0, 3);
+    const top3Pessoas = sortedPessoas.slice(0, 4);
 
     return (
         <div>
-            <form>
-                <p>Escolha seu voto:</p>
-                {top3Pessoas.map((pessoa) => (
-                    <label key={pessoa.id}>
-                        <img src={`https://dagesico.pythonanywhere.com/static/img/${pessoa.imagem}.png`} alt="Imagem Perfil" />
-                        <input
-                            type="radio"
-                            name="voto"
-                            value={pessoa.id}
-                            checked={voto === pessoa.id}
-                            onChange={handleVotoChange}
-                        />
-
-                        <div>
-
-                            {pessoa.name} - {pessoa.votes} votos
-                        </div>
-
-                    </label>
-
-                ))}
+            <form className='form-votacao-indica'>
                 <input
                     type="text"
                     placeholder="Pesquisar candidato"
                     value={search}
                     onChange={handleSearchChange}
                 />
-                <button type="button" onClick={handleVotar}>
+
+                <div className='tela-painel-votos'>
+                    {top3Pessoas.map((pessoa) => (
+                        <label className='radio-label' key={pessoa.id} htmlFor={`radio-${pessoa.id}`}>
+                            <div className='votante-lista-seletor'>
+                                <img src={`https://dagesico.pythonanywhere.com/static/img/${pessoa.imagem}.jpg`} alt="Imagem Perfil" />
+                                <p>{pessoa.name} </p>
+                                <p>{pessoa.votes} votos</p>
+                                <input
+                                    className='radio-input'
+                                    type="radio"
+                                    name="voto"
+                                    id={`radio-${pessoa.id}`}
+                                    value={pessoa.id}
+                                    checked={voto === pessoa.id}
+                                    onChange={handleVotoChange}
+                                />
+                                <div className={`radio-custom${voto === pessoa.id ? ' radio-checked' : ''}`} />
+                            </div>
+                        </label>
+
+
+                    ))}
+
+                </div>
+                <button className='btn-voto' type="button" onClick={handleVotar}>
                     Votar
                 </button>
             </form>
