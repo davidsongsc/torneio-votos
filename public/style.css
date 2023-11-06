@@ -1,0 +1,159 @@
+/* Reset CSS */
+
+/* Defina margens e preenchimentos para zero */
+html,
+body,
+div,
+h1,
+h2,
+h3,
+p,
+ul,
+ol,
+li,
+dl,
+dt,
+dd,
+img,
+form,
+fieldset,
+blockquote {
+  margin: 0;
+  padding: 0;
+}
+
+/* Defina a altura da fonte para uma aparência consistente em elementos inline */
+body,
+button,
+input,
+select,
+textarea {
+  font-size: 100%;
+}
+
+/* Remova a formatação de lista padrão */
+ul,
+ol {
+  list-style: none;
+}
+
+/* Redefina as bordas e o preenchimento em elementos de imagem e tabela */
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+img {
+  border: 0;
+}
+
+/* Redefina a formatação do hiperlink */
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Defina a cor de fundo padrão para branco */
+body {
+  background-color: #fff;
+}
+
+/* Adicione um cursor de seta padrão a elementos clicáveis */
+a,
+button,
+input,
+select,
+textarea {
+  cursor: pointer;
+}
+
+.main-principal-inicio {
+  margin-top: 5vh;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+.main-principal-inicio section,
+.main-principal-inicio aside {
+  background-color: #009090;
+  border-radius: 5px;
+  box-shadow: 1px 1px;
+  border-style: groove;
+  margin: 10px;
+  padding: 10px;
+  height: 360px;
+  width: 500px;
+  transition: 1s;
+}
+.main-principal-inicio section:hover {
+  background-color: #404040;
+  transition: 1s;
+  color: #bfbfbf;
+}
+
+.main-principal-inicio aside:hover {
+  background-color: #900000;
+  transition: 1s;
+  color: #bfbfbf;
+}
+.main-principal-inicio h2 {
+  color: white;
+  background-color: cadetblue;
+  padding: 4px 5px;
+  text-align: center;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
+
+.tabela-objetivos-conteste {
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+.tabela-objetivos-conteste tbody {
+  display: block; /* Transforma o tbody em um bloco para que ele respeite a altura máxima */
+}
+
+.tabela-objetivos-conteste thead,
+.tabela-objetivos-conteste tbody tr {
+  display: table;
+  width: 100%;
+  table-layout: fixed; /* Para garantir que as colunas tenham largura fixa */
+}
+
+.tabela-objetivos-conteste tbody {
+  overflow: auto;
+  max-height: inherit;
+}
+
+.tabela-objetivos-conteste th,
+.tabela-objetivos-conteste td {
+  width: 20%; /* Divide igualmente as colunas */
+  text-align: center; /* Centraliza o texto nas células */
+  font-size: small;
+}
+
+.tabela-objetivos-conteste {
+  border-collapse: collapse; /* Remove espaçamento entre as células */
+}
+.tabela-objetivos-conteste th {
+  background-color: aliceblue;
+}
+.tabela-objetivos-conteste td {
+  background-color: black;
+  color: aliceblue;
+  border-bottom: 1px solid white;
+
+  padding: 5px; /* Adiciona espaço interno às células */
+  text-align: center; /* Centraliza o conteúdo nas células */
+}
+.tabela-objetivos-conteste th {
+  border: 1px solid #000; /* Adiciona uma borda sólida de 1 pixel em torno das células */
+  padding: 5px; /* Adiciona espaço interno às células */
+  text-align: center; /* Centraliza o conteúdo nas células */
+}
+
+div img{
+  width: 400px;
+  height: 400px;
+}
