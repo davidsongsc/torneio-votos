@@ -50,7 +50,7 @@ const Login: React.FC = () => {
             <div>
                 <label htmlFor="email"></label>
                 <input
-                    type="text"
+                    type="number"
                     id="email"
                     value={matricula}
                     onChange={handleEmailChange}
