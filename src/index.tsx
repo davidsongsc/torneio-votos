@@ -1,16 +1,25 @@
 import React from 'react';
-import ReactDOM from 'react-dom/client';
+import ReactDOM from 'react-dom';
+import { Provider } from 'react-redux'; // Importe o Provider do react-redux
+import { createStore } from 'redux'; // Importe createStore do redux
+import rootReducer from './reducers'; // Importe seu reducer principal (se você já tiver)
+
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
-const root = ReactDOM.createRoot(
+// Crie uma instância do store
+const store = createStore(rootReducer); // Substitua 'rootReducer' pelo seu reducer principal
+
+// Renderize o aplicativo dentro do Provider
+ReactDOM.render(
+  <Provider store={store}> {/* Aqui você envolve seu aplicativo com o Provider e passa o store como prop */}
+    <React.StrictMode>
+      <App />
+    </React.StrictMode>
+  </Provider>,
   document.getElementById('root') as HTMLElement
 );
-root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
-);
+
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))

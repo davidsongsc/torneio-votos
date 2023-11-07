@@ -1,6 +1,6 @@
 // Home.tsx
 import React from 'react';
-import Main from './pagina/Main';
+import Main from './Main';
 
 const Home: React.FC = () => {
   return (

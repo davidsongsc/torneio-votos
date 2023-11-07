@@ -1,6 +1,6 @@
 import React from 'react';
-import Section from './pagina/Section';
-import Ranking from './pagina/Ranking';
+import Section from './Section';
+import Ranking from './Ranking';
 
 
 function PageRanking() {

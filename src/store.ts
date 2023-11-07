@@ -3,8 +3,10 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 import thunk from 'redux-thunk';
 import votoReducer from './reducers/votoReducer';
 
+
 const rootReducer = combineReducers({
   voto: votoReducer,
+  
 });
 
 export type RootState = ReturnType<typeof rootReducer>;

@@ -1,30 +1,19 @@
 import React, { useState } from 'react';
 import ConfirmVoto from './ConfirmaVoto';
 
-interface Person {
-    id: number;
-    name: string;
-    alcunha: string;
-    imagem: string;
-    votes: number;
-}
+import { useDispatch, useSelector } from 'react-redux';
+import { RootState } from '../reducers'; // Substitua pelo caminho correto
+import { votar } from '../actions/votoActions'; // Substitua pelo caminho real
+import { concretizarVoto } from '../actions/concretizarVoto';
 
 const Votar: React.FC = () => {
-    const [voto, setVoto] = useState<number | null>(null); // Inicialmente nenhum voto selecionado
+
     const [search, setSearch] = useState<string>('');
     const [showConfirmDialog, setShowConfirmDialog] = useState(false);
-    const pessoas: Person[] = [
-        { id: 1, name: 'Belisazrio Borba', alcunha: 'presidente', imagem: 'perfil', votes: 15 },
-        { id: 2, name: 'Cipliano Pinto', alcunha: '', imagem: 'perfil', votes: 10 },
-        { id: 3, name: 'Maria Manoela', alcunha: '', imagem: 'perfil', votes: 5 },
-        { id: 4, name: 'Lucia Cleides', alcunha: '', imagem: 'perfil', votes: 8 },
-        { id: 5, name: 'Marta Rosa', alcunha: '', imagem: 'perfil', votes: 3 },
-        { id: 6, name: 'Eliane Leonel', alcunha: '', imagem: 'perfil', votes: 10 },
-        { id: 7, name: 'Bruna Carla', alcunha: '', imagem: 'perfil', votes: 5 },
-        { id: 8, name: 'Mauricio de souza ', alcunha: '', imagem: 'perfil', votes: 8 },
-        { id: 9, name: 'George Neto', alcunha: '', imagem: 'perfil', votes: 1 },
-        // Adicione mais pessoas conforme necessário
-    ];
+    const pessoas = useSelector((state: RootState) => state.usuariosReducer.usuarios);
+   
+    const voto = useSelector((state: RootState) => state.votarReducer.voto);
+    const dispatch = useDispatch(); // Use o gancho useDispatch para despachar ações
 
     const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setSearch(e.target.value);
@@ -32,24 +21,25 @@ const Votar: React.FC = () => {
 
     const handleVotoChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const selectedVoto = parseInt(e.target.value, 10);
-        setVoto(selectedVoto);
-        console.log(selectedVoto);
+        // Despache a ação para atualizar o voto
+        dispatch(votar(selectedVoto));
     };
 
     const handleVotar = () => {
         if (voto !== null) {
             // Aqui, você pode enviar o voto para o servidor ou realizar a lógica de votação necessária
-            console.log('Votou em:', voto);
             setShowConfirmDialog(true);
         }
     };
 
     const handleConfirm = () => {
-        // Lógica de confirmação aqui (por exemplo, enviar o voto para o servidor)
-        console.log('Votou em:', voto);
+        if (voto !== null) {
+            // Despache a ação para concretizar o voto
+            dispatch(concretizarVoto(voto));
 
-        // Fecha o diálogo de confirmação
-        setShowConfirmDialog(false);
+            // Fecha o diálogo de confirmação
+            setShowConfirmDialog(false);
+        }
     };
 
     const handleCancel = () => {
@@ -118,4 +108,7 @@ const Votar: React.FC = () => {
     );
 };
 
+
+
+// Conecta o componente ao Redux
 export default Votar;

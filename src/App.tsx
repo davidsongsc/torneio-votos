@@ -5,7 +5,7 @@ import Navbar from './components/NavBar';
 import Footer from './components/Footer';
 import PageRanking from './components/PageRanking';
 import PageOutros from './components/PageOutros';
-import Perfil from './components/pagina/Perfil';
+import Perfil from './components/Perfil';
 
 function App() {
   return (

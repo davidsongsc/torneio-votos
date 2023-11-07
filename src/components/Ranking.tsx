@@ -1,27 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-interface Person {
-    id: number;
-    name: string;
-    alcunha: string;
-    imagem: string;
-    votes: number;
-}
-
-const data: Person[] = [
-    { id: 1, name: 'Belisazrio Cavalcante', alcunha: 'presidente', imagem: 'perfil', votes: 5 },
-    { id: 2, name: 'Cipliano Pinto', alcunha: '', imagem: 'perfil', votes: 6 },
-    { id: 3, name: 'Maria Manoela', alcunha: '', imagem: 'perfil', votes: 3 },
-    { id: 4, name: 'Lucia Cleides', alcunha: '', imagem: 'perfil', votes: 11 },
-    { id: 5, name: 'Marta Rosa', alcunha: '', imagem: 'perfil', votes: 1 },
-    { id: 6, name: 'Eliane Leonel', alcunha: '', imagem: 'perfil', votes: 2 },
-    { id: 7, name: 'Bruna Carla', alcunha: '', imagem: 'perfil', votes: 2 },
-    { id: 8, name: 'Mauricio de souza ', alcunha: '', imagem: 'perfil', votes: 4 },
-    { id: 9, name: 'George Neto', alcunha: '', imagem: 'perfil', votes: 1 },
-    // Adicione mais pessoas conforme necessário
-];
+import { RootState } from '../reducers'; // Substitua pelo caminho correto
+import { useSelector } from 'react-redux';
 
 const Ranking: React.FC = () => {
+    const data = useSelector((state: RootState) => state.usuariosReducer.usuarios);
+
     const sortedData = data.sort((a, b) => b.votes - a.votes);
     return (
         <table className='tabela-objetivos-conteste'>

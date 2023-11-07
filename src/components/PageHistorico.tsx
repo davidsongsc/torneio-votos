@@ -1,5 +1,5 @@
 import React from 'react';
-import Section from './pagina/Section';
+import Section from './Section';
 
 function PageHistorico() {
   const secoes = [

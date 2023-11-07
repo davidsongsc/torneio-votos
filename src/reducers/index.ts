@@ -1,8 +1,15 @@
 import { combineReducers } from 'redux';
-import algumReducer from './votoReducer'; // Importe seus reducers individuais aqui
+import votarReducer from './votoReducer'; // Importe seus reducers individuais aqui
+import concretizarVotoReducer from './concretizarVotoReducer';
+import usuariosReducer from './usuariosReducer'; // Importe o novo reducer de usuários
+import contestReducer from './contestReducer'; // Importe o novo reducer de usuários
+
 
 const rootReducer = combineReducers({
-  algumReducer, // Adicione seus reducers individuais aqui
+  votarReducer, // Adicione seus reducers individuais aqui
+  concretizarVotoReducer: concretizarVotoReducer, // Adicione o novo reducer aqui
+  usuariosReducer,
+  contestReducer,
   // adicione mais reducers se necessário
 });
 
