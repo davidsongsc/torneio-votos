@@ -8,7 +8,7 @@ interface Person {
 }
 
 const data: Person[] = [
-    { contest: 'Novembro', quantidade: '130', atualQuantidade: '0',  dataEncerramento: '30/11/2023' },
+    { contest: '...', quantidade: '0', atualQuantidade: '0',  dataEncerramento: '11/2023' },
    
 ];
 
@@ -20,7 +20,7 @@ const Tabela: React.FC = () => {
                     <th>Objetivo</th>
                     <th>Meta</th>
                     <th>Vendas</th>
-                    <th>Prazo</th>
+                    <th>Termina em</th>
                 </tr>
             </thead>
             <tbody>
