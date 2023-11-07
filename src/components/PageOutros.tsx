@@ -46,10 +46,32 @@ const PageOutros: React.FC = () => {
             <ul>
                 <h3>Urna Eletronica</h3>
                 <li>
-                    <a href="#historico">Calendario</a>
+                    <a href="#historico">Gerar Voto</a>
                 </li>
                 <li>
-                    <a href="#fotoperfil">Votos Emitidos</a>
+                    <a href="#fotoperfil">Calendario </a>
+                </li>
+                <li>
+                    <a href="#fotoperfil">Painel</a>
+                </li>
+                <li>
+                    <a href="#fotoperfil">Regras</a>
+                </li>
+            </ul>
+            <br />
+            <ul>
+                <h3>Torneio Painel</h3>
+                <li>
+                    <a href="#historico">Titulo Pagina</a>
+                </li>
+                <li>
+                    <a href="#fotoperfil">Cores </a>
+                </li>
+                <li>
+                    <a href="#fotoperfil">Tamanho da Fonte</a>
+                </li>
+                <li>
+                    <a href="#fotoperfil">Estilo da Fonte</a>
                 </li>
             </ul>
         </div>

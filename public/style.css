@@ -85,7 +85,7 @@ textarea {
   margin: 10px;
   padding: 10px;
   max-height: 450px;
-  width: 500px;
+  
   transition: 1s;
 }
 .main-principal-inicio section:hover {
