@@ -82,7 +82,7 @@ textarea {
   border-radius: 5px;
   box-shadow: 1px 1px;
   border-style: groove;
-  padding: 5px; 
+  padding: 5px;
   transition: 1s;
 }
 .main-principal-inicio section:hover {
@@ -123,7 +123,6 @@ textarea {
 
 .tabela-objetivos-conteste tbody {
   overflow: auto;
-  
 }
 
 .tabela-objetivos-conteste th,
@@ -145,10 +144,9 @@ textarea {
   border-bottom: 1px solid black;
   padding: 5px;
   text-align: center;
-
 }
 
-.tabela-objetivos-conteste td a{
+.tabela-objetivos-conteste td a {
   font-size: 30px;
 }
 .tabela-objetivos-conteste th {
@@ -284,7 +282,6 @@ textarea {
 .confirm-voto-content div:last-child {
   display: flex;
   flex-direction: column;
-  
 }
 .confirm-voto-content p {
   font-size: 16px;
@@ -385,4 +382,106 @@ textarea {
   font-size: 24px;
   margin-top: 20px;
   color: red;
+}
+
+/* login.css */
+
+.login-container {
+  width: 300px;
+  margin: 50px auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  background-color: #b7b7b7;
+}
+
+.login-container h2 {
+  text-align: center;
+}
+
+.login-container label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.login-container input {
+  width: 95%;
+  padding: 40px 10px;
+  margin-bottom: -17px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  outline: none;
+  text-indent: 50px;
+  font-size: x-large;
+}
+
+.login-container button {
+  width: 100%;
+  padding: 10px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+
+.login-container button:hover {
+  background-color: #0056b3;
+}
+.login-container .limpar-senha{
+  top: -92px;
+  left: 255px;
+  position: relative;
+  width: 40px;
+  height: 38px;
+}
+.login-container .icone-usuario{
+  top: -80px;
+  left: 7px;
+  position: relative;
+  width: 40px;
+  height: 38px;
+}
+
+.login-container .icone-senha{
+  top: -60px;
+  left: 7px;
+  position: relative;
+  width: 40px;
+  height: 38px;
+}
+.virtual-keyboard {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  height: 25vh;
+}
+.virtual-keyboard button {
+  width: 90px;
+  height: 70px;
+  margin: 2px;
+  color: #eeeeee;
+  border-radius: 8px;
+  box-shadow: 2px 2px 1px green;
+  background-color: #111111;
+  transition: .3s;
+}
+.virtual-keyboard button:hover {
+  box-shadow: 2px 2px 1px green, -2px -2px 1px green;
+  background-color: #353535;
+  transition: .3s;
+}
+.virtual-keyboard img {
+  width: 45px;
+  transition: .4s;
+}
+
+.virtual-keyboard img:hover {
+  margin-top: -5px;
+  width: 50px;
+  transition: .4s;
+
 }

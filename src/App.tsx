@@ -6,6 +6,7 @@ import Footer from './components/Footer';
 import PageRanking from './components/PageRanking';
 import PageOutros from './components/PageOutros';
 import Perfil from './components/Perfil';
+import Login from './components/Login';
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
         <Route path="/ranking" element={<PageRanking />} />
         <Route path="/outros" element={<PageOutros />} />
         <Route path="/perfil/:id" element={<Perfil />} />
+        <Route path="/login" element={<Login />} />
       </Routes>
       <Footer/>
     </Router>

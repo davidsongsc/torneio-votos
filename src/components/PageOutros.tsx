@@ -23,7 +23,7 @@ const PageOutros: React.FC = () => {
             <ul>
                 <h3>Conta</h3>
                 <li>
-                    <a href="#historico">Login</a>
+                    <a href="/login">Login</a>
                 </li>
                 <li>
                     <a href="#fotoperfil">Cadastro</a>
