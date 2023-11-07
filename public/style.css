@@ -190,18 +190,25 @@ textarea {
   text-align: center;
 }
 .input-text-pesquisa {
-  margin: 6px;
   padding: 5px;
   border-radius: 5px;
 }
 /* Estilize o rótulo dos radio buttons */
 .radio-label {
+  margin: 5px 0px;
   display: block;
   margin-bottom: 10px;
   position: relative;
   cursor: pointer;
 }
-
+.radio-label-selecionado {
+  background-color: white;
+  border-radius: 5px;
+  padding: 2px;
+}
+.radio-label-nao-selecionado {
+  margin: 5px 0px;
+}
 /* Estilize os radio buttons ocultos */
 .radio-input {
   display: none;
@@ -243,6 +250,6 @@ textarea {
   width: 220px;
 }
 
-.confirm-voto{
+.confirm-voto {
   height: 400px;
 }

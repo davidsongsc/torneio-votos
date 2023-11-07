@@ -1,13 +1,16 @@
 import React from 'react';
+// Definindo um tipo arrayVoto
 
-interface ConfirmVotoProps {
-    open: boolean;
-    onClose: () => void;
-    onConfirm: () => void;
-    message: string;
+  // Em seguida, use-o na sua interface ConfirmVotoProps
+  interface ConfirmVotoProps {
+      open: boolean;
+      onClose: () => void;
+      onConfirm: () => void;
+      message: string;
   }
   
-  const ConfirmVoto: React.FC<ConfirmVotoProps> = ({ open, onClose, onConfirm, message }) => {
+  
+  const ConfirmVoto: React.FC<ConfirmVotoProps> = ({open, onClose, onConfirm, message }) => {
     if (!open) return null;
   
     return (

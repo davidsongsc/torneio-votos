@@ -32,6 +32,7 @@ const Votar: React.FC = () => {
     const handleVotoChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const selectedVoto = parseInt(e.target.value, 10);
         setVoto(selectedVoto);
+        console.log(selectedVoto);
     };
 
     const handleVotar = () => {
@@ -68,7 +69,7 @@ const Votar: React.FC = () => {
 
     return (
         <div>
-            <form className='form-votacao-indica' style={{display: `${!showConfirmDialog ? 'block' : 'none'}`}}>
+            <form className='form-votacao-indica' style={{ display: `${!showConfirmDialog ? 'block' : 'none'}` }}>
                 <input
                     className='input-text-pesquisa'
                     type="text"
@@ -79,7 +80,7 @@ const Votar: React.FC = () => {
 
                 <div className='tela-painel-votos'>
                     {top3Pessoas.map((pessoa) => (
-                        <label className='radio-label' key={pessoa.id} htmlFor={`radio-${pessoa.id}`}>
+                        <label className={`radio-label ${pessoa.id === voto ? 'radio-label-selecionado': 'radio-label-nao-selecionado'}`} key={pessoa.id} htmlFor={`radio-${pessoa.id}`}>
                             <div className='votante-lista-seletor'>
                                 <img src={`https://dagesico.pythonanywhere.com/static/img/${pessoa.imagem}.jpg`} alt="Imagem Perfil" />
                                 <h3>{pessoa.name} </h3>
@@ -110,7 +111,7 @@ const Votar: React.FC = () => {
                 onClose={handleCancel}
                 onConfirm={handleConfirm}
                 message="Você tem certeza que deseja votar?"
-            />
+             />
         </div>
     );
 };
