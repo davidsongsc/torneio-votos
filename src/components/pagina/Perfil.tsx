@@ -35,7 +35,7 @@ const Perfil: React.FC = () => {
             <h2 className='perfil-name'>Perfil</h2>
             <img className='perfil-image' src={`https://dagesico.pythonanywhere.com/static/img/perfil.jpg`} alt={employee.name} />
             <h3>{employee.name}</h3>
-            <p>Conhecido como: {employee.alcunha}</p>
+            <p>Area: {employee.alcunha}</p>
             <Link to="/">Ir para Inicio</Link>
         </div>
     );

@@ -18,7 +18,7 @@ const NavUlLi = {
 }
 
 const NavLink = {
-    color: '#bfbfbf',
+    color: '#eaeaea',
     textDecoration: 'none',
     padding: '5px'
 };

@@ -147,6 +147,10 @@ textarea {
   text-align: center;
 
 }
+
+.tabela-objetivos-conteste td a{
+  font-size: 30px;
+}
 .tabela-objetivos-conteste th {
   border: 1px solid #000; /* Adiciona uma borda sólida de 1 pixel em torno das células */
   padding: 5px; /* Adiciona espaço interno às células */

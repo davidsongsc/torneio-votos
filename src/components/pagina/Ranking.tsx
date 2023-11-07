@@ -9,7 +9,7 @@ interface Person {
 }
 
 const data: Person[] = [
-    { id: 1, name: 'Belisazrio Borba', alcunha: 'presidente', imagem: 'perfil', votes: 5 },
+    { id: 1, name: 'Belisazrio Cavalcante', alcunha: 'presidente', imagem: 'perfil', votes: 5 },
     { id: 2, name: 'Cipliano Pinto', alcunha: '', imagem: 'perfil', votes: 6 },
     { id: 3, name: 'Maria Manoela', alcunha: '', imagem: 'perfil', votes: 3 },
     { id: 4, name: 'Lucia Cleides', alcunha: '', imagem: 'perfil', votes: 11 },
@@ -27,18 +27,18 @@ const Ranking: React.FC = () => {
         <table className='tabela-objetivos-conteste'>
             <thead>
                 <tr>
-                    <th style={{ width: '10px' }}>Posição</th>
-                    <th style={{ width: '50px' }}>Nome</th>
-                    <th style={{ width: '50px' }}>Votos</th>
+                    <th style={{ width: '10px', color: '#eaeaea', backgroundColor: '#1a1a1a', borderColor: '#eaeaea' }}>↓</th>
+                    <th style={{ width: '104.5px', color: 'black' }}>Nome</th>
+                    <th style={{ width: '10px', color: '#eaeaea', backgroundColor: '#1a1a1a', borderColor: '#eaeaea' }}>V</th>
 
                 </tr>
             </thead>
             <tbody>
                 {sortedData.slice(0, 20).map((person, index) => (
                     <tr key={index}>
-                        <td style={{ width: '10px' }}>{index + 1}º</td>
-                        <td style={{ width: '50px' }}><Link to={`/perfil/${person.id}`}>{person.name}</Link></td>
-                        <td style={{ width: '50px' }}>{person.votes} </td>
+                        <td style={{ width: '10px', color: '#eaeaea', backgroundColor: '#05808d', borderColor: '#eaeaea'  }}>{index + 1}º</td>
+                        <td style={{ width: '100px' }}><Link to={`/perfil/${person.id}`}>{person.name}</Link></td>
+                        <td style={{ width: '10px', color: '#eaeaea', backgroundColor: '#1a1a1a' }}>{person.votes} </td>
                     </tr>
                 ))}
             </tbody>
