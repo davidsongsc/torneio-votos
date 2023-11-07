@@ -1,14 +1,16 @@
-// Login.tsx
-
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { loginUser } from '../actions/userActions'; // Importe a ação de login
+import { ThunkDispatch } from 'redux-thunk';
+import { AnyAction } from 'redux';
+import { loginUser } from '../actions/userActions';
+import { RootState } from '../reducers'; // Substitua pelo caminho correto
 
 const Login: React.FC = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  const dispatch = useDispatch();
+  // Ajuste o tipo do dispatch para ThunkDispatch
+  const dispatch: ThunkDispatch<RootState, any, AnyAction> = useDispatch();
 
   const handleEmailChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setEmail(e.target.value);
@@ -19,9 +21,6 @@ const Login: React.FC = () => {
   };
 
   const handleLogin = () => {
-    // Valide os campos de entrada, por exemplo, verifique se o email e a senha não estão vazios
-
-    // Chame a ação de login com os dados inseridos
     dispatch(loginUser({ email, password }));
   };
 
