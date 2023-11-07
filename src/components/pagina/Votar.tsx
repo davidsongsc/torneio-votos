@@ -69,18 +69,19 @@ const Votar: React.FC = () => {
 
     return (
         <div>
-            <form className='form-votacao-indica' style={{ display: `${!showConfirmDialog ? 'block' : 'none'}` }}>
+            <form className='form-votacao-indica' >
                 <input
                     className='input-text-pesquisa'
                     type="text"
                     placeholder="Pesquisar candidato"
                     value={search}
                     onChange={handleSearchChange}
+                    style={{ display: `${!showConfirmDialog ? 'block' : 'none'}` }}
                 />
 
                 <div className='tela-painel-votos'>
                     {top3Pessoas.map((pessoa) => (
-                        <label className={`radio-label ${pessoa.id === voto ? 'radio-label-selecionado': 'radio-label-nao-selecionado'}`} key={pessoa.id} htmlFor={`radio-${pessoa.id}`}>
+                        <label className={`radio-label ${pessoa.id === voto ? 'radio-label-selecionado': 'radio-label-nao-selecionado'} ${pessoa.id === voto && showConfirmDialog ? 'radio-label-voto': 'radio-label-voto-nao'}`} key={pessoa.id} htmlFor={`radio-${pessoa.id}`}>
                             <div className='votante-lista-seletor'>
                                 <img src={`https://dagesico.pythonanywhere.com/static/img/${pessoa.imagem}.jpg`} alt="Imagem Perfil" />
                                 <h3>{pessoa.name} </h3>
@@ -102,7 +103,7 @@ const Votar: React.FC = () => {
                     ))}
 
                 </div>
-                <button className='btn-voto' type="button" onClick={handleVotar}>
+                <button className='btn-voto' type="button" onClick={handleVotar} style={{ display: `${!showConfirmDialog ? '' : 'none'}` }}>
                     Votar
                 </button>
             </form>

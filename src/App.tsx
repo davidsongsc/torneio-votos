@@ -3,6 +3,8 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Home from './components/Home';
 import Navbar from './components/NavBar';
 import Footer from './components/Footer';
+import PageRanking from './components/PageRanking';
+import PageOutros from './components/PageOutros';
 
 function App() {
   return (
@@ -10,6 +12,8 @@ function App() {
       <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/ranking" element={<PageRanking />} />
+        <Route path="/outros" element={<PageOutros />} />
 
       </Routes>
       <Footer/>

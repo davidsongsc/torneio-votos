@@ -190,12 +190,12 @@ textarea {
   text-align: center;
 }
 .input-text-pesquisa {
+  margin: 10px auto;
   padding: 5px;
   border-radius: 5px;
 }
 /* Estilize o rótulo dos radio buttons */
 .radio-label {
-  margin: 5px 0px;
   display: block;
   margin-bottom: 10px;
   position: relative;
@@ -204,10 +204,12 @@ textarea {
 .radio-label-selecionado {
   background-color: white;
   border-radius: 5px;
-  padding: 2px;
+  padding: 4px;
+  transition: 0.7s;
 }
 .radio-label-nao-selecionado {
   margin: 5px 0px;
+  transition: 0.7s;
 }
 /* Estilize os radio buttons ocultos */
 .radio-input {
@@ -223,12 +225,14 @@ textarea {
   position: absolute;
   right: 45px;
   top: 30px;
+  display: none;
 }
 
 /* Estilize o radio button quando marcado */
 .radio-input:checked + .radio-custom {
   border-color: #007bff; /* Cor da borda quando marcado */
   background-color: #007bff; /* Cor de fundo quando marcado */
+  display: none;
 }
 
 /* Estilize o ponto interno do radio button quando marcado */
@@ -251,5 +255,84 @@ textarea {
 }
 
 .confirm-voto {
-  height: 400px;
+  background-color: white;
+  z-index: 999;
+  position: absolute;
+  top: 5vh;
+  left: 0;
+  bottom: 0;
+  /* border-radius: 15px; */
+  /* padding: 15px; */
+  font-size: xx-large;
+  /* height: 25vh; */
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+}
+
+.confirm-voto-content {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: center;
+}
+.confirm-voto-content div:first {
+  width: 60%;
+}
+.confirm-voto-content div:last-child {
+  display: flex;
+  flex-direction: column;
+  
+}
+.confirm-voto-content p {
+  font-size: 16px;
+  color: black;
+  margin: 1px auto;
+  width: 80%;
+}
+
+.confirm-voto-content button {
+  margin: 5px 3px;
+  height: 85px;
+  background-color: #000;
+  color: white;
+}
+
+.sitemap {
+  margin: 30px auto;
+  background-color: #f8f8f8;
+  padding: 25px;
+  border: 1px solid #e0e0e0;
+  border-radius: 5px;
+}
+
+.sitemap h2 {
+  font-size: 35px;
+  margin-bottom: 10px;
+  text-decoration: overline #2f4f4f;
+}
+.sitemap h3 {
+  font-size: 30px;
+  margin-bottom: 10px;
+  text-decoration: underline overline #2f4f4f;
+}
+
+.sitemap ul {
+  list-style: none;
+  padding: 0;
+}
+
+.sitemap li {
+  margin: 5px 0;
+}
+
+.sitemap a {
+  text-decoration: none;
+  color: #333;
+  font-weight: bold;
+  font-size: 25px;
+}
+
+.sitemap a:hover {
+  color: #0070f3;
 }

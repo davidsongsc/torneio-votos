@@ -19,7 +19,8 @@ const NavUlLi = {
 
 const NavLink = {
     color: '#bfbfbf',
-    textDecoration: 'none'
+    textDecoration: 'none',
+    padding: '5px'
 };
 const Navbar: React.FC = () => {
     return (
@@ -29,13 +30,13 @@ const Navbar: React.FC = () => {
                     <Link style={NavLink} to="/">Inicio</Link>
                 </li>
                 <li style={NavUlLi}>
-                    <Link style={NavLink} to="/">Calendario</Link>
+                    <Link style={NavLink} to="/ranking">Ranking</Link>
                 </li>
                 <li style={NavUlLi}>
                     <Link style={NavLink} to="/">Perfil</Link>
                 </li>
                 <li style={NavUlLi}>
-                    <Link style={NavLink} to="/">Menu</Link>
+                    <Link style={NavLink} to="/outros">Outros</Link>
                 </li>
             </ul>
         </nav>
