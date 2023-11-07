@@ -75,13 +75,16 @@ textarea {
 }
 .main-principal-inicio section,
 .main-principal-inicio aside {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
   background-color: #009090;
   border-radius: 5px;
   box-shadow: 1px 1px;
   border-style: groove;
   margin: 10px;
   padding: 10px;
-  height: 370px;
+  max-height: 450px;
   width: 500px;
   transition: 1s;
 }
@@ -123,7 +126,7 @@ textarea {
 
 .tabela-objetivos-conteste tbody {
   overflow: auto;
-  max-height: inherit;
+  max-height: 40.5vh;
 }
 
 .tabela-objetivos-conteste th,
@@ -165,19 +168,31 @@ textarea {
   color: black;
   box-shadow: 1px 1px;
   border-radius: 5px;
-  margin: 6px;
+  margin: 1px 3px;
   padding: 10px;
   width: 150px;
-  height: 90px;
+  height: 110px;
 }
 .votante-lista-seletor img {
-  width: 50px;
-  height: 50px;
+  width: 80px;
+  height: 80px;
   border-radius: 5px;
   box-shadow: 1px 1px;
 }
+
+.votante-lista-seletor h3 {
+  font: 20px;
+}
+.votante-lista-seletor p {
+  font-size: 10px;
+}
 .form-votacao-indica {
   text-align: center;
+}
+.input-text-pesquisa {
+  margin: 6px;
+  padding: 5px;
+  border-radius: 5px;
 }
 /* Estilize o rótulo dos radio buttons */
 .radio-label {
@@ -224,4 +239,10 @@ textarea {
 .btn-voto {
   border-radius: 5px;
   font-size: x-large;
+  height: 65px;
+  width: 220px;
+}
+
+.confirm-voto{
+  height: 400px;
 }
