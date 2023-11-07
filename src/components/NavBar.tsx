@@ -33,7 +33,7 @@ const Navbar: React.FC = () => {
                     <Link style={NavLink} to="/ranking">Ranking</Link>
                 </li>
                 <li style={NavUlLi}>
-                    <Link style={NavLink} to="/">Perfil</Link>
+                    <Link style={NavLink} to="/perfil">Perfil</Link>
                 </li>
                 <li style={NavUlLi}>
                     <Link style={NavLink} to="/outros">Outros</Link>

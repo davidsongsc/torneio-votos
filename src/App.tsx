@@ -5,6 +5,7 @@ import Navbar from './components/NavBar';
 import Footer from './components/Footer';
 import PageRanking from './components/PageRanking';
 import PageOutros from './components/PageOutros';
+import Perfil from './components/pagina/Perfil';
 
 function App() {
   return (
@@ -14,7 +15,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/ranking" element={<PageRanking />} />
         <Route path="/outros" element={<PageOutros />} />
-
+        <Route path="/perfil/:id" element={<Perfil />} />
       </Routes>
       <Footer/>
     </Router>

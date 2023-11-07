@@ -82,10 +82,7 @@ textarea {
   border-radius: 5px;
   box-shadow: 1px 1px;
   border-style: groove;
-  margin: 10px;
-  padding: 10px;
-  max-height: 450px;
-  
+  padding: 5px; 
   transition: 1s;
 }
 .main-principal-inicio section:hover {
@@ -126,14 +123,14 @@ textarea {
 
 .tabela-objetivos-conteste tbody {
   overflow: auto;
-  max-height: 40.5vh;
+  
 }
 
 .tabela-objetivos-conteste th,
 .tabela-objetivos-conteste td {
   width: 20%; /* Divide igualmente as colunas */
   text-align: center; /* Centraliza o texto nas células */
-  font-size: small;
+  font-size: 25px;
 }
 
 .tabela-objetivos-conteste {
@@ -143,12 +140,12 @@ textarea {
   background-color: aliceblue;
 }
 .tabela-objetivos-conteste td {
-  background-color: black;
-  color: aliceblue;
-  border-bottom: 1px solid white;
+  background-color: white;
+  color: black;
+  border-bottom: 1px solid black;
+  padding: 5px;
+  text-align: center;
 
-  padding: 5px; /* Adiciona espaço interno às células */
-  text-align: center; /* Centraliza o conteúdo nas células */
 }
 .tabela-objetivos-conteste th {
   border: 1px solid #000; /* Adiciona uma borda sólida de 1 pixel em torno das células */
@@ -335,4 +332,52 @@ textarea {
 
 .sitemap a:hover {
   color: #0070f3;
+}
+
+.perfil-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 40px auto;
+  text-align: center;
+}
+
+.perfil-image {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.perfil-name {
+  font-size: 24px;
+  margin: 10px 0;
+}
+
+.perfil-list {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+}
+
+.perfil-list-left,
+.perfil-list-right {
+  flex: 1;
+  text-align: center;
+}
+
+.perfil-list-item {
+  margin: 5px 0;
+  font-size: 18px;
+}
+
+.perfil-list-item-label {
+  font-weight: bold;
+}
+
+.perfil-not-found {
+  text-align: center;
+  font-size: 24px;
+  margin-top: 20px;
+  color: red;
 }
