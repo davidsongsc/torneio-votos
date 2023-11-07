@@ -9,8 +9,8 @@ export const LOGIN_FAILURE = 'LOGIN_FAILURE';
 
 // Defina o tipo de dados do usuário
 export interface UserData {
-  id: number;
-  email: string;
+  matricula: number;
+  senha: string;
   // Outros campos de dados do usuário, se necessário
 }
 
@@ -35,7 +35,7 @@ interface LoginFailureAction {
 export type UserActionTypes = LoginRequestAction | LoginSuccessAction | LoginFailureAction;
 
 // Ação assíncrona para autenticar o usuário
-export const loginUser = (credentials: { email: string; password: string }) => {
+export const loginUser = (credentials: { matricula: string; senha: string }) => {
   return async (dispatch: Dispatch<UserActionTypes>) => {
     // Dispare a ação de solicitação de login
     dispatch({ type: LOGIN_REQUEST });
@@ -45,7 +45,7 @@ export const loginUser = (credentials: { email: string; password: string }) => {
       // Substitua esta parte pelo código real de autenticação
 
       // Exemplo: 
-      const response = await fetch('/api/login', {
+      const response = await fetch('http://192.168.0.50:5000/api/login', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

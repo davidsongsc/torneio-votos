@@ -1,14 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux'; // Importe o Provider do react-redux
-import { createStore } from 'redux'; // Importe createStore do redux
-import rootReducer from './reducers'; // Importe seu reducer principal (se você já tiver)
-
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
 // Crie uma instância do store
-const store = createStore(rootReducer); // Substitua 'rootReducer' pelo seu reducer principal
+import store from './store'; // Importe a instância configurada do seu store
 
 // Renderize o aplicativo dentro do Provider
 ReactDOM.render(

@@ -18,19 +18,19 @@ const icons = [
 ];
 
 const Login: React.FC = () => {
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
+    const [matricula, setMatricula] = useState('');
+    const [senha, setPassword] = useState('');
     const characters = [0, 1, 2, 3, 4, 5];
 
     const dispatch: ThunkDispatch<RootState, any, AnyAction> = useDispatch();
 
     const handleEmailChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        setEmail(e.target.value);
+        setMatricula(e.target.value);
     };
 
     const handleCharacterClick = (char: string) => {
-        if (password.length < 6) {
-            setPassword(password + char);
+        if (senha.length < 6) {
+            setPassword(senha + char);
         }
     };
 
@@ -39,8 +39,8 @@ const Login: React.FC = () => {
     };
 
     const handleLogin = () => {
-        if (password.length === 6) {
-            dispatch(loginUser({ email, password }));
+        if (senha.length === 6) {
+            dispatch(loginUser({ matricula, senha }));
         }
     };
 
@@ -52,7 +52,7 @@ const Login: React.FC = () => {
                 <input
                     type="text"
                     id="email"
-                    value={email}
+                    value={matricula}
                     onChange={handleEmailChange}
                     placeholder='Digite sua Matricula'
                     required
@@ -67,13 +67,13 @@ const Login: React.FC = () => {
                 <input
                     type="password"
                     id="password"
-                    value={password}
+                    value={senha}
                     placeholder='Codigo de Acesso'
                     readOnly
                     required
                 />
                 <div className='icone-senha'>
-                    <FaLock size={40} color={`${password.length === 6 ? 'green' : 'black'}`} />
+                    <FaLock size={40} color={`${senha.length === 6 ? 'green' : 'black'}`} />
                 </div>
 
                 <button className='limpar-senha' onClick={handlePasswordReset}><GiBroom size={20} color="white" /></button>
@@ -84,7 +84,7 @@ const Login: React.FC = () => {
                         <button
                             key={index}
                             onClick={() => handleCharacterClick(index.toString())}
-                            disabled={password.length >= 6}
+                            disabled={senha.length >= 6}
                         >
 
                             {icons[char] && <img src={icons[char].iconUrl} alt={`Icon ${char}`} />}
@@ -93,7 +93,7 @@ const Login: React.FC = () => {
                 </div>
 
             </div>
-            <button onClick={handleLogin} disabled={password.length !== 6}>
+            <button onClick={handleLogin} disabled={senha.length !== 6}>
                 <FaSignInAlt size={48} color="green" />
                 <p>Login</p>
             </button>
