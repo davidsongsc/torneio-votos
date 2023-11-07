@@ -12,7 +12,7 @@ const Votar: React.FC = () => {
     const [showConfirmDialog, setShowConfirmDialog] = useState(false);
     const pessoas = useSelector((state: RootState) => state.usuariosReducer.usuarios);
    
-    const voto = useSelector((state: RootState) => state.votarReducer.voto);
+    const voto = useSelector((state: RootState) => state.votoReducer.voto);
     const dispatch = useDispatch(); // Use o gancho useDispatch para despachar ações
 
     const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
