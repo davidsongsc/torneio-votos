@@ -156,8 +156,10 @@ textarea {
 }
 .tela-painel-votos {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
+  max-width: 400px;
+  overflow-x: auto;
+  flex-direction: row;
+  flex-wrap: nowrap;
 }
 .votante-lista-seletor {
   display: flex;
@@ -484,4 +486,26 @@ textarea {
   width: 50px;
   transition: .4s;
 
+}
+
+/* Altera a barra de rolagem total */
+::-webkit-scrollbar {
+  width: 12px; /* Largura da barra de rolagem */
+}
+
+/* Altera o fundo da barra de rolagem (a trilha) */
+::-webkit-scrollbar-track {
+  background: gray; /* Cor de fundo da trilha da barra de rolagem */
+}
+
+/* Altera a cor do indicador de rolagem (o thumb) */
+::-webkit-scrollbar-thumb {
+  background-color: black; /* Cor de fundo do thumb */
+  border-radius: 5px; /* Arredonda os cantos do thumb */
+  border: 3px solid orange; /* Borda ao redor do thumb */
+}
+
+/* Altera o estado de hover do indicador de rolagem */
+::-webkit-scrollbar-thumb:hover {
+  background: green; /* Cor de fundo do thumb quando se passa o mouse por cima */
 }
