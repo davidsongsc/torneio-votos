@@ -1,18 +1,16 @@
-import { createStore, combineReducers, Store, applyMiddleware } from 'redux';
-import { composeWithDevTools } from 'redux-devtools-extension';
-import thunk from 'redux-thunk';
-import votoReducer from './reducers/votoReducer';
-import usuariosReducer from './reducers/usuariosReducer'; // Importe seu UsuariosReducer
-import contestReducer  from './reducers/contestReducer'; // Importe seu UsuariosReducer
+// store.ts
 
-const rootReducer = combineReducers({
-  votoReducer: votoReducer,
-  usuariosReducer: usuariosReducer,
-  contestReducer: contestReducer,
-});
+import { createStore, applyMiddleware, Action } from 'redux';
+import thunk, { ThunkDispatch } from 'redux-thunk';
+import rootReducer from './reducers'; // Certifique-se de que o caminho para rootReducer está correto
+import { RootState } from './reducers'; // Importação do RootState
 
-export type RootState = ReturnType<typeof rootReducer>;
+export const store = createStore(
+  rootReducer,
+  applyMiddleware(thunk) // Aplica o middleware Redux Thunk
+);
 
-const store: Store<RootState> = createStore(rootReducer, composeWithDevTools(applyMiddleware(thunk)));
+// Cria um tipo para o dispatch do Redux que entende thunks
+export type AppDispatch = ThunkDispatch<RootState, any, Action>;
 
 export default store;

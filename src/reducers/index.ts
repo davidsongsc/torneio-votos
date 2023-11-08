@@ -3,6 +3,8 @@ import votoReducer from './votoReducer'; // Importe seus reducers individuais aq
 import concretizarVotoReducer from './concretizarVotoReducer';
 import usuariosReducer from './usuariosReducer'; // Importe o novo reducer de usuários
 import contestReducer from './contestReducer'; // Importe o novo reducer de usuários
+import userReducer  from '../reducers/userReducer';
+
 
 
 const rootReducer = combineReducers({
@@ -10,6 +12,9 @@ const rootReducer = combineReducers({
   concretizarVotoReducer: concretizarVotoReducer, // Adicione o novo reducer aqui
   usuariosReducer,
   contestReducer,
+  userReducer: userReducer,
+  user: userReducer,
+  
   // adicione mais reducers se necessário
 });
 

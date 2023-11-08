@@ -42,10 +42,10 @@ const Votar: React.FC = () => {
     };
 
     const filteredPessoas = pessoas.filter((pessoa) =>
-        pessoa.name.toLowerCase().includes(search.toLowerCase()) || pessoa.alcunha.toLowerCase().includes(search.toLowerCase())
+        pessoa.nome.toLowerCase().includes(search.toLowerCase()) || pessoa.alcunha.toLowerCase().includes(search.toLowerCase())
     );
 
-    const sortedPessoas = [...filteredPessoas].sort((a, b) => a.votes - b.votes);
+    const sortedPessoas = [...filteredPessoas].sort((a, b) => a.votos - b.votos);
     const top3Pessoas = sortedPessoas.slice(0, 45);
 
     return (
@@ -62,21 +62,21 @@ const Votar: React.FC = () => {
 
                 <div className='tela-painel-votos'>
                     {top3Pessoas.map((pessoa) => (
-                        <label className={`radio-label ${pessoa.id === voto ? 'radio-label-selecionado' : 'radio-label-nao-selecionado'} ${pessoa.id === voto && showConfirmDialog ? 'radio-label-voto' : 'radio-label-voto-nao'}`} key={pessoa.id} htmlFor={`radio-${pessoa.id}`}>
+                        <label className={`radio-label ${pessoa.matricula === voto ? 'radio-label-selecionado' : 'radio-label-nao-selecionado'} ${pessoa.matricula === voto && showConfirmDialog ? 'radio-label-voto' : 'radio-label-voto-nao'}`} key={pessoa.matricula} htmlFor={`radio-${pessoa.matricula}`}>
                             <div className='votante-lista-seletor'>
                                 <img src={`https://dagesico.pythonanywhere.com/static/img/${pessoa.imagem}.jpg`} alt="Imagem Perfil" />
-                                <h3>{pessoa.name} </h3>
-                                <p>{pessoa.votes} votos</p>
+                                <h3>{pessoa.nome} </h3>
+                                <p>{pessoa.votos} votos</p>
                                 <input
                                     className='radio-input'
                                     type="radio"
                                     name="voto"
-                                    id={`radio-${pessoa.id}`}
-                                    value={pessoa.id}
-                                    checked={voto === pessoa.id}
+                                    id={`radio-${pessoa.matricula}`}
+                                    value={pessoa.matricula}
+                                    checked={voto === pessoa.matricula}
                                     onChange={handleVotoChange}
                                 />
-                                <div className={`radio-custom${voto === pessoa.id ? ' radio-checked' : ''}`} />
+                                <div className={`radio-custom${voto === pessoa.matricula ? ' radio-checked' : ''}`} />
                             </div>
                         </label>
 

@@ -8,7 +8,7 @@ const Perfil: React.FC = () => {
     const employees = useSelector((state: RootState) => state.usuariosReducer.usuarios);
 
     const { id } = useParams<{ id?: string }>();
-    const employee = employees.find((emp) => emp.id === parseInt(id || '', 10));
+    const employee = employees.find((emp) => emp.matricula === parseInt(id || '', 10));
 
     if (!employee) {
         return <div>Funcionário não encontrado</div>;
@@ -17,8 +17,8 @@ const Perfil: React.FC = () => {
     return (
         <div className='perfil-container'>
             <h2 className='perfil-name'>Perfil</h2>
-            <img className='perfil-image' src={`https://dagesico.pythonanywhere.com/static/img/perfil.jpg`} alt={employee.name} />
-            <h3>{employee.name}</h3>
+            <img className='perfil-image' src={`https://dagesico.pythonanywhere.com/static/img/${employee.imagem}`} alt={employee.nome} />
+            <h3>{employee.nome}</h3>
             <p>Tag: {employee.alcunha}</p>
             <Link to="/">Ir para Inicio</Link>
         </div>

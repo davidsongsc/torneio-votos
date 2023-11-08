@@ -2,8 +2,6 @@ import React from 'react';
 import Section from './Section';
 import Tabela from './Tabela';
 
-import Votar from './Votar';
-
 function Main() {
   const secoes = [
     {
@@ -17,14 +15,7 @@ function Main() {
       table: (
         <Tabela />
       ),
-    },
-    {
-      h2: 'Votar',
-      p: '',
-      Votar: (
-        Votar 
-      ),
-    },
+    }
 
   ];
 

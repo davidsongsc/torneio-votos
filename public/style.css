@@ -157,9 +157,11 @@ textarea {
 .tela-painel-votos {
   display: flex;
   max-width: 400px;
-  overflow-x: auto;
+  max-height: 400px;
+  overflow-y: auto;
   flex-direction: row;
-  flex-wrap: nowrap;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 .votante-lista-seletor {
   display: flex;
@@ -339,26 +341,39 @@ textarea {
 }
 
 .perfil-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin: 40px auto;
+  margin: 5px auto;
   text-align: center;
+  background-color: #1a1a1a;
+  color: #eaeaea;
+  height: 95vh;
 }
 
-.perfil-image {
+.perfil-container .info {
+  text-align: center;
+  margin: 2px auto;
+  text-transform: capitalize;
+}
+
+.perfil-container .painel {
+  width: 100%;
+  height: 20vh;
+  background-color: #3d2b1f;
+}
+.perfil-container .perfil-image {
+  position: relative;
+  top: -130px;
   width: 200px;
   height: 200px;
   border-radius: 50%;
   object-fit: cover;
 }
 
-.perfil-name {
+.perfil-container .perfil-name {
   font-size: 24px;
   margin: 10px 0;
 }
 
-.perfil-list {
+.perfil-container .perfil-list {
   display: flex;
   justify-content: space-between;
   padding: 10px;
@@ -411,7 +426,7 @@ textarea {
   width: 95%;
   padding: 40px 10px;
   margin-bottom: -17px;
-  border: 1px solid #ccc;
+  border: 1px revert-layer #ccc;
   border-radius: 3px;
   outline: none;
   text-indent: 50px;
@@ -429,18 +444,17 @@ textarea {
   transition: background-color 0.3s;
 }
 
-
 .login-container button:hover {
   background-color: #0056b3;
 }
-.login-container .limpar-senha{
+.login-container .limpar-senha {
   top: -92px;
-  left: 255px;
+  left: 261px;
   position: relative;
   width: 40px;
   height: 38px;
 }
-.login-container .icone-usuario{
+.login-container .icone-usuario {
   top: -80px;
   left: 7px;
   position: relative;
@@ -448,12 +462,24 @@ textarea {
   height: 38px;
 }
 
-.login-container .icone-senha{
+.login-container .icone-senha {
   top: -60px;
   left: 7px;
   position: relative;
   width: 40px;
   height: 38px;
+}
+
+.login-container ul {
+  margin: 2px auto;
+  list-style-type: circle;
+}
+.login-container ol {
+  margin: 2px auto;
+  list-style-type: decimal;
+}
+.login-container li {
+  line-height: 25px;
 }
 .virtual-keyboard {
   display: flex;
@@ -469,25 +495,30 @@ textarea {
   border-radius: 8px;
   box-shadow: 2px 2px 1px green;
   background-color: #111111;
-  transition: .3s;
+  transition: 0.3s;
 }
 .virtual-keyboard button:hover {
   box-shadow: 2px 2px 1px green, -2px -2px 1px green;
   background-color: #353535;
-  transition: .3s;
+  transition: 0.3s;
 }
 .virtual-keyboard img {
   width: 45px;
-  transition: .4s;
+  transition: 0.4s;
 }
 
 .virtual-keyboard img:hover {
   margin-top: -5px;
   width: 50px;
-  transition: .4s;
-
+  transition: 0.4s;
 }
-
+.alert-danger {
+  background-color: red;
+  color: white;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 1px 1px;
+}
 /* Altera a barra de rolagem total */
 ::-webkit-scrollbar {
   width: 12px; /* Largura da barra de rolagem */

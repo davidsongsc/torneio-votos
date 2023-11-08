@@ -5,7 +5,7 @@ import { useSelector } from 'react-redux';
 
 const RankingGeral: React.FC = () => {
     const data = useSelector((state: RootState) => state.usuariosReducer.usuarios);
-    const sortedData = data.sort((a, b) => b.votes - a.votes);
+    const sortedData = data.sort((a, b) => b.votos - a.votos);
     return (
         <table className='tabela-objetivos-conteste'>
             <thead>
@@ -20,8 +20,8 @@ const RankingGeral: React.FC = () => {
                 {sortedData.map((person, index) => (
                     <tr key={index}>
                         <td style={{width: '10px'}}>{index + 1}º</td>
-                        <td style={{width: '50px'}}>{person.name}</td>
-                        <td style={{width: '50px'}}>{person.votes} </td>
+                        <td style={{width: '50px'}}>{person.nome}</td>
+                        <td style={{width: '50px'}}>{person.votos} </td>
                     </tr>
                 ))}
             </tbody>

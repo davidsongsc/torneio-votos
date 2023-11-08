@@ -7,6 +7,8 @@ import PageRanking from './components/PageRanking';
 import PageOutros from './components/PageOutros';
 import Perfil from './components/Perfil';
 import Login from './components/Login';
+import PerfilUser from './components/PerfilUser';
+import MainVoto from './components/MainVoto';
 
 function App() {
   return (
@@ -14,9 +16,11 @@ function App() {
       <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/votar" element={<MainVoto />} />
         <Route path="/ranking" element={<PageRanking />} />
         <Route path="/outros" element={<PageOutros />} />
         <Route path="/perfil/:id" element={<Perfil />} />
+        <Route path="/meuperfil" element={<PerfilUser />} />
         <Route path="/login" element={<Login />} />
       </Routes>
       <Footer/>
