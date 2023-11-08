@@ -49,15 +49,16 @@ const Login: React.FC = () => {
             <h2>Login</h2>
             <div>
                 <label htmlFor="email"></label>
-                <input
-                    type="text"
-                    id="email"
-                    value={matricula}
-                    onChange={handleEmailChange}
-                    placeholder='Digite sua Matricula'
-                    required
-                />
-                ,
+          <input
+  type="number"
+  id="matricula"
+  value={matricula}
+  onChange={handleEmailChange}
+  placeholder="Digite sua Matrícula"
+  required
+  inputMode="numeric"
+/>
+
             </div>
             <div className='icone-usuario'>
                 <FaUser size={40} color='black' />
