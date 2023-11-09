@@ -56,7 +56,6 @@ a {
 /* Defina a cor de fundo padrão para branco */
 body {
   background-color: #fff;
-  
 }
 
 /* Adicione um cursor de seta padrão a elementos clicáveis */
@@ -109,20 +108,21 @@ textarea {
   margin: 2px auto;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   background-color: #ffffff84;
   font-size: xx-large;
-  padding: 55px;
+  padding: 35px;
   letter-spacing: 5px;
+  justify-content: center;
+  align-items: flex-end;
 }
 .barra-top-top select {
-  padding: 15px;
-  font-size: 30px;
+  padding: 5px;
+  font-size: 20px;
   letter-spacing: 5px;
 }
 .barra-top-top option {
   letter-spacing: 5px;
-  font-size: 50px;
+  font-size: 30px;
 }
 .tabela-objetivos-conteste,
 .tabela-objetivos {
@@ -136,9 +136,10 @@ textarea {
 
 .tabela-objetivos-conteste thead,
 .tabela-objetivos-conteste tbody tr {
+  margin: 1px auto;
   display: table;
-  width: 100%;
-  table-layout: fixed; /* Para garantir que as colunas tenham largura fixa */
+  width: 95%;
+  table-layout: fixed;
 }
 
 .tabela-objetivos-conteste tbody {
