@@ -10,12 +10,16 @@ import {
     FETCH_MOST_VOTED_SUCCESS,
     FETCH_MOST_VOTED_FAILURE,
     UPDATE_LISTA_VOTOS,
-} from '../actions/userActions';
-// Importe os tipos de ação definidos anteriormente
-import { UserData, UserActionTypes, MaisVotado } from '../actions/userActions';
-import { LOGOUT } from '../actions/userActions';
+    LOGOUT,
+    CONCRETIZAR_VOTO_SUCESSO,
+    CONCRETIZAR_VOTO_INICIO,
+    CONCRETIZAR_VOTO_FALHA,
+    CONCRETIZAR_VOTO
 
-// Adicione o tipo do estado também para consistência
+} from '../actions/types';
+import { UserData, UserActionTypes, MaisVotado } from '../actions/userActions';
+
+
 interface UserState {
     loading: boolean;
     userInfo: UserData | null;
@@ -24,6 +28,10 @@ interface UserState {
     isLoggedIn: boolean;
     mostVoted: MaisVotado[] | null; // Adicione mostVoted aqui
     listaVotos: string[];
+    votoConcretizado: boolean;
+    votoConfirmadoId: number | null; // Pode ser útil armazenar o ID do voto confirmado
+    carregando: boolean;
+    erro: string | null;
 }
 
 const initialState: UserState = {
@@ -34,6 +42,10 @@ const initialState: UserState = {
     isLoggedIn: false,
     mostVoted: null, // Adicione mostVoted ao initialState
     listaVotos: [],
+    votoConcretizado: false,
+    votoConfirmadoId: null,
+    carregando: false,
+    erro: null,
 
 };
 
@@ -43,6 +55,43 @@ const userReducer = (
     action: UserActionTypes
 ): UserState => {
     switch (action.type) {
+        case CONCRETIZAR_VOTO_INICIO:
+            return {
+                ...state,
+                carregando: true,
+                erro: null,
+            };
+        case CONCRETIZAR_VOTO:
+            if (state.userInfo) {
+                // Atualiza a quantidade de votos do usuário votante
+                return {
+                    ...state,
+                    userInfo: {
+                        ...state.userInfo,
+                        votos: state.userInfo.votos - 1,
+                    },
+                };
+            }
+            // Retorna o estado sem alterações se não houver usuário logado
+            return state;
+
+        case CONCRETIZAR_VOTO_SUCESSO:
+            console.log('Votou em ' + action.payload);
+            return {
+                ...state,
+                votoConcretizado: true,
+                votoConfirmadoId: action.payload,
+                carregando: false,
+                erro: null,
+            };
+
+        case CONCRETIZAR_VOTO_FALHA:
+            return {
+                ...state,
+                carregando: false,
+                erro: action.payload,
+            };
+
         case UPDATE_LISTA_VOTOS:
             return {
                 ...state,
@@ -60,6 +109,8 @@ const userReducer = (
                 userInfo: action.payload,
                 isLoggedIn: true,
             };
+
+
         case LOGIN_FAILURE:
             return {
                 ...state,

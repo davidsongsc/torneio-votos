@@ -9,6 +9,7 @@ import Perfil from './components/Perfil';
 import Login from './components/Login';
 import PerfilUser from './components/PerfilUser';
 import MainVoto from './components/MainVoto';
+import AlterarSenha from './components/AlterarSenha';
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
         <Route path="/perfil/:id" element={<Perfil />} />
         <Route path="/meuperfil" element={<PerfilUser />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/codigoacesso" element={<AlterarSenha />} />
       </Routes>
       <Footer/>
     </Router>

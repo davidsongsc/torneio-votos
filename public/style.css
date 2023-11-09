@@ -29,6 +29,7 @@ input,
 select,
 textarea {
   font-size: 100%;
+  text-transform: capitalize;
 }
 
 /* Remova a formatação de lista padrão */
@@ -84,6 +85,7 @@ textarea {
   border-style: groove;
   padding: 5px;
   transition: 1s;
+  align-items: center;
 }
 .main-principal-inicio section:hover {
   background-color: #404040;
@@ -106,14 +108,24 @@ textarea {
 }
 .barra-top-top {
   margin: 2px auto;
+  width: 387px;
+  border-radius: 5px;
+  box-shadow: -1px -8px, 1px 8px;
+  border-top-left-radius: 40px;
+  border-top-right-radius: 40px;
   display: flex;
   flex-direction: column;
   background-color: #ffffff84;
-  font-size: xx-large;
-  padding: 35px;
+  font-size: large;
+  padding: 2px 0px;
   letter-spacing: 5px;
   justify-content: center;
-  align-items: flex-end;
+  align-items: center;
+  transition: 0.8s;
+}
+.barra-top-top:hover {
+  transition: 0.8s;
+  box-shadow: 1px -7px, -1px 7px;
 }
 .barra-top-top select {
   padding: 5px;
@@ -163,20 +175,34 @@ textarea {
 .tabela-objetivos-conteste td {
   background-color: white;
   color: black;
-  border-bottom: 1px solid black;
-  padding: 30px 5px;
+  border-bottom: 4px solid black;
+  padding: 37px 0px;
   text-align: center;
   text-transform: capitalize;
   letter-spacing: 7px;
   transition: 0.7s;
+  position: relative;
+  z-index: 995;
+  width: 100%;
 }
 
-.tabela-objetivos-conteste td:hover {
+.tabela-objetivos-conteste td:hover,
+.tabela-objetivos-conteste td:active {
   transition: 0.7s;
   background-color: black;
   color: white;
 }
-
+.tabela-objetivos-conteste .ativacao-perfil {
+  transition: 0.7s;
+  background-color: black;
+  color: white;
+  width: 79%;
+  transition-delay: 1.7s;
+}
+.none-none {
+  display: none;
+  transition: 0.7s;
+}
 .tabela-objetivos-conteste td a {
   font-size: 30px;
 }
@@ -308,6 +334,28 @@ textarea {
   background-color: rgb(65, 148, 88);
   transition: 0.8s;
 }
+.tabela-objetivos .ranking-votos {
+  border-bottom: 4px solid black;
+  padding: 37px 0px;
+  text-align: center;
+  text-transform: capitalize;
+  letter-spacing: 7px;
+  transition: 0.7s;
+  position: relative;
+  width: 100px;
+  color: rgb(234, 234, 234);
+  background-color: rgb(26, 26, 26);
+  z-index: 10;
+}
+.tabela-objetivos .ranking-index {
+  width: 10px;
+  color: rgb(234, 234, 234);
+  background-color: rgb(255, 165, 0);
+  border-color: rgb(234, 234, 234);
+  display: table-cell;
+  transition: 0.7s;
+}
+
 .confirm-voto {
   background-color: white;
   z-index: 999;
@@ -425,8 +473,10 @@ textarea {
 }
 
 .perfil-container .info {
-  text-align: center;
+  text-align: left;
   /* margin: 2px auto; */
+  width: 400px;
+  margin: 0 auto;
   position: relative;
   text-transform: capitalize;
   top: -125px;
@@ -437,12 +487,9 @@ textarea {
   height: 20vh;
   background-color: #3d2b1f;
 }
-.perfil-container h3 {
-  font-size: -webkit-xxx-large;
-}
 
 .perfil-container p {
-  font-size: xx-large;
+  font-size: x-large;
 }
 .perfil-container .perfil-image {
   position: relative;
@@ -567,11 +614,24 @@ textarea {
 .login-container li {
   line-height: 25px;
 }
+.data-aniversario {
+  flex-direction: column-reverse;
+  font-size: x-large;
+}
+.data-aniversario select {
+  text-indent: 25px;
+  padding: 10px 5px;
+  width: 100%;
+}
+.data-aniversario option {
+  font-size: xx-large;
+}
 .virtual-keyboard {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-around;
-  height: 25vh;
+  justify-content: space-evenly;
+  height: 20vh;
+  align-content: flex-start;
 }
 .virtual-keyboard button {
   width: 90px;

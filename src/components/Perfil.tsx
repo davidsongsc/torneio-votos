@@ -23,8 +23,17 @@ const Perfil: React.FC = () => {
             <img className='perfil-image' src={`https://dagesico.pythonanywhere.com/static/img/${employee.imagem}`} alt={employee.nome} />
             <div className='info'>
                 <h3>{employee.nome}</h3>
-                <p>{employee.alcunha}</p>
-                <Link to="/ranking">Voltar</Link>
+
+                <br /><br />
+                <div>
+                    <p> {employee?.alcunha}</p>
+                    <p>Matricula: {employee?.id}</p>
+                    <br />
+                    <p>Votos Recebidos: {employee?.votosRecebidos}</p>
+                    <p>Votos Emitidos: {employee?.votosEmitidos}</p>
+                    <br /><br />
+                </div>
+                <Link to="/ranking"><button>Voltar</button></Link>
             </div>
         </div>
     );

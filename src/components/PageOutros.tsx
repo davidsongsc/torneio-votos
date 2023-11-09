@@ -11,7 +11,7 @@ const PageOutros: React.FC = () => {
                     <Link to="/login"><button>Login</button></Link>
                 </li>
                 <li>
-                    <a href="#participantes"><button>Trocar ID acesso</button></a>
+                <Link to="/codigoacesso"><button>Alterar Codigo de Acesso</button></Link>
                 </li>
                 <li>
                     <Link to=""><button>Cadastrar Codigo de Acesso</button></Link>

@@ -1,16 +1,7 @@
 import { Dispatch } from 'redux';
-
-export const FETCH_USERS_REQUEST = 'FETCH_USERS_REQUEST';
-export const FETCH_USERS_SUCCESS = 'FETCH_USERS_SUCCESS';
-export const FETCH_USERS_FAILURE = 'FETCH_USERS_FAILURE';
-export const LOGIN_REQUEST = 'LOGIN_REQUEST';
-export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
-export const LOGIN_FAILURE = 'LOGIN_FAILURE';
-export const LOGOUT = 'LOGOUT';
-export const FETCH_MOST_VOTED_REQUEST = 'FETCH_MOST_VOTED_REQUEST';
-export const FETCH_MOST_VOTED_SUCCESS = 'FETCH_MOST_VOTED_SUCCESS';
-export const FETCH_MOST_VOTED_FAILURE = 'FETCH_MOST_VOTED_FAILURE';
-export const UPDATE_LISTA_VOTOS = 'UPDATE_LISTA_VOTOS';
+import * as types from './types';
+import { RootState } from '../reducers';
+import axios, { AxiosResponse } from 'axios';
 
 export interface ListaCompletaUsers {
   listaVotos: string[];
@@ -24,10 +15,11 @@ export interface UserData {
   votos: number;
   alcunha: string;
   imagem: string;
-  votosEmitidos: [];
-  votosRecebidos: [];
+  votosEmitidos: number;
+  votosRecebidos: number;
   vontade: [];
-
+  datames: string;
+  ano: string;
 }
 
 export interface MaisVotado {
@@ -42,92 +34,118 @@ export interface MaisVotado {
 }
 
 interface LogoutAction {
-  type: typeof LOGOUT;
+  type: typeof types.LOGOUT;
 }
 
 interface UpdateListaVotosAction {
-  type: typeof UPDATE_LISTA_VOTOS;
+  type: typeof types.UPDATE_LISTA_VOTOS;
   payload: string[];
 }
 
+interface AlterarLoginRequestAction {
+  type: typeof types.ALTER_LOGIN_REQUEST;
+}
+
+interface AlterarLoginSuccessAction {
+  type: typeof types.ALTER_LOGIN_SUCCESS;
+  payload: UserData;
+}
+
+interface AlterLoginFailureAction {
+  type: typeof types.ALTER_LOGIN_FAILURE;
+  error: string;
+}
+
 interface LoginRequestAction {
-  type: typeof LOGIN_REQUEST;
+  type: typeof types.LOGIN_REQUEST;
 }
 
 interface LoginSuccessAction {
-  type: typeof LOGIN_SUCCESS;
+  type: typeof types.LOGIN_SUCCESS;
   payload: UserData;
 }
 
 interface LoginFailureAction {
-  type: typeof LOGIN_FAILURE;
-  error: string; // Mensagem de erro
+  type: typeof types.LOGIN_FAILURE;
+  error: string;
 }
 
 interface FetchUsersRequestAction {
-  type: typeof FETCH_USERS_REQUEST;
+  type: typeof types.FETCH_USERS_REQUEST;
 }
 
 interface FetchUsersSuccessAction {
-  type: typeof FETCH_USERS_SUCCESS;
+  type: typeof types.FETCH_USERS_SUCCESS;
   payload: UserData[];
 }
 
 interface FetchUsersFailureAction {
-  type: typeof FETCH_USERS_FAILURE;
+  type: typeof types.FETCH_USERS_FAILURE;
   error: string;
 }
 
 interface FetchMostVotedRequestAction {
-  type: typeof FETCH_MOST_VOTED_REQUEST;
+  type: typeof types.FETCH_MOST_VOTED_REQUEST;
 }
 
 interface FetchMostVotedSuccessAction {
-  type: typeof FETCH_MOST_VOTED_SUCCESS;
+  type: typeof types.FETCH_MOST_VOTED_SUCCESS;
   payload: MaisVotado[]; // Use a nova interface MaisVotado aqui
 }
 
 interface FetchMostVotedFailureAction {
-  type: typeof FETCH_MOST_VOTED_FAILURE;
+  type: typeof types.FETCH_MOST_VOTED_FAILURE;
   error: string;
 }
 
+export const enviarVoto = (idVotante: any, idVotado: any) => {
+  return {
+    type: 'ENVIAR_VOTO',
+    payload: { idVotante, idVotado },
+  };
+};
+
 export const updateListaVotos = (contarVotos: string[]): UpdateListaVotosAction => ({
-  type: UPDATE_LISTA_VOTOS,
+  type: types.UPDATE_LISTA_VOTOS,
   payload: contarVotos,
 });
 
 const fetchMostVotedRequest = (): FetchMostVotedRequestAction => ({
-  type: FETCH_MOST_VOTED_REQUEST,
+  type: types.FETCH_MOST_VOTED_REQUEST,
 });
 
 const fetchMostVotedSuccess = (mostVoted: MaisVotado[]): FetchMostVotedSuccessAction => ({
-  type: FETCH_MOST_VOTED_SUCCESS,
+  type: types.FETCH_MOST_VOTED_SUCCESS,
   payload: mostVoted,
 });
 
 const fetchMostVotedFailure = (error: string): FetchMostVotedFailureAction => ({
-  type: FETCH_MOST_VOTED_FAILURE,
+  type: types.FETCH_MOST_VOTED_FAILURE,
   error,
 });
 
 
 const fetchUsersRequest = (): FetchUsersRequestAction => ({
-  type: FETCH_USERS_REQUEST,
+  type: types.FETCH_USERS_REQUEST,
 });
 
 const fetchUsersSuccess = (users: UserData[]): FetchUsersSuccessAction => ({
-  type: FETCH_USERS_SUCCESS,
+  type: types.FETCH_USERS_SUCCESS,
   payload: users,
 });
 
 const fetchUsersFailure = (error: string): FetchUsersFailureAction => ({
-  type: FETCH_USERS_FAILURE,
+  type: types.FETCH_USERS_FAILURE,
   error,
 });
 
-
-
+interface ConcretizarVotoAction {
+  type: typeof types.CONCRETIZAR_VOTO;
+  payload: {
+    idVotado: number;
+    idvotante: number;
+  };
+}
 
 export const logoutUser = () => {
   return (dispatch: Dispatch) => {
@@ -135,7 +153,7 @@ export const logoutUser = () => {
     // Por exemplo: localStorage.removeItem('userToken');
 
     // Dispare a ação de logout
-    dispatch({ type: LOGOUT });
+    dispatch({ type: types.LOGOUT });
   };
 };
 // Exporte os tipos de ações
@@ -149,35 +167,22 @@ export type UserActionTypes = LoginRequestAction
   | FetchMostVotedRequestAction
   | FetchMostVotedSuccessAction
   | FetchMostVotedFailureAction
-  | UpdateListaVotosAction;
-
-
-export const fetchUsers = () => {
-  return (dispatch: Dispatch<UserActionTypes>) => {
-    dispatch(fetchUsersRequest());
-    fetch('https://bz97.pythonanywhere.com/usuarios/', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    })
-      .then(response => {
-        if (!response.ok) {
-          throw new Error('Falha ao buscar usuários');
-        }
-        return response.json();
-      })
-      .then(users => dispatch(fetchUsersSuccess(users)))
-      .catch(error => dispatch(fetchUsersFailure(error.message)));
-  };
-};
+  | UpdateListaVotosAction
+  | AlterLoginFailureAction
+  | AlterarLoginRequestAction
+  | AlterarLoginSuccessAction
+  | ConcretizarVotoAction
+  | { type: typeof types.CONCRETIZAR_VOTO_INICIO }
+  | { type: typeof types.CONCRETIZAR_VOTO_SUCESSO; payload: number }
+  | { type: typeof types.CONCRETIZAR_VOTO_FALHA; payload: string }
+  | { type: typeof types.CONCRETIZAR_VOTO; payload: number };;
 
 export const fetchMostVoted = () => {
   return (dispatch: Dispatch<UserActionTypes>) => {
     dispatch(fetchMostVotedRequest());
 
-    // Fazer a chamada à sua API para buscar os mais votados
-    fetch('https://bz97.pythonanywhere.com/contar-votos/', {
+    // Fazer a chamada à sua API para buscar os mais -dos
+    fetch(types.API_VOTOS, {
       method: 'GET', // Use o método GET para buscar dados
       headers: {
         'Content-Type': 'application/json',
@@ -190,7 +195,6 @@ export const fetchMostVoted = () => {
         return response.json();
       })
       .then(mostVoted => {
-        console.log(mostVoted)
         const contarVotos = mostVoted.map((item: MaisVotado) => item.id.toString());
         dispatch(updateListaVotos(contarVotos));
         dispatch(fetchMostVotedSuccess(mostVoted));
@@ -203,11 +207,11 @@ export const fetchMostVoted = () => {
 export const loginUser = (credentials: { matricula: string; senha: string }) => {
   return (dispatch: Dispatch<UserActionTypes>) => {
     // Dispare a ação de solicitação de login
-    dispatch({ type: LOGIN_REQUEST });
+    dispatch({ type: types.LOGIN_REQUEST });
 
     // Retorne a promessa
     return new Promise((resolve, reject) => {
-      fetch('https://bz97.pythonanywhere.com/api/login', {
+      fetch(types.API_LOGIN, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -225,14 +229,131 @@ export const loginUser = (credentials: { matricula: string; senha: string }) => 
         })
         .then(userData => {
           // Dispare a ação de sucesso de login com os dados do usuário
-          dispatch({ type: LOGIN_SUCCESS, payload: userData });
+          dispatch({ type: types.LOGIN_SUCCESS, payload: userData });
           resolve(userData);
         })
         .catch(error => {
           // Dispare a ação de falha no login com a mensagem de erro
-          dispatch({ type: LOGIN_FAILURE, error: error.toString() });
+          dispatch({ type: types.LOGIN_FAILURE, error: error.toString() });
           reject(error);
         });
     });
+  };
+};
+
+export const alteraLoginUser = (credentials: { matricula: string; senha: string; selectedDay: string; selectedMonth: string; }) => {
+  return (dispatch: Dispatch<UserActionTypes>) => {
+    // Dispare a ação de solicitação de login
+    dispatch({ type: types.ALTER_LOGIN_REQUEST });
+
+    // Retorne a promessa
+    console.log(credentials);
+    return new Promise((resolve, reject) => {
+      fetch(types.API_ALTER_LOGIN, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(credentials),
+      })
+        .then(response => {
+          if (response.ok) {
+            return response.json();
+          } else {
+            // Se a resposta não for OK, rejeite a promessa
+            response.json().then(json => reject(json.error));
+            throw new Error('Credenciais inválidas');
+          }
+        })
+        .then(userData => {
+          // Dispare a ação de sucesso de login com os dados do usuário
+          dispatch({ type: types.ALTER_LOGIN_SUCCESS, payload: userData });
+          resolve(userData);
+        })
+        .catch(error => {
+          // Dispare a ação de falha no login com a mensagem de erro
+          dispatch({ type: types.ALTER_LOGIN_FAILURE, error: error.toString() });
+          reject(error);
+        });
+    });
+  };
+};
+
+export const fetchUsers = () => {
+  return (dispatch: Dispatch<UserActionTypes>) => {
+    dispatch(fetchUsersRequest());
+    fetch(types.API_USUARIOS, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    })
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Falha ao buscar usuários');
+        }
+        return response.json();
+      })
+      .then(users => dispatch(fetchUsersSuccess(users)))
+      .catch(error => dispatch(fetchUsersFailure(error.message)));
+  };
+};
+
+const fetchUsersAndUpdate = async (dispatch: Dispatch<UserActionTypes>) => {
+  try {
+    const response: AxiosResponse<UserData[]> = await axios.post<UserData[]>(types.API_USUARIOS, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
+
+    // Verifica se a resposta tem o status de sucesso
+    if (response.status !== 200) {
+      throw new Error('Falha ao buscar usuários');
+    }
+
+    // Extrai os dados da resposta
+    const users = response.data;
+
+    dispatch(fetchUsersSuccess(users));
+  } catch (error: any) {
+    if (error instanceof Error) {
+      dispatch(fetchUsersFailure(error.message));
+    } else {
+      // Se o erro não for uma instância de Error, trate conforme necessário
+      dispatch(fetchUsersFailure('Erro ao buscar usuários'));
+    }
+  }
+};
+
+export const concretizarVotoAsync = (idVotado: number) => {
+  return async (dispatch: Dispatch<ConcretizarVotoAction>, getState: () => RootState) => {
+    try {
+      const usuarioLogado = getState().userReducer.userInfo?.matricula;
+
+      if (!usuarioLogado) {
+        throw new Error('Usuário não autenticado'); // Ou trate de outra forma conforme necessário
+      }
+
+      const response = await axios.post(types.API_ENVIAR_VOTOS, { id_votado: idVotado, id_votante: usuarioLogado });
+      console.log(usuarioLogado);
+
+      // Atualiza a lista de usuários após o voto ser concretizado
+      fetchUsersAndUpdate(dispatch);
+
+      dispatch({
+        type: types.CONCRETIZAR_VOTO,
+        payload: {
+          idVotado: idVotado,
+          idvotante: usuarioLogado,
+        },
+      });
+
+      console.log('Confirmação do voto enviada com sucesso para a API', response.data);
+    } catch (error) {
+      console.error('Erro ao enviar a confirmação do voto para a API:', error);
+      // Trate o erro conforme necessário
+    }
   };
 };

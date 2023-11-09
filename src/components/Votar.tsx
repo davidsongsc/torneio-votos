@@ -4,13 +4,15 @@ import { fetchUsers } from '../actions/userActions'; // Substitua pelo caminho c
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../reducers';
 import { votar } from '../actions/votoActions';
-import { concretizarVoto } from '../actions/concretizarVoto';
+import { concretizarVotoAsync } from '../actions/userActions';
 import { AppDispatch } from '../store'; // Certifique-se de que o caminho está correto
+
 
 const Votar: React.FC = () => {
     const [search, setSearch] = useState<string>('');
     const [showConfirmDialog, setShowConfirmDialog] = useState(false);
     const pessoas = useSelector((state: RootState) => state.userReducer.users);
+    const usuarioLogado = useSelector((state: RootState) => state.userReducer.userInfo?.matricula);
     const voto = useSelector((state: RootState) => state.votoReducer.voto);
     const dispatch = useDispatch<AppDispatch>();
     const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -30,7 +32,7 @@ const Votar: React.FC = () => {
 
     const handleConfirm = () => {
         if (voto !== null) {
-            dispatch(concretizarVoto(voto));
+            dispatch(concretizarVotoAsync(voto));
             setShowConfirmDialog(false);
         }
     };
@@ -65,10 +67,11 @@ const Votar: React.FC = () => {
 
                 <div className='tela-painel-votos'>
                     {top3Pessoas.map((pessoa) => (
-                        <label className={`radio-label ${pessoa.id === voto ? 'radio-label-selecionado' : 'radio-label-nao-selecionado'} ${pessoa.id === voto && showConfirmDialog ? 'radio-label-voto' : 'radio-label-voto-nao'}`} key={pessoa.id} htmlFor={`radio-${pessoa.id}`}>
+                        <label className={`radio-label ${pessoa.id === voto ? 'radio-label-selecionado' : 'radio-label-nao-selecionado'} ${pessoa.id === voto && showConfirmDialog ? 'radio-label-voto' : 'radio-label-voto-nao'}`} key={pessoa.id} htmlFor={`radio-${pessoa.id}`} style={{display: `${pessoa.id === usuarioLogado ? 'none': ''}`}}>
                             <div className='votante-lista-seletor'>
                                 <img src={`https://dagesico.pythonanywhere.com/static/img/${pessoa.imagem}`} alt="Imagem Perfil" />
                                 <h3>{pessoa.nome} </h3>
+                                <p>{pessoa.id}</p>
                                 <p>{pessoa.votos} votos</p>
                                 <input
                                     className='radio-input'
@@ -97,7 +100,7 @@ const Votar: React.FC = () => {
                 onConfirm={handleConfirm}
                 message="Você tem certeza que deseja votar?"
             />
-            
+
         </div>
     );
 };

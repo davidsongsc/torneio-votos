@@ -26,11 +26,16 @@ const PerfilUser: React.FC = () => {
                 <div className='painel'></div>
                 <img className='perfil-image' src={`https://dagesico.pythonanywhere.com/static/img/perfil.jpg`} alt={`${userInfo?.matricula}`} />
                 <div className='info'>
+                    <br />
                     <h3>{userInfo?.nome}</h3>
+                    <br /><br />
                     <div>
-
                         <p> {userInfo?.alcunha}</p>
                         <p>Matricula: {userInfo?.matricula}</p>
+                        <br />
+                        <p>Votos Recebidos: {userInfo?.votosRecebidos}</p>
+                        <p>Votos Emitidos: {userInfo?.votosEmitidos}</p>
+
                     </div>
                 </div>
             </div>

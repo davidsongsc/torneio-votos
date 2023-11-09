@@ -7,3 +7,4 @@ export const votar = (id: number) => {
 export const setSearch = (term: string) => {
   return { type: SET_SEARCH, payload: term };
 };
+

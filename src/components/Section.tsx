@@ -1,4 +1,6 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
+import { RootState } from '../reducers';
 
 interface SectionProps {
   content: {
@@ -9,11 +11,14 @@ interface SectionProps {
 }
 
 const Section: React.FC<SectionProps> = ({ content }) => {
-  const { h2,  table, Votar } = content;
+
+  const userLogin = useSelector((state: RootState) => state.userReducer);
+
+  const { h2, table, Votar } = content;
 
   return (
     <section>
-      <h2>{h2}</h2>
+      <h2>{h2} <strong>{userLogin.userInfo?.votos}</strong></h2>
 
       {table && (
         <div className="table-container">{table}</div>

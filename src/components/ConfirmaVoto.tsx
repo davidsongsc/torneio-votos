@@ -1,7 +1,6 @@
 import React from 'react';
-// Definindo um tipo arrayVoto
 
-// Em seguida, use-o na sua interface ConfirmVotoProps
+
 interface ConfirmVotoProps {
     open: boolean;
     onClose: () => void;
@@ -11,6 +10,7 @@ interface ConfirmVotoProps {
 
 
 const ConfirmVoto: React.FC<ConfirmVotoProps> = ({ open, onClose, onConfirm, message }) => {
+    
     if (!open) return null;
 
     return (

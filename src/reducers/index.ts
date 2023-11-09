@@ -1,22 +1,19 @@
-import { combineReducers } from 'redux';
-import votoReducer from './votoReducer'; // Importe seus reducers individuais aqui
 import concretizarVotoReducer from './concretizarVotoReducer';
-import usuariosReducer from './usuariosReducer'; // Importe o novo reducer de usuários
-import contestReducer from './contestReducer'; // Importe o novo reducer de usuários
 import userReducer  from '../reducers/userReducer';
-
-
+import usuariosReducer from './usuariosReducer'; 
+import contestReducer from './contestReducer'; 
+import { combineReducers } from 'redux';
+import votoReducer from './votoReducer';
 
 const rootReducer = combineReducers({
-  votoReducer, // Adicione seus reducers individuais aqui
-  concretizarVotoReducer: concretizarVotoReducer, // Adicione o novo reducer aqui
-  usuariosReducer,
-  contestReducer,
+  concretizarVotoReducer: concretizarVotoReducer,
   userReducer: userReducer,
   user: userReducer,
-  // adicione mais reducers se necessário
+  usuariosReducer,
+  contestReducer,
+  votoReducer,  
 });
 
-export type RootState = ReturnType<typeof rootReducer>; // Opcional: isso é útil para tipar o estado global da aplicação
+export type RootState = ReturnType<typeof rootReducer>; 
 
 export default rootReducer;
