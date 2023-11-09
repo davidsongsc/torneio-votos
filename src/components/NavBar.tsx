@@ -2,36 +2,50 @@ import React from 'react';
 import './NavBar.css';
 import { Link } from 'react-router-dom';
 import { RootState } from '../reducers'; // Substitua pelo caminho correto
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import { AppDispatch } from '../store';
+import { logoutUser } from '../actions/userActions';
 
 const NavUl = {
-    backgroundColor: '#404040',
+    backgroundColor: 'cadetblue',
     color: '#bfbfbf',
     padding: '10px',
     border: '1px solid #bfbfbf',
     listStyle: 'none',
     display: 'flex',
-    justifyContent: 'space-around',
     cursor: 'pointer',
+    width: '99%',
+    overflow: 'auto',
+    height: '5vh',
+    marginBottom: '8px',
+    alignItems: 'center',
 };
 
 const NavUlLi = {
-    padding: '0 10px',
+    padding: '0 5px',
+    margin: '2px auto'
 }
 
 const NavLink = {
     color: '#eaeaea',
     textDecoration: 'none',
-    padding: '5px',
+    padding: '10px',
     backgroundColor: '#202744',
     borderRadius: '8px',
     textShadow: '1px 1px 0px black',
     boxShadow: '1px 1px 0px black',
     borderStyle: 'groove',
+    
 };
 const Navbar: React.FC = () => {
     const userLogin = useSelector((state: RootState) => state.userReducer);
     const { isLoggedIn } = userLogin;
+    const dispatch: AppDispatch = useDispatch(); // Use o tipo AppDispatch aqui
+
+
+    const handleLogout = () => {
+        dispatch(logoutUser());
+    };
 
     return (
         <nav style={{ position: 'fixed', top: '0', left: '0', right: '0', zIndex: '999' }}>
@@ -39,9 +53,10 @@ const Navbar: React.FC = () => {
                 {isLoggedIn ? <li style={NavUlLi}>
                     <Link style={NavLink} to="/votar">Votação</Link>
                 </li> : ''}
-                <li style={NavUlLi}>
+                {isLoggedIn ? <li style={NavUlLi}>
                     <Link style={NavLink} to="/">Contest</Link>
-                </li>
+                </li> : ''}
+
                 <li style={NavUlLi}>
                     <Link style={NavLink} to="/ranking">Ranking</Link>
                 </li>
@@ -52,6 +67,9 @@ const Navbar: React.FC = () => {
                 <li style={NavUlLi}>
                     <Link style={NavLink} to="/outros">Menu</Link>
                 </li>
+                {isLoggedIn ? <li onClick={handleLogout} style={NavUlLi} >
+                    <Link  style={NavLink} to="">Sair</Link>
+                </li> : ''}
             </ul>
         </nav>
     );

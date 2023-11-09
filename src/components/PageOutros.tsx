@@ -4,25 +4,31 @@ import { Link } from 'react-router-dom';
 const PageOutros: React.FC = () => {
     return (
         <div className="sitemap">
-            <h2>Torneio dos Votos</h2>
             <br />
             <ul>
-                <h3>Conta</h3>
+                <h3>Informações da conta</h3>
                 <li>
-                    <Link to="/login">Login</Link>
+                    <Link to="/login"><button>Login</button></Link>
                 </li>
                 <li>
-                    <a href="#fotoperfil">Cadastro</a>
+                    <a href="#participantes"><button>Trocar ID acesso</button></a>
                 </li>
                 <li>
-                    <a href="#participantes">Trocar ID acesso</a>
-                </li>
-                <li>
-                    <Link to="/meuperfil">Meu Perfil</Link>
+                    <Link to=""><button>Cadastrar Codigo de Acesso</button></Link>
                 </li>
             </ul>
             <br />
-
+            <h3>Aplicativo</h3>
+            <ul>
+                <h3>Informações da conta</h3>
+                <li>
+                    <Link to=""><button>App para Android</button></Link>
+                </li>
+         
+                <li>
+                    <Link to=""><button>Configurações</button></Link>
+                </li>
+            </ul>
 
         </div>
     );

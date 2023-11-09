@@ -10,9 +10,10 @@ export const LOGOUT = 'LOGOUT';
 export const FETCH_MOST_VOTED_REQUEST = 'FETCH_MOST_VOTED_REQUEST';
 export const FETCH_MOST_VOTED_SUCCESS = 'FETCH_MOST_VOTED_SUCCESS';
 export const FETCH_MOST_VOTED_FAILURE = 'FETCH_MOST_VOTED_FAILURE';
+export const UPDATE_LISTA_VOTOS = 'UPDATE_LISTA_VOTOS';
 
-interface LogoutAction {
-  type: typeof LOGOUT;
+export interface ListaCompletaUsers {
+  listaVotos: string[];
 }
 
 export interface UserData {
@@ -23,13 +24,30 @@ export interface UserData {
   votos: number;
   alcunha: string;
   imagem: string;
+  votosEmitidos: [];
+  votosRecebidos: [];
+  vontade: [];
+
 }
 
 export interface MaisVotado {
-  [userId: string]: number;
-  id: number; // Adicione os campos específicos de MaisVotado
-  votos: number; // Quantidade de votos
-  // Adicione outros campos específicos de MaisVotado conforme necessário
+  id: number;
+  nome: string;
+  matricula: number;
+  votos: number;
+  votosRecebidos: number;
+  votosEmitidos: number;
+  votante: string[];
+  listaVotos: string[];
+}
+
+interface LogoutAction {
+  type: typeof LOGOUT;
+}
+
+interface UpdateListaVotosAction {
+  type: typeof UPDATE_LISTA_VOTOS;
+  payload: string[];
 }
 
 interface LoginRequestAction {
@@ -74,7 +92,11 @@ interface FetchMostVotedFailureAction {
   error: string;
 }
 
-// Defina as funções apropriadas
+export const updateListaVotos = (contarVotos: string[]): UpdateListaVotosAction => ({
+  type: UPDATE_LISTA_VOTOS,
+  payload: contarVotos,
+});
+
 const fetchMostVotedRequest = (): FetchMostVotedRequestAction => ({
   type: FETCH_MOST_VOTED_REQUEST,
 });
@@ -103,6 +125,10 @@ const fetchUsersFailure = (error: string): FetchUsersFailureAction => ({
   type: FETCH_USERS_FAILURE,
   error,
 });
+
+
+
+
 export const logoutUser = () => {
   return (dispatch: Dispatch) => {
     // Aqui você pode também limpar o armazenamento local ou a sessão se necessário
@@ -122,7 +148,8 @@ export type UserActionTypes = LoginRequestAction
   | FetchUsersFailureAction
   | FetchMostVotedRequestAction
   | FetchMostVotedSuccessAction
-  | FetchMostVotedFailureAction;
+  | FetchMostVotedFailureAction
+  | UpdateListaVotosAction;
 
 
 export const fetchUsers = () => {
@@ -162,10 +189,16 @@ export const fetchMostVoted = () => {
         }
         return response.json();
       })
-      .then(mostVoted => dispatch(fetchMostVotedSuccess(mostVoted)))
+      .then(mostVoted => {
+        console.log(mostVoted)
+        const contarVotos = mostVoted.map((item: MaisVotado) => item.id.toString());
+        dispatch(updateListaVotos(contarVotos));
+        dispatch(fetchMostVotedSuccess(mostVoted));
+      })
       .catch(error => dispatch(fetchMostVotedFailure(error.message)));
   };
 };
+
 
 export const loginUser = (credentials: { matricula: string; senha: string }) => {
   return (dispatch: Dispatch<UserActionTypes>) => {

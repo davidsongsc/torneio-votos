@@ -7,7 +7,7 @@ const Tabela: React.FC = () => {
     const data = useSelector((state: RootState) => state.contestReducer.contest);
 
     return (
-        <table className='tabela-objetivos-conteste'>
+        <table className='tabela-objetivos'>
             <thead>
                 <tr>
                     <th>Objetivo</th>

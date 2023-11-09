@@ -7,6 +7,8 @@ import { RootState } from '../reducers';
 import { GiBroom } from 'react-icons/gi';
 import { FaUser, FaSignInAlt, FaLock } from 'react-icons/fa';
 import { useSelector } from 'react-redux';
+import Main from './Main';
+import { Link } from 'react-router-dom';
 const icons = [
     { id: 1, iconUrl: 'https://static.vecteezy.com/system/resources/previews/012/893/824/non_2x/elephant-large-transparent-background-free-png.png' },
     { id: 2, iconUrl: 'https://cdn.pixabay.com/photo/2016/07/04/09/05/pyramids-1496253_960_720.png' },
@@ -109,8 +111,13 @@ const Login: React.FC = () => {
                     </h4>
                     <p>- Qualquer dúvida sobre as regras ou o torneio em geral pode ser esclarecida por meio de um canal de comunicação dedicado. Se você tiver sugestões ou feedback, não hesite em compartilhá-los.</p>
 
+                    <br /><br />
+
+                    <Main/>
                 </div>
+
             </div>
+
             <div className="login-container" style={{ display: `${isLoggedIn ? 'none' : 'block'}` }}>
                 <h2>Login</h2>
                 <div>
@@ -168,6 +175,7 @@ const Login: React.FC = () => {
                     <p>Login</p>
                 </button>
 
+                <Link to="/meuperfil"><button>Cadastro</button></Link>
             </div>
         </>
     );

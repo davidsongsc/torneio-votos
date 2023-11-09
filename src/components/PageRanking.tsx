@@ -6,7 +6,7 @@ import Ranking from './Ranking';
 function PageRanking() {
   const secoes = [
     {
-      h2: 'Ranking',
+      h2: 'Tabela de Classificação',
       p: '',
       table: (
         <Ranking />

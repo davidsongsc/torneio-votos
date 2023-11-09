@@ -9,6 +9,7 @@ import {
     FETCH_MOST_VOTED_REQUEST,
     FETCH_MOST_VOTED_SUCCESS,
     FETCH_MOST_VOTED_FAILURE,
+    UPDATE_LISTA_VOTOS,
 } from '../actions/userActions';
 // Importe os tipos de ação definidos anteriormente
 import { UserData, UserActionTypes, MaisVotado } from '../actions/userActions';
@@ -22,7 +23,7 @@ interface UserState {
     error: string | null;
     isLoggedIn: boolean;
     mostVoted: MaisVotado[] | null; // Adicione mostVoted aqui
-
+    listaVotos: string[];
 }
 
 const initialState: UserState = {
@@ -32,6 +33,7 @@ const initialState: UserState = {
     error: null,
     isLoggedIn: false,
     mostVoted: null, // Adicione mostVoted ao initialState
+    listaVotos: [],
 
 };
 
@@ -41,6 +43,11 @@ const userReducer = (
     action: UserActionTypes
 ): UserState => {
     switch (action.type) {
+        case UPDATE_LISTA_VOTOS:
+            return {
+                ...state,
+                listaVotos: action.payload,
+            };
         case LOGIN_REQUEST:
             return {
                 ...state,

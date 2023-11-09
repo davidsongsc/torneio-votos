@@ -56,6 +56,7 @@ a {
 /* Defina a cor de fundo padrão para branco */
 body {
   background-color: #fff;
+  
 }
 
 /* Adicione um cursor de seta padrão a elementos clicáveis */
@@ -68,7 +69,7 @@ textarea {
 }
 
 .main-principal-inicio {
-  margin-top: 5vh;
+  margin-top: 7vh;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
@@ -104,8 +105,27 @@ textarea {
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
 }
-
-.tabela-objetivos-conteste {
+.barra-top-top {
+  margin: 2px auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: #ffffff84;
+  font-size: xx-large;
+  padding: 55px;
+  letter-spacing: 5px;
+}
+.barra-top-top select {
+  padding: 15px;
+  font-size: 30px;
+  letter-spacing: 5px;
+}
+.barra-top-top option {
+  letter-spacing: 5px;
+  font-size: 50px;
+}
+.tabela-objetivos-conteste,
+.tabela-objetivos {
   max-height: 300px;
   overflow-y: auto;
 }
@@ -132,7 +152,8 @@ textarea {
   font-size: 25px;
 }
 
-.tabela-objetivos-conteste {
+.tabela-objetivos-conteste,
+.tabela-objetivos {
   border-collapse: collapse; /* Remove espaçamento entre as células */
 }
 .tabela-objetivos-conteste th {
@@ -148,11 +169,13 @@ textarea {
   letter-spacing: 7px;
   transition: 0.7s;
 }
+
 .tabela-objetivos-conteste td:hover {
   transition: 0.7s;
   background-color: black;
   color: white;
 }
+
 .tabela-objetivos-conteste td a {
   font-size: 30px;
 }
@@ -180,19 +203,22 @@ textarea {
   border-radius: 5px;
   margin: 1px 3px;
   padding: 10px;
-  width: 150px;
-  height: 110px;
+  width: 85px;
+  height: 139px;
 }
+
 .votante-lista-seletor img {
-  width: 80px;
-  height: 80px;
+  width: 85px;
+  margin: 0 auto;
+  height: 85px;
   border-radius: 5px;
   box-shadow: 1px 1px;
 }
 
 .votante-lista-seletor h3 {
-  font: 20px;
   text-transform: capitalize;
+  text-align: center;
+  font-size: medium;
 }
 .votante-lista-seletor p {
   font-size: 10px;
@@ -216,7 +242,7 @@ textarea {
 .radio-label-selecionado {
   background-color: white;
   border-radius: 5px;
-  padding: 4px;
+  padding: 22px 99px;
   transition: 0.7s;
 }
 .radio-label-nao-selecionado {
@@ -275,7 +301,7 @@ textarea {
   border-style: groove;
   transition: 0.8s;
 }
-.btn-voto:hover{
+.btn-voto:hover {
   box-shadow: 1px 1px 0px white;
   text-shadow: 1px 1px 0px white;
   background-color: rgb(65, 148, 88);
@@ -285,7 +311,7 @@ textarea {
   background-color: white;
   z-index: 999;
   position: absolute;
-  top: 5vh;
+  top: 7vh;
   left: 0;
   bottom: 0;
   /* border-radius: 15px; */
@@ -325,7 +351,7 @@ textarea {
 }
 
 .sitemap {
-  margin: 30px auto;
+  margin: 71px auto;
   background-color: #f8f8f8;
   padding: 25px;
   border: 1px solid #e0e0e0;
@@ -349,9 +375,18 @@ textarea {
 }
 
 .sitemap li {
-  margin: 5px 0;
+  padding: 20px;
+  margin: 5px;
+  border-radius: 7px;
+  text-align: center;
+  transition: 0.7s;
 }
-
+.sitemap li:hover {
+  box-shadow: 1px 1px, -1px -1px;
+  background-color: cornflowerblue;
+  transition: 0.7s;
+  color: #000;
+}
 .sitemap a {
   text-decoration: none;
   color: #333;
@@ -362,7 +397,24 @@ textarea {
 .sitemap a:hover {
   color: #0070f3;
 }
+.sitemap button {
+  box-shadow: 1px 1px, -1px -1px;
+  background-color: transparent;
+  transition: 0.7s;
+  width: 95%;
+  height: 80px;
+  color: #000;
+  border-radius: 6px;
+}
 
+.sitemap button:hover {
+  box-shadow: 1px 1px, -1px -1px;
+  background-color: black;
+  transition: 0.7s;
+  width: 100%;
+  height: 85px;
+  color: white;
+}
 .perfil-container {
   margin: 5px auto;
   text-align: center;
@@ -437,7 +489,7 @@ textarea {
 
 .login-container {
   width: 300px;
-  margin: 50px auto;
+  margin: 8vh auto;
   padding: 20px;
   border: 1px solid #ccc;
   border-radius: 5px;
@@ -474,6 +526,7 @@ textarea {
   border-radius: 3px;
   cursor: pointer;
   transition: background-color 0.3s;
+  margin: 5px;
 }
 
 .login-container button:hover {
