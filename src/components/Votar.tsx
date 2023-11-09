@@ -1,20 +1,18 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import ConfirmVoto from './ConfirmaVoto';
-
+import { fetchUsers } from '../actions/userActions'; // Substitua pelo caminho correto
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../reducers';
 import { votar } from '../actions/votoActions';
 import { concretizarVoto } from '../actions/concretizarVoto';
+import { AppDispatch } from '../store'; // Certifique-se de que o caminho está correto
 
 const Votar: React.FC = () => {
-
     const [search, setSearch] = useState<string>('');
     const [showConfirmDialog, setShowConfirmDialog] = useState(false);
-    const pessoas = useSelector((state: RootState) => state.usuariosReducer.usuarios);
-
+    const pessoas = useSelector((state: RootState) => state.userReducer.users);
     const voto = useSelector((state: RootState) => state.votoReducer.voto);
-    const dispatch = useDispatch();
-
+    const dispatch = useDispatch<AppDispatch>();
     const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setSearch(e.target.value);
     };
@@ -48,6 +46,11 @@ const Votar: React.FC = () => {
     const sortedPessoas = [...filteredPessoas].sort((a, b) => a.votos - b.votos);
     const top3Pessoas = sortedPessoas.slice(0, 45);
 
+    useEffect(() => {
+        dispatch(fetchUsers());
+
+    }, [dispatch]);
+
     return (
         <div>
             <form className='form-votacao-indica' >
@@ -62,21 +65,21 @@ const Votar: React.FC = () => {
 
                 <div className='tela-painel-votos'>
                     {top3Pessoas.map((pessoa) => (
-                        <label className={`radio-label ${pessoa.matricula === voto ? 'radio-label-selecionado' : 'radio-label-nao-selecionado'} ${pessoa.matricula === voto && showConfirmDialog ? 'radio-label-voto' : 'radio-label-voto-nao'}`} key={pessoa.matricula} htmlFor={`radio-${pessoa.matricula}`}>
+                        <label className={`radio-label ${pessoa.id === voto ? 'radio-label-selecionado' : 'radio-label-nao-selecionado'} ${pessoa.id === voto && showConfirmDialog ? 'radio-label-voto' : 'radio-label-voto-nao'}`} key={pessoa.id} htmlFor={`radio-${pessoa.id}`}>
                             <div className='votante-lista-seletor'>
-                                <img src={`https://dagesico.pythonanywhere.com/static/img/${pessoa.imagem}.jpg`} alt="Imagem Perfil" />
+                                <img src={`https://dagesico.pythonanywhere.com/static/img/${pessoa.imagem}`} alt="Imagem Perfil" />
                                 <h3>{pessoa.nome} </h3>
                                 <p>{pessoa.votos} votos</p>
                                 <input
                                     className='radio-input'
                                     type="radio"
                                     name="voto"
-                                    id={`radio-${pessoa.matricula}`}
-                                    value={pessoa.matricula}
-                                    checked={voto === pessoa.matricula}
+                                    id={`radio-${pessoa.id}`}
+                                    value={pessoa.id}
+                                    checked={voto === pessoa.id}
                                     onChange={handleVotoChange}
                                 />
-                                <div className={`radio-custom${voto === pessoa.matricula ? ' radio-checked' : ''}`} />
+                                <div className={`radio-custom${voto === pessoa.id ? ' radio-checked' : ''}`} />
                             </div>
                         </label>
 

@@ -7,18 +7,29 @@ export const LOGIN_REQUEST = 'LOGIN_REQUEST';
 export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
 export const LOGIN_FAILURE = 'LOGIN_FAILURE';
 export const LOGOUT = 'LOGOUT';
+export const FETCH_MOST_VOTED_REQUEST = 'FETCH_MOST_VOTED_REQUEST';
+export const FETCH_MOST_VOTED_SUCCESS = 'FETCH_MOST_VOTED_SUCCESS';
+export const FETCH_MOST_VOTED_FAILURE = 'FETCH_MOST_VOTED_FAILURE';
 
 interface LogoutAction {
   type: typeof LOGOUT;
 }
 
 export interface UserData {
+  id: number;
   matricula: number;
   nome: string;
   senha: string;
   votos: number;
   alcunha: string;
   imagem: string;
+}
+
+export interface MaisVotado {
+  [userId: string]: number;
+  id: number; // Adicione os campos específicos de MaisVotado
+  votos: number; // Quantidade de votos
+  // Adicione outros campos específicos de MaisVotado conforme necessário
 }
 
 interface LoginRequestAction {
@@ -49,6 +60,36 @@ interface FetchUsersFailureAction {
   error: string;
 }
 
+interface FetchMostVotedRequestAction {
+  type: typeof FETCH_MOST_VOTED_REQUEST;
+}
+
+interface FetchMostVotedSuccessAction {
+  type: typeof FETCH_MOST_VOTED_SUCCESS;
+  payload: MaisVotado[]; // Use a nova interface MaisVotado aqui
+}
+
+interface FetchMostVotedFailureAction {
+  type: typeof FETCH_MOST_VOTED_FAILURE;
+  error: string;
+}
+
+// Defina as funções apropriadas
+const fetchMostVotedRequest = (): FetchMostVotedRequestAction => ({
+  type: FETCH_MOST_VOTED_REQUEST,
+});
+
+const fetchMostVotedSuccess = (mostVoted: MaisVotado[]): FetchMostVotedSuccessAction => ({
+  type: FETCH_MOST_VOTED_SUCCESS,
+  payload: mostVoted,
+});
+
+const fetchMostVotedFailure = (error: string): FetchMostVotedFailureAction => ({
+  type: FETCH_MOST_VOTED_FAILURE,
+  error,
+});
+
+
 const fetchUsersRequest = (): FetchUsersRequestAction => ({
   type: FETCH_USERS_REQUEST,
 });
@@ -78,7 +119,11 @@ export type UserActionTypes = LoginRequestAction
   | LogoutAction
   | FetchUsersRequestAction
   | FetchUsersSuccessAction
-  | FetchUsersFailureAction;
+  | FetchUsersFailureAction
+  | FetchMostVotedRequestAction
+  | FetchMostVotedSuccessAction
+  | FetchMostVotedFailureAction;
+
 
 export const fetchUsers = () => {
   return (dispatch: Dispatch<UserActionTypes>) => {
@@ -87,10 +132,7 @@ export const fetchUsers = () => {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        // Inclua cabeçalhos de autenticação se necessário
       },
-      // Se precisar enviar um corpo na requisição, descomente a linha abaixo
-      // body: JSON.stringify({}),
     })
       .then(response => {
         if (!response.ok) {
@@ -100,6 +142,28 @@ export const fetchUsers = () => {
       })
       .then(users => dispatch(fetchUsersSuccess(users)))
       .catch(error => dispatch(fetchUsersFailure(error.message)));
+  };
+};
+
+export const fetchMostVoted = () => {
+  return (dispatch: Dispatch<UserActionTypes>) => {
+    dispatch(fetchMostVotedRequest());
+
+    // Fazer a chamada à sua API para buscar os mais votados
+    fetch('http://192.168.0.50:5000/contar-votos/', {
+      method: 'GET', // Use o método GET para buscar dados
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    })
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Falha ao buscar os mais votados');
+        }
+        return response.json();
+      })
+      .then(mostVoted => dispatch(fetchMostVotedSuccess(mostVoted)))
+      .catch(error => dispatch(fetchMostVotedFailure(error.message)));
   };
 };
 

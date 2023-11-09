@@ -29,7 +29,7 @@ const PerfilUser: React.FC = () => {
                     <h3>{userInfo?.nome}</h3>
                     <div>
 
-                        <p>Tag: {userInfo?.alcunha}</p>
+                        <p> {userInfo?.alcunha}</p>
                         <p>Matricula: {userInfo?.matricula}</p>
                     </div>
                 </div>

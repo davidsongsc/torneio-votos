@@ -14,7 +14,6 @@ const rootReducer = combineReducers({
   contestReducer,
   userReducer: userReducer,
   user: userReducer,
-  
   // adicione mais reducers se necessário
 });
 

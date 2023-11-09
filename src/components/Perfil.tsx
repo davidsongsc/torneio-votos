@@ -5,10 +5,10 @@ import { useSelector } from 'react-redux';
 
 
 const Perfil: React.FC = () => {
-    const employees = useSelector((state: RootState) => state.usuariosReducer.usuarios);
+    const employees = useSelector((state: RootState) => state.userReducer.users);
 
     const { id } = useParams<{ id?: string }>();
-    const employee = employees.find((emp) => emp.matricula === parseInt(id || '', 10));
+    const employee = employees.find((emp) => emp.id === parseInt(id || '', 10));
 
     if (!employee) {
         return <div>Funcionário não encontrado</div>;
@@ -16,11 +16,16 @@ const Perfil: React.FC = () => {
 
     return (
         <div className='perfil-container'>
+            <br />
+            <br />
+            <div className='painel'></div>
             <h2 className='perfil-name'>Perfil</h2>
             <img className='perfil-image' src={`https://dagesico.pythonanywhere.com/static/img/${employee.imagem}`} alt={employee.nome} />
-            <h3>{employee.nome}</h3>
-            <p>Tag: {employee.alcunha}</p>
-            <Link to="/">Ir para Inicio</Link>
+            <div className='info'>
+                <h3>{employee.nome}</h3>
+                <p>{employee.alcunha}</p>
+                <Link to="/ranking">Voltar</Link>
+            </div>
         </div>
     );
 };

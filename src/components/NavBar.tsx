@@ -22,7 +22,12 @@ const NavUlLi = {
 const NavLink = {
     color: '#eaeaea',
     textDecoration: 'none',
-    padding: '5px'
+    padding: '5px',
+    backgroundColor: '#202744',
+    borderRadius: '8px',
+    textShadow: '1px 1px 0px black',
+    boxShadow: '1px 1px 0px black',
+    borderStyle: 'groove',
 };
 const Navbar: React.FC = () => {
     const userLogin = useSelector((state: RootState) => state.userReducer);
@@ -45,7 +50,7 @@ const Navbar: React.FC = () => {
                 </li> : ''}
 
                 <li style={NavUlLi}>
-                    <Link style={NavLink} to="/outros">Outros</Link>
+                    <Link style={NavLink} to="/outros">Menu</Link>
                 </li>
             </ul>
         </nav>

@@ -1,13 +1,8 @@
 // usuariosReducer.ts
 import { Action } from 'redux';
-import {
 
-  FETCH_USERS_REQUEST,
-  FETCH_USERS_SUCCESS,
-  FETCH_USERS_FAILURE,
-} from '../actions/userActions';
 // Importe os tipos de ação definidos anteriormente
-import { UserData, UserActionTypes } from '../actions/userActions';
+import { UserData } from '../actions/userActions';
 
 interface UserState {
     usuarios: UserData[]; // Array para armazenar todos os usuários buscados
