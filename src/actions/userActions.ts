@@ -155,7 +155,7 @@ export type UserActionTypes = LoginRequestAction
 export const fetchUsers = () => {
   return (dispatch: Dispatch<UserActionTypes>) => {
     dispatch(fetchUsersRequest());
-    fetch('http://192.168.0.50:5000/usuarios/', {
+    fetch('https://bz97.pythonanywhere.com/usuarios/', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -177,7 +177,7 @@ export const fetchMostVoted = () => {
     dispatch(fetchMostVotedRequest());
 
     // Fazer a chamada à sua API para buscar os mais votados
-    fetch('http://192.168.0.50:5000/contar-votos/', {
+    fetch('https://bz97.pythonanywhere.com/contar-votos/', {
       method: 'GET', // Use o método GET para buscar dados
       headers: {
         'Content-Type': 'application/json',
@@ -207,7 +207,7 @@ export const loginUser = (credentials: { matricula: string; senha: string }) => 
 
     // Retorne a promessa
     return new Promise((resolve, reject) => {
-      fetch('http://192.168.0.50:5000/api/login', {
+      fetch('https://bz97.pythonanywhere.com/api/login', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
