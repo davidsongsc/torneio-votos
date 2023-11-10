@@ -48,7 +48,7 @@ const Navbar: React.FC = () => {
     };
 
     return (
-        <nav style={{ position: 'fixed', top: '0', left: '0', right: '0', zIndex: '999' }}>
+        <nav style={{ position: 'fixed', top: '0', left: '0', right: '0', zIndex: '997' }}>
             <ul style={NavUl}>
                 {isLoggedIn ? <li style={NavUlLi}>
                     <Link style={NavLink} to="/votar">Votação</Link>

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Home from './components/Home';
 import Navbar from './components/NavBar';
@@ -10,22 +10,34 @@ import Login from './components/Login';
 import PerfilUser from './components/PerfilUser';
 import MainVoto from './components/MainVoto';
 import AlterarSenha from './components/AlterarSenha';
+import NavPrep from './components/NavTeste';
+import Countdown from './components/Contagem';
 
 function App() {
+  const deadline = new Date('2023-11-10T16:00:00').getTime();
+  const [showContent, setShowContent] = useState(false);
+
+  useEffect(() => {
+    const currentTime = new Date().getTime();
+    setShowContent(currentTime >= deadline);
+  }, [deadline]);
+
   return (
     <Router>
-      <Navbar />
+      <NavPrep />
+      {!showContent && <Countdown deadline={deadline} />}
+      {showContent && <Navbar />}
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/votar" element={<MainVoto />} />
-        <Route path="/ranking" element={<PageRanking />} />
-        <Route path="/outros" element={<PageOutros />} />
-        <Route path="/perfil/:id" element={<Perfil />} />
-        <Route path="/meuperfil" element={<PerfilUser />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/codigoacesso" element={<AlterarSenha />} />
+        {showContent && <Route path="/" element={<Home />} />}
+        {showContent && <Route path="/votar" element={<MainVoto />} />}
+        {showContent && <Route path="/ranking" element={<PageRanking />} />}
+        {showContent && <Route path="/outros" element={<PageOutros />} />}
+        {showContent && <Route path="/perfil/:id" element={<Perfil />} />}
+        {showContent && <Route path="/meuperfil" element={<PerfilUser />} />}
+        {showContent && <Route path="/login" element={<Login />} />}
+        {showContent && <Route path="/codigoacesso" element={<AlterarSenha />} />}
       </Routes>
-      <Footer/>
+      {showContent && <Footer />}
     </Router>
   );
 }
