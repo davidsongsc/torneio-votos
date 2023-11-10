@@ -27,32 +27,36 @@ function Countdown({ deadline }: CountdownProps) {
 
     return (
         <>
-            <div style={{ height: '99vh', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+            <div style={{ height: '99vh', display: 'flex', alignItems: 'center', justifyContent: 'center', flexDirection: 'column' }}>
+                <h1> {timeRemaining.hours > 0 && (
+                    <div>
+                        {timeRemaining.hours}h {timeRemaining.minutes}m {timeRemaining.seconds}s
+                    </div>
+                )}
+                    {timeRemaining.hours === 0 && timeRemaining.minutes > 0 && (
+                        <div>
+                            {timeRemaining.minutes}m {timeRemaining.seconds}s
+                        </div>
+                    )}
+                    {timeRemaining.hours === 0 && timeRemaining.minutes === 0 && (
+                        <div>{timeRemaining.seconds}s</div>
+                    )}</h1>
                 <div className='contagem-c1'>
                     <div className='contagem-c2'>
-                        <div className='contagem'>
-                            {timeRemaining.hours > 0 && (
-                                <div>
-                                    {timeRemaining.hours}h {timeRemaining.minutes}m {timeRemaining.seconds}s
-                                </div>
-                            )}
-                            {timeRemaining.hours === 0 && timeRemaining.minutes > 0 && (
-                                <div>
-                                    {timeRemaining.minutes}m {timeRemaining.seconds}s
-                                </div>
-                            )}
-                            {timeRemaining.hours === 0 && timeRemaining.minutes === 0 && (
-                                <div>{timeRemaining.seconds}s</div>
-                            )}
+                        <div>
+                            <div className='contagem' />
+                            <div className='contagem-r' />
                         </div>
                         <div>
-                            <h3>Offiline</h3>
+                            <div className='contagem-x' />
+                            <div className='contagem-n' />
                         </div>
+
                     </div>
                 </div>
 
             </div>
-            <Footer/>
+            <Footer />
         </>
     );
 }

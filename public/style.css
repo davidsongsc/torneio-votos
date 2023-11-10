@@ -69,48 +69,44 @@ textarea {
 }
 @keyframes cont_animada {
   0% {
-    width: 290px;
-    height: 290px;
+    width: 260px;
+    height: 260px;
     box-shadow: 2px 4px 4px navy, -2px -4px 6px brown;
     font-size: xx-large;
   }
-  20% {
-  }
+
   40% {
     box-shadow: 2px 4px 4px navy, -2px -4px 6px brown;
   }
-  50% {
-    width: 200px;
-    height: 200px;
-    font-size: x-large;
-  }
+
   60% {
     box-shadow: 2px 4px 4px navy, -2px -4px 6px brown;
   }
-  80% {
+  90% {
     box-shadow: -2px -4px 4px navy, 2px 4px 6px brown;
+    width: 10px;
+    height: 10px;
   }
   100% {
-    width: 290px;
-    height: 290px;
+    width: 260px;
+    height: 260px;
     box-shadow: 2px 4px 4px navy, -2px -4px 6px brown;
-    font-size: xx-large;
   }
 }
 @keyframes cont_animada2 {
   0% {
-    width: 370px;
-    height: 370px;
+    width: 170px;
+    height: 170px;
     box-shadow: 2px 4px 4px navy, -2px -4px 6px brown;
   }
   50% {
-    width: 300px;
-    height: 300px;
+    width: 30px;
+    height: 30px;
     box-shadow: -2px -4px 4px navy, 2px 4px 6px brown;
   }
   100% {
-    width: 370px;
-    height: 370px;
+    width: 170px;
+    height: 170px;
     box-shadow: 2px 4px 4px navy, -2px -4px 6px brown;
     font-weight: 800;
   }
@@ -118,34 +114,79 @@ textarea {
 
 @keyframes cont_animada3 {
   0% {
-    width: 440px;
-    height: 440px;
+    width: 220px;
+    height: 220px;
     box-shadow: 2px 4px 4px gold, -2px -4px 6px navy;
   }
   50% {
-    width: 380px;
-    height: 380px;
+    width: 180px;
+    height: 180px;
     box-shadow: -2px -4px 4px gold, 2px 4px 6px navy;
   }
   100% {
-    width: 440px;
-    height: 440px;
+    width: 220px;
+    height: 220px;
     box-shadow: 2px 4px 4px gold, -2px -4px 6px navy;
   }
 }
 .contagem {
   display: flex;
-  margin: 10px auto;
+  margin: 10px 22px;
   font-size: xx-large;
   background-color: #1a1a1a;
   color: white;
   border-radius: 50%;
   align-items: center;
-  width: 500px;
   justify-content: center;
-  height: 500px;
-  animation: cont_animada 2s infinite;
+  animation: cont_animada 5s infinite;
   box-shadow: 2px 4px 4px navy, -2px -4px 6px brown;
+  position: absolute;
+  right: 29%;
+  bottom: 21%;
+}
+.contagem-n {
+  display: flex;
+  margin: 10px 22px;
+  font-size: xx-large;
+  background-color: #1a1a1a;
+  color: white;
+  border-radius: 50%;
+  align-items: center;
+  justify-content: center;
+  animation: cont_animada 13s infinite;
+  box-shadow: 2px 4px 4px navy, -2px -4px 6px brown;
+  position: absolute;
+  left: 30%;
+  top: 22%;
+}
+.contagem-r {
+  display: flex;
+  margin: 10px 22px;
+  font-size: xx-large;
+  background-color: #1a1a1a;
+  color: white;
+  border-radius: 50%;
+  align-items: center;
+  justify-content: center;
+  animation: cont_animada 7s infinite reverse;
+  box-shadow: 2px 4px 4px navy, -2px -4px 6px brown;
+  position: absolute;
+  right: 29%;
+  top: 23%;
+}
+.contagem-x {
+  display: flex;
+  font-size: xx-large;
+  background-color: #1a1a1a;
+  color: white;
+  border-radius: 50%;
+  align-items: center;
+  justify-content: center;
+  animation: cont_animada 11s infinite reverse;
+  box-shadow: 2px 4px 4px navy, -2px -4px 6px brown;
+  position: absolute;
+  left: 31%;
+  bottom: 22%;
 }
 
 .contagem-c2 {
@@ -156,13 +197,18 @@ textarea {
   color: white;
   border-radius: 50%;
   align-items: center;
+  flex-wrap: wrap;
   justify-content: center;
-  animation: cont_animada2 3s infinite;
+  animation: cont_animada2 7s infinite;
   width: 500px;
   height: 500px;
   box-shadow: 2px 4px 4px brown, -2px -4px 6px gold;
 }
-
+.contagem-c2 div {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+}
 .contagem-c1 {
   display: flex;
   margin: 10px auto;
@@ -802,7 +848,7 @@ textarea {
 .link-ranking img {
   width: 400px;
 }
-footer{
+footer {
   text-align: center;
   margin: 15px auto;
   width: 90%;
