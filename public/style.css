@@ -855,8 +855,8 @@ textarea {
 }
 .link-ranking {
   width: 100%;
-  /* margin: 25px auto; */
-  height: 60vh;
+  margin: 35px auto; 
+  height: 80vh;
   display: flex;
   flex-wrap: wrap;
   align-content: center;
