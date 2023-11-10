@@ -791,13 +791,17 @@ textarea {
   line-height: 25px;
 }
 .data-aniversario {
-  flex-direction: column-reverse;
-  font-size: x-large;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: space-around;
 }
 .data-aniversario select {
-  text-indent: 25px;
   padding: 10px 5px;
-  width: 100%;
+  
+  background: black;
+  color: white;
+  border-radius: 6px;
 }
 .data-aniversario option {
   font-size: xx-large;

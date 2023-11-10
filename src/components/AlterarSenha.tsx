@@ -44,8 +44,8 @@ const ComboBox: React.FC<ComboBoxProps> = ({ label, values, onValueSelect }) => 
 };
 
 const AlterarSenha: React.FC = () => {
-    const [selectedDay, setSelectedDay] = useState<string>('');
-    const [selectedMonth, setSelectedMonth] = useState<string>('');
+    const [selectedDay, setSelectedDay] = useState<string>('01');
+    const [selectedMonth, setSelectedMonth] = useState<string>('12');
     const [matricula, setMatricula] = useState('');
     const [senha, setPassword] = useState('');
     const [loginError, setLoginError] = useState('');
@@ -143,8 +143,11 @@ const AlterarSenha: React.FC = () => {
                 <div className='icone-usuario'>
                     <FaUser size={40} color='black' />
                 </div>
-                
-                <div className='data-aniversario' style={{ display: 'flex' }}>
+                <br />
+                <h3>Data Nascimento</h3>
+                <br />
+                <div className='data-aniversario' >
+                    
                     <ComboBox label="Dia" values={generateDays(selectedMonth)} onValueSelect={setSelectedDay} />
                     <ComboBox label="Mês" values={['01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12']} onValueSelect={handleMonthChange} />
 
