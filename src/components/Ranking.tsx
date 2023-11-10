@@ -64,7 +64,7 @@ const Ranking: React.FC = () => {
                                 <td
                                 className={`ranking-index ${isClickedUser ? '' : 'none-none'}`}
                                 style={{
-                                    width: '25px',
+                                    width: '110px',
                                     borderTopLeftRadius: '5px',
                                     borderBottomLeftRadius: '5px',
                                     color: '#eaeaea',
