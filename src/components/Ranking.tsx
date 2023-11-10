@@ -57,7 +57,7 @@ const Ranking: React.FC = () => {
                 <tbody>
                     {sortedData.slice(0, showTop).map((person, index) => {
                         const isClickedUser = person.id === lastClickedUserId;
-                        const widthValue = isClickedUser ? 200 : 100; // Define largura diferente para o usuário clicado
+                        const widthValue = isClickedUser ? 50 : 100; // Define largura diferente para o usuário clicado
 
                         return (
                             <tr key={index}>

@@ -24,7 +24,7 @@ function App() {
 
   return (
     <Router>
-      
+      <NavPrep />
       {!showContent && <Countdown deadline={deadline} />}
       {showContent && <Navbar />}
       <Routes>
