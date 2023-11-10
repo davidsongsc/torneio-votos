@@ -872,7 +872,7 @@ textarea {
 }
 footer {
   text-align: center;
-  margin: 0 auto;
+  margin: 35px auto;
   width: 90%;
   z-index: 995;
   position: relative;
