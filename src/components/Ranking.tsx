@@ -49,9 +49,11 @@ const Ranking: React.FC = () => {
                 <thead>
                     <tr>
                         <th style={{ width: '10px', color: '#eaeaea', backgroundColor: '#1a1a1a', borderColor: '#eaeaea' }}>↓</th>
-                        <th style={{ width: '104.5px', color: 'black' }}>Nome</th>
-
                         <th style={{ width: '10px', color: '#eaeaea', backgroundColor: '#1a1a1a', borderColor: '#eaeaea' }}>V</th>
+                        <th style={{ width: '10px', color: '#eaeaea', backgroundColor: '#1a1a1a', borderColor: '#eaeaea' }}>P</th>
+                        <th style={{ width: '90px', color: 'black' }}>Nome</th>
+
+                        
 
                     </tr>
                 </thead>
