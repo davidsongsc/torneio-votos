@@ -73,6 +73,7 @@ textarea {
     height: 260px;
     box-shadow: 2px 4px 4px navy, -2px -4px 6px brown;
     font-size: xx-large;
+    opacity: 1;
   }
 
   40% {
@@ -86,11 +87,13 @@ textarea {
     box-shadow: -2px -4px 4px navy, 2px 4px 6px brown;
     width: 10px;
     height: 10px;
+    opacity: 0.1;
   }
   100% {
     width: 260px;
     height: 260px;
     box-shadow: 2px 4px 4px navy, -2px -4px 6px brown;
+    opacity: 1;
   }
 }
 @keyframes cont_animada2 {
@@ -141,6 +144,7 @@ textarea {
   animation: cont_animada 5s infinite;
   box-shadow: 2px 4px 4px navy, -2px -4px 6px brown;
   position: absolute;
+  z-index: 100;
   right: 29%;
   bottom: 21%;
 }
@@ -156,6 +160,7 @@ textarea {
   animation: cont_animada 13s infinite;
   box-shadow: 2px 4px 4px navy, -2px -4px 6px brown;
   position: absolute;
+  z-index: 100;
   left: 30%;
   top: 22%;
 }
@@ -171,6 +176,7 @@ textarea {
   animation: cont_animada 7s infinite reverse;
   box-shadow: 2px 4px 4px navy, -2px -4px 6px brown;
   position: absolute;
+  z-index: 100;
   right: 29%;
   top: 23%;
 }
@@ -185,6 +191,7 @@ textarea {
   animation: cont_animada 11s infinite reverse;
   box-shadow: 2px 4px 4px navy, -2px -4px 6px brown;
   position: absolute;
+  z-index: 100;
   left: 31%;
   bottom: 22%;
 }
@@ -203,6 +210,8 @@ textarea {
   width: 500px;
   height: 500px;
   box-shadow: 2px 4px 4px brown, -2px -4px 6px gold;
+  position: relative;
+  z-index: 100;
 }
 .contagem-c2 div {
   display: flex;
@@ -220,6 +229,8 @@ textarea {
   justify-content: center;
   animation: cont_animada3 5s infinite reverse;
   box-shadow: 2px 4px 4px gold, -2px -4px 6px navy;
+  position: relative;
+  z-index: 100;
 }
 
 .main-principal-inicio {
@@ -854,15 +865,16 @@ textarea {
 .link-info {
   background-color: transparent;
   margin: 0 auto;
+  margin-top: 25px;
 }
 .link-ranking img {
   width: 400px;
 }
 footer {
   text-align: center;
-  margin: 15px auto;
+  margin: 0 auto;
   width: 90%;
-  z-index: 999;
+  z-index: 995;
   position: relative;
   height: 50vh;
 }

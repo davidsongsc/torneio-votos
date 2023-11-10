@@ -14,7 +14,7 @@ import NavPrep from './components/NavTeste';
 import Countdown from './components/Contagem';
 
 function App() {
-  const deadline = new Date('2023-11-10T11:15:00').getTime();
+  const deadline = new Date('2023-11-10T01:45:00').getTime();
   const [showContent, setShowContent] = useState(false);
   const [modoOperacional, setModoOperacional] = useState(false);
   useEffect(() => {

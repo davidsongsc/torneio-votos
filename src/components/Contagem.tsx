@@ -28,19 +28,7 @@ function Countdown({ deadline }: CountdownProps) {
     return (
         <>
             <div style={{ height: '99vh', display: 'flex', alignItems: 'center', justifyContent: 'center', flexDirection: 'column', position: 'absolute', zIndex: '100', width: '100%' }}>
-                <h1> {timeRemaining.hours > 0 && (
-                    <div>
-                        {timeRemaining.hours}h {timeRemaining.minutes}m {timeRemaining.seconds}s
-                    </div>
-                )}
-                    {timeRemaining.hours === 0 && timeRemaining.minutes > 0 && (
-                        <div>
-                            {timeRemaining.minutes}m {timeRemaining.seconds}s
-                        </div>
-                    )}
-                    {timeRemaining.hours === 0 && timeRemaining.minutes === 0 && (
-                        <div>{timeRemaining.seconds}s</div>
-                    )}</h1>
+
                 <div className='contagem-c1'>
                     <div className='contagem-c2'>
                         <div>
@@ -56,6 +44,19 @@ function Countdown({ deadline }: CountdownProps) {
                 </div>
 
             </div>
+            <h1 style={{margin: '15px auto', textAlign: 'center'}}> {timeRemaining.hours > 0 && (
+                <div>
+                    {timeRemaining.hours}h {timeRemaining.minutes}m {timeRemaining.seconds}s
+                </div>
+            )}
+                {timeRemaining.hours === 0 && timeRemaining.minutes > 0 && (
+                    <div>
+                        {timeRemaining.minutes}m {timeRemaining.seconds}s
+                    </div>
+                )}
+                {timeRemaining.hours === 0 && timeRemaining.minutes === 0 && (
+                    <div>{timeRemaining.seconds}s</div>
+                )}</h1>
             <Footer />
         </>
     );
