@@ -91,11 +91,17 @@ const Ranking: React.FC = () => {
                                     <td className={`ranking-votos ${!isClickedUser ? 'none-none' : ''}`} style={{ width: `${widthValue}px`, color: '#eaeaea', backgroundColor: '#1a1a1a', position: 'relative', zIndex: '10' }}>
                                         {person.votosRecebidos !== null ? person.votosRecebidos.toString() : null}
                                     </td>
-                                    <td className={`ranking-votos ${!isClickedUser ? 'none-none' : ''}`} style={{ width: `${widthValue}px`, color: '#eaeaea', backgroundColor: '#1a1a1a', position: 'relative', zIndex: '10' }}>
-                                    <p>perfil                                   </p>
-                                     </td>
-                                    
+
+
                                 </Link>
+                                <Link to={`/perfil/${person.id}`}>
+                                    <td className={`ranking-votos ${!isClickedUser ? 'none-none' : ''}`} style={{ width: `${widthValue}px`, color: '#eaeaea', backgroundColor: '#1a1a1a', position: 'relative', zIndex: '10' }}>
+                                        perfil
+                                    </td>
+
+
+                                </Link>
+
                             </tr>
                         );
                     })}
