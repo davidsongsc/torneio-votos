@@ -72,16 +72,29 @@ textarea {
     width: 290px;
     height: 290px;
     box-shadow: 2px 4px 4px navy, -2px -4px 6px brown;
+    font-size: xx-large;
+  }
+  20% {
+  }
+  40% {
+    box-shadow: 2px 4px 4px navy, -2px -4px 6px brown;
   }
   50% {
     width: 200px;
     height: 200px;
+    font-size: x-large;
+  }
+  60% {
+    box-shadow: 2px 4px 4px navy, -2px -4px 6px brown;
+  }
+  80% {
     box-shadow: -2px -4px 4px navy, 2px 4px 6px brown;
   }
   100% {
     width: 290px;
     height: 290px;
     box-shadow: 2px 4px 4px navy, -2px -4px 6px brown;
+    font-size: xx-large;
   }
 }
 @keyframes cont_animada2 {
@@ -99,6 +112,7 @@ textarea {
     width: 370px;
     height: 370px;
     box-shadow: 2px 4px 4px navy, -2px -4px 6px brown;
+    font-weight: 800;
   }
 }
 
@@ -143,7 +157,7 @@ textarea {
   border-radius: 50%;
   align-items: center;
   justify-content: center;
-  animation: cont_animada2 4s infinite ;
+  animation: cont_animada2 3s infinite;
   width: 500px;
   height: 500px;
   box-shadow: 2px 4px 4px brown, -2px -4px 6px gold;
@@ -158,7 +172,7 @@ textarea {
   border-radius: 50%;
   align-items: center;
   justify-content: center;
-  animation: cont_animada3 2s infinite reverse;
+  animation: cont_animada3 5s infinite reverse;
   box-shadow: 2px 4px 4px gold, -2px -4px 6px navy;
 }
 

@@ -37,11 +37,12 @@ const Ranking: React.FC = () => {
             <div className='barra-top-top'>
                 <label htmlFor="showTop">Quadro das equipes</label>
                 <select id="showTop" value={showTop} onChange={handleShowTopChange}>
+                    <option value={99}>Ranking</option>
                     <option value={10}>TOP 10 Dourado</option>
                     <option value={20}>TOP 20 Azul</option>
                     <option value={30}>TOP 30 Verde Amarelado</option>
                     <option value={40}>TOP 40 Magenta</option>
-                    <option value={99}>outros</option>
+
                 </select>
             </div>
             <table className='tabela-objetivos-conteste'>
