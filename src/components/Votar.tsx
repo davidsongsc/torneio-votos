@@ -5,8 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../reducers';
 import { votar } from '../actions/votoActions';
 import { concretizarVotoAsync } from '../actions/userActions';
-import { AppDispatch } from '../store'; // Certifique-se de que o caminho está correto
-
+import { AppDispatch } from '../store'; 
 
 const Votar: React.FC = () => {
     const [search, setSearch] = useState<string>('');
@@ -103,7 +102,4 @@ const Votar: React.FC = () => {
     );
 };
 
-
-
-// Conecta o componente ao Redux
 export default Votar;

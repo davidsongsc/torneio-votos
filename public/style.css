@@ -69,30 +69,97 @@ textarea {
 }
 @keyframes cont_animada {
   0% {
-    width: 300px;
-    height: 300px;
+    width: 290px;
+    height: 290px;
+    box-shadow: 2px 4px 4px navy, -2px -4px 6px brown;
   }
   50% {
-    width: 190px;
-    height: 190px;
+    width: 200px;
+    height: 200px;
+    box-shadow: -2px -4px 4px navy, 2px 4px 6px brown;
   }
   100% {
-    width: 300px;
-    height: 300px;
+    width: 290px;
+    height: 290px;
+    box-shadow: 2px 4px 4px navy, -2px -4px 6px brown;
   }
 }
-.contagem{
+@keyframes cont_animada2 {
+  0% {
+    width: 370px;
+    height: 370px;
+    box-shadow: 2px 4px 4px navy, -2px -4px 6px brown;
+  }
+  50% {
+    width: 300px;
+    height: 300px;
+    box-shadow: -2px -4px 4px navy, 2px 4px 6px brown;
+  }
+  100% {
+    width: 370px;
+    height: 370px;
+    box-shadow: 2px 4px 4px navy, -2px -4px 6px brown;
+  }
+}
+
+@keyframes cont_animada3 {
+  0% {
+    width: 440px;
+    height: 440px;
+    box-shadow: 2px 4px 4px gold, -2px -4px 6px navy;
+  }
+  50% {
+    width: 380px;
+    height: 380px;
+    box-shadow: -2px -4px 4px gold, 2px 4px 6px navy;
+  }
+  100% {
+    width: 440px;
+    height: 440px;
+    box-shadow: 2px 4px 4px gold, -2px -4px 6px navy;
+  }
+}
+.contagem {
   display: flex;
   margin: 10px auto;
   font-size: xx-large;
-  background-color: black;
+  background-color: #1a1a1a;
   color: white;
   border-radius: 50%;
   align-items: center;
   width: 500px;
   justify-content: center;
   height: 500px;
-  animation: cont_animada 4s infinite;
+  animation: cont_animada 2s infinite;
+  box-shadow: 2px 4px 4px navy, -2px -4px 6px brown;
+}
+
+.contagem-c2 {
+  display: flex;
+  margin: 10px auto;
+  font-size: xx-large;
+  background-color: #eeeeee;
+  color: white;
+  border-radius: 50%;
+  align-items: center;
+  justify-content: center;
+  animation: cont_animada2 4s infinite ;
+  width: 500px;
+  height: 500px;
+  box-shadow: 2px 4px 4px brown, -2px -4px 6px gold;
+}
+
+.contagem-c1 {
+  display: flex;
+  margin: 10px auto;
+  font-size: xx-large;
+  background-color: #000000;
+  color: white;
+  border-radius: 50%;
+  align-items: center;
+  justify-content: center;
+  animation: cont_animada3 2s infinite reverse;
+  box-shadow: 2px 4px 4px gold, -2px -4px 6px navy;
 }
 
 .main-principal-inicio {

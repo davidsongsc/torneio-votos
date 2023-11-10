@@ -25,21 +25,29 @@ function Countdown({ deadline }: CountdownProps) {
     }, []);
 
     return (
-        <div className='contagem'>
-            {timeRemaining.hours > 0 && (
-                <div>
-                    {timeRemaining.hours}h {timeRemaining.minutes}m {timeRemaining.seconds}s
+        <div style={{ height: '99vh', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+            <div className='contagem-c1'>
+                <div className='contagem-c2'>
+                    <div className='contagem'>
+                        {timeRemaining.hours > 0 && (
+                            <div>
+                                {timeRemaining.hours}h {timeRemaining.minutes}m {timeRemaining.seconds}s
+                            </div>
+                        )}
+                        {timeRemaining.hours === 0 && timeRemaining.minutes > 0 && (
+                            <div>
+                                {timeRemaining.minutes}m {timeRemaining.seconds}s
+                            </div>
+                        )}
+                        {timeRemaining.hours === 0 && timeRemaining.minutes === 0 && (
+                            <div>{timeRemaining.seconds}s</div>
+                        )}
+                    </div>
                 </div>
-            )}
-            {timeRemaining.hours === 0 && timeRemaining.minutes > 0 && (
-                <div>
-                    {timeRemaining.minutes}m {timeRemaining.seconds}s
-                </div>
-            )}
-            {timeRemaining.hours === 0 && timeRemaining.minutes === 0 && (
-                <div>{timeRemaining.seconds}s</div>
-            )}
+            </div>
+
         </div>
+
     );
 }
 

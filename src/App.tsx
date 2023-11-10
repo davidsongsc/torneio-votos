@@ -14,7 +14,7 @@ import NavPrep from './components/NavTeste';
 import Countdown from './components/Contagem';
 
 function App() {
-  const deadline = new Date('2023-11-09T16:00:00').getTime();
+  const deadline = new Date('2023-11-10T16:30:00').getTime();
   const [showContent, setShowContent] = useState(false);
   const [modoOperacional, setModoOperacional] = useState(false);
   useEffect(() => {
@@ -28,8 +28,9 @@ function App() {
   return (
     <Router>
       {!modoOperacional &&<NavPrep />}
-      {!showContent && <Countdown deadline={deadline} />}
       {showContent && <Navbar />}
+      {!showContent && <Countdown deadline={deadline} />}
+      
       <Routes>
         {showContent && <Route path="/" element={<Home />} />}
         {showContent && <Route path="/votar" element={<MainVoto />} />}
