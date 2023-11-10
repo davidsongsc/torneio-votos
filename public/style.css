@@ -273,14 +273,15 @@ textarea {
 }
 .barra-top-top {
   margin: 2px auto;
-  width: 387px;
-  border-radius: 5px;
-  box-shadow: -1px -8px, 1px 8px;
-  border-top-left-radius: 40px;
-  border-top-right-radius: 40px;
+  width: 100%;
+  border-radius: 8px;
+  box-shadow: -1px -2px, 1px 3px;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
   display: flex;
   flex-direction: column;
-  background-color: #ffffff84;
+  background-color: goldenrod;
+  color: white;
   font-size: large;
   padding: 2px 0px;
   letter-spacing: 5px;
@@ -290,7 +291,7 @@ textarea {
 }
 .barra-top-top:hover {
   transition: 0.8s;
-  box-shadow: 1px -7px, -1px 7px;
+  box-shadow: 1px -5px 14px, -1px 5px 14px;
 }
 .barra-top-top select {
   padding: 5px;
@@ -580,9 +581,13 @@ textarea {
   text-decoration: overline #2f4f4f;
 }
 .sitemap h3 {
+  font-family: 'Courier New', Courier, monospace;
   font-size: 30px;
   margin-bottom: 10px;
-  text-decoration: underline overline #2f4f4f;
+  text-decoration: 1px underline overline #2f4f4f;
+  padding: 0 10px;
+  text-transform: uppercase;
+  letter-spacing: 10px;
 }
 
 .sitemap ul {
@@ -599,7 +604,7 @@ textarea {
 }
 .sitemap li:hover {
   box-shadow: 1px 1px, -1px -1px;
-  background-color: cornflowerblue;
+  background-color: rgba(100, 148, 237, 0.443);
   transition: 0.7s;
   color: #000;
 }
@@ -834,24 +839,28 @@ textarea {
 }
 /* Altera a barra de rolagem total */
 ::-webkit-scrollbar {
-  width: 12px; /* Largura da barra de rolagem */
+  width: 15px; /* Largura da barra de rolagem */
 }
 
 /* Altera o fundo da barra de rolagem (a trilha) */
 ::-webkit-scrollbar-track {
-  background: gray; /* Cor de fundo da trilha da barra de rolagem */
+  background: black; /* Cor de fundo da trilha da barra de rolagem */
+}
+::-webkit-scrollbar-track:hover {
+  background: white; /* Cor de fundo da trilha da barra de rolagem */
+  transition: 1.7s;
 }
 
 /* Altera a cor do indicador de rolagem (o thumb) */
 ::-webkit-scrollbar-thumb {
-  background-color: black; /* Cor de fundo do thumb */
-  border-radius: 5px; /* Arredonda os cantos do thumb */
-  border: 3px solid orange; /* Borda ao redor do thumb */
+  background-color: #000; /* Cor de fundo do thumb */
+  border-radius: 1px; /* Arredonda os cantos do thumb */
+  border: 6px solid #b7410e; /* Borda ao redor do thumb */
 }
 
 /* Altera o estado de hover do indicador de rolagem */
 ::-webkit-scrollbar-thumb:hover {
-  background: green; /* Cor de fundo do thumb quando se passa o mouse por cima */
+  background-color: white;
 }
 .link-ranking {
   width: 100%;

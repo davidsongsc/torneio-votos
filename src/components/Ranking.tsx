@@ -50,7 +50,6 @@ const Ranking: React.FC = () => {
                     <tr>
                         <th style={{ width: '10px', color: '#eaeaea', backgroundColor: '#1a1a1a', borderColor: '#eaeaea' }}>↓</th>
                         <th style={{ width: '10px', color: '#eaeaea', backgroundColor: '#1a1a1a', borderColor: '#eaeaea' }}>V</th>
-                        <th style={{ width: '10px', color: '#eaeaea', backgroundColor: '#1a1a1a', borderColor: '#eaeaea' }}>P</th>
                         <th style={{ width: '90px', color: 'black' }}>Nome</th>
 
                         
@@ -76,7 +75,7 @@ const Ranking: React.FC = () => {
                                                 (index + 1) <= 30 ? '#9acd32' :
                                                     (index + 1) <= 40 ? '#8b008b' :
                                                         (index + 1) <= 40 ? '#09809d' :
-                                                            'transparent'
+                                                            '#b7410e'
                                             }`,
                                         borderColor: `${(index + 1) <= 10 ? '#eaeaea' : 'black'}`,
                                     }}>
