@@ -48,20 +48,12 @@ const PageOutros: React.FC = () => {
                 <li>
                     <Link to="/codigoacesso"><button>Alterar Codigo de Acesso</button></Link>
                 </li>
-                <li>
-                    <Link to=""><button>Cadastrar Codigo de Acesso</button></Link>
-                </li>
-            </ul>
-            <br />
-            <h3>app</h3>
-            <ul>
-                <li>
-                    <button onClick={handleInstall}>Instalar App para Android</button>
+          
+                  <li>
+                    <button onClick={handleInstall}>Instalar App</button>
                 </li>
 
-                <li>
-                    <button>Configurações</button>
-                </li>
+     
             </ul>
 
         </div>
