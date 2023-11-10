@@ -315,13 +315,15 @@ textarea {
 .tabela-objetivos-conteste thead,
 .tabela-objetivos-conteste tbody tr {
   margin: 1px auto;
-  display: table;
-  width: 95%;
+  display: flex;
+  width: 100%;
   table-layout: fixed;
+  flex-wrap: wrap;
 }
 
 .tabela-objetivos-conteste tbody {
   overflow: auto;
+  width: 370px;
 }
 
 .tabela-objetivos-conteste th,
@@ -334,6 +336,8 @@ textarea {
 .tabela-objetivos-conteste,
 .tabela-objetivos {
   border-collapse: collapse; /* Remove espaçamento entre as células */
+  margin: 0 auto;
+  max-width: 370px;
 }
 .tabela-objetivos-conteste th {
   background-color: aliceblue;

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { RootState } from '../reducers';
 import { useDispatch, useSelector } from 'react-redux';
 import { AppDispatch } from '../store';
@@ -11,12 +11,14 @@ const Ranking: React.FC = () => {
     const [showTop, setShowTop] = useState<number>(80); // Estado para rastrear a quantidade a ser exibida
     const [lastClickedUserId, setLastClickedUserId] = useState<number | null>(null);
     const [loading, setLoading] = useState(true);
-
+    const navigate = useNavigate();
 
     const handleUserClick = (userId: number) => {
         setLastClickedUserId(userId);
     };
-
+    const handleLinkClick = (userId: number) => {
+        navigate(`/perfil/${userId}`);
+    };
     const handleShowTopChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
         setShowTop(Number(event.target.value));
     };
@@ -50,7 +52,6 @@ const Ranking: React.FC = () => {
                 <thead>
                     <tr>
                         <th style={{ width: '10px', color: '#eaeaea', backgroundColor: '#1a1a1a', borderColor: '#eaeaea' }}>↓</th>
-                        <th style={{ width: '10px', color: '#eaeaea', backgroundColor: '#1a1a1a', borderColor: '#eaeaea' }}>V</th>
                         <th style={{ width: '90px', color: 'black' }}>Nome</th>
 
 
@@ -99,32 +100,31 @@ const Ranking: React.FC = () => {
                                                                 '#b7410e'
                                                 }`,
                                             borderColor: `${(index + 1) <= 10 ? '#eaeaea' : 'black'}`,
-                                        }}>
+                                        }}
+                                    >
                                         {(index + 1) <= 7 && `${index + 1}º`}
+                                    </td>
+
+                                    <td
+                                        onClick={() => handleLinkClick(person.id)}
+                                        className={`ranking-votos ${!isClickedUser ? 'none-none' : ''}`}
+                                        style={{ width: `${widthValue}px`, color: '#eaeaea', backgroundColor: '#1a1a1a', position: 'relative', zIndex: '10', border: '1px solid'}}
+                                    >
+                                       V {person.votosRecebidos !== null ? person.votosRecebidos.toString() : null}
+                                    </td>
+                                    <td
+                                        onClick={() => handleLinkClick(person.id)}
+                                        className={`ranking-votos ${!isClickedUser ? 'none-none' : ''}`}
+                                        style={{ width: `144px`, color: '#eaeaea', backgroundColor: '#1a1a1a', position: 'relative', zIndex: '10' }}
+                                    >
+                                        perfil
                                     </td>
                                     <td
                                         onClick={() => handleUserClick(person.id)}
                                         className={`ranking-nome ${isClickedUser ? 'ativacao-perfil' : ''}`}
-
                                     >
                                         {person.nome}
                                     </td>
-
-                                    <Link to={`/perfil/${person.id}`}>
-                                        <td className={`ranking-votos ${!isClickedUser ? 'none-none' : ''}`} style={{ width: `${widthValue}px`, color: '#eaeaea', backgroundColor: '#1a1a1a', position: 'relative', zIndex: '10' }}>
-                                            {person.votosRecebidos !== null ? person.votosRecebidos.toString() : null}
-                                        </td>
-
-
-                                    </Link>
-                                    <Link to={`/perfil/${person.id}`}>
-                                        <td className={`ranking-votos ${!isClickedUser ? 'none-none' : ''}`} style={{ width: `144px`, color: '#eaeaea', backgroundColor: '#1a1a1a', position: 'relative', zIndex: '10' }}>
-                                            perfil
-                                        </td>
-
-
-                                    </Link>
-
                                 </tr>
                             );
                         })}
