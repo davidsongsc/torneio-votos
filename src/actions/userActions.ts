@@ -27,10 +27,14 @@ export interface MaisVotado {
   nome: string;
   matricula: number;
   votos: number;
+  alcunha: string;
+  imagem: string;
   votosRecebidos: number;
   votosEmitidos: number;
   votante: string[];
   listaVotos: string[];
+  datames: string;
+  ano: string;
 }
 
 interface LogoutAction {
@@ -282,7 +286,7 @@ export const alteraLoginUser = (credentials: { matricula: string; senha: string;
 export const fetchUsers = () => {
   return (dispatch: Dispatch<UserActionTypes>) => {
     dispatch(fetchUsersRequest());
-    fetch(types.API_USUARIOS, {
+    fetch(types.API_VOTOS, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

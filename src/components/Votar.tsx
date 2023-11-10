@@ -44,7 +44,7 @@ const Votar: React.FC = () => {
         pessoa.nome.toLowerCase().includes(search.toLowerCase()) || pessoa.alcunha.toLowerCase().includes(search.toLowerCase())
     );
 
-    const sortedPessoas = [...filteredPessoas].sort((a, b) => a.votos - b.votos);
+    const sortedPessoas = [...filteredPessoas].sort((a, b) => a.votosRecebidos - b.votosRecebidos);
     const top3Pessoas = sortedPessoas.slice(0, 45);
 
     useEffect(() => {

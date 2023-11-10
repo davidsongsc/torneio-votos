@@ -23,15 +23,22 @@ const Perfil: React.FC = () => {
             <img className='perfil-image' src={`https://dagesico.pythonanywhere.com/static/img/${employee.imagem}`} alt={employee.nome} />
             <div className='info'>
                 <h3>{employee.nome}</h3>
+                <p style={{ textTransform: 'initial' }}>{employee?.votosRecebidos === 0 ? 'Não recebeu voto': `Recebeu ${employee?.votosRecebidos}`} e {employee?.votosEmitidos === 0 ? 'não votou ainda...': `votou ${employee?.votosEmitidos} vezes.`} 
+                    <blockquote>
+                        {employee?.votos === 0 ? 'Não possui votos!' : <>Possui {employee?.votos} votos!</>}
+                    </blockquote>
+                </p>
+                <br />
 
-                <br /><br />
+                <br />
                 <div>
                     <p> {employee?.alcunha}</p>
+                    <br />
                     <p>Matricula: {employee?.id}</p>
                     <br />
-                    <p>Votos Recebidos: {employee?.votosRecebidos}</p>
-                    <p>Votos Emitidos: {employee?.votosEmitidos}</p>
-                    <br /><br />
+
+
+                    <br />
                 </div>
                 <Link to="/ranking"><button>Voltar</button></Link>
             </div>
