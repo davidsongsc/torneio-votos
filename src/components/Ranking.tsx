@@ -62,35 +62,36 @@ const Ranking: React.FC = () => {
                         return (
                             <tr key={index}>
                                 <td
-                                className={`ranking-index ${isClickedUser ? '' : 'none-none'}`}
-                                style={{
-                                    width: '110px',
-                                    borderTopLeftRadius: '5px',
-                                    borderBottomLeftRadius: '5px',
-                                    color: '#eaeaea',
-                                    backgroundColor: `${(index + 1) <= 10 ? '#ffa500' :
-                                        (index + 1) <= 20 ? '#1152d2' :
-                                            (index + 1) <= 30 ? '#9acd32' :
-                                                (index + 1) <= 40 ? '#8b008b' :
-                                                    (index + 1) <= 40 ? '#09809d' :
-                                                        'transparent'
-                                        }`,
-                                    borderColor: `${(index + 1) <= 10 ? '#eaeaea' : 'black'}`,
-                                }}>
+                                    className={`ranking-index ${isClickedUser ? '' : 'none-none'}`}
+                                    style={{
+                                        width: '110px',
+                                        borderTopLeftRadius: '5px',
+                                        borderBottomLeftRadius: '5px',
+                                        color: '#eaeaea',
+                                        backgroundColor: `${(index + 1) <= 10 ? '#ffa500' :
+                                            (index + 1) <= 20 ? '#1152d2' :
+                                                (index + 1) <= 30 ? '#9acd32' :
+                                                    (index + 1) <= 40 ? '#8b008b' :
+                                                        (index + 1) <= 40 ? '#09809d' :
+                                                            'transparent'
+                                            }`,
+                                        borderColor: `${(index + 1) <= 10 ? '#eaeaea' : 'black'}`,
+                                    }}>
                                     {(index + 1) <= 7 && `${index + 1}º`}
                                 </td>
                                 <td
                                     onClick={() => handleUserClick(person.id)}
                                     className={`ranking-nome ${isClickedUser ? 'ativacao-perfil' : ''}`}
-                            
+
                                 >
                                     {person.nome}
                                 </td>
-                                <td className={`ranking-votos ${!isClickedUser ? 'none-none' : ''}`} style={{ width: `${widthValue}px`, color: '#eaeaea', backgroundColor: '#1a1a1a', position: 'relative', zIndex: '10' }}>
+
+                                <Link to={`/perfil/${person.id}`}>
+                                    <td className={`ranking-votos ${!isClickedUser ? 'none-none' : ''}`} style={{ width: `${widthValue}px`, color: '#eaeaea', backgroundColor: '#1a1a1a', position: 'relative', zIndex: '10' }}>
                                         {person.votosRecebidos !== null ? person.votosRecebidos.toString() : null}
                                     </td>
-                                <Link to={`/perfil/${person.id}`}>
-                                  <button>perfil</button>
+                                    <button>perfil</button>
                                 </Link>
                             </tr>
                         );
