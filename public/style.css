@@ -608,7 +608,7 @@ textarea {
 }
 .sitemap li:hover {
   box-shadow: 1px 1px, -1px -1px;
-  background-color: rgba(100, 148, 237, 0.443);
+  background-color: #2f4f4f;
   transition: 0.7s;
   color: #000;
 }

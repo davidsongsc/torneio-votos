@@ -158,7 +158,7 @@ const AlterarSenha: React.FC = () => {
                         type="password"
                         id="password"
                         value={senha}
-                        placeholder='Codigo de Acesso'
+                        placeholder='Novo codigo'
                         readOnly
                         required
 
