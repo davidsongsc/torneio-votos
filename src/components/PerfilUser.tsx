@@ -33,8 +33,6 @@ const PerfilUser: React.FC = () => {
                         <p> {userInfo?.alcunha}</p>
                         <p>Matricula: {userInfo?.matricula}</p>
                         <br />
-                        <p>Votos Recebidos: {userInfo?.votosRecebidos}</p>
-                        <p>Votos Emitidos: {userInfo?.votosEmitidos}</p>
 
                     </div>
                 </div>
