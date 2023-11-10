@@ -67,12 +67,11 @@ const Votar: React.FC = () => {
 
                 <div className='tela-painel-votos'>
                     {top3Pessoas.map((pessoa) => (
-                        <label className={`radio-label ${pessoa.id === voto ? 'radio-label-selecionado' : 'radio-label-nao-selecionado'} ${pessoa.id === voto && showConfirmDialog ? 'radio-label-voto' : 'radio-label-voto-nao'}`} key={pessoa.id} htmlFor={`radio-${pessoa.id}`} style={{display: `${pessoa.id === usuarioLogado ? 'none': ''}`}}>
+                        <label className={`radio-label ${pessoa.id === voto ? 'radio-label-selecionado' : 'radio-label-nao-selecionado'} ${pessoa.id === voto && showConfirmDialog ? 'radio-label-voto' : 'radio-label-voto-nao'}`} key={pessoa.id} htmlFor={`radio-${pessoa.id}`} style={{ display: `${pessoa.id === usuarioLogado ? 'none' : ''}` }}>
                             <div className='votante-lista-seletor'>
                                 <img src={`https://dagesico.pythonanywhere.com/static/img/${pessoa.imagem}`} alt="Imagem Perfil" />
                                 <h3>{pessoa.nome} </h3>
-                                <p>{pessoa.id}</p>
-                                <p>{pessoa.votos} votos</p>
+                                <p>{pessoa.votosRecebidos} votos</p>
                                 <input
                                     className='radio-input'
                                     type="radio"
