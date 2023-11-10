@@ -220,11 +220,13 @@ textarea {
   color: white;
 }
 .tabela-objetivos-conteste .ativacao-perfil {
+  display: flex;
   transition: 0.7s;
   background-color: black;
   color: white;
-  width: 94%;
+  width: 99%;
   transition-delay: 1.7s;
+  flex-direction: column;
 }
 .none-none {
   display: none;

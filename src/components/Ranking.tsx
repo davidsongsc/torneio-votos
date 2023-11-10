@@ -57,14 +57,14 @@ const Ranking: React.FC = () => {
                 <tbody>
                     {sortedData.slice(0, showTop).map((person, index) => {
                         const isClickedUser = person.id === lastClickedUserId;
-                        const widthValue = isClickedUser ? 50 : 100; // Define largura diferente para o usuário clicado
+                        const widthValue = isClickedUser ? 110 : 100; // Define largura diferente para o usuário clicado
 
                         return (
                             <tr key={index}>
                                 <td
                                 className={`ranking-index ${isClickedUser ? '' : 'none-none'}`}
                                 style={{
-                                    width: '15px',
+                                    width: '25px',
                                     borderTopLeftRadius: '5px',
                                     borderBottomLeftRadius: '5px',
                                     color: '#eaeaea',
