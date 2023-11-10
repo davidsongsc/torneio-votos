@@ -802,3 +802,8 @@ textarea {
 .link-ranking img {
   width: 400px;
 }
+footer{
+  text-align: center;
+  margin: 0 auto;
+  width: 90%;
+}
