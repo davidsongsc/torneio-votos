@@ -796,3 +796,9 @@ textarea {
 ::-webkit-scrollbar-thumb:hover {
   background: green; /* Cor de fundo do thumb quando se passa o mouse por cima */
 }
+.link-ranking {
+  width: 100%;
+}
+.link-ranking img {
+  width: 400px;
+}
