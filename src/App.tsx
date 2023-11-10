@@ -16,15 +16,18 @@ import Countdown from './components/Contagem';
 function App() {
   const deadline = new Date('2023-11-09T16:00:00').getTime();
   const [showContent, setShowContent] = useState(false);
-
+  const [modoOperacional, setModoOperacional] = useState(false);
   useEffect(() => {
     const currentTime = new Date().getTime();
     setShowContent(currentTime >= deadline);
   }, [deadline]);
 
+  const handleMudarOperacao = () => {
+    setModoOperacional(!modoOperacional);
+  }
   return (
     <Router>
-      <NavPrep />
+      {!modoOperacional &&<NavPrep />}
       {!showContent && <Countdown deadline={deadline} />}
       {showContent && <Navbar />}
       <Routes>
