@@ -45,6 +45,9 @@ function Countdown({ deadline }: CountdownProps) {
                                 <div>{timeRemaining.seconds}s</div>
                             )}
                         </div>
+                        <div>
+                            <h3>Offiline</h3>
+                        </div>
                     </div>
                 </div>
 
