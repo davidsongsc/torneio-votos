@@ -27,7 +27,7 @@ function Countdown({ deadline }: CountdownProps) {
 
     return (
         <>
-            <div style={{ height: '99vh', display: 'flex', alignItems: 'center', justifyContent: 'center', flexDirection: 'column' }}>
+            <div style={{ height: '99vh', display: 'flex', alignItems: 'center', justifyContent: 'center', flexDirection: 'column', position: 'absolute', zIndex: '100', width: '100%' }}>
                 <h1> {timeRemaining.hours > 0 && (
                     <div>
                         {timeRemaining.hours}h {timeRemaining.minutes}m {timeRemaining.seconds}s

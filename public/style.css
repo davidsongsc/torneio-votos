@@ -844,6 +844,16 @@ textarea {
 }
 .link-ranking {
   width: 100%;
+  /* margin: 25px auto; */
+  height: 60vh;
+  display: flex;
+  flex-wrap: wrap;
+  align-content: center;
+  justify-content: center;
+}
+.link-info {
+  background-color: transparent;
+  margin: 0 auto;
 }
 .link-ranking img {
   width: 400px;
@@ -852,4 +862,7 @@ footer {
   text-align: center;
   margin: 15px auto;
   width: 90%;
+  z-index: 999;
+  position: relative;
+  height: 50vh;
 }
