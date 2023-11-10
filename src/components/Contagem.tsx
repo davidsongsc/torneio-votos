@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import Footer from './Footer';
 
 interface CountdownProps {
     deadline: number;
@@ -25,29 +26,31 @@ function Countdown({ deadline }: CountdownProps) {
     }, []);
 
     return (
-        <div style={{ height: '99vh', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-            <div className='contagem-c1'>
-                <div className='contagem-c2'>
-                    <div className='contagem'>
-                        {timeRemaining.hours > 0 && (
-                            <div>
-                                {timeRemaining.hours}h {timeRemaining.minutes}m {timeRemaining.seconds}s
-                            </div>
-                        )}
-                        {timeRemaining.hours === 0 && timeRemaining.minutes > 0 && (
-                            <div>
-                                {timeRemaining.minutes}m {timeRemaining.seconds}s
-                            </div>
-                        )}
-                        {timeRemaining.hours === 0 && timeRemaining.minutes === 0 && (
-                            <div>{timeRemaining.seconds}s</div>
-                        )}
+        <>
+            <div style={{ height: '99vh', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                <div className='contagem-c1'>
+                    <div className='contagem-c2'>
+                        <div className='contagem'>
+                            {timeRemaining.hours > 0 && (
+                                <div>
+                                    {timeRemaining.hours}h {timeRemaining.minutes}m {timeRemaining.seconds}s
+                                </div>
+                            )}
+                            {timeRemaining.hours === 0 && timeRemaining.minutes > 0 && (
+                                <div>
+                                    {timeRemaining.minutes}m {timeRemaining.seconds}s
+                                </div>
+                            )}
+                            {timeRemaining.hours === 0 && timeRemaining.minutes === 0 && (
+                                <div>{timeRemaining.seconds}s</div>
+                            )}
+                        </div>
                     </div>
                 </div>
+
             </div>
-
-        </div>
-
+            <Footer/>
+        </>
     );
 }
 
