@@ -71,7 +71,6 @@ const Votar: React.FC = () => {
                             <div className='votante-lista-seletor'>
                                 <img src={`https://dagesico.pythonanywhere.com/static/img/${pessoa.imagem}`} alt="Imagem Perfil" />
                                 <h3>{pessoa.nome} </h3>
-                                <p>{pessoa.votosRecebidos} votos</p>
                                 <input
                                     className='radio-input'
                                     type="radio"

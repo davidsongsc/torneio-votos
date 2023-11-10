@@ -45,8 +45,8 @@ const ComboBox: React.FC<ComboBoxProps> = ({ label, values, onValueSelect }) => 
 };
 
 const AlterarSenha: React.FC = () => {
-    const [selectedDay, setSelectedDay] = useState<string>('01');
-    const [selectedMonth, setSelectedMonth] = useState<string>('01');
+    const [selectedDay, setSelectedDay] = useState<string>('');
+    const [selectedMonth, setSelectedMonth] = useState<string>('');
     const [matricula, setMatricula] = useState('');
     const [senha, setPassword] = useState('');
     const [loginError, setLoginError] = useState('');
@@ -84,6 +84,8 @@ const AlterarSenha: React.FC = () => {
 
     const handlePasswordReset = () => {
         setPassword('');
+        setSelectedMonth('');
+        setSelectedDay('');
     };
 
     const handleLogin = () => {
