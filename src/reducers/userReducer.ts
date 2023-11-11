@@ -122,6 +122,7 @@ const userReducer = (
                 isLoggedIn: false,
             };
         case LOGOUT:
+            localStorage.removeItem('userInfo'); // Remove as informações do usuário do localStorage
             return {
                 ...state,
                 userInfo: null,
