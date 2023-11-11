@@ -11,7 +11,7 @@ function MainVoto() {
   const secoes = [
 
     {
-      h2: 'Votos Disponiveis',
+      h2: 'Urna Eletronica',
       p: '',
       Votar: (
         Votar

@@ -6,7 +6,7 @@ import { RootState } from '../reducers';
 import { votar } from '../actions/votoActions';
 import { concretizarVotoAsync } from '../actions/userActions';
 import { AppDispatch } from '../store';
-
+const visual = { fontSize: '30px', fontFamily: 'Times New Roman', backgroundColor: 'rgb(32, 39, 68)', borderStyle: 'groove', padding: '6px', borderRadius: '33px' }
 const Votar: React.FC = () => {
     const [search, setSearch] = useState<string>('');
     const [showConfirmDialog, setShowConfirmDialog] = useState(false);
@@ -133,9 +133,16 @@ const Votar: React.FC = () => {
                 }}>
 
                     <h2 style={{ padding: '13px 0' }}>
-                        <strong style={{ fontSize: '30px', fontFamily: 'Times New Roman', backgroundColor: 'rgb(32, 39, 68)', borderStyle: 'groove', padding: '6px', borderRadius: '33px' }}>
-                            {userLogin.userInfo?.votos}
+                        <strong style={visual}>
+                            <strong style={visual}>
+                                  
+                                {userLogin.userInfo?.votos}
+                                  
+                            
+                            </strong>
+                            Votos
                         </strong>
+
                     </h2>
                     <button className='btn-voto' type="button" onClick={handleVotar} style={{ display: `${!showConfirmDialog ? '' : 'none'}` }}>
                         Votar
