@@ -404,7 +404,7 @@ textarea {
 .tela-painel-votos {
   display: flex;
   max-width: 400px;
-  max-height: 500px;
+  max-height: 400px;
   overflow-y: auto;
   flex-direction: row;
   flex-wrap: wrap;
@@ -459,8 +459,17 @@ textarea {
 .radio-label-selecionado {
   background-color: white;
   border-radius: 5px;
-  padding: 22px 99px;
+  padding: 120px 130px;
   transition: 0.7s;
+  position: absolute;
+  z-index: 99;
+  left: 0;
+  display: flex;
+  right: 0;
+  bottom: 0;
+  top: 0;
+  justify-content: center;
+  align-items: center;
 }
 .radio-label-nao-selecionado {
   margin: 5px 0px;
