@@ -70,7 +70,7 @@ const Votar: React.FC = () => {
     const handleCancel = () => {
         setShowConfirmDialog(false);
         dispatch(votar(0));
-setSearch('')
+        setSearch('');
 
     };
 
