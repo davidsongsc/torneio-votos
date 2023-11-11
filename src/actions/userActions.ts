@@ -6,6 +6,17 @@ import axios, { AxiosResponse } from 'axios';
 export interface ListaCompletaUsers {
   listaVotos: string[];
 }
+
+export interface SetSessionAction {
+  type: typeof types.SET_SESSION;
+  payload: UserData; 
+}
+
+export const setSession = (userData: UserData): SetSessionAction => ({
+  type: types.SET_SESSION,
+  payload: userData,
+});
+
 export interface ConfigInfo {
   ver: string;
   valendo: boolean;
@@ -180,6 +191,7 @@ export type UserActionTypes = LoginRequestAction
   | AlterarLoginRequestAction
   | AlterarLoginSuccessAction
   | ConcretizarVotoAction
+  | SetSessionAction 
   | { type: typeof types.CONCRETIZAR_VOTO_INICIO }
   | { type: typeof types.CONCRETIZAR_VOTO_SUCESSO; payload: number }
   | { type: typeof types.CONCRETIZAR_VOTO_FALHA; payload: string }

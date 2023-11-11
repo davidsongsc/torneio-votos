@@ -39,7 +39,6 @@ const Navbar: React.FC = () => {
     const { isLoggedIn } = userLogin;
     const dispatch: AppDispatch = useDispatch(); // Use o tipo AppDispatch aqui
 
-
     const handleLogout = () => {
         dispatch(logoutUser());
     };
@@ -51,7 +50,7 @@ const Navbar: React.FC = () => {
                     <Link style={NavLink} to="/votar">Votação</Link>
                 </li> : ''}
                 {isLoggedIn ? <li style={NavUlLi}>
-                    <Link style={NavLink} to="/">Contest</Link>
+                    <Link style={NavLink} to="/contest">Contest</Link>
                 </li> : ''}
 
                 <li style={NavUlLi}>

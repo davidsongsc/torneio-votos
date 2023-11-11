@@ -6,7 +6,9 @@ import { RootState } from '../reducers';
 import { votar } from '../actions/votoActions';
 import { concretizarVotoAsync } from '../actions/userActions';
 import { AppDispatch } from '../store';
+
 const visual = { fontSize: '30px', fontFamily: 'Times New Roman', backgroundColor: 'rgb(32, 39, 68)', borderStyle: 'groove', padding: '6px', borderRadius: '33px' }
+const visualb = { fontSize: '30px', fontFamily: 'Times New Roman', backgroundColor: 'rgb(32, 39, 68)', borderStyle: 'groove', padding: '6px', borderRadius: '33px' }
 const Votar: React.FC = () => {
     const [search, setSearch] = useState<string>('');
     const [showConfirmDialog, setShowConfirmDialog] = useState(false);
@@ -19,7 +21,6 @@ const Votar: React.FC = () => {
     const [isClickLocked, setClickLock] = useState(false);
 
     useEffect(() => {
-        // Rolando para o topo da página quando o componente é montado
         window.scrollTo(0, 0);
     }, []);
     const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -29,12 +30,7 @@ const Votar: React.FC = () => {
     const handleVotoChange = (clickedVoto: number) => {
         if (!isClickLocked) {
             setClickLock(true);
-
-
-            // Limpa selectedVoto se o usuário clicar em outra pessoa
             setSelectedVoto((prevVoto) => (prevVoto === clickedVoto ? null : clickedVoto));
-
-            // Atualiza o voto apenas se clickedVoto não for nulo
             if (clickedVoto !== null) {
                 if (selectedVoto === clickedVoto) {
                     dispatch(votar(0));
@@ -134,11 +130,10 @@ const Votar: React.FC = () => {
 
                     <h2 style={{ padding: '13px 0' }}>
                         <strong style={visual}>
-                            <strong style={visual}>
+                            <strong className='qtd-votos'>
                                   
                                 {userLogin.userInfo?.votos}
                                   
-                            
                             </strong>
                             Votos
                         </strong>

@@ -6,6 +6,8 @@ export const FETCH_USERS_REQUEST = 'FETCH_USERS_REQUEST';
 export const FETCH_USERS_SUCCESS = 'FETCH_USERS_SUCCESS';
 export const FETCH_USERS_FAILURE = 'FETCH_USERS_FAILURE';
 
+export const SET_SESSION = 'SET_SESSION';
+
 export const API_USUARIOS = 'https://bz97.pythonanywhere.com/usuarios/';
 export const API_VOTOS = 'https://bz97.pythonanywhere.com/contar-votos/';
 export const API_ENVIAR_VOTOS = 'https://bz97.pythonanywhere.com//urnaeletronica/';

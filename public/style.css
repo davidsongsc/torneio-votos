@@ -533,6 +533,18 @@ textarea {
   background-color: rgb(65, 148, 88);
   transition: 0.8s;
 }
+.qtd-votos {
+  font-size: 30px;
+  font-family: "Times New Roman";
+  background-color: rgb(32, 39, 68);
+  border-top-style: groove;
+  border-bottom-style: groove;
+  border-right-style:groove ;
+  padding: 6px;
+  border-radius: 33px;
+  position: relative;
+  left: -6px;
+}
 .tabela-objetivos .ranking-votos {
   border-bottom: 4px solid black;
   padding: 37px 0px;
@@ -920,5 +932,4 @@ footer {
   width: 90%;
   z-index: 995;
   position: relative;
-  
 }

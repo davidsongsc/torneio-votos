@@ -14,10 +14,10 @@ import {
     CONCRETIZAR_VOTO_SUCESSO,
     CONCRETIZAR_VOTO_INICIO,
     CONCRETIZAR_VOTO_FALHA,
-    CONCRETIZAR_VOTO
-
+    CONCRETIZAR_VOTO,
+    SET_SESSION
 } from '../actions/types';
-import { UserData, UserActionTypes, MaisVotado } from '../actions/userActions';
+import { UserData, UserActionTypes, MaisVotado, SetSessionAction } from '../actions/userActions';
 
 
 interface UserState {
@@ -33,13 +33,14 @@ interface UserState {
     carregando: boolean;
     erro: string | null;
 }
+const storedSession = localStorage.getItem('userInfo');
 
 const initialState: UserState = {
     loading: false,
-    userInfo: null,
+    userInfo: storedSession ? JSON.parse(storedSession) : null,
     users: [],
     error: null,
-    isLoggedIn: false,
+    isLoggedIn: !!storedSession,
     mostVoted: null, // Adicione mostVoted ao initialState
     listaVotos: [],
     votoConcretizado: false,
@@ -52,7 +53,7 @@ const initialState: UserState = {
 // Agora, use o tipo UserActionTypes para a ação
 const userReducer = (
     state: UserState = initialState,
-    action: UserActionTypes
+    action: UserActionTypes | SetSessionAction
 ): UserState => {
     switch (action.type) {
         case CONCRETIZAR_VOTO_INICIO:
@@ -103,6 +104,7 @@ const userReducer = (
                 loading: true,
             };
         case LOGIN_SUCCESS:
+            localStorage.setItem('userInfo', JSON.stringify(action.payload));
             return {
                 ...state,
                 loading: false,
@@ -141,7 +143,6 @@ const userReducer = (
             return {
                 ...state,
                 loading: false,
-                // Armazene os mais votados no estado
                 mostVoted: action.payload,
             };
 
@@ -150,9 +151,17 @@ const userReducer = (
                 ...state,
                 loading: false,
                 error: action.error,
-                mostVoted: null, // Defina como null ou [] (vazio) dependendo do que você preferir em caso de falha
+                mostVoted: null,
             };
-        // ... outros casos
+        case SET_SESSION:
+            localStorage.setItem('userInfo', JSON.stringify(action.payload));
+            return {
+                ...state,
+                userInfo: action.payload,
+                isLoggedIn: true,
+            };
+
+
         default:
             return state;
     }
