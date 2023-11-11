@@ -334,14 +334,14 @@ textarea {
 .tabela-objetivos-conteste tbody tr {
   margin: 1px auto;
   display: flex;
-  width: 100%;
+  max-width: 400px;
   table-layout: fixed;
   flex-wrap: wrap;
 }
 
 .tabela-objetivos-conteste tbody {
   overflow: auto;
-  width: 370px;
+  max-width: 400px;
 }
 
 .tabela-objetivos-conteste th,
@@ -355,12 +355,12 @@ textarea {
 .tabela-objetivos {
   border-collapse: collapse; /* Remove espaçamento entre as células */
   margin: 0 auto;
-  max-width: 370px;
+  max-width: 700px;
 }
 .tabela-objetivos-conteste th {
   background-color: aliceblue;
 }
-.tabela-objetivos-conteste td {
+.tabela-objetivos-conteste .td-menor {
   background-color: white;
   color: black;
   border-bottom: 4px solid black;
@@ -371,7 +371,23 @@ textarea {
   transition: 0.7s;
   position: relative;
   z-index: 995;
-  width: 100%;
+  min-width: 140px;
+  max-width: 650px;
+}
+
+.tabela-objetivos-conteste .td-maior {
+  background-color: white;
+  color: black;
+  border-bottom: 4px solid black;
+  padding: 37px 0px;
+  text-align: center;
+  text-transform: capitalize;
+  letter-spacing: 7px;
+  transition: 0.7s;
+  position: relative;
+  z-index: 995;
+  min-width: 400px;
+  max-width: 450px;
 }
 
 .tabela-objetivos-conteste td:hover,

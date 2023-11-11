@@ -1,7 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import { RootState } from '../reducers';
 
 const PageOutros: React.FC = () => {
+    const userLogin = useSelector((state: RootState) => state.userReducer);
+    const { userInfo } = userLogin;
     const handleInstall = () => {
         // Obtenha o prompt de instalação do Service Worker
         let deferredPrompt: any = null;
@@ -48,12 +52,36 @@ const PageOutros: React.FC = () => {
                 <li>
                     <Link to="/codigoacesso"><button>Alterar Codigo</button></Link>
                 </li>
-          
-                  <li>
+
+                <li>
                     <button onClick={handleInstall}>Instalar App</button>
                 </li>
+                {userInfo?.alcunha && userInfo.alcunha.toLowerCase().includes('gerencia') && (
+                    <>
 
-     
+                        <li>
+                            <button>
+                                <a href="https://bz97.pythonanywhere.com/admin/">Banco de dados</a>
+                            </button>
+                        </li>
+                        <li>
+                            <button>
+                                <a href="https://bz97.pythonanywhere.com/admin/controle/contest/">DB Contest</a>
+                            </button>
+                        </li>
+                        <li>
+                            <button>
+                                <a href="https://bz97.pythonanywhere.com/admin/controle/votos/">DB Urna Eletronica</a>
+                            </button>
+                        </li>
+                        <li>
+                            <button>
+                                <a href="https://bz97.pythonanywhere.com/admin/controle/usuario/">DB Usuarios</a>
+                            </button>
+                        </li>
+                    </>
+                )}
+
             </ul>
 
         </div>

@@ -37,7 +37,7 @@ const Ranking: React.FC = () => {
     const sortedData = mostVoted ? mostVoted.sort((a, b) => Number(b.votosRecebidos) - Number(a.votosRecebidos)) : [];
     return (
         <>
-            <div className='barra-top-top' style={{display: 'none'}}>
+            <div className='barra-top-top' style={{ display: 'none' }}>
                 <label htmlFor="showTop">Grupos</label>
                 <select id="showTop" value={showTop} onChange={handleShowTopChange}>
                     <option value={99}>Ranking</option>
@@ -79,9 +79,13 @@ const Ranking: React.FC = () => {
                     </div>
                 ) : (
                     <tbody>
-                        {sortedData.slice(0, showTop).map((person, index) => {
+                        {sortedData.slice(0, showTop).map((person, index, array) => {
                             const isClickedUser = person.id === lastClickedUserId;
                             const widthValue = isClickedUser ? 110 : 100; // Define largura diferente para o usuário clicado
+
+                            const isFirstPlace = index === 0 || person.votosRecebidos === array[0].votosRecebidos;
+                            const isSecondPlace = index === 1 || person.votosRecebidos === array[1].votosRecebidos;
+                            const isThirdPlace = index === 2 || person.votosRecebidos === array[2].votosRecebidos;
 
                             return (
                                 <tr key={index}>
@@ -102,32 +106,36 @@ const Ranking: React.FC = () => {
                                             borderColor: `${(index + 1) <= 10 ? '#eaeaea' : 'black'}`,
                                         }}
                                     >
-                                        {(index + 1) <= 7 && `${index + 1}º`}
+                                        {isFirstPlace && <img src='https://static.vecteezy.com/system/resources/previews/001/197/144/non_2x/first-place-ribbon-png.png' alt='Ouro' width='50px' style={{ borderRadius: '50%' }} />}
+                                        {isSecondPlace && <img src='https://images.vexels.com/media/users/3/298856/isolated/preview/9546c2f56e16da035b151b3d4085584d-fita-vermelha-de-segundo-lugar.png' alt='Prata' width='90px' style={{ borderRadius: '50%' }} />}
+                                        {isThirdPlace && <img src='https://images.vexels.com/media/users/3/298870/isolated/lists/1119dfd405b38ae46ead3451c722dae8-fita-de-competia-a-o-roxa-de-terceiro-lugar.png' alt='Bronze' width='90px' style={{ borderRadius: '50%' }} />}
                                     </td>
 
                                     <td
                                         onClick={() => handleLinkClick(person.id)}
-                                        className={`ranking-votos ${!isClickedUser ? 'none-none' : ''}`}
-                                        style={{ width: `${widthValue}px`, color: '#eaeaea', backgroundColor: '#1a1a1a', position: 'relative', zIndex: '10', border: '1px solid'}}
+                                        className={`ranking-votos td-menor ${!isClickedUser ? 'none-none' : ''}`}
+                                        style={{ width: `${widthValue}px`, color: '#eaeaea', backgroundColor: '#1a1a1a', position: 'relative', zIndex: '10', border: '1px solid' }}
                                     >
-                                       V {person.votosRecebidos !== null ? person.votosRecebidos.toString() : null}
+                                        V {person.votosRecebidos !== null ? person.votosRecebidos.toString() : null}
                                     </td>
                                     <td
                                         onClick={() => handleLinkClick(person.id)}
-                                        className={`ranking-votos ${!isClickedUser ? 'none-none' : ''}`}
+                                        className={`ranking-votos td-menor ${!isClickedUser ? 'none-none' : ''}`}
                                         style={{ width: `144px`, color: '#eaeaea', backgroundColor: '#1a1a1a', position: 'relative', zIndex: '10' }}
                                     >
                                         perfil
                                     </td>
                                     <td
                                         onClick={() => handleUserClick(person.id)}
-                                        className={`ranking-nome ${isClickedUser ? 'ativacao-perfil' : ''}`}
+                                        className={`ranking-nome td-maior ${isClickedUser ? 'ativacao-perfil' : ''}`}
                                     >
                                         {person.nome}
                                     </td>
                                 </tr>
                             );
                         })}
+
+
                     </tbody>
                 )}
 

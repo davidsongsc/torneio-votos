@@ -1,6 +1,6 @@
 import React from 'react';
-import Section from './Section';
 import Tabela from './Tabela';
+import SectionContest from './SectionContest';
 
 function Main() {
   const secoes = [
@@ -9,7 +9,7 @@ function Main() {
       h2: 'Contest',
       div: {
         className: 'custom-div-1',
-        children: <p>Venda de Café</p>, // Objetivo do Conteste $Variavel
+        children: <p></p>, // Objetivo do Conteste $Variavel
       },
       p: '',
       table: (
@@ -21,9 +21,9 @@ function Main() {
 
   return (
     <>
-      <main className='main-principal-inicio'>
+      <main className='main-principal-inicio'  style={{width: '100%'}}>
         {secoes.map((section, index) => (
-          <Section key={index} content={section} />
+          <SectionContest key={index} content={section} />
         ))}
        
       </main>
