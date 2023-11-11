@@ -916,9 +916,9 @@ textarea {
 }
 footer {
   text-align: center;
-  margin: 30px auto;
+  margin: 5px auto;
   width: 90%;
   z-index: 995;
   position: relative;
-  height: 50vh;
+  
 }
