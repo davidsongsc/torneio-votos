@@ -32,7 +32,8 @@ function App() {
       {!showContent && <Countdown deadline={deadline} />}
 
       <Routes>
-        {showContent && <Route path="/" element={<Home />} />}
+      {showContent && <Route path="/" element={<PageRanking />} />}
+        {showContent && <Route path="/contest" element={<Home />} />}
         {showContent && <Route path="/votar" element={<MainVoto />} />}
         {showContent && <Route path="/ranking" element={<PageRanking />} />}
         {showContent && <Route path="/outros" element={<PageOutros />} />}
