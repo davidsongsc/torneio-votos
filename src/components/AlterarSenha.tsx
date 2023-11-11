@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { ThunkDispatch } from 'redux-thunk';
+import { useNavigate } from 'react-router-dom';
 import { AnyAction } from 'redux';
 import { alteraLoginUser, loginUser } from '../actions/userActions';
 import { RootState } from '../reducers';
@@ -44,6 +45,7 @@ const ComboBox: React.FC<ComboBoxProps> = ({ label, values, onValueSelect }) => 
 };
 
 const AlterarSenha: React.FC = () => {
+    const navigate = useNavigate();
     const [selectedDay, setSelectedDay] = useState<string>('01');
     const [selectedMonth, setSelectedMonth] = useState<string>('12');
     const [matricula, setMatricula] = useState('');
@@ -52,9 +54,12 @@ const AlterarSenha: React.FC = () => {
     const characters = [5, 3, 1, 2, 0, 4];
     const userLogin = useSelector((state: RootState) => state.userReducer);
     const { isLoggedIn } = userLogin;
-
+    useEffect(() => {
+        // Rolando para o topo da página quando o componente é montado
+        window.scrollTo(0, 0);
+    }, []);
     const dispatch: ThunkDispatch<RootState, any, AnyAction> = useDispatch();
-
+    
     const generateDays = (month: string) => {
         const daysInMonth = new Date(2023, parseInt(month, 10), 0).getDate();
         const daysArray = Array.from({ length: daysInMonth }, (_, index) =>
@@ -83,8 +88,8 @@ const AlterarSenha: React.FC = () => {
 
     const handlePasswordReset = () => {
         setPassword('');
-        setSelectedMonth('');
-        setSelectedDay('');
+        setSelectedMonth('01');
+        setSelectedDay('01');
     };
 
     const handleLogin = () => {
@@ -94,6 +99,7 @@ const AlterarSenha: React.FC = () => {
                     // Limpa o erro no caso de sucesso
                     setLoginError('');
                     handlePasswordReset();
+                    navigate('/ranking');
                 })
                 .catch((error) => {
                     // Define a mensagem de erro
@@ -106,11 +112,14 @@ const AlterarSenha: React.FC = () => {
 
     const handleAlterLogin = () => {
         if (senha.length === 6) {
+            const matricula = String(userLogin.userInfo?.matricula || '');
             dispatch(alteraLoginUser({ matricula, senha, selectedDay, selectedMonth }))
                 .then(() => {
                     // Limpa o erro no caso de sucesso
                     setLoginError('');
                     handlePasswordReset();
+                    alert('Codigo alterado com sucesso!')
+                 
                 })
                 .catch((error) => {
                     // Define a mensagem de erro
@@ -147,7 +156,7 @@ const AlterarSenha: React.FC = () => {
                 <h3>Data Nascimento</h3>
                 <br />
                 <div className='data-aniversario' >
-                    
+
                     <ComboBox label="Dia" values={generateDays(selectedMonth)} onValueSelect={setSelectedDay} />
                     <ComboBox label="Mês" values={['01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12']} onValueSelect={handleMonthChange} />
 
@@ -248,7 +257,7 @@ const AlterarSenha: React.FC = () => {
                     <p>Login</p>
                 </button>
 
-                
+
             </div>
         </>
     );

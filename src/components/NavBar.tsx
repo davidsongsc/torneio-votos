@@ -1,5 +1,4 @@
 import React from 'react';
-import './NavBar.css';
 import { Link } from 'react-router-dom';
 import { RootState } from '../reducers'; // Substitua pelo caminho correto
 import { useSelector, useDispatch } from 'react-redux';
@@ -10,14 +9,12 @@ const NavUl = {
     backgroundColor: 'cadetblue',
     color: '#bfbfbf',
     padding: '10px',
-    border: '1px solid #bfbfbf',
     listStyle: 'none',
     display: 'flex',
     cursor: 'pointer',
     width: '99%',
     overflow: 'auto',
     height: '5vh',
-    marginBottom: '8px',
     alignItems: 'center',
 };
 
@@ -35,7 +32,7 @@ const NavLink = {
     textShadow: '1px 1px 0px black',
     boxShadow: '1px 1px 0px black',
     borderStyle: 'groove',
-    
+
 };
 const Navbar: React.FC = () => {
     const userLogin = useSelector((state: RootState) => state.userReducer);
@@ -48,7 +45,7 @@ const Navbar: React.FC = () => {
     };
 
     return (
-        <nav style={{ position: 'fixed', top: '0', left: '0', right: '0', zIndex: '997' }}>
+        <nav className='navBar'>
             <ul style={NavUl}>
                 {isLoggedIn ? <li style={NavUlLi}>
                     <Link style={NavLink} to="/votar">Votação</Link>
@@ -63,12 +60,16 @@ const Navbar: React.FC = () => {
                 {isLoggedIn ? <li style={NavUlLi}>
                     <Link style={NavLink} to="/meuperfil">Perfil</Link>
                 </li> : ''}
-
-                <li style={NavUlLi}>
-                    <Link style={NavLink} to="/outros">Menu</Link>
-                </li>
+                {isLoggedIn ?
+                    <li style={NavUlLi}>
+                        <Link style={NavLink} to="/outros">Menu</Link>
+                    </li>
+                    : ''}
                 {isLoggedIn ? <li onClick={handleLogout} style={NavUlLi} >
-                    <Link  style={NavLink} to="">Sair</Link>
+                    <Link style={NavLink} to="">Sair</Link>
+                </li> : ''}
+                {!isLoggedIn ? <li onClick={handleLogout} style={NavUlLi} >
+                    <Link style={NavLink} to="/login">Login</Link>
                 </li> : ''}
             </ul>
         </nav>

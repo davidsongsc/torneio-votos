@@ -1,19 +1,22 @@
 import concretizarVotoReducer from './concretizarVotoReducer';
-import userReducer  from '../reducers/userReducer';
-import usuariosReducer from './usuariosReducer'; 
-import contestReducer from './contestReducer'; 
+import userReducer from '../reducers/userReducer';
+import configReducer from '../reducers/configReducer';
+import usuariosReducer from './usuariosReducer';
+import contestReducer from './contestReducer';
 import { combineReducers } from 'redux';
 import votoReducer from './votoReducer';
 
 const rootReducer = combineReducers({
   concretizarVotoReducer: concretizarVotoReducer,
   userReducer: userReducer,
+  configReducer: configReducer,
   user: userReducer,
   usuariosReducer,
   contestReducer,
-  votoReducer,  
+  votoReducer,
+
 });
 
-export type RootState = ReturnType<typeof rootReducer>; 
+export type RootState = ReturnType<typeof rootReducer>;
 
 export default rootReducer;

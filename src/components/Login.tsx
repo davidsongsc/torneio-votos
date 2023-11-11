@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { ThunkDispatch } from 'redux-thunk';
 import { AnyAction } from 'redux';
 import { loginUser } from '../actions/userActions';
+import { useNavigate } from 'react-router-dom';
 import { RootState } from '../reducers';
 import { GiBroom } from 'react-icons/gi';
 import { FaUser, FaSignInAlt, FaLock } from 'react-icons/fa';
@@ -19,6 +20,7 @@ const icons = [
 ];
 
 const Login: React.FC = () => {
+    const navigate = useNavigate();
     const [matricula, setMatricula] = useState('');
     const [senha, setPassword] = useState('');
     const [loginError, setLoginError] = useState('');
@@ -26,7 +28,10 @@ const Login: React.FC = () => {
     const userLogin = useSelector((state: RootState) => state.userReducer);
     const { isLoggedIn } = userLogin;
     const dispatch: ThunkDispatch<RootState, any, AnyAction> = useDispatch();
-
+    useEffect(() => {
+        // Rolando para o topo da página quando o componente é montado
+        window.scrollTo(0, 0);
+    }, []);
     const handleEmailChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setMatricula(e.target.value);
     };
@@ -47,6 +52,7 @@ const Login: React.FC = () => {
                 .then(() => {
                     // Limpa o erro no caso de sucesso
                     setLoginError('');
+                    navigate('/ranking');
                 })
                 .catch((error) => {
                     // Define a mensagem de erro
@@ -112,7 +118,7 @@ const Login: React.FC = () => {
 
                     <br /><br />
 
-                    <Main/>
+                    <Main />
                 </div>
 
             </div>
@@ -174,7 +180,7 @@ const Login: React.FC = () => {
                     <p>Login</p>
                 </button>
 
-            
+
             </div>
         </>
     );

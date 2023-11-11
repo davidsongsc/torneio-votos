@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { RootState } from '../reducers';
 import { useSelector, useDispatch } from 'react-redux';
 import { logoutUser } from '../actions/userActions';
@@ -9,7 +9,10 @@ const PerfilUser: React.FC = () => {
     const { userInfo } = userLogin;
     const dispatch: AppDispatch = useDispatch(); // Use o tipo AppDispatch aqui
     const { isLoggedIn } = userLogin;
-
+    useEffect(() => {
+        // Rolando para o topo da página quando o componente é montado
+        window.scrollTo(0, 0);
+    }, []);
     const handleLogout = () => {
         dispatch(logoutUser());
     };

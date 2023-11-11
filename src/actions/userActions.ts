@@ -6,7 +6,11 @@ import axios, { AxiosResponse } from 'axios';
 export interface ListaCompletaUsers {
   listaVotos: string[];
 }
-
+export interface ConfigInfo {
+  ver: string;
+  valendo: boolean;
+  unidade: string;
+}
 export interface UserData {
   id: number;
   matricula: number;

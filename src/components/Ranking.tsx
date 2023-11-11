@@ -37,7 +37,7 @@ const Ranking: React.FC = () => {
     const sortedData = mostVoted ? mostVoted.sort((a, b) => Number(b.votosRecebidos) - Number(a.votosRecebidos)) : [];
     return (
         <>
-            <div className='barra-top-top'>
+            <div className='barra-top-top' style={{display: 'none'}}>
                 <label htmlFor="showTop">Grupos</label>
                 <select id="showTop" value={showTop} onChange={handleShowTopChange}>
                     <option value={99}>Ranking</option>
