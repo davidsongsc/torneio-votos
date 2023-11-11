@@ -10,10 +10,11 @@ const Footer: React.FC = () => {
             <div className='link-info'>
                 <p>Versão: {firstConfig?.ver} &copy; </p>
             </div>
+            {/*
             <div className='link-ranking'>
                 <img src="https://dagesico.pythonanywhere.com/static/img/qrcode.png" alt="QR Code Ranking" />
             </div>
-
+            */}
 
         </footer>
     );
