@@ -72,7 +72,7 @@ textarea {
   position: fixed;
   background-color: #111111;
   color: rgb(191, 191, 191);
-  padding: 16px;
+  padding: 30px;
   list-style: none;
   display: flex;
   cursor: pointer;
@@ -80,9 +80,9 @@ textarea {
   bottom: 0;
   overflow: auto;
   margin-bottom: -6px;
-  align-items: flex-end;
   z-index: 999;
   border-top-left-radius: 25px;
+  
 }
 .navBar a {
   position: relative;
@@ -95,20 +95,20 @@ textarea {
   color: rgb(191, 191, 191);
   padding: 10px;
   list-style: none;
-  display: flex;
+  position: relative;
+  right: -20px;
   text-align: center;
-  flex-direction: column;
   cursor: pointer;
-  width: 20vh;
+  width: 53vh;
+  height: 79vh;
   overflow: auto;
-  align-items: stretch;
 }
 
 .navBar ul li {
   display: flex;
   justify-content: space-between;
   padding: 0px 5px;
-  height: 4vh;
+  height: 10vh;
   margin: 5px 0;
   align-items: center;
   background-color: black;
@@ -120,7 +120,7 @@ textarea {
   }
 
   50% {
-    transform: scale(1.5);
+    transform: scale(1.9);
   }
 
   100% {
@@ -131,6 +131,9 @@ textarea {
 .arrou-chamativo {
   transform-origin: center;
   animation: setinha 5s infinite;
+  position: absolute;
+  top: 15px;
+  left: 13px;
 }
 
 @keyframes cont_animada {
@@ -382,16 +385,17 @@ textarea {
 
 .tabela-objetivos-conteste thead,
 .tabela-objetivos-conteste tbody tr {
-  margin: 1px auto;
-  display: flex;
+  margin: 8px auto;
   max-width: 400px;
   table-layout: fixed;
-  flex-wrap: wrap;
+
 }
 
 .tabela-objetivos-conteste tbody {
   overflow: auto;
   max-width: 400px;
+  display: flex;
+  flex-direction: column;
 }
 
 .tabela-objetivos-conteste th,
@@ -421,7 +425,7 @@ textarea {
   transition: 0.7s;
   position: relative;
   z-index: 995;
-  min-width: 140px;
+  min-width: 83px;
   max-width: 650px;
 }
 
@@ -436,7 +440,7 @@ textarea {
   transition: 0.7s;
   position: relative;
   z-index: 995;
-  min-width: 400px;
+  min-width: 232px;
   max-width: 450px;
 }
 
@@ -633,7 +637,12 @@ textarea {
   display: table-cell;
   transition: 0.7s;
 }
-
+.ranking-index{
+  border-bottom: 4px solid black;
+}
+.ranking-index img{
+  width: 68px;
+}
 .confirm-voto {
   background-color: white;
   z-index: 999;

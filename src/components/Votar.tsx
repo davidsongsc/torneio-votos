@@ -6,9 +6,12 @@ import { RootState } from '../reducers';
 import { votar } from '../actions/votoActions';
 import { concretizarVotoAsync } from '../actions/userActions';
 import { AppDispatch } from '../store';
+import { useNavigate } from 'react-router-dom';
+
 
 const visual = { fontSize: '30px', fontFamily: 'Times New Roman', backgroundColor: 'rgb(32, 39, 68)', borderStyle: 'groove', padding: '6px', borderRadius: '33px' }
 const Votar: React.FC = () => {
+    const navigate = useNavigate();
     const [search, setSearch] = useState<string>('');
     const [showConfirmDialog, setShowConfirmDialog] = useState(false);
     const pessoas = useSelector((state: RootState) => state.userReducer.users);
@@ -50,7 +53,7 @@ const Votar: React.FC = () => {
 
 
     const handleVotar = () => {
-        
+
         if (voto !== null && usuarioVotos !== undefined && usuarioVotos > 0) {
             if (voto !== 0) {
                 setShowConfirmDialog(true);
@@ -58,7 +61,7 @@ const Votar: React.FC = () => {
             else { alert('Você precisa escolher alguém!') }
 
         }
-        else{
+        else {
             alert('Você não possui votos!')
         }
     };
@@ -69,6 +72,7 @@ const Votar: React.FC = () => {
             setShowConfirmDialog(false);
             dispatch(votar(0));
             alert('Voto realizado com sucesso!')
+            navigate('/ranking');
         }
     };
 
