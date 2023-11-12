@@ -99,7 +99,7 @@ textarea {
   right: -20px;
   text-align: center;
   cursor: pointer;
-  width: 53vh;
+  width: 35vh;
   height: 79vh;
   overflow: auto;
 }
@@ -388,7 +388,7 @@ textarea {
   margin: 0px auto;
   max-width: 400px;
   table-layout: fixed;
-
+align-items: flex-start;
 }
 
 .tabela-objetivos-conteste tbody {
