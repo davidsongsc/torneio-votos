@@ -8,12 +8,12 @@ import { concretizarVotoAsync } from '../actions/userActions';
 import { AppDispatch } from '../store';
 
 const visual = { fontSize: '30px', fontFamily: 'Times New Roman', backgroundColor: 'rgb(32, 39, 68)', borderStyle: 'groove', padding: '6px', borderRadius: '33px' }
-const visualb = { fontSize: '30px', fontFamily: 'Times New Roman', backgroundColor: 'rgb(32, 39, 68)', borderStyle: 'groove', padding: '6px', borderRadius: '33px' }
 const Votar: React.FC = () => {
     const [search, setSearch] = useState<string>('');
     const [showConfirmDialog, setShowConfirmDialog] = useState(false);
     const pessoas = useSelector((state: RootState) => state.userReducer.users);
     const usuarioLogado = useSelector((state: RootState) => state.userReducer.userInfo?.matricula);
+    const usuarioVotos = useSelector((state: RootState) => state.userReducer.userInfo?.votos);
     const userLogin = useSelector((state: RootState) => state.userReducer);
     const voto = useSelector((state: RootState) => state.votoReducer.voto);
     const dispatch = useDispatch<AppDispatch>();
@@ -50,11 +50,16 @@ const Votar: React.FC = () => {
 
 
     const handleVotar = () => {
-        if (voto !== null) {
+        
+        if (voto !== null && usuarioVotos !== undefined && usuarioVotos > 0) {
             if (voto !== 0) {
                 setShowConfirmDialog(true);
             }
             else { alert('Você precisa escolher alguém!') }
+
+        }
+        else{
+            alert('Você não possui votos!')
         }
     };
 
@@ -101,7 +106,7 @@ const Votar: React.FC = () => {
 
                 <div className='tela-painel-votos'>
                     {top3Pessoas.map((pessoa) => (
-                        <div key={pessoa.id} onClick={() => handleVotoChange(pessoa.id)}>
+                        <div key={pessoa.id} >
                             <label
                                 className={`radio-label ${pessoa.id === voto ? 'radio-label-selecionado' : 'radio-label-nao-selecionado'} ${pessoa.id === voto && showConfirmDialog ? 'radio-label-voto' : 'radio-label-voto-nao'}`}
                                 htmlFor={`radio-${pessoa.id}`}
@@ -120,6 +125,15 @@ const Votar: React.FC = () => {
                                     />
                                     <div className={`radio-custom ${pessoa.id === voto ? ' radio-checked' : ' radio-not-checked'}`} />
                                 </div>
+                                <div style={{ display: `${pessoa.id === voto ? 'block' : 'none'}` }}>
+                                    <button className='btn-voto' type="button" onClick={handleVotar} style={{ display: `${pessoa.id === voto ? 'radio-label-selecionado' : 'radio-label-nao-selecionado'}` }}>
+                                        Votar
+                                    </button>
+                                    <button className='btn-voto' type="button" onClick={() => handleVotoChange(pessoa.id)} style={{ display: `${pessoa.id === voto ? 'radio-label-selecionado' : 'radio-label-nao-selecionado'}`, backgroundColor: 'red' }}>
+                                        Anular
+                                    </button>
+                                </div>
+
                             </label>
                         </div>
                     ))}
@@ -132,17 +146,15 @@ const Votar: React.FC = () => {
                     <h2 style={{ padding: '13px 0' }}>
                         <strong style={visual}>
                             <strong className='qtd-votos'>
-                                  
+
                                 {userLogin.userInfo?.votos}
-                                  
+
                             </strong>
                             Votos
                         </strong>
 
                     </h2>
-                    <button className='btn-voto' type="button" onClick={handleVotar} style={{ display: `${!showConfirmDialog ? '' : 'none'}` }}>
-                        Votar
-                    </button>
+
                 </div>
 
             </form>

@@ -69,22 +69,70 @@ textarea {
 }
 
 .navBar {
+  position: fixed;
+  background-color: #111111;
+  color: rgb(191, 191, 191);
+  padding: 16px;
+  list-style: none;
+  display: flex;
+  cursor: pointer;
+  right: 0;
+  bottom: 0;
+  overflow: auto;
+  margin-bottom: -6px;
+  align-items: flex-end;
+  z-index: 999;
+  border-top-left-radius: 25px;
+}
+.navBar a {
+  position: relative;
+  font-size: large;
+  width: 100%;
+}
+
+.navBar ul {
   background-color: cadetblue;
   color: rgb(191, 191, 191);
   padding: 10px;
   list-style: none;
   display: flex;
+  text-align: center;
+  flex-direction: column;
   cursor: pointer;
-  width: 98.9%;
+  width: 20vh;
   overflow: auto;
-  height: 8vh;
-  margin-bottom: -6px;
-  align-items: flex-end;
+  align-items: stretch;
 }
-.navBar a {
-  position: relative;
-  top: 12px;
+
+.navBar ul li {
+  display: flex;
+  justify-content: space-between;
+  padding: 0px 5px;
+  height: 4vh;
+  margin: 5px 0;
+  align-items: center;
+  background-color: black;
 }
+
+@keyframes setinha {
+  0% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.5);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
+.arrou-chamativo {
+  transform-origin: center;
+  animation: setinha 5s infinite;
+}
+
 @keyframes cont_animada {
   0% {
     width: 260px;
@@ -256,6 +304,8 @@ textarea {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
+  position: relative;
+  z-index: 790;
 }
 .main-principal-inicio section,
 .main-principal-inicio aside {
@@ -420,7 +470,8 @@ textarea {
 .tela-painel-votos {
   display: flex;
   max-width: 900px;
-  max-height: 400px;
+  height: 65vh;
+  min-width: 400px;
   overflow-y: auto;
   flex-direction: row;
   flex-wrap: wrap;
@@ -434,9 +485,9 @@ textarea {
   color: black;
   box-shadow: 1px 1px;
   border-radius: 5px;
-  margin: 1px 3px;
+  margin: 1px 1px;
   padding: 10px;
-  width: 100px;
+  width: 86px;
   height: 139px;
 }
 
@@ -460,17 +511,16 @@ textarea {
   text-align: center;
 }
 .input-text-pesquisa {
-  margin: 10px auto;
-  padding: 13px;
-  width: -webkit-fill-available;
+  margin: 1px auto;
+  padding: 12px;
+  width: 64%;
+  text-indent: 32px;
   border-radius: 5px;
 }
 /* Estilize o rótulo dos radio buttons */
 .radio-label {
   display: block;
-  margin-bottom: 10px;
   position: relative;
-  cursor: pointer;
 }
 .radio-label-selecionado {
   background-color: white;
@@ -484,8 +534,9 @@ textarea {
   right: 0;
   bottom: 0;
   top: 0;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
+  flex-direction: column;
 }
 .radio-label-nao-selecionado {
   margin: 5px 0px;
@@ -530,8 +581,8 @@ textarea {
 .btn-voto {
   position: relative;
   font-size: x-large;
-  height: 67px;
-  width: 221px;
+  height: 41px;
+  width: 121px;
   top: 5px;
   color: rgb(234, 234, 234);
   text-decoration: none;
@@ -555,7 +606,7 @@ textarea {
   background-color: rgb(32, 39, 68);
   border-top-style: groove;
   border-bottom-style: groove;
-  border-right-style:groove ;
+  border-right-style: groove;
   padding: 6px;
   border-radius: 33px;
   position: relative;
@@ -587,7 +638,7 @@ textarea {
   background-color: white;
   z-index: 999;
   position: absolute;
-  top: 7vh;
+  top: 0;
   left: 0;
   bottom: 0;
   /* border-radius: 15px; */
@@ -604,6 +655,7 @@ textarea {
   flex-wrap: wrap;
   align-items: flex-end;
   justify-content: center;
+  line-height: 27px;
 }
 .confirm-voto-content div:first {
   width: 60%;

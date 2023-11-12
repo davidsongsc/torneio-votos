@@ -1,75 +1,57 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { RootState } from '../reducers'; // Substitua pelo caminho correto
+import { RootState } from '../reducers';
 import { useSelector, useDispatch } from 'react-redux';
 import { AppDispatch } from '../store';
 import { logoutUser } from '../actions/userActions';
+import { faSignInAlt, faSignOutAlt, faUser, faPoll, faTrophy, faBars, faArrowLeft, faArrowRight } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faFileExcel } from '@fortawesome/free-solid-svg-icons';
 
-const NavUl = {
-    backgroundColor: 'cadetblue',
-    color: '#bfbfbf',
-    padding: '10px',
-    listStyle: 'none',
-    display: 'flex',
-    cursor: 'pointer',
-    width: '99%',
-    overflow: 'auto',
-    height: '5vh',
-    alignItems: 'center',
-};
-
-const NavUlLi = {
-    padding: '0 5px',
-    margin: '2px auto'
+interface NavItem {
+    icon: any; // O tipo específico do ícone depende da biblioteca que você está usando
+    to: string;
+    text: string;
+    visible: boolean;
 }
 
-const NavLink = {
-    color: '#eaeaea',
-    textDecoration: 'none',
-    padding: '10px',
-    backgroundColor: '#202744',
-    borderRadius: '8px',
-    textShadow: '1px 1px 0px black',
-    boxShadow: '1px 1px 0px black',
-    borderStyle: 'groove',
-
-};
 const Navbar: React.FC = () => {
     const userLogin = useSelector((state: RootState) => state.userReducer);
     const { isLoggedIn } = userLogin;
-    const dispatch: AppDispatch = useDispatch(); // Use o tipo AppDispatch aqui
+    const dispatch: AppDispatch = useDispatch();
+    const [visivel, setVisivel] = useState(false);
 
     const handleLogout = () => {
         dispatch(logoutUser());
     };
 
-    return (
-        <nav className='navBar'>
-            <ul style={NavUl}>
-                {isLoggedIn ? <li style={NavUlLi}>
-                    <Link style={NavLink} to="/votar">Votação</Link>
-                </li> : ''}
-                {isLoggedIn ? <li style={NavUlLi}>
-                    <Link style={NavLink} to="/contest">Contest</Link>
-                </li> : ''}
+    const handleVisivelNav = () => {
+        setVisivel(!visivel);
+    };
 
-                <li style={NavUlLi}>
-                    <Link style={NavLink} to="/ranking">Ranking</Link>
-                </li>
-                {isLoggedIn ? <li style={NavUlLi}>
-                    <Link style={NavLink} to="/meuperfil">Perfil</Link>
-                </li> : ''}
-                {isLoggedIn ?
-                    <li style={NavUlLi}>
-                        <Link style={NavLink} to="/outros">Menu</Link>
+
+    const navItems: NavItem[] = [
+        { icon: faPoll, to: '/votar', text: 'Urna Eletrônica', visible: isLoggedIn },
+        { icon: faFileExcel, to: '/contest', text: 'Contest', visible: isLoggedIn },
+        { icon: faTrophy, to: '/ranking', text: 'Ranking', visible: true },
+        { icon: faUser, to: '/meuperfil', text: 'Perfil', visible: isLoggedIn },
+        { icon: faBars, to: '/outros', text: 'Menu', visible: isLoggedIn },
+        { icon: faSignOutAlt, to: '', text: 'Sair', visible: isLoggedIn },
+        { icon: faSignInAlt, to: '/login', text: 'Login', visible: !isLoggedIn },
+    ];
+
+    return (
+        <nav className='navBar' >
+            {visivel ? <h1 className='arrou-chamativo' onClick={handleVisivelNav}><FontAwesomeIcon icon={faArrowRight} style={{ fontSize: '24px' }} /></h1> : <h1 className='arrou-chamativo' onClick={handleVisivelNav}><FontAwesomeIcon icon={faArrowLeft} style={{ fontSize: '24px' }} /></h1>}
+            <ul style={{ display: `${visivel ? 'block' : 'none'}` }} className="nav-list">
+                {navItems.map((item) => item.visible && (
+                    <li key={item.to} onClick={item.to === '' ? handleLogout : (visivel ? handleVisivelNav : undefined)}>
+                        <FontAwesomeIcon icon={item.icon} style={{ fontSize: '30px' }} />
+                        <Link to={item.to} className={item.visible ? 'nav-item-visible' : 'nav-item-hidden'}>
+                            {item.text}
+                        </Link>
                     </li>
-                    : ''}
-                {isLoggedIn ? <li onClick={handleLogout} style={NavUlLi} >
-                    <Link style={NavLink} to="">Sair</Link>
-                </li> : ''}
-                {!isLoggedIn ? <li onClick={handleLogout} style={NavUlLi} >
-                    <Link style={NavLink} to="/login">Login</Link>
-                </li> : ''}
+                ))}
             </ul>
         </nav>
     );

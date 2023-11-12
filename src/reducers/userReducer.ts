@@ -77,14 +77,27 @@ const userReducer = (
             return state;
 
         case CONCRETIZAR_VOTO_SUCESSO:
-            console.log('Votou em ' + action.payload);
+            const updatedUserInfo = state.userInfo
+                ? {
+                    ...state.userInfo,
+                    votos: state.userInfo.votos - 1,
+                }
+                : null;
+
+            // Atualiza o localStorage com as novas informações
+            if (updatedUserInfo) {
+                localStorage.setItem('userInfo', JSON.stringify(updatedUserInfo));
+            }
+
             return {
                 ...state,
                 votoConcretizado: true,
                 votoConfirmadoId: action.payload,
                 carregando: false,
                 erro: null,
+                userInfo: updatedUserInfo,
             };
+
 
         case CONCRETIZAR_VOTO_FALHA:
             return {
