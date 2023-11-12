@@ -385,7 +385,7 @@ textarea {
 
 .tabela-objetivos-conteste thead,
 .tabela-objetivos-conteste tbody tr {
-  margin: 8px auto;
+  margin: 0px auto;
   max-width: 400px;
   table-layout: fixed;
 
