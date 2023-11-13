@@ -30,6 +30,10 @@ const Votar: React.FC = () => {
         setSearch(e.target.value);
     };
 
+    const handlePesquisa = (valor: string) => {
+        setSearch('')
+        setSearch(valor)
+    }
     const handleVotoChange = (clickedVoto: number) => {
         if (!isClickLocked) {
             setClickLock(true);
@@ -96,18 +100,23 @@ const Votar: React.FC = () => {
     }, [dispatch]);
 
     return (
-        <div>
-
+        <div className='div-buttons'>
+            <div className='equipes'>
+                <button onClick={() => handlePesquisa('buss')}>Buss</button>
+                <button onClick={() => handlePesquisa('apoio')}>Apoio</button>
+                <button onClick={() => handlePesquisa('hostess')}>hostess</button>
+                <button onClick={() => handlePesquisa('dish')}>Dish</button>
+                <button onClick={() => handlePesquisa('clean')}>Clean</button>
+                <button onClick={() => handlePesquisa('prep')}>Prep</button>
+                <button onClick={() => handlePesquisa('linha fria')}>l. fria</button>
+                <button onClick={() => handlePesquisa('linha quente')}>l. quente</button>
+                <button onClick={() => handlePesquisa('waiter')}>waiter</button>
+                <button onClick={() => handlePesquisa('bartender')}>bar</button>
+                <button onClick={() => handlePesquisa('gerencia')}>gerencia</button>
+                <button onClick={() => handlePesquisa('adm')}>adm</button>
+                <button onClick={() => handlePesquisa('manuten')}>manutenção</button>
+            </div>
             <form className='form-votacao-indica' >
-                <input
-                    className='input-text-pesquisa'
-                    type="text"
-                    placeholder="Pesquisar candidato"
-                    value={search}
-                    onChange={handleSearchChange}
-                    style={{ display: `${!showConfirmDialog ? 'block' : 'none'}` }}
-                />
-
                 <div className='tela-painel-votos'>
                     {top3Pessoas.map((pessoa) => (
                         <div key={pessoa.id} >

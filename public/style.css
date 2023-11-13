@@ -70,26 +70,26 @@ textarea {
 
 @keyframes navbox {
   0% {
-    box-shadow: 5px 5px 10px brown;
+    box-shadow: 0px 0px 15px brown;
   }
 
   25% {
-    box-shadow: -5px 5px 10px green;
+    box-shadow: -2px 2px 13px #bebebe;
   }
   50% {
-    box-shadow: -5px -5px 10px navy;
+    box-shadow: -1px -1px 10px #414141;
   }
   75% {
-    box-shadow: 5px -5px 10px gold;
+    box-shadow: 2px -2px 13px #2f4f4f;
   }
   100% {
-    box-shadow: 5px 5px 10px brown;
+    box-shadow: 0px 0px 15px #900000;
   }
 }
 .navBar {
   position: fixed;
   background-color: #111111;
-  box-shadow: 5px 5px 1px brown;
+  box-shadow: 0px 0px 15px brown;
   color: rgb(191, 191, 191);
   padding: 30px;
   list-style: none;
@@ -102,7 +102,7 @@ textarea {
   z-index: 999;
   border-radius: 25px;
   transform: scale(0.8);
-  animation: navbox 10s infinite;
+  animation: navbox 5s infinite;
   animation-delay: 2s;
 }
 
@@ -494,7 +494,7 @@ textarea {
 .tela-painel-votos {
   display: flex;
   max-width: 900px;
-  height: 65vh;
+  height: 55vh;
   min-width: 400px;
   overflow-y: auto;
   flex-direction: row;
@@ -530,6 +530,16 @@ textarea {
 }
 .votante-lista-seletor p {
   font-size: 10px;
+}
+.div-buttons button{
+  width: 80px;
+  height: 40px;
+  border-radius: 0;
+  font-size: 11px;
+}
+.div-buttons .equipes{
+  margin: 0 auto;
+  transform: scale(.9);
 }
 .form-votacao-indica {
   text-align: center;
@@ -902,7 +912,7 @@ textarea {
   top: -138px;
   left: 256px;
   position: relative;
-  width: 48px;
+  width: 60px;
   height: 112px;
   margin-bottom: -44px;
 }
@@ -939,7 +949,7 @@ textarea {
   justify-content: space-around;
 }
 .data-aniversario select {
-  padding: 10px 5px;
+  padding: 10px 55px;
 
   background: black;
   color: white;
