@@ -178,16 +178,16 @@ textarea {
   position: absolute;
   border-radius: 5px;
   width: 35px;
-  height: 9vh;
+  height: 4vh;
   bottom: 1px;
   right: 3px;
 }
 @keyframes pinoquio {
   0% {
-    height: 9vh;
+    height: 4vh;
   }
   50% {
-    height: 20vh;
+    height: 15vh;
   }
 
   100% {
