@@ -11,7 +11,7 @@ const initialState: UserState = {
       ver: '1.04b',
       valendo: false,
       unidade: 'bz97',
-      prazoManutencao: '2023-11-14T17:00:00',
+      prazoManutencao: '2023-11-14T10:00:00',
     },
   ],
 };
