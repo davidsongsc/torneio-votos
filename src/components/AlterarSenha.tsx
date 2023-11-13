@@ -59,7 +59,7 @@ const AlterarSenha: React.FC = () => {
         window.scrollTo(0, 0);
     }, []);
     const dispatch: ThunkDispatch<RootState, any, AnyAction> = useDispatch();
-    
+
     const generateDays = (month: string) => {
         const daysInMonth = new Date(2023, parseInt(month, 10), 0).getDate();
         const daysArray = Array.from({ length: daysInMonth }, (_, index) =>
@@ -119,7 +119,7 @@ const AlterarSenha: React.FC = () => {
                     setLoginError('');
                     handlePasswordReset();
                     alert('Codigo alterado com sucesso!')
-                 
+
                 })
                 .catch((error) => {
                     // Define a mensagem de erro
@@ -236,27 +236,23 @@ const AlterarSenha: React.FC = () => {
 
                     <button className='limpar-senha' onClick={handlePasswordReset}><GiBroom size={20} color="white" /></button>
                     {loginError && <div className="alert alert-danger">{loginError}</div>}
+                </div>
+                <div className="virtual-keyboard" >
+                    {characters.map((char, index) => (
+                        <button
+                            key={index}
+                            onClick={() => handleCharacterClick(index.toString())}
+                            disabled={senha.length >= 6 || !isLoggedIn ? false : true}
+                        >
 
-                    <br />
-                    <div className="virtual-keyboard" >
-                        {characters.map((char, index) => (
-                            <button
-                                key={index}
-                                onClick={() => handleCharacterClick(index.toString())}
-                                disabled={senha.length >= 6 || !isLoggedIn ? false : true}
-                            >
-
-                                {icons[char] && <img src={icons[char].iconUrl} alt={`Icon ${char}`} />}
-                            </button>
-                        ))}
-                    </div>
-
+                            {icons[char] && <img src={icons[char].iconUrl} alt={`Icon ${char}`} />}
+                        </button>
+                    ))}
                 </div>
                 <button onClick={handleLogin} disabled={senha.length !== 6 || !isLoggedIn ? false : true}>
                     <FaSignInAlt size={48} color="green" />
                     <p>Login</p>
                 </button>
-
 
             </div>
         </>

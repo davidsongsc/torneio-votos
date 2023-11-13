@@ -36,13 +36,13 @@ const Perfil: React.FC = () => {
                 <div>
                     <p> {employee?.alcunha}</p>
                     <br />
-                    <p>Matricula: {employee?.id}</p>
+
                     <br />
 
-
+                    <Link to="/ranking"><button>Voltar</button></Link>
                     <br />
                 </div>
-                <Link to="/ranking"><button>Voltar</button></Link>
+
             </div>
         </div>
     );
