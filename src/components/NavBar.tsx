@@ -17,7 +17,7 @@ interface NavItem {
 
 const Navbar: React.FC = () => {
     const userLogin = useSelector((state: RootState) => state.userReducer);
-    const { isLoggedIn } = userLogin;
+    const { isLoggedIn, userInfo } = userLogin;
     const dispatch: AppDispatch = useDispatch();
     const [visivel, setVisivel] = useState(false);
 
@@ -31,29 +31,53 @@ const Navbar: React.FC = () => {
 
 
     const navItems: NavItem[] = [
-        { icon: faPoll, to: '/votar', text: 'Urna Eletrônica', visible: isLoggedIn },
+        { icon: faUser, to: '/meuperfil', text: `${userInfo?.nome}`, visible: isLoggedIn },
+        { icon: faSignOutAlt, to: '', text: 'Sair', visible: isLoggedIn },
         { icon: faFileExcel, to: '/contest', text: 'Contest', visible: isLoggedIn },
         { icon: faTrophy, to: '/ranking', text: 'Ranking', visible: true },
-        { icon: faUser, to: '/meuperfil', text: 'Perfil', visible: isLoggedIn },
         { icon: faBars, to: '/outros', text: 'Menu', visible: isLoggedIn },
-        { icon: faSignOutAlt, to: '', text: 'Sair', visible: isLoggedIn },
         { icon: faSignInAlt, to: '/login', text: 'Login', visible: !isLoggedIn },
+
+        { icon: faPoll, to: '/votar', text: 'Urna Eletrônica', visible: isLoggedIn },
     ];
 
     return (
-        <nav className='navBar' >
-            {visivel ? <h1 className='arrou-chamativo' onClick={handleVisivelNav}><FontAwesomeIcon icon={faArrowRight} style={{ fontSize: '24px' }} /></h1> : <h1 className='arrou-chamativo' onClick={handleVisivelNav}><FontAwesomeIcon icon={faArrowLeft} style={{ fontSize: '24px' }} /></h1>}
-            <ul style={{ display: `${visivel ? 'block' : 'none'}` }} className="nav-list">
-                {navItems.map((item) => item.visible && (
-                    <li key={item.to} onClick={item.to === '' ? handleLogout : (visivel ? handleVisivelNav : undefined)}>
-                        <FontAwesomeIcon icon={item.icon} style={{ fontSize: '30px' }} />
-                        <Link to={item.to} className={item.visible ? 'nav-item-visible' : 'nav-item-hidden'}>
-                            {item.text}
-                        </Link>
-                    </li>
-                ))}
-            </ul>
-        </nav>
+        <>
+
+            <nav className='navBar' >
+                {visivel ? <h1 className='arrou-chamativo' onClick={handleVisivelNav}><FontAwesomeIcon icon={faArrowRight} style={{ fontSize: '24px' }} /></h1> : <h1 className='arrou-chamativo' onClick={handleVisivelNav}><FontAwesomeIcon icon={faArrowLeft} style={{ fontSize: '24px' }} /></h1>}
+                <ul style={{ display: `${visivel ? 'block' : 'none'}` }} className="nav-list">
+                    {navItems.slice(0, 2).map((item) => item.visible && (
+                        <li key={item.to} onClick={item.to === '' ? handleLogout : (visivel ? handleVisivelNav : undefined)}>
+                            <FontAwesomeIcon icon={item.icon} style={{ fontSize: '30px' }} />
+                            <Link to={item.to} className={item.visible ? 'nav-item-visible' : 'nav-item-hidden'}>
+                                {item.text}
+                            </Link>
+                        </li>
+                    ))}
+                    <li></li>
+                    {/* Segunda parte, do índice 3 em diante */}
+                    {navItems.slice(2, 3).map((item) => item.visible && (
+                        <li key={item.to} >
+                            <FontAwesomeIcon icon={item.icon} style={{ fontSize: '30px' }} />
+                            <Link to={item.to} className={item.visible ? 'nav-item-visible' : 'nav-item-hidden'}>
+                                {item.text}
+                            </Link>
+                        </li>
+                    ))}
+                    <li></li>
+                    {navItems.slice(3, navItems.length).map((item) => item.visible && (
+                        <li key={item.to} >
+                            <FontAwesomeIcon icon={item.icon} style={{ fontSize: '30px' }} />
+                            <Link to={item.to} className={item.visible ? 'nav-item-visible' : 'nav-item-hidden'}>
+                                {item.text}
+                            </Link>
+                        </li>
+                    ))}
+
+                </ul>
+            </nav>
+        </>
     );
 };
 
