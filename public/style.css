@@ -91,7 +91,7 @@ textarea {
   background-color: #111111;
   box-shadow: 0px 0px 15px brown;
   color: rgb(191, 191, 191);
-  padding: 30px;
+  padding: 33px;
   list-style: none;
   display: flex;
   cursor: pointer;
@@ -100,12 +100,22 @@ textarea {
   overflow: auto;
   margin-bottom: -6px;
   z-index: 999;
-  border-radius: 25px;
-  transform: scale(0.8);
+  border-radius: 50%;
   animation: navbox 5s infinite;
   animation-delay: 2s;
+  justify-content: flex-end;
+  transition: 0.7s;
+  transition-duration: .3s;
 }
-
+.navBarAberta {
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 0;
+  border-radius: 0;
+  transition: 0.7s;
+  transition-duration: 0.2s;
+}
 .navBar a {
   position: relative;
   font-size: large;
@@ -135,7 +145,9 @@ textarea {
   align-items: center;
   background-color: black;
 }
-
+.navBar div {
+  padding: 11px;
+}
 @keyframes setinha {
   0% {
     transform: scale(1);
@@ -153,11 +165,21 @@ textarea {
 .arrou-chamativo {
   transform-origin: center;
   animation: setinha 5s infinite;
+  background-color: brown;
+  padding: 1px;
   position: absolute;
-  top: 17px;
-  left: 20px;
+  border-radius: 50%;
+  width: 35px;
+  height: 35px;
+  bottom: 27px;
+  right: 25px;
 }
-
+.arrou-bg {
+  bottom: 38px;
+  right: 26px;
+  width: 42px;
+  height: 42px;
+}
 @keyframes cont_animada {
   0% {
     width: 260px;
@@ -429,7 +451,6 @@ textarea {
 .tabela-objetivos {
   border-collapse: collapse; /* Remove espaçamento entre as células */
   margin: 0 auto;
-  
 }
 .tabela-objetivos-conteste th {
   background-color: aliceblue;
@@ -531,15 +552,15 @@ textarea {
 .votante-lista-seletor p {
   font-size: 10px;
 }
-.div-buttons button{
+.div-buttons button {
   width: 80px;
   height: 40px;
   border-radius: 0;
   font-size: 11px;
 }
-.div-buttons .equipes{
+.div-buttons .equipes {
   margin: 0 auto;
-  transform: scale(.9);
+  transform: scale(0.9);
 }
 .form-votacao-indica {
   text-align: center;

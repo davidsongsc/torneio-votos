@@ -112,6 +112,7 @@ const Votar: React.FC = () => {
                 <button onClick={() => handlePesquisa('linha quente')}>l. quente</button>
                 <button onClick={() => handlePesquisa('waiter')}>waiter</button>
                 <button onClick={() => handlePesquisa('bartender')}>bar</button>
+                <button onClick={() => handlePesquisa('treinador')}>treinador</button>
                 <button onClick={() => handlePesquisa('gerencia')}>gerencia</button>
                 <button onClick={() => handlePesquisa('adm')}>adm</button>
                 <button onClick={() => handlePesquisa('manuten')}>manutenção</button>

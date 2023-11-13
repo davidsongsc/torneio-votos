@@ -6,7 +6,7 @@ import { AnyAction } from 'redux';
 import { alteraLoginUser, loginUser } from '../actions/userActions';
 import { RootState } from '../reducers';
 import { GiBroom } from 'react-icons/gi';
-import { FaUser, FaLock, FaSave } from 'react-icons/fa';
+import { FaUser, FaLock } from 'react-icons/fa';
 import { fetchUsers, fetchMostVoted } from '../actions/userActions';
 import { useSelector } from 'react-redux';
 const icons = [
@@ -16,7 +16,6 @@ const icons = [
     { id: 4, iconUrl: 'https://images.vexels.com/media/users/3/160071/isolated/preview/8a4c9b162a4495af9185c91a57b6334f-cachorro-fofo-com-cauda-de-cachorro-e-lingua-achatada.png' },
     { id: 5, iconUrl: 'https://i.pinimg.com/originals/63/c2/85/63c285141e9a8f5cbc036b577f56a7dd.png' },
     { id: 6, iconUrl: 'https://static.wixstatic.com/media/6aef1d_b6dd7a4c993c46b89f5ecf23769bbbe5~mv2_d_1264_1332_s_2.png/v1/fill/w_949,h_1000,al_c,q_90,usm_0.66_1.00_0.01/6aef1d_b6dd7a4c993c46b89f5ecf23769bbbe5~mv2_d_1264_1332_s_2.png' },
-    // Adicione mais ícones conforme necessário
 ];
 
 interface ComboBoxProps {
@@ -52,6 +51,7 @@ const AlterarSenha: React.FC = () => {
     const [matricula, setMatricula] = useState('');
     const [senha, setPassword] = useState('');
     const [liberadoCodigo, setliberadoCodigo] = useState<boolean>(true);
+    
     const [loginError, setLoginError] = useState('');
     const characters = [5, 3, 1, 2, 0, 4];
     const userLogin = useSelector((state: RootState) => state.userReducer);
@@ -93,25 +93,6 @@ const AlterarSenha: React.FC = () => {
         setPassword('');
         setSelectedMonth('01');
         setSelectedDay('01');
-    };
-
-    const handleAlterLogin = () => {
-        if (senha.length === 6) {
-            const matricula = String(userLogin.userInfo?.matricula || '');
-            dispatch(alteraLoginUser({ matricula, senha, selectedDay, selectedMonth }))
-                .then(() => {
-                    // Limpa o erro no caso de sucesso
-                    setLoginError('');
-                    handlePasswordReset();
-                    alert('Codigo alterado com sucesso!')
-                    navigate('/ranking');
-                })
-                .catch((error) => {
-                    // Define a mensagem de erro
-                    handlePasswordReset();
-                    setLoginError('Erro no Login, Verifique seu Codigo de Acesso.');
-                });
-        }
     };
 
     useEffect(() => {
@@ -238,12 +219,6 @@ const AlterarSenha: React.FC = () => {
                         ))}
                     </div>
                 </div>
-                {/* 
-                <button onClick={handleAlterLogin} disabled={senha.length !== 6 || isLoggedIn ? false : true}>
-                    <FaSave size={48} color="black" />
-                    <p>Salvar</p>
-                </button>
-                */}
             </div>
 
             <div className="login-container" style={{ display: `${isLoggedIn ? 'none' : 'block'}` }}>

@@ -37,8 +37,6 @@ const Navbar: React.FC = () => {
         { icon: faBars, to: '/outros', text: 'Menu', visible: isLoggedIn },
         { icon: faFileExcel, to: '/contest', text: 'Contest', visible: isLoggedIn },
         { icon: faTrophy, to: '/ranking', text: 'Ranking', visible: true },
-        
-       
         { icon: faSignInAlt, to: '/login', text: 'Login', visible: !isLoggedIn },
         { icon: faPoll, to: '/votar', text: `Urna Digital | ${userInfo?.votos}`, visible: isLoggedIn },
     ];
@@ -46,8 +44,8 @@ const Navbar: React.FC = () => {
     return (
         <>
 
-            <nav className='navBar' >
-                {visivel ? <h1 className='arrou-chamativo' onClick={handleVisivelNav}><FontAwesomeIcon icon={faArrowRight} style={{ fontSize: '24px' }} /></h1> : <h1 className='arrou-chamativo' onClick={handleVisivelNav}><FontAwesomeIcon icon={faArrowLeft} style={{ fontSize: '24px' }} /></h1>}
+            <nav className={`navBar ${visivel ? 'navBarAberta' : ''}`} >
+
                 <ul style={{ display: `${visivel ? 'block' : 'none'}` }} className="nav-list">
                     {navItems.slice(0, navItems.length).map((item) => item.visible && (
                         <li key={item.to} onClick={item.to === '' ? handleLogout : (visivel ? handleVisivelNav : undefined)}>
@@ -57,9 +55,17 @@ const Navbar: React.FC = () => {
                             </Link>
                         </li>
                     ))}
-              
-                    
+
+
                 </ul>
+                {visivel ?
+                    <div>
+                        <h1 className='arrou-chamativo arrou-bg' onClick={handleVisivelNav}><FontAwesomeIcon icon={faArrowRight} style={{ fontSize: '40px' }} /></h1>
+                    </div>
+                    :
+                    <div>
+                        <h1 className='arrou-chamativo' onClick={handleVisivelNav}><FontAwesomeIcon icon={faArrowLeft} style={{ fontSize: '36px' }} /></h1>
+                    </div>}
             </nav>
         </>
     );

@@ -8,14 +8,11 @@ import { fetchUsers, fetchMostVoted } from '../actions/userActions';
 const Ranking: React.FC = () => {
   const dispatch = useDispatch<AppDispatch>();
   const mostVoted = useSelector((state: RootState) => state.userReducer.mostVoted);
-  const [showTop, setShowTop] = useState<number>(80);
   const [lastClickedUserId, setLastClickedUserId] = useState<number | null>(null);
   const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
-
   const handleUserClick = (userId: number) => setLastClickedUserId(userId);
   const handleLinkClick = (userId: number) => navigate(`/perfil/${userId}`);
-  const handleShowTopChange = (event: React.ChangeEvent<HTMLSelectElement>) => setShowTop(Number(event.target.value));
 
   useEffect(() => {
     setLoading(true);
@@ -55,16 +52,6 @@ const Ranking: React.FC = () => {
 
   return (
     <>
-      <div className='barra-top-top' style={{ display: 'none' }}>
-        <label htmlFor="showTop">Grupos</label>
-        <select id="showTop" value={showTop} onChange={handleShowTopChange}>
-          <option value={99}>Ranking</option>
-          <option value={10}>TOP 10 Dourado</option>
-          <option value={20}>TOP 20 Azul</option>
-          <option value={30}>TOP 30 Verde Amarelado</option>
-          <option value={40}>TOP 40 Magenta</option>
-        </select>
-      </div>
       <table className='tabela-objetivos-conteste'>
         <thead>
           <tr>
