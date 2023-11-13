@@ -39,7 +39,7 @@ function App() {
 
   if (loading) {
     // Exibir seu componente de loading aqui
-    return <TelaLoading  />;
+    return <Countdown deadline={deadline}  />;
   }
 
   return (

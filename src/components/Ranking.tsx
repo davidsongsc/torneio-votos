@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { AppDispatch } from '../store';
 import { fetchUsers, fetchMostVoted } from '../actions/userActions';
 import TelaLoading from './loading';
+import Cubo from './Cubo';
 
 const Ranking: React.FC = () => {
   const dispatch = useDispatch<AppDispatch>();
@@ -53,7 +54,7 @@ const Ranking: React.FC = () => {
 
   return (
     <>{loading ?
-      <TelaLoading />
+      <Cubo />
       :
       <table className='tabela-objetivos-conteste'>
         <thead>

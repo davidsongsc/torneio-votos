@@ -68,6 +68,10 @@ textarea {
   cursor: pointer;
 }
 
+canvas {
+  width: 400px;
+  height: 80vh;
+}
 @keyframes navbox {
   0% {
     box-shadow: 0px 0px 15px brown;

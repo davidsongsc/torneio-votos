@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Footer from './Footer';
+import Cubo from './Cubo';
 
 interface CountdownProps {
     deadline: number;
@@ -27,24 +28,7 @@ function Countdown({ deadline }: CountdownProps) {
 
     return (
         <>
-            <div style={{ height: '99vh', display: 'flex', alignItems: 'center', justifyContent: 'center', flexDirection: 'column', position: 'absolute', zIndex: '100', width: '100%' }}>
-
-                <div className='contagem-c1'>
-                    <div className='contagem-c2'>
-                        <div>
-                            <div className='contagem' />
-                            <div className='contagem-r' />
-                        </div>
-                        <div>
-                            <div className='contagem-x' />
-                            <div className='contagem-n' />
-                        </div>
-
-                    </div>
-                </div>
-
-            </div>
-            <h1 style={{margin: '15px auto', textAlign: 'center'}}> {timeRemaining.hours > 0 && (
+            <h1 style={{ margin: '15px auto', textAlign: 'center' }}> {timeRemaining.hours > 0 && (
                 <div>
                     {timeRemaining.hours}h {timeRemaining.minutes}m {timeRemaining.seconds}s
                 </div>
@@ -57,6 +41,12 @@ function Countdown({ deadline }: CountdownProps) {
                 {timeRemaining.hours === 0 && timeRemaining.minutes === 0 && (
                     <div>{timeRemaining.seconds}s</div>
                 )}</h1>
+
+
+            <Cubo />
+
+
+
             <Footer />
         </>
     );
