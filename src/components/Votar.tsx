@@ -116,6 +116,7 @@ const Votar: React.FC = () => {
                 <button onClick={() => handlePesquisa('gerencia')}>gerencia</button>
                 <button onClick={() => handlePesquisa('adm')}>adm</button>
                 <button onClick={() => handlePesquisa('manuten')}>manutenção</button>
+                <button onClick={() => handlePesquisa('')}>todos</button>
             </div>
             <form className='form-votacao-indica' >
                 <div className='tela-painel-votos'>

@@ -14,7 +14,6 @@ import AlterarSenha from './components/AlterarSenha';
 import NavPrep from './components/NavTeste';
 import Countdown from './components/Contagem';
 import PageRegulamento from './components/PageRegulamento';
-import TelaLoading from './components/loading';
 
 function App() {
   const modoOperacional = useSelector((state: RootState) => state.configReducer.config?.[0] || null);
