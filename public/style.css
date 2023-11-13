@@ -100,7 +100,7 @@ canvas {
   display: flex;
   cursor: pointer;
   right: 30px;
-  bottom: 18px;
+  bottom: 30px;
   overflow: auto;
   margin-bottom: -6px;
   z-index: 999;
