@@ -105,6 +105,7 @@ textarea {
   justify-content: flex-start;
   transition: 0.7s;
   transition-duration: 0.3s;
+  transition-delay: .1s;
 }
 .navBarAberta {
   left: -25px;
@@ -114,6 +115,7 @@ textarea {
   border-radius: 0;
   transition: 0.7s;
   transition-duration: 0.2s;
+  
 }
 .navBar span {
   margin: 0 5px;
@@ -145,8 +147,7 @@ textarea {
   overflow: auto;
   transition: 0.7s;
 }
-.navBar ul:active,
-.navBar ul:hover {
+.navBar ul:active {
   transition-delay: 0.7s;
 
   color: brown;
