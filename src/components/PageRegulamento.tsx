@@ -2,7 +2,7 @@ import React from 'react';
 
 const PageRegulamento: React.FC = () => {
     return (
-        <div className="regras-container" style={{  width: '100%' }}>
+        <div className="regras-container" >
         <h2>Usuario Autenticado</h2>
         <br />
         <div>

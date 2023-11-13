@@ -14,17 +14,33 @@ import AlterarSenha from './components/AlterarSenha';
 import NavPrep from './components/NavTeste';
 import Countdown from './components/Contagem';
 import PageRegulamento from './components/PageRegulamento';
+import TelaLoading from './components/loading';
 
 function App() {
   const modoOperacional = useSelector((state: RootState) => state.configReducer.config?.[0] || null);
   const deadline = new Date(modoOperacional.prazoManutencao).getTime();
+  const [loading, setLoading] = useState(true);
   const [showContent, setShowContent] = useState(false);
-  
+
   useEffect(() => {
     const currentTime = new Date().getTime();
-    setShowContent(currentTime >= deadline);
+    const timeRemaining = deadline - currentTime;
+
+    if (timeRemaining > 0) {
+      setTimeout(() => {
+        setLoading(false);
+        setShowContent(true);
+      }, timeRemaining);
+    } else {
+      setLoading(false);
+      setShowContent(true);
+    }
   }, [deadline]);
 
+  if (loading) {
+    // Exibir seu componente de loading aqui
+    return <TelaLoading  />;
+  }
 
   return (
     <Router>
@@ -33,7 +49,7 @@ function App() {
       {!showContent && <Countdown deadline={deadline} />}
 
       <Routes>
-      {showContent && <Route path="/" element={<PageRanking />} />}
+        {showContent && <Route path="/" element={<PageRanking />} />}
         {showContent && <Route path="/contest" element={<Home />} />}
         {showContent && <Route path="/votar" element={<MainVoto />} />}
         {showContent && <Route path="/ranking" element={<PageRanking />} />}

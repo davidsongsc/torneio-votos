@@ -74,13 +74,13 @@ textarea {
   }
 
   25% {
-    box-shadow: -8px 8px 13px #bebebe;
+    box-shadow: -1px 1px 13px #bebebe;
   }
   50% {
-    box-shadow: -5px -5px 10px #414141;
+    box-shadow: -1px -1px 10px #414141;
   }
   75% {
-    box-shadow: 8px -8px 13px #2f4f4f;
+    box-shadow: 1px -1px 13px #2f4f4f;
   }
   100% {
     box-shadow: 0px 0px 15px #900000;
@@ -91,24 +91,23 @@ textarea {
   background-color: #111111;
   box-shadow: 0px 0px 15px brown;
   color: rgb(191, 191, 191);
-  padding: 33px;
+  padding: 13px;
   list-style: none;
   display: flex;
   cursor: pointer;
-  right: 10px;
-  bottom: 10px;
+  right: 18px;
+  bottom: 18px;
   overflow: auto;
   margin-bottom: -6px;
   z-index: 999;
-  border-radius: 50%;
-  animation: navbox 5s infinite;
-  animation-delay: 2s;
-  justify-content: flex-end;
+  border-radius: 8px;
+  animation: navbox 7s infinite;
+  justify-content: flex-start;
   transition: 0.7s;
-  transition-duration: .3s;
+  transition-duration: 0.3s;
 }
 .navBarAberta {
-  left: 0;
+  left: -25px;
   right: 0;
   bottom: 0;
   top: 0;
@@ -116,75 +115,92 @@ textarea {
   transition: 0.7s;
   transition-duration: 0.2s;
 }
-.navBar a {
+.navBar span {
+  margin: 0 5px;
   position: relative;
   font-size: large;
   width: 100%;
-  padding: 76px;
+  background: #151515;
+  color: white;
+  padding: 17px 15px;
+  transition: 0.8s;
+}
+.navBar span:active,
+.navBar span:hover {
+  transition: 0.8s;
+  background-color: brown;
+  transition-delay: 0.7s;
 }
 
 .navBar ul {
   background-color: cadetblue;
-  color: rgb(191, 191, 191);
+  color: rgb(255, 255, 255);
   padding: 10px;
   list-style: none;
   position: relative;
   right: -20px;
   text-align: center;
   cursor: pointer;
-  width: 35vh;
-  height: 85vh;
+  width: 75%;
   overflow: auto;
+  transition: 0.7s;
+}
+.navBar ul:active,
+.navBar ul:hover {
+  transition-delay: 0.7s;
+
+  color: brown;
 }
 
 .navBar ul li {
   display: flex;
   justify-content: space-between;
   padding: 0px 5px;
-  height: 10vh;
   margin: 5px 0;
   align-items: center;
+
   background-color: black;
 }
 .navBar ul li:hover,
 .navBar ul li:active {
   background-color: whitesmoke;
+  text-shadow: 1px 1px 7px gold;
   color: black;
 }
 .navBar div {
   padding: 11px;
 }
-@keyframes setinha {
-  0% {
-    transform: scale(1);
-  }
-
-  50% {
-    transform: scale(1.9);
-  }
-
-  100% {
-    transform: scale(1);
-  }
-}
 
 .arrou-chamativo {
   transform-origin: center;
-  animation: setinha 5s infinite;
   background-color: brown;
-  padding: 1px;
+  padding: 3px;
   position: absolute;
-  border-radius: 50%;
+  border-radius: 5px;
   width: 35px;
-  height: 35px;
-  bottom: 27px;
-  right: 25px;
+  height: 9vh;
+  bottom: 1px;
+  right: 3px;
+}
+@keyframes pinoquio {
+  0% {
+    height: 9vh;
+  }
+  50% {
+    height: 20vh;
+  }
+
+  100% {
+    height: 34vh;
+  }
 }
 .arrou-bg {
-  bottom: 38px;
-  right: 26px;
-  width: 42px;
-  height: 42px;
+  width: 38px;
+  
+  bottom: 22px;
+  right: 5px;
+  animation: pinoquio 3s ease-in forwards;
+  animation-delay: .6s;
 }
 @keyframes cont_animada {
   0% {
@@ -891,7 +907,7 @@ textarea {
   transform: scale(0.7);
 }
 .regras-container {
-  width: 300px;
+  width: 400px;
   margin: 1vh auto;
   padding: 20px;
   border: 1px solid #ccc;

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+
 import { RootState } from '../reducers';
 import { useSelector, useDispatch } from 'react-redux';
 import { AppDispatch } from '../store';
@@ -16,10 +17,13 @@ interface NavItem {
 }
 
 const Navbar: React.FC = () => {
+    const navigate = useNavigate();
     const userLogin = useSelector((state: RootState) => state.userReducer);
     const { isLoggedIn, userInfo } = userLogin;
     const dispatch: AppDispatch = useDispatch();
     const [visivel, setVisivel] = useState(false);
+    let timeoutId: NodeJS.Timeout | null = null;
+    let navigationAction: (() => void) | null = null;
 
     const handleLogout = () => {
         dispatch(logoutUser());
@@ -29,6 +33,61 @@ const Navbar: React.FC = () => {
         setVisivel(!visivel);
     };
 
+    const clearPendingActions = () => {
+        if (timeoutId) {
+            clearTimeout(timeoutId);
+            timeoutId = null;
+        }
+
+        if (navigationAction) {
+            navigationAction = null;
+        }
+    };
+
+    const handleLinkClick = (to: string) => {
+        if (timeoutId) {
+            clearPendingActions();
+        }
+        else {
+            if (to === '') {
+                // Logout imediato em caso de Sair
+                handleLogout();
+            } else {
+                // Adiciona um atraso de 1000 milissegundos antes de redirecionar para o link
+                timeoutId = setTimeout(() => {
+                    navigate(to); // ou use o React Router como Link
+                    timeoutId = null;
+                    navigationAction = null;
+                    handleVisivelNav();
+                }, 700);
+
+                // Armazena a ação de navegação atual
+                navigationAction = () => {
+                    navigate(to);
+                    clearPendingActions();
+                    handleVisivelNav();
+                };
+            }
+        }
+
+
+
+
+
+    };
+
+    // Use esta função para cancelar todas as ações pendentes, se necessário
+    const cancelPendingActions = () => {
+        if (timeoutId) {
+            clearPendingActions();
+        }
+        else {
+            timeoutId = setTimeout(() => {
+                handleVisivelNav();
+            }, 800);
+        }
+
+    };
 
     const navItems: NavItem[] = [
         { icon: faUser, to: '/meuperfil', text: `${userInfo?.nome}`, visible: isLoggedIn },
@@ -48,23 +107,21 @@ const Navbar: React.FC = () => {
 
                 <ul style={{ display: `${visivel ? 'block' : 'none'}` }} className="nav-list">
                     {navItems.slice(0, navItems.length).map((item) => item.visible && (
-                        <li key={item.to} onClick={item.to === '' ? handleLogout : (visivel ? handleVisivelNav : undefined)}>
+                        <li key={item.to} onClick={() => handleLinkClick(item.to)}>
                             <FontAwesomeIcon icon={item.icon} style={{ fontSize: '30px' }} />
-                            <Link to={item.to} className={item.visible ? 'nav-item-visible' : 'nav-item-hidden'}>
+                            <span className={item.visible ? 'nav-item-visible' : 'nav-item-hidden'}>
                                 {item.text}
-                            </Link>
+                            </span>
                         </li>
                     ))}
-
-
                 </ul>
                 {visivel ?
                     <div>
-                        <h1 className='arrou-chamativo arrou-bg' onClick={handleVisivelNav}><FontAwesomeIcon icon={faArrowRight} style={{ fontSize: '40px' }} /></h1>
+                        <h1 className='arrou-chamativo arrou-bg' onClick={handleVisivelNav}><FontAwesomeIcon icon={faBars} style={{ fontSize: '43px' }} /></h1>
                     </div>
                     :
                     <div>
-                        <h1 className='arrou-chamativo' onClick={handleVisivelNav}><FontAwesomeIcon icon={faArrowLeft} style={{ fontSize: '36px' }} /></h1>
+                        <h1 className='arrou-chamativo' onClick={cancelPendingActions}><FontAwesomeIcon icon={faBars} style={{ fontSize: '40px' }} /></h1>
                     </div>}
             </nav>
         </>

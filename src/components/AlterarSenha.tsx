@@ -126,6 +126,7 @@ const AlterarSenha: React.FC = () => {
                         // Define a mensagem de erro
                         handlePasswordReset();
                         setLoginError('Erro no Login, Verifique seu Codigo de Acesso.');
+                        alert('Entrada invalida, codigo não reconhecido!')
                     });
             }
         }
@@ -143,6 +144,7 @@ const AlterarSenha: React.FC = () => {
                         // Define a mensagem de erro
                         handlePasswordReset();
                         setLoginError('Precisa de ajuda? Procure seu gerente ou treinador.');
+                        alert('Entrada invalida, codigo não reconhecido!')
                     });
             }
         }
