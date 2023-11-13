@@ -49,7 +49,7 @@ const Navbar: React.FC = () => {
             <nav className='navBar' >
                 {visivel ? <h1 className='arrou-chamativo' onClick={handleVisivelNav}><FontAwesomeIcon icon={faArrowRight} style={{ fontSize: '24px' }} /></h1> : <h1 className='arrou-chamativo' onClick={handleVisivelNav}><FontAwesomeIcon icon={faArrowLeft} style={{ fontSize: '24px' }} /></h1>}
                 <ul style={{ display: `${visivel ? 'block' : 'none'}` }} className="nav-list">
-                    {navItems.slice(0, 2).map((item) => item.visible && (
+                    {navItems.slice(0, navItems.length).map((item) => item.visible && (
                         <li key={item.to} onClick={item.to === '' ? handleLogout : (visivel ? handleVisivelNav : undefined)}>
                             <FontAwesomeIcon icon={item.icon} style={{ fontSize: '30px' }} />
                             <Link to={item.to} className={item.visible ? 'nav-item-visible' : 'nav-item-hidden'}>
@@ -58,25 +58,7 @@ const Navbar: React.FC = () => {
                         </li>
                     ))}
               
-                    {/* Segunda parte, do índice 3 em diante */}
-                    {navItems.slice(2, 3).map((item) => item.visible && (
-                        <li key={item.to}  onClick={handleVisivelNav}>
-                            <FontAwesomeIcon icon={item.icon} style={{ fontSize: '30px' }} />
-                            <Link to={item.to} className={item.visible ? 'nav-item-visible' : 'nav-item-hidden'}>
-                                {item.text}
-                            </Link>
-                        </li>
-                    ))}
-                    <li></li>
-                    {navItems.slice(3, navItems.length).map((item) => item.visible && (
-                        <li key={item.to}  onClick={handleVisivelNav}>
-                            <FontAwesomeIcon icon={item.icon} style={{ fontSize: '30px' }} />
-                            <Link to={item.to} className={item.visible ? 'nav-item-visible' : 'nav-item-hidden'}>
-                                {item.text}
-                            </Link>
-                        </li>
-                    ))}
-
+                    
                 </ul>
             </nav>
         </>

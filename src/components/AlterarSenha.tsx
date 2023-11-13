@@ -7,6 +7,7 @@ import { alteraLoginUser, loginUser } from '../actions/userActions';
 import { RootState } from '../reducers';
 import { GiBroom } from 'react-icons/gi';
 import { FaUser, FaSignInAlt, FaLock, FaSave } from 'react-icons/fa';
+import { fetchUsers, fetchMostVoted } from '../actions/userActions';
 import { useSelector } from 'react-redux';
 const icons = [
     { id: 1, iconUrl: 'https://static.vecteezy.com/system/resources/previews/012/893/824/non_2x/elephant-large-transparent-background-free-png.png' },
@@ -50,10 +51,13 @@ const AlterarSenha: React.FC = () => {
     const [selectedMonth, setSelectedMonth] = useState<string>('12');
     const [matricula, setMatricula] = useState('');
     const [senha, setPassword] = useState('');
+    const [liberadoCodigo, setliberadoCodigo] = useState<boolean>(true);
     const [loginError, setLoginError] = useState('');
     const characters = [5, 3, 1, 2, 0, 4];
     const userLogin = useSelector((state: RootState) => state.userReducer);
-    const { isLoggedIn } = userLogin;
+    const { isLoggedIn, mostVoted } = userLogin;
+
+
     useEffect(() => {
         // Rolando para o topo da página quando o componente é montado
         window.scrollTo(0, 0);
@@ -77,13 +81,40 @@ const AlterarSenha: React.FC = () => {
     };
 
     const handleEmailChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        setMatricula(e.target.value);
+        const novaMatricula = e.target.value;
+
+        // Verifica se a matrícula está presente na array
+
+        // Outras ações que você deseja realizar ao alterar a matrícula
+        setMatricula(novaMatricula);
     };
+
 
     const handleCharacterClick = (char: string) => {
         if (senha.length < 6) {
+            console.log(senha.length)
             setPassword(senha + char);
+
         }
+
+        if (senha.length === 6) {
+
+            dispatch(loginUser({ matricula, senha }))
+                .then(() => {
+                    // Limpa o erro no caso de sucesso
+                    setLoginError('');
+                    handlePasswordReset();
+                    navigate('/ranking');
+                })
+                .catch((error) => {
+                    // Define a mensagem de erro
+                    handlePasswordReset();
+                    setLoginError('Precisa de ajuda? Procure seu gerente ou treinador.');
+                });
+        }
+
+
+
     };
 
     const handlePasswordReset = () => {
@@ -129,7 +160,32 @@ const AlterarSenha: React.FC = () => {
         }
     };
 
+    useEffect(() => {
+        // Use o operador de coalescência nula (??) para fornecer uma array vazia como valor padrão
+        const listaMatriculas = (mostVoted ?? []).map(item => item.matricula);
 
+        // Verifique se '970016' está presente em listaMatriculas
+        const matriculaExistente = listaMatriculas.includes(parseInt(matricula, 10));
+
+        // Faça algo com o resultado
+        if (matriculaExistente) {
+            console.log('Matrícula encontrada!');
+            setliberadoCodigo(false);
+            // Execute outras ações aqui, se necessário
+        }
+        else {
+            setliberadoCodigo(true);
+
+        }
+    }, [matricula]); // Adicione outras dependências co
+
+    useEffect(() => {
+
+        Promise.all([dispatch(fetchUsers()), dispatch(fetchMostVoted())])
+            .catch((error) => {
+                console.error('Error fetching data:', error);
+            });
+    }, [dispatch]);
     return (
         <>
             <div className="login-container" style={{ display: `${!isLoggedIn ? 'none' : 'block'}`, width: '310px' }}>
@@ -170,7 +226,6 @@ const AlterarSenha: React.FC = () => {
                         placeholder='Novo codigo'
                         readOnly
                         required
-
                     />
                     <div className='icone-senha'>
                         <FaLock size={40} color={`${senha.length === 6 ? 'green' : 'black'}`} />
@@ -228,7 +283,7 @@ const AlterarSenha: React.FC = () => {
                         placeholder='Codigo de Acesso'
                         readOnly
                         required
-                        disabled={!isLoggedIn ? false : true}
+                        disabled={liberadoCodigo}
                     />
                     <div className='icone-senha'>
                         <FaLock size={40} color={`${senha.length === 6 ? 'green' : 'black'}`} />
@@ -237,19 +292,19 @@ const AlterarSenha: React.FC = () => {
                     <button className='limpar-senha' onClick={handlePasswordReset}><GiBroom size={20} color="white" /></button>
                     {loginError && <div className="alert alert-danger">{loginError}</div>}
                 </div>
-                <div className="virtual-keyboard" >
+                <div className="virtual-keyboard" style={{display: `${liberadoCodigo? 'none': ''}`}}>
                     {characters.map((char, index) => (
                         <button
                             key={index}
                             onClick={() => handleCharacterClick(index.toString())}
-                            disabled={senha.length >= 6 || !isLoggedIn ? false : true}
+
                         >
 
                             {icons[char] && <img src={icons[char].iconUrl} alt={`Icon ${char}`} />}
                         </button>
                     ))}
                 </div>
-                <button onClick={handleLogin} disabled={senha.length !== 6 || !isLoggedIn ? false : true}>
+                <button onClick={handleLogin} disabled={senha.length !== 6 || liberadoCodigo ? false : true} style={{display: `${liberadoCodigo? 'none': ''}`}}>
                     <FaSignInAlt size={48} color="green" />
                     <p>Login</p>
                 </button>

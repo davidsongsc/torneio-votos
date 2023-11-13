@@ -150,9 +150,9 @@ const Votar: React.FC = () => {
                     <h2 style={{ padding: '13px 0' }}>
                         <strong style={visual}>
                             <strong className='qtd-votos'>
-
+                                  
                                 {userLogin.userInfo?.votos}
-
+                                  
                             </strong>
                             {userLogin.userInfo?.votos ?? 0 > 1 ? 'votos' : 'voto'}
 
