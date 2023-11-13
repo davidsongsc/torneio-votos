@@ -9,7 +9,7 @@ const initialState: UserState = {
   config: [
     {
       ver: '1.04c',
-      valendo: true,
+      valendo: false,
       unidade: 'bz97',
       prazoManutencao: '2023-11-13T01:56:00',
     },
