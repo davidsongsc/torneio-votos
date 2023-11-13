@@ -21,6 +21,7 @@ export interface ConfigInfo {
   ver: string;
   valendo: boolean;
   unidade: string;
+  prazoManutencao: string;
 }
 export interface UserData {
   id: number;

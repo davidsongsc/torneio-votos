@@ -16,8 +16,8 @@ import Countdown from './components/Contagem';
 import PageRegulamento from './components/PageRegulamento';
 
 function App() {
-  const modoOperacional = useSelector((state: RootState) => state.configReducer.config?.[0].valendo || null);
-  const deadline = new Date('2023-11-09T17:00:00').getTime();
+  const modoOperacional = useSelector((state: RootState) => state.configReducer.config?.[0] || null);
+  const deadline = new Date(modoOperacional.prazoManutencao).getTime();
   const [showContent, setShowContent] = useState(false);
   
   useEffect(() => {
@@ -28,7 +28,7 @@ function App() {
 
   return (
     <Router>
-      {!modoOperacional && <NavPrep />}
+      {!modoOperacional.valendo && <NavPrep />}
       {showContent && <Navbar />}
       {!showContent && <Countdown deadline={deadline} />}
 
