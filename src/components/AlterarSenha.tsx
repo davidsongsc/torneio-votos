@@ -6,7 +6,7 @@ import { AnyAction } from 'redux';
 import { alteraLoginUser, loginUser } from '../actions/userActions';
 import { RootState } from '../reducers';
 import { GiBroom } from 'react-icons/gi';
-import { FaUser, FaSignInAlt, FaLock, FaSave } from 'react-icons/fa';
+import { FaUser, FaLock, FaSave } from 'react-icons/fa';
 import { fetchUsers, fetchMostVoted } from '../actions/userActions';
 import { useSelector } from 'react-redux';
 const icons = [
@@ -57,9 +57,7 @@ const AlterarSenha: React.FC = () => {
     const userLogin = useSelector((state: RootState) => state.userReducer);
     const { isLoggedIn, mostVoted } = userLogin;
 
-
     useEffect(() => {
-        // Rolando para o topo da página quando o componente é montado
         window.scrollTo(0, 0);
     }, []);
     const dispatch: ThunkDispatch<RootState, any, AnyAction> = useDispatch();
@@ -74,7 +72,6 @@ const AlterarSenha: React.FC = () => {
 
     const handleMonthChange = (month: string) => {
         setSelectedMonth(month);
-
         if (selectedDay && parseInt(selectedDay, 10) > generateDays(month).length) {
             setSelectedDay('');
         }
@@ -82,39 +79,14 @@ const AlterarSenha: React.FC = () => {
 
     const handleEmailChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const novaMatricula = e.target.value;
-
-        // Verifica se a matrícula está presente na array
-
-        // Outras ações que você deseja realizar ao alterar a matrícula
         setMatricula(novaMatricula);
     };
-
 
     const handleCharacterClick = (char: string) => {
         if (senha.length < 6) {
             console.log(senha.length)
             setPassword(senha + char);
-
         }
-
-        if (senha.length === 6) {
-
-            dispatch(loginUser({ matricula, senha }))
-                .then(() => {
-                    // Limpa o erro no caso de sucesso
-                    setLoginError('');
-                    handlePasswordReset();
-                    navigate('/ranking');
-                })
-                .catch((error) => {
-                    // Define a mensagem de erro
-                    handlePasswordReset();
-                    setLoginError('Precisa de ajuda? Procure seu gerente ou treinador.');
-                });
-        }
-
-
-
     };
 
     const handlePasswordReset = () => {
@@ -122,24 +94,6 @@ const AlterarSenha: React.FC = () => {
         setSelectedMonth('01');
         setSelectedDay('01');
     };
-
-    const handleLogin = () => {
-        if (senha.length === 6) {
-            dispatch(loginUser({ matricula, senha }))
-                .then(() => {
-                    // Limpa o erro no caso de sucesso
-                    setLoginError('');
-                    handlePasswordReset();
-                    navigate('/ranking');
-                })
-                .catch((error) => {
-                    // Define a mensagem de erro
-                    handlePasswordReset();
-                    setLoginError('Precisa de ajuda? Procure seu gerente ou treinador.');
-                });
-        }
-    };
-
 
     const handleAlterLogin = () => {
         if (senha.length === 6) {
@@ -150,7 +104,7 @@ const AlterarSenha: React.FC = () => {
                     setLoginError('');
                     handlePasswordReset();
                     alert('Codigo alterado com sucesso!')
-
+                    navigate('/ranking');
                 })
                 .catch((error) => {
                     // Define a mensagem de erro
@@ -161,23 +115,58 @@ const AlterarSenha: React.FC = () => {
     };
 
     useEffect(() => {
-        // Use o operador de coalescência nula (??) para fornecer uma array vazia como valor padrão
         const listaMatriculas = (mostVoted ?? []).map(item => item.matricula);
-
-        // Verifique se '970016' está presente em listaMatriculas
         const matriculaExistente = listaMatriculas.includes(parseInt(matricula, 10));
 
-        // Faça algo com o resultado
         if (matriculaExistente) {
             console.log('Matrícula encontrada!');
             setliberadoCodigo(false);
-            // Execute outras ações aqui, se necessário
         }
         else {
             setliberadoCodigo(true);
 
         }
-    }, [matricula]); // Adicione outras dependências co
+    }, [matricula]);
+
+    useEffect(() => {
+        console.log(senha)
+        if (isLoggedIn) {
+            if (senha.length === 6) {
+                const matricula = String(userLogin.userInfo?.matricula || '');
+                dispatch(alteraLoginUser({ matricula, senha, selectedDay, selectedMonth }))
+                    .then(() => {
+                        // Limpa o erro no caso de sucesso
+                        setLoginError('');
+                        handlePasswordReset();
+                        alert('Codigo alterado com sucesso!')
+                        navigate('/ranking');
+                    })
+                    .catch((error) => {
+                        // Define a mensagem de erro
+                        handlePasswordReset();
+                        setLoginError('Erro no Login, Verifique seu Codigo de Acesso.');
+                    });
+            }
+        }
+        else {
+            if (senha.length === 6) {
+
+                dispatch(loginUser({ matricula, senha }))
+                    .then(() => {
+                        // Limpa o erro no caso de sucesso
+                        setLoginError('');
+                        handlePasswordReset();
+                        navigate('/ranking');
+                    })
+                    .catch((error) => {
+                        // Define a mensagem de erro
+                        handlePasswordReset();
+                        setLoginError('Precisa de ajuda? Procure seu gerente ou treinador.');
+                    });
+            }
+        }
+
+    }, [senha]);
 
     useEffect(() => {
 
@@ -186,6 +175,7 @@ const AlterarSenha: React.FC = () => {
                 console.error('Error fetching data:', error);
             });
     }, [dispatch]);
+
     return (
         <>
             <div className="login-container" style={{ display: `${!isLoggedIn ? 'none' : 'block'}`, width: '310px' }}>
@@ -248,11 +238,12 @@ const AlterarSenha: React.FC = () => {
                         ))}
                     </div>
                 </div>
+                {/* 
                 <button onClick={handleAlterLogin} disabled={senha.length !== 6 || isLoggedIn ? false : true}>
                     <FaSave size={48} color="black" />
                     <p>Salvar</p>
                 </button>
-
+                */}
             </div>
 
             <div className="login-container" style={{ display: `${isLoggedIn ? 'none' : 'block'}` }}>
@@ -292,7 +283,7 @@ const AlterarSenha: React.FC = () => {
                     <button className='limpar-senha' onClick={handlePasswordReset}><GiBroom size={20} color="white" /></button>
                     {loginError && <div className="alert alert-danger">{loginError}</div>}
                 </div>
-                <div className="virtual-keyboard" style={{display: `${liberadoCodigo? 'none': ''}`}}>
+                <div className="virtual-keyboard" style={{ display: `${liberadoCodigo ? 'none' : ''}` }}>
                     {characters.map((char, index) => (
                         <button
                             key={index}
@@ -304,10 +295,6 @@ const AlterarSenha: React.FC = () => {
                         </button>
                     ))}
                 </div>
-                <button onClick={handleLogin} disabled={senha.length !== 6 || liberadoCodigo ? false : true} style={{display: `${liberadoCodigo? 'none': ''}`}}>
-                    <FaSignInAlt size={48} color="green" />
-                    <p>Login</p>
-                </button>
 
             </div>
         </>

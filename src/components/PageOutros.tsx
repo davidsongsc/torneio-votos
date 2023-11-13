@@ -55,9 +55,8 @@ const PageOutros: React.FC = () => {
                 <li>
                     <button onClick={handleInstall}>Instalar App</button>
                 </li>
-                {userInfo?.alcunha && userInfo.alcunha.toLowerCase().includes('gerencia') && (
+                {(userInfo?.alcunha && userInfo.alcunha.toLowerCase().includes('gerencia')) || (userInfo?.matricula && (
                     <>
-
                         <li>
                             <button>
                                 <a href="https://bz97.pythonanywhere.com/admin/">Banco de dados</a>
@@ -79,7 +78,7 @@ const PageOutros: React.FC = () => {
                             </button>
                         </li>
                     </>
-                )}
+                ))}
 
             </ul>
 
