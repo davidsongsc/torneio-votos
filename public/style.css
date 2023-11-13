@@ -790,7 +790,6 @@ textarea {
   margin: 0 auto;
   position: relative;
   text-transform: capitalize;
-  top: -125px;
 }
 
 .perfil-container .painel {
@@ -803,7 +802,6 @@ textarea {
 }
 .perfil-container .perfil-image {
   position: relative;
-  top: -130px;
   width: 200px;
   height: 200px;
   border-radius: 50%;
@@ -854,6 +852,15 @@ textarea {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   background-color: #b7b7b7;
   transform: scale(0.7);
+}
+.regras-container {
+  width: 300px;
+  margin: 1vh auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  background-color: #b7b7b7;
 }
 
 .login-container h2 {

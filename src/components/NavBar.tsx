@@ -32,13 +32,15 @@ const Navbar: React.FC = () => {
 
     const navItems: NavItem[] = [
         { icon: faUser, to: '/meuperfil', text: `${userInfo?.nome}`, visible: isLoggedIn },
+        { icon: faTrophy, to: '/regras', text: 'Regras', visible: true },
         { icon: faSignOutAlt, to: '', text: 'Sair', visible: isLoggedIn },
+        { icon: faBars, to: '/outros', text: 'Menu', visible: isLoggedIn },
         { icon: faFileExcel, to: '/contest', text: 'Contest', visible: isLoggedIn },
         { icon: faTrophy, to: '/ranking', text: 'Ranking', visible: true },
-        { icon: faBars, to: '/outros', text: 'Menu', visible: isLoggedIn },
+        
+       
         { icon: faSignInAlt, to: '/login', text: 'Login', visible: !isLoggedIn },
-
-        { icon: faPoll, to: '/votar', text: 'Urna Eletrônica', visible: isLoggedIn },
+        { icon: faPoll, to: '/votar', text: `Urna Digital | ${userInfo?.votos}`, visible: isLoggedIn },
     ];
 
     return (
@@ -55,10 +57,10 @@ const Navbar: React.FC = () => {
                             </Link>
                         </li>
                     ))}
-                    <li></li>
+              
                     {/* Segunda parte, do índice 3 em diante */}
                     {navItems.slice(2, 3).map((item) => item.visible && (
-                        <li key={item.to} >
+                        <li key={item.to}  onClick={handleVisivelNav}>
                             <FontAwesomeIcon icon={item.icon} style={{ fontSize: '30px' }} />
                             <Link to={item.to} className={item.visible ? 'nav-item-visible' : 'nav-item-hidden'}>
                                 {item.text}
@@ -67,7 +69,7 @@ const Navbar: React.FC = () => {
                     ))}
                     <li></li>
                     {navItems.slice(3, navItems.length).map((item) => item.visible && (
-                        <li key={item.to} >
+                        <li key={item.to}  onClick={handleVisivelNav}>
                             <FontAwesomeIcon icon={item.icon} style={{ fontSize: '30px' }} />
                             <Link to={item.to} className={item.visible ? 'nav-item-visible' : 'nav-item-hidden'}>
                                 {item.text}

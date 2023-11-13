@@ -13,6 +13,7 @@ import MainVoto from './components/MainVoto';
 import AlterarSenha from './components/AlterarSenha';
 import NavPrep from './components/NavTeste';
 import Countdown from './components/Contagem';
+import PageRegulamento from './components/PageRegulamento';
 
 function App() {
   const modoOperacional = useSelector((state: RootState) => state.configReducer.config?.[0].valendo || null);
@@ -41,6 +42,7 @@ function App() {
         {showContent && <Route path="/meuperfil" element={<PerfilUser />} />}
         {showContent && <Route path="/login" element={<AlterarSenha />} />}
         {showContent && <Route path="/codigoacesso" element={<AlterarSenha />} />}
+        {showContent && <Route path="/regras" element={<PageRegulamento />} />}
       </Routes>
       {showContent && <Footer />}
     </Router>

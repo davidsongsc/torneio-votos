@@ -154,7 +154,8 @@ const Votar: React.FC = () => {
                                 {userLogin.userInfo?.votos}
 
                             </strong>
-                            Votos
+                            {userLogin.userInfo?.votos ?? 0 > 1 ? 'votos' : 'voto'}
+
                         </strong>
 
                     </h2>

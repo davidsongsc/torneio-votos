@@ -47,12 +47,11 @@ const PageOutros: React.FC = () => {
             <ul>
                 <h3>Informações da conta</h3>
                 <li>
-                    <Link to="/login"><button>Login</button></Link>
-                </li>
-                <li>
                     <Link to="/codigoacesso"><button>Alterar Codigo</button></Link>
                 </li>
-
+                <li>
+                    <Link to="/regras"><button>Regulamento</button></Link>
+                </li>
                 <li>
                     <button onClick={handleInstall}>Instalar App</button>
                 </li>
