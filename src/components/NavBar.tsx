@@ -5,12 +5,12 @@ import { RootState } from '../reducers';
 import { useSelector, useDispatch } from 'react-redux';
 import { AppDispatch } from '../store';
 import { logoutUser } from '../actions/userActions';
-import { faSignInAlt, faSignOutAlt, faUser, faPoll, faTrophy, faBars, faArrowLeft, faArrowRight } from '@fortawesome/free-solid-svg-icons';
+import { faSignInAlt, faSignOutAlt, faUser, faPoll, faTrophy, faBars } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFileExcel } from '@fortawesome/free-solid-svg-icons';
 
 interface NavItem {
-    icon: any; // O tipo específico do ícone depende da biblioteca que você está usando
+    icon: any; 
     to: string;
     text: string;
     visible: boolean;
@@ -50,10 +50,8 @@ const Navbar: React.FC = () => {
         }
         else {
             if (to === '') {
-                // Logout imediato em caso de Sair
                 handleLogout();
             } else {
-                // Adiciona um atraso de 1000 milissegundos antes de redirecionar para o link
                 timeoutId = setTimeout(() => {
                     navigate(to); // ou use o React Router como Link
                     timeoutId = null;
@@ -61,7 +59,6 @@ const Navbar: React.FC = () => {
                     handleVisivelNav();
                 }, 700);
 
-                // Armazena a ação de navegação atual
                 navigationAction = () => {
                     navigate(to);
                     clearPendingActions();
@@ -69,14 +66,8 @@ const Navbar: React.FC = () => {
                 };
             }
         }
-
-
-
-
-
     };
 
-    // Use esta função para cancelar todas as ações pendentes, se necessário
     const cancelPendingActions = () => {
         if (timeoutId) {
             clearPendingActions();
@@ -84,7 +75,7 @@ const Navbar: React.FC = () => {
         else {
             timeoutId = setTimeout(() => {
                 handleVisivelNav();
-            }, 800);
+            }, 100);
         }
 
     };
@@ -102,7 +93,6 @@ const Navbar: React.FC = () => {
 
     return (
         <>
-
             <nav className={`navBar ${visivel ? 'navBarAberta' : ''}`} >
 
                 <ul style={{ display: `${visivel ? 'block' : 'none'}` }} className="nav-list">

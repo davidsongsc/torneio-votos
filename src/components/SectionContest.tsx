@@ -16,11 +16,10 @@ const SectionContest: React.FC<SectionProps> = ({ content }) => {
   return (
     <section>
       <h2>{h2} </h2>
-
       {table && (
         <div className="table-container">{table}</div>
       )}
-      
+
     </section>
   );
 };

@@ -8,7 +8,7 @@ interface UserState {
 const initialState: UserState = {
   config: [
     {
-      ver: '1.04c',
+      ver: '1.04d',
       valendo: true,
       unidade: 'bz97',
       prazoManutencao: '2023-11-13T01:56:00',
@@ -21,7 +21,6 @@ const configReducer = (
   action: Action
 ): UserState => {
   switch (action.type) {
-    // Adicione casos para manipular ações relacionadas aos usuários, se necessário
     default:
       return state;
   }

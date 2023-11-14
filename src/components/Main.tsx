@@ -6,12 +6,12 @@ function Main() {
   const secoes = [
     {
       
-      h2: 'Contest',
+      h2: 'Novembro',
       div: {
         className: 'custom-div-1',
         children: <p></p>, // Objetivo do Conteste $Variavel
       },
-      p: '',
+      p: 'OK',
       table: (
         <Tabela />
       ),
@@ -21,7 +21,7 @@ function Main() {
 
   return (
     <>
-      <main className='main-principal-inicio'  style={{width: '100%'}}>
+      <main className='main-principal-inicio'>
         {secoes.map((section, index) => (
           <SectionContest key={index} content={section} />
         ))}
