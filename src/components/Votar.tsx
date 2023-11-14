@@ -22,6 +22,7 @@ const Votar: React.FC = () => {
     const dispatch = useDispatch<AppDispatch>();
     const [selectedVoto, setSelectedVoto] = useState<number | null>(null);
     const [isClickLocked, setClickLock] = useState(false);
+    const alcunhaArray = userLogin.userInfo?.alcunha?.split(',');
 
     useEffect(() => {
         window.scrollTo(0, 0);
@@ -100,88 +101,92 @@ const Votar: React.FC = () => {
     }, [dispatch]);
 
     return (
-        <div className='div-buttons'>
-            <div className='equipes'>
-                <button onClick={() => handlePesquisa('buss')}>Buss</button>
-                <button onClick={() => handlePesquisa('apoio')}>Apoio</button>
-                <button onClick={() => handlePesquisa('hostess')}>hostess</button>
-                <button onClick={() => handlePesquisa('dish')}>Dish</button>
-                <button onClick={() => handlePesquisa('clean')}>Clean</button>
-                <button onClick={() => handlePesquisa('prep')}>Prep</button>
-                <button onClick={() => handlePesquisa('linha fria')}>l. fria</button>
-                <button onClick={() => handlePesquisa('linha quente')}>l. quente</button>
-                <button onClick={() => handlePesquisa('waiter')}>waiter</button>
-                <button onClick={() => handlePesquisa('bartender')}>bar</button>
-                <button onClick={() => handlePesquisa('treinador')}>treinador</button>
-                <button onClick={() => handlePesquisa('gerencia')}>gerencia</button>
-                <button onClick={() => handlePesquisa('adm')}>adm</button>
-                <button onClick={() => handlePesquisa('manuten')}>manutenção</button>
-                <button onClick={() => handlePesquisa('')}>todos</button>
-            </div>
-            <form className='form-votacao-indica' >
-                <div className='tela-painel-votos'>
-                    {top3Pessoas.map((pessoa) => (
-                        <div key={pessoa.id} >
-                            <label
-                                className={`radio-label ${pessoa.id === voto ? 'radio-label-selecionado' : 'radio-label-nao-selecionado'} ${pessoa.id === voto && showConfirmDialog ? 'radio-label-voto' : 'radio-label-voto-nao'}`}
-                                htmlFor={`radio-${pessoa.id}`}
-                                style={{ display: `${pessoa.id === usuarioLogado ? 'none' : ''}` }}>
-                                <div className='votante-lista-seletor'>
-                                    <img src={`https://dagesico.pythonanywhere.com/static/img/${pessoa.imagem}`} alt="Imagem Perfil" />
-                                    <h3>{pessoa.nome} </h3>
-                                    <input
-                                        className='radio-input'
-                                        type="radio"
-                                        name="voto"
-                                        id={`radio-${pessoa.id}`}
-                                        value={pessoa.id}
-                                        checked={voto === pessoa.id}
-                                        onChange={() => handleVotoChange(pessoa.id)}
-                                    />
-                                    <div className={`radio-custom ${pessoa.id === voto ? ' radio-checked' : ' radio-not-checked'}`} />
-                                </div>
-                                <div style={{ display: `${pessoa.id === voto ? 'block' : 'none'}` }}>
-                                    <button className='btn-voto' type="button" onClick={handleVotar} style={{ display: `${pessoa.id === voto ? 'radio-label-selecionado' : 'radio-label-nao-selecionado'}` }}>
-                                        Votar
-                                    </button>
-                                    <button className='btn-voto' type="button" onClick={() => handleVotoChange(pessoa.id)} style={{ display: `${pessoa.id === voto ? 'radio-label-selecionado' : 'radio-label-nao-selecionado'}`, backgroundColor: 'red' }}>
-                                        Anular
-                                    </button>
-                                </div>
-
-                            </label>
-                        </div>
-                    ))}
+        <>
+            <div className='div-buttons'>
+                <div className='equipes'>
+                    <button onClick={() => handlePesquisa('buss')}>Buss</button>
+                    <button onClick={() => handlePesquisa('apoio')}>Apoio</button>
+                    <button onClick={() => handlePesquisa('hostess')}>hostess</button>
+                    <button onClick={() => handlePesquisa('dish')}>Dish</button>
+                    <button onClick={() => handlePesquisa('clean')}>Clean</button>
+                    <button onClick={() => handlePesquisa('prep')}>Prep</button>
+                    <button onClick={() => handlePesquisa('linha fria')}>l. fria</button>
+                    <button onClick={() => handlePesquisa('linha quente')}>l. quente</button>
+                    <button onClick={() => handlePesquisa('waiter')}>waiter</button>
+                    <button onClick={() => handlePesquisa('bartender')}>bar</button>
+                    <button onClick={() => handlePesquisa('treinador')}>treinador</button>
+                    <button onClick={() => handlePesquisa('gerencia')}>gerencia</button>
+                    <button onClick={() => handlePesquisa('adm')}>adm</button>
+                    <button onClick={() => handlePesquisa('manuten')}>manutenção</button>
+                    <button onClick={() => handlePesquisa('')}>todos</button>
                 </div>
-                <div style={{
-                    position: 'relative',
-                    zIndex: '133',
-                }}>
+                <form className='form-votacao-indica' >
+                    <div className='tela-painel-votos'>
+                        {top3Pessoas.map((pessoa) => (
+                            <div key={pessoa.id} >
+                                <label
+                                    className={`radio-label ${pessoa.id === voto ? 'radio-label-selecionado' : 'radio-label-nao-selecionado'} ${pessoa.id === voto && showConfirmDialog ? 'radio-label-voto' : 'radio-label-voto-nao'}`}
+                                    htmlFor={`radio-${pessoa.id}`}
+                                    style={{ display: `${pessoa.id === usuarioLogado ? 'none' : ''}` }}>
+                                    <div className='votante-lista-seletor'>
+                                        <img src={`https://dagesico.pythonanywhere.com/static/img/${pessoa.imagem}`} alt="Imagem Perfil" />
+                                        <h3>{pessoa.nome} </h3>
+                                        <input
+                                            className='radio-input'
+                                            type="radio"
+                                            name="voto"
+                                            id={`radio-${pessoa.id}`}
+                                            value={pessoa.id}
+                                            checked={voto === pessoa.id}
+                                            onChange={() => handleVotoChange(pessoa.id)}
+                                        />
+                                        <div className={`radio-custom ${pessoa.id === voto ? ' radio-checked' : ' radio-not-checked'}`} />
+                                    </div>
+                                    <div style={{ display: `${pessoa.id === voto ? 'block' : 'none'}` }}>
+                                        <button className='btn-voto' type="button" onClick={handleVotar} style={{ display: `${pessoa.id === voto ? 'radio-label-selecionado' : 'radio-label-nao-selecionado'}` }}>
+                                            Votar
+                                        </button>
+                                        <button className='btn-voto' type="button" onClick={() => handleVotoChange(pessoa.id)} style={{ display: `${pessoa.id === voto ? 'radio-label-selecionado' : 'radio-label-nao-selecionado'}`, backgroundColor: 'red' }}>
+                                            Anular
+                                        </button>
+                                    </div>
 
-                    <h2 style={{ padding: '13px 0' }}>
-                        <strong style={visual}>
-                            <strong className='qtd-votos'>
-                                  
-                                {userLogin.userInfo?.votos}
-                                  
+                                </label>
+                            </div>
+                        ))}
+                    </div>
+                    <div style={{
+                        position: 'relative',
+                        zIndex: '133',
+                    }}>
+
+                        <h2 style={{ padding: '13px 0' }}>
+                            <strong style={visual}>
+                                <strong className='qtd-votos'>
+
+                                    {userLogin.userInfo?.votos}
+
+                                </strong>
+                                {userLogin.userInfo?.votos ?? 0 > 1 ? 'votos' : 'voto'}
+
                             </strong>
-                            {userLogin.userInfo?.votos ?? 0 > 1 ? 'votos' : 'voto'}
 
-                        </strong>
+                        </h2>
 
-                    </h2>
+                    </div>
 
-                </div>
+                </form>
+                <ConfirmVoto
+                    open={showConfirmDialog}
+                    onClose={handleCancel}
+                    onConfirm={handleConfirm}
+                    message="Você tem certeza que deseja votar?"
+                />
 
-            </form>
-            <ConfirmVoto
-                open={showConfirmDialog}
-                onClose={handleCancel}
-                onConfirm={handleConfirm}
-                message="Você tem certeza que deseja votar?"
-            />
-
-        </div>
+            </div>
+            <div><h2>{userLogin.userInfo?.nome}  </h2>
+            <h2>{alcunhaArray?.[0]?.trim()}</h2></div>
+        </>
     );
 };
 

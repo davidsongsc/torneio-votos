@@ -45,16 +45,14 @@ const PageOutros: React.FC = () => {
         <div className="sitemap">
             <br />
             <ul>
-                <h3>Informações da conta</h3>
+                <h3>APLICATIVO</h3>
                 <li>
                     <Link to="/codigoacesso"><button>Alterar Codigo</button></Link>
                 </li>
                 <li>
                     <Link to="/regras"><button>Regulamento</button></Link>
                 </li>
-                <li>
-                    <button onClick={handleInstall}>Instalar App</button>
-                </li>
+
                 {(userInfo?.alcunha && userInfo.alcunha.toLowerCase().includes('gerencia')) || (userInfo?.matricula && (
                     <>
                         <li>
@@ -62,21 +60,7 @@ const PageOutros: React.FC = () => {
                                 <a href="https://bz97.pythonanywhere.com/admin/">Banco de dados</a>
                             </button>
                         </li>
-                        <li>
-                            <button>
-                                <a href="https://bz97.pythonanywhere.com/admin/controle/contest/">DB Contest</a>
-                            </button>
-                        </li>
-                        <li>
-                            <button>
-                                <a href="https://bz97.pythonanywhere.com/admin/controle/votos/">DB Urna Eletronica</a>
-                            </button>
-                        </li>
-                        <li>
-                            <button>
-                                <a href="https://bz97.pythonanywhere.com/admin/controle/usuario/">DB Usuarios</a>
-                            </button>
-                        </li>
+                 
                     </>
                 ))}
 

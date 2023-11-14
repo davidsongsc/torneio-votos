@@ -185,7 +185,7 @@ canvas {
   position: absolute;
   border-radius: 5px;
   width: 35px;
-  height: 5vh;
+  height: 39px;
   bottom: 1px;
   right: 3px;
 }
@@ -637,7 +637,7 @@ span .atual-icone {
 }
 
 .tabela-objetivos-conteste .td-maior {
-  background-color: white;
+  background-color: #ffffff73;
   color: black;
   border-bottom: 4px solid black;
   padding: 37px 0px;
@@ -647,7 +647,7 @@ span .atual-icone {
   transition: 0.7s;
   position: relative;
   z-index: 995;
-
+  cursor: pointer;
   width: 400px;
 }
 
@@ -681,7 +681,7 @@ span .atual-icone {
 .tela-painel-votos {
   display: flex;
   max-width: 900px;
-  height: 55vh;
+  height: 520px;
   min-width: 400px;
   overflow-y: auto;
   flex-direction: row;
@@ -727,6 +727,11 @@ span .atual-icone {
 .div-buttons .equipes {
   margin: 0 auto;
   transform: scale(0.9);
+}
+.equipes button{
+  background-color: gray;
+  box-shadow: 1px 1px;
+  color: black;
 }
 .form-votacao-indica {
   text-align: center;
