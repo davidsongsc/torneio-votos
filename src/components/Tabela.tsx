@@ -1,5 +1,5 @@
 import React from 'react';
-import { FaBullseye, FaFileAlt, FaSortNumericUp, FaCircleNotch   } from 'react-icons/fa';
+import { FaBullseye, FaFileAlt, FaSortNumericUp, FaCircleNotch } from 'react-icons/fa';
 import { RootState } from '../reducers'; // Substitua pelo caminho correto
 import { useSelector } from 'react-redux';
 
@@ -12,12 +12,19 @@ const Tabela: React.FC = () => {
                 data.slice(0, 17).map((contest, index) => (
                     <section key={index} className='contest-tabela'>
                         <div className='titulo-barra-contest'>
-                            <h1>{contest.nomeContest}</h1>
+                            <h1>{contest.objetivo}</h1>
                         </div>
                         <div className='linha-contest-tabela'>
                             <div>
-                                <h3><FaBullseye />Objetivo</h3>
-                                <p><FaFileAlt /> {contest.objetivo}</p>
+                                <h3><FaBullseye />  {contest.nomeContest}</h3>
+                                <p className='descricao-contest'> <FaFileAlt />  {contest.descricao}
+                                    <p> </p>
+                                    <p>inicia em: {contest.prazo}</p>
+                                    <p>Termina em: {contest.prazo}</p>
+                                    <p> </p>
+                                    <h2>Premio</h2>
+                                    <p>Termina em: {contest.desempenho}</p>
+                                </p>
                                 <span>
                                     <img className='img-tb-01' src="https://static.vecteezy.com/system/resources/previews/012/933/205/original/kingdom-red-flag-free-png.png" alt="img" />
                                     <h4 className='titulo-1'>META </h4>
@@ -26,12 +33,12 @@ const Tabela: React.FC = () => {
                                     <h4 className='titulo-2'>ATUAL</h4>
                                 </span>
                                 <span>
-                                    <p> <FaSortNumericUp  size={45} /></p>
-                                    <p> <FaCircleNotch  className='atual-icone' size={45} /></p>
+                                    <h4 className='meta-icone'> <FaSortNumericUp size={45} /></h4>
+                                    <h4 className='meta-icone'> <FaCircleNotch className='atual-icone' size={45} /></h4>
                                 </span>
                                 <span>
-                                    <p className='meta-atual'>{contest.meta} </p>
-                                    <p className='meta-atual'>{contest.conquista} </p>
+                                    <h4 className='meta-atual'>{contest.meta} </h4>
+                                    <h4 className='meta-atual'>{contest.conquista} </h4>
                                 </span>
                             </div>
                         </div>
