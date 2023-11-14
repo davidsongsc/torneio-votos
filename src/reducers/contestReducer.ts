@@ -71,7 +71,7 @@ const initialState: ContestState = {
       premio: 'Premio misterioso',
       autor: 'fulano',
       datahora: '10/12',
-      status: 0,
+      status: 1,
     },
     {
       id: 4,
@@ -86,7 +86,7 @@ const initialState: ContestState = {
       premio: 'Premio misterioso',
       autor: 'fulano',
       datahora: '10/12',
-      status: 0,
+      status: 1,
     },
     {
       id: 5,
@@ -101,7 +101,7 @@ const initialState: ContestState = {
       premio: 'Premio misterioso',
       autor: 'fulano',
       datahora: '10/12',
-      status: 1,
+      status: 2,
     },
 
     // Adicione mais usuários conforme necessário
