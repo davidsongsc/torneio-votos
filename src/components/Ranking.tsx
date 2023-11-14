@@ -39,7 +39,7 @@ const Ranking: React.FC = () => {
         <img
           src={medals[position]}
           alt={`Posição ${position}`}
-          width={position === 1 ? '50px' : '90px'}
+          width={position > 1 ? '90px' : '80px'}
           style={{ borderRadius: '50%' }}
         />
       );
@@ -108,7 +108,8 @@ const Ranking: React.FC = () => {
                   <td
                     className={`ranking-index ${isClickedUser ? '' : ''}`}
                     style={{
-                      width: '70px',
+                      minWidth: '100px',
+                      maxWidth: '200px',
                       borderTopLeftRadius: '5px',
                       borderBottomLeftRadius: '5px',
                       color: '#eaeaea',

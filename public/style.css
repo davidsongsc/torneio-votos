@@ -648,7 +648,10 @@ span .atual-icone {
   position: relative;
   z-index: 995;
   cursor: pointer;
-  width: 400px;
+  min-width: 200px;
+  max-width: 400px;
+
+
 }
 
 .tabela-objetivos-conteste td:hover,
