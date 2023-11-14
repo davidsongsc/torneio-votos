@@ -10,14 +10,14 @@ const Tabela: React.FC = () => {
         <>
             {
                 data.slice(0, 17).map((contest, index) => (
-                    <section key={index} className='contest-tabela'>
+                    <section key={index} className='contest-tabela' >
                         <div className='titulo-barra-contest'>
                             <h1>{contest.objetivo}</h1>
                         </div>
-                        <div className='linha-contest-tabela'>
-                            <div>
-                                <h3><FaBullseye />  {contest.nomeContest}</h3>
-                                <p className='descricao-contest'> <FaFileAlt />  {contest.descricao}
+                        <div className='linha-contest-tabela'  >
+                            <div >
+                                <h3 style={{filter:`${contest.status === 1?  'grayscale(100%) blur(1px)': ''}` }}><FaBullseye />  {contest.nomeContest}</h3>
+                                <p className='descricao-contest' style={{filter:`${contest.status === 1?  'grayscale(100%) blur(3px)': ''}` }}> <FaFileAlt />  {contest.descricao}
                                     <p> </p>
                                     <p>inicia em: {contest.data_inicio}</p>
                                     <p>Termina em: {contest.data_fim}</p>
@@ -26,18 +26,18 @@ const Tabela: React.FC = () => {
                                     <h2>Premio</h2>
                                     <p>{contest.premio}</p>
                                 </p>
-                                <span>
+                                <span style={{filter:`${contest.status === 1?  'grayscale(100%) blur(8px)': ''}` }}>
                                     <img className='img-tb-01' src="https://static.vecteezy.com/system/resources/previews/012/933/205/original/kingdom-red-flag-free-png.png" alt="img" />
                                     <h4 className='titulo-1'>META </h4>
 
                                     <img className='img-tb-02' src="https://static.vecteezy.com/system/resources/previews/012/933/205/original/kingdom-red-flag-free-png.png" alt="img" />
                                     <h4 className='titulo-2'>ATUAL</h4>
                                 </span>
-                                <span>
+                                <span style={{filter:`${contest.status === 1?  'grayscale(100%) blur(7px)': ''}` }}>
                                     <h4 className='meta-icone'> <FaSortNumericUp size={45} /></h4>
                                     <h4 className='meta-icone'> <FaCircleNotch className='atual-icone' size={45} /></h4>
                                 </span>
-                                <span>
+                                <span style={{filter:`${contest.status === 1?  'grayscale(100%) blur(10px)': ''}` }}>
                                     <h4 className='meta-atual'>{contest.meta} </h4>
                                     <h4 className='meta-atual'>{contest.conquista} </h4>
                                 </span>

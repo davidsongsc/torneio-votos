@@ -6,7 +6,7 @@ function Main() {
   const secoes = [
     {
       
-      h2: 'Novembro',
+      h2: '',
       div: {
         className: 'custom-div-1',
         children: <p></p>, // Objetivo do Conteste $Variavel

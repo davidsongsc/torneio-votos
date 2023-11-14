@@ -407,7 +407,6 @@ canvas {
   border-style: groove;
   padding: 1px;
   transition: 1s;
-  width: 400px;
   flex-wrap: wrap;
   justify-content: center;
 }
@@ -419,15 +418,16 @@ canvas {
 .main-principal-inicio .contest-tabela {
   background-color: whitesmoke;
   width: 306px;
-  margin: 18px auto;
-  height: 400px;
+  margin: 18px 10px;
+  height: 433px;
 }
 .titulo-barra-contest {
   position: absolute;
   background-color: #000;
   color: white;
   text-indent: 15px;
-  width: 320px;
+  width: 308px;
+  box-shadow: 2px 1px 1px black;
 }
 
 .linha-contest-tabela {
@@ -531,6 +531,12 @@ span .atual-icone {
   justify-content: space-around;
   top: -3px;
   left: -8px;
+}
+.table-container{
+  display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    justify-content: center;
 }
 .main-principal-inicio aside:hover {
   background-color: #900000;

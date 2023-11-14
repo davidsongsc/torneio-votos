@@ -15,6 +15,7 @@ interface DadosContest {
   premio: string;
   autor: string;
   datahora: string;
+  status: number;
 
 }
 
@@ -40,6 +41,7 @@ const initialState: ContestState = {
       premio: 'Premio misterioso',
       autor: 'ciclano',
       datahora: '10/12',
+      status: 0,
     },
     {
       id: 2,
@@ -54,6 +56,52 @@ const initialState: ContestState = {
       premio: 'Premio misterioso',
       autor: 'fulano',
       datahora: '10/12',
+      status: 0,
+    },
+    {
+      id: 3,
+      nomeContest: 'Sobremesa Novembro',
+      objetivo: 'Vendas Sobremesa',
+      descricao: 'Venda de licor.. A maior venda de licor..... teste texto tesla teto toto',
+      desempenho: 0,
+      meta: 7,
+      conquista: 0,
+      data_inicio: '10/12',
+      data_fim: '10/12',
+      premio: 'Premio misterioso',
+      autor: 'fulano',
+      datahora: '10/12',
+      status: 0,
+    },
+    {
+      id: 4,
+      nomeContest: 'Alice Novembro',
+      objetivo: 'Venda Alice almoço',
+      descricao: 'Venda de licor.. A maior venda de licor..... teste texto tesla teto toto',
+      desempenho: 0,
+      meta: 7,
+      conquista: 0,
+      data_inicio: '10/12',
+      data_fim: '10/12',
+      premio: 'Premio misterioso',
+      autor: 'fulano',
+      datahora: '10/12',
+      status: 0,
+    },
+    {
+      id: 5,
+      nomeContest: 'Sirloin Novembro',
+      objetivo: 'Vendas Licor',
+      descricao: 'Venda de licor.. A maior venda de licor..... teste texto tesla teto toto',
+      desempenho: 0,
+      meta: 7,
+      conquista: 0,
+      data_inicio: '10/12',
+      data_fim: '10/12',
+      premio: 'Premio misterioso',
+      autor: 'fulano',
+      datahora: '10/12',
+      status: 1,
     },
 
     // Adicione mais usuários conforme necessário
