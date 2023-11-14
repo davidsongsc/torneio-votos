@@ -99,8 +99,8 @@ canvas {
   list-style: none;
   display: flex;
   cursor: pointer;
-  right: 18px;
-  bottom: 18px;
+  right: 30px;
+  bottom: 30px;
   overflow: auto;
   margin-bottom: -6px;
   z-index: 999;
