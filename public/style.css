@@ -401,7 +401,7 @@ canvas {
 .main-principal-inicio section,
 .main-principal-inicio aside {
   display: flex;
-  background-color: #009090;
+  background-color: #0090904f;
   border-radius: 5px;
   box-shadow: 1px 1px;
   border-style: groove;

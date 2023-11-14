@@ -19,11 +19,12 @@ const Tabela: React.FC = () => {
                                 <h3><FaBullseye />  {contest.nomeContest}</h3>
                                 <p className='descricao-contest'> <FaFileAlt />  {contest.descricao}
                                     <p> </p>
-                                    <p>inicia em: {contest.prazo}</p>
-                                    <p>Termina em: {contest.prazo}</p>
+                                    <p>inicia em: {contest.data_inicio}</p>
+                                    <p>Termina em: {contest.data_fim}</p>
+                                    <p>Autor: {contest.autor}</p>
                                     <p> </p>
                                     <h2>Premio</h2>
-                                    <p>Termina em: {contest.desempenho}</p>
+                                    <p>{contest.premio}</p>
                                 </p>
                                 <span>
                                     <img className='img-tb-01' src="https://static.vecteezy.com/system/resources/previews/012/933/205/original/kingdom-red-flag-free-png.png" alt="img" />

@@ -10,7 +10,11 @@ interface DadosContest {
   desempenho: number;
   meta: number;
   conquista: number;
-  prazo: string;
+  data_inicio: string;
+  data_fim: string;
+  premio: string;
+  autor: string;
+  datahora: string;
 
 }
 
@@ -23,8 +27,34 @@ interface ContestState {
 const initialState: ContestState = {
   contest: [
     // Coloque seus usuários aqui
-    { id: 1,nomeContest: 'Café Novembro', objetivo: 'Aumentar venda de Café', descricao: 'O café é uma fonte rica de antioxidantes, substâncias que ajudam a combater os radicais livres no corpo. Os antioxidantes podem contribuir para a prevenção de danos celulares e redução do risco de doenças crônicas.', desempenho: 0, meta: 20, conquista: 0, prazo: '10/12' },
-    { id: 2, nomeContest: 'Licor Novembro', objetivo: 'Vendas Licor', descricao: 'Venda de licor.. A maior venda de licor..... teste texto tesla teto toto', desempenho: 0, meta: 7, conquista: 0, prazo: '10/12' },
+    {
+      id: 1,
+      nomeContest: 'Café Novembro',
+      objetivo: 'Aumentar venda de Café',
+      descricao: 'O café é uma fonte rica de antioxidantes, substâncias que ajudam a combater os radicais livres no corpo. Os antioxidantes podem contribuir para a prevenção de danos celulares e redução do risco de doenças crônicas.',
+      desempenho: 0,
+      meta: 20,
+      conquista: 0,
+      data_inicio: '10/12',
+      data_fim: '10/12',
+      premio: 'Premio misterioso',
+      autor: 'ciclano',
+      datahora: '10/12',
+    },
+    {
+      id: 2,
+      nomeContest: 'Licor Novembro',
+      objetivo: 'Vendas Licor',
+      descricao: 'Venda de licor.. A maior venda de licor..... teste texto tesla teto toto',
+      desempenho: 0,
+      meta: 7,
+      conquista: 0,
+      data_inicio: '10/12',
+      data_fim: '10/12',
+      premio: 'Premio misterioso',
+      autor: 'fulano',
+      datahora: '10/12',
+    },
 
     // Adicione mais usuários conforme necessário
   ],
