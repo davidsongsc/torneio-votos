@@ -24,8 +24,8 @@ const ConfirmVoto: React.FC<ConfirmVotoProps> = ({ open, onClose, onConfirm, mes
                     <p>{message}</p>
                 </div>
                 <div>
-                    <button onClick={onConfirm}>Confirmar</button>
-                    <button onClick={onClose}>Cancelar</button>
+                    <button onClick={onConfirm} style={{backgroundColor: 'green'}}>Confirmar</button>
+                    <button onClick={onClose} style={{backgroundColor: 'brown'}}>Cancelar</button>
                 </div>
             </div>
         </div>

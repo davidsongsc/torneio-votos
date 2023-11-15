@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Kdam+Thmor+Pro&family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Kdam+Thmor+Pro&family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 /* Reset CSS */
 
 /* Defina margens e preenchimentos para zero */
@@ -65,8 +65,6 @@ select,
 textarea {
   cursor: pointer;
 }
-
-
 
 body {
   background-color: #000;
@@ -292,7 +290,6 @@ canvas {
   justify-content: space-around;
   position: relative;
   z-index: 790;
-  height: 80vh;
   background-image: url(https://static.vecteezy.com/ti/vetor-gratis/p3/4141462-montanhas-por-do-sol-papel-de-parede-sol-atras-do-horizonte-imagem-crepusculo-natural-paisagem-ampla-horizontal-bg-deserto-amanhecer-abafado-cor-de-fundo-ilustracao-vetor.jpg);
   background-position: -2548px -1469px;
   animation: backgroundContest 90s ease-in-out infinite;
@@ -321,7 +318,7 @@ canvas {
   height: 890px;
 }
 .titulo-barra-contest {
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Montserrat", sans-serif;
   position: absolute;
   background-color: #000;
   color: white;
@@ -330,7 +327,7 @@ canvas {
   box-shadow: 2px 1px 1px black;
 }
 
-.titulo-barra-contest input{
+.titulo-barra-contest input {
   background-color: #000;
   color: #fff;
   border: none;
@@ -395,7 +392,7 @@ span .atual-icone:hover,
 span .atual-icone:active {
   transform: rotateZ(0deg);
   animation: rotaAtual 5s ease-in-out;
-  animation-delay: .3s;
+  animation-delay: 0.3s;
 }
 .linha-contest-tabela h4 {
   text-shadow: 1px 1px 1px black;
@@ -627,7 +624,7 @@ span .atual-icone:active {
   font-size: 10px;
 }
 .div-buttons button {
-  width: 80px;
+  width: 110px;
   height: 40px;
   border-radius: 0;
   font-size: 11px;
@@ -659,7 +656,7 @@ span .atual-icone:active {
 .radio-label-selecionado {
   background-color: white;
   border-radius: 5px;
-  padding: 120px 130px;
+  padding: 200px 130px;
   transition: 0.7s;
   position: absolute;
   z-index: 99;
@@ -668,6 +665,7 @@ span .atual-icone:active {
   right: 0;
   bottom: 0;
   top: 0;
+  height: 57vh;
   justify-content: flex-start;
   align-items: center;
   flex-direction: column;
@@ -801,7 +799,9 @@ span .atual-icone:active {
 }
 .confirm-voto-content div:last-child {
   display: flex;
-  flex-direction: column;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  width: 100%;
 }
 .confirm-voto-content p {
   font-size: 16px;
