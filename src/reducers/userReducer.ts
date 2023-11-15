@@ -15,9 +15,14 @@ import {
     CONCRETIZAR_VOTO_INICIO,
     CONCRETIZAR_VOTO_FALHA,
     CONCRETIZAR_VOTO,
-    SET_SESSION
+    SET_SESSION,
+    CACHE_CLEAR_KEY
 } from '../actions/types';
 import { UserData, UserActionTypes, MaisVotado, SetSessionAction } from '../actions/userActions';
+const CLEAR_CACHE_INTERVAL = 24 * 60 * 60 * 1000; // 24 horas em milissegundos
+
+const storedLastCacheClear = localStorage.getItem(CACHE_CLEAR_KEY);
+const lastCacheClear = storedLastCacheClear ? new Date(storedLastCacheClear) : null;
 
 
 interface UserState {
@@ -32,10 +37,12 @@ interface UserState {
     votoConfirmadoId: number | null; // Pode ser útil armazenar o ID do voto confirmado
     carregando: boolean;
     erro: string | null;
+    lastCacheClear: Date | null,
 }
 const storedSession = localStorage.getItem('userInfo');
 
 const initialState: UserState = {
+    lastCacheClear: lastCacheClear || new Date(),
     loading: false,
     userInfo: storedSession ? JSON.parse(storedSession) : null,
     users: [],
@@ -118,6 +125,11 @@ const userReducer = (
             };
         case LOGIN_SUCCESS:
             localStorage.setItem('userInfo', JSON.stringify(action.payload));
+            const now = new Date();
+            if (!state.lastCacheClear || (now.getTime() - (state.lastCacheClear.getTime() || 0)) > CLEAR_CACHE_INTERVAL) {
+                localStorage.clear(); // Limpa o cache
+                localStorage.setItem(CACHE_CLEAR_KEY, now.toISOString()); // Atualiza o registro da última limpeza
+            }
             return {
                 ...state,
                 loading: false,
@@ -168,7 +180,13 @@ const userReducer = (
                 mostVoted: null,
             };
         case SET_SESSION:
+            
             localStorage.setItem('userInfo', JSON.stringify(action.payload));
+            const nows = new Date();
+            if (!state.lastCacheClear || (nows.getTime() - (state.lastCacheClear.getTime() || 0)) > CLEAR_CACHE_INTERVAL) {
+                localStorage.clear(); // Limpa o cache
+                localStorage.setItem(CACHE_CLEAR_KEY, nows.toISOString()); // Atualiza o registro da última limpeza
+            }
             return {
                 ...state,
                 userInfo: action.payload,

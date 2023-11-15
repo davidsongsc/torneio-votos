@@ -42,4 +42,6 @@ export const FETCH_MOST_VOTED_FAILURE = 'FETCH_MOST_VOTED_FAILURE';
 
 export const UPDATE_LISTA_VOTOS = 'UPDATE_LISTA_VOTOS';
 
+export const CACHE_CLEAR_KEY = 'lastCacheClear';
+
 
