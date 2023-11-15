@@ -8,7 +8,7 @@ interface UserState {
 const initialState: UserState = {
   config: [
     {
-      ver: '1.04e',
+      ver: '1.04f',
       valendo: false,
       unidade: 'bz97',
       prazoManutencao: '2023-11-13T01:56:00',

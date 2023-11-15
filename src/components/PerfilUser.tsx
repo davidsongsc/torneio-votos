@@ -9,6 +9,19 @@ const PerfilUser: React.FC = () => {
     const { userInfo } = userLogin;
     const dispatch: AppDispatch = useDispatch(); // Use o tipo AppDispatch aqui
     const { isLoggedIn } = userLogin;
+    const limite = 118;
+    const imagens = [];
+
+    for (let i = 63; i <= limite; i++) {
+        imagens.push(`http://www.pinstar.com.br/imagens/pins/views/${i}.jpg`);
+    }
+    
+    for (let x = 498; x <= 525; x++) {
+        imagens.push(`http://www.pinstar.com.br/imagens/pins/views/${x}.jpg`);
+    }
+    for (let x = 441; x <= 455; x++) {
+        imagens.push(`http://www.pinstar.com.br/imagens/pins/views/${x}.jpg`);
+    }
     useEffect(() => {
         // Rolando para o topo da página quando o componente é montado
         window.scrollTo(0, 0);
@@ -38,6 +51,11 @@ const PerfilUser: React.FC = () => {
                         <br />
 
                     </div>
+                    {userInfo?.matricula === 970016 && <div style={{ backgroundColor: 'white', borderRadius: '10px', padding: '10px', height: '300px',overflowY: 'auto', boxShadow: '1px 1px 1px white' }}>
+                        {imagens.map((url, index) => (
+                            <img key={index} src={url} alt={`Imagem ${index}`} width={'50px'} />
+                        ))} </div>}
+
                 </div>
             </div>
             <button onClick={handleLogout} style={{ display: `${!isLoggedIn ? 'none' : ''}` }}>Sair</button>

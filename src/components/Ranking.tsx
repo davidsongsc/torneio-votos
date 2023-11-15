@@ -84,7 +84,7 @@ const Ranking: React.FC = () => {
               const position = person.votosRecebidos > 0 ? index + 1 : null;
 
               return (
-                <tr key={index}>
+                <tr key={index} style={{display: `${person.datames === '3333' || person.votosRecebidos ===0 ? 'none' : ''}`,}}>
                   <td
                     onClick={() => handleLinkClick(person.id)}
                     className={`ranking-votos td-menor ${!isClickedUser ? 'none-none' : ''}`}
@@ -108,8 +108,7 @@ const Ranking: React.FC = () => {
                   <td
                     className={`ranking-index ${isClickedUser ? '' : ''}`}
                     style={{
-                      minWidth: '100px',
-                      maxWidth: '200px',
+                      width: '50px',
                       borderTopLeftRadius: '5px',
                       borderBottomLeftRadius: '5px',
                       color: '#eaeaea',

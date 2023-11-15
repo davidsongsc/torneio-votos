@@ -53,7 +53,7 @@ const PageOutros: React.FC = () => {
                     <Link to="/regras"><button>Regulamento</button></Link>
                 </li>
 
-                {(userInfo?.alcunha && userInfo.alcunha.toLowerCase().includes('gerencia')) || (userInfo?.matricula && (
+                {(userInfo?.alcunha && userInfo.alcunha.toLowerCase().includes('gerencia')) || (userInfo?.matricula === 970016 && (
                     <>
                         <li>
                             <button>

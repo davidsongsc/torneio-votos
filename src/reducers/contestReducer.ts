@@ -5,6 +5,12 @@ import { Action } from 'redux';
 interface DadosContest {
   id: number;
   nomeContest: string;
+  tituloInicial: string;
+  textoInicial: string;
+  stituloInicial: string;
+  stextoInicial: string;
+  ttituloInicial: string;
+  ttextoInicial: string;
   objetivo: string;
   descricao: string;
   desempenho: number;
@@ -12,7 +18,9 @@ interface DadosContest {
   conquista: number;
   data_inicio: string;
   data_fim: string;
-  premio: string;
+  premiacao1: string[];
+  premiacao2: string[];
+  premiacao3: string[];
   autor: string;
   datahora: string;
   status: number;
@@ -29,81 +37,30 @@ const initialState: ContestState = {
   contest: [
     // Coloque seus usuários aqui
     {
-      id: 1,
-      nomeContest: 'Café Novembro',
-      objetivo: 'Aumentar venda de Café',
-      descricao: 'O café é uma fonte rica de antioxidantes, substâncias que ajudam a combater os radicais livres no corpo. Os antioxidantes podem contribuir para a prevenção de danos celulares e redução do risco de doenças crônicas.',
+      id: 2,
+      nomeContest: 'Nespresso + Sobremesa',
+      tituloInicial: 'Eu ouvi contest?',
+      textoInicial: 'B`play está com tudo e quer reconhecer os Amici e Outbackers que arrasam nas vendas! Chegamos com um novo desafio e os restaurantes que incrementarem o percentual de Pmix, vão ganhar Blooneys e uma premiação exclusiva da Nespresso!',
+      stituloInicial: 'Como vai funcionar?',
+      stextoInicial: 'O contest acontecerá entre os dias [13.11.2023] a [14.01.2023] e para premiação estar válida, precisamos atingir a meta BBI de percentual incremental de Pmix. (Nespresso: mínimo 50% de incremento e Sobremesas: mínimo 10% de incremento).',
+      objetivo: 'Como vai funcionar?',
+      ttituloInicial: 'A Premiação será dividida em alguns níveis:',
+      ttextoInicial: '',
+      premiacao1: ['TOP 5 Restaurantes - Vouchers Nespresso (Esperiências).', 'Cenário 1:300 Blooneys | Cenário 2:250 Blooneys | Cenário 3:200 Blooneys '],
+      premiacao2: ['TOP 6 a 10 Restaurantes - Vouchers Nespresso (Esperiências).', 'Cenário 1:300 Blooneys | Cenário 2:250 Blooneys | Cenário 3:200 Blooneys '],
+      premiacao3: ['TOP 11 a 25 Restaurantes - Vouchers Nespresso (Esperiências).', 'Cenário 1:300 Blooneys | Cenário 2:250 Blooneys | Cenário 3:200 Blooneys '],
+      descricao: 'O contest acontecerá entre os dias 13.11 a 14.01 e para premiação estar válida, precisamos atingir a meta BBI de percentual incremental de Pmix. (Nespresso: Minimo 50% de incremento e Sobremesas: mínimo 10% de incremento.',
       desempenho: 0,
       meta: 20,
       conquista: 0,
       data_inicio: '10/12',
       data_fim: '10/12',
-      premio: 'Premio misterioso',
+
       autor: 'ciclano',
       datahora: '10/12',
       status: 0,
     },
-    {
-      id: 2,
-      nomeContest: 'Licor Novembro',
-      objetivo: 'Vendas Licor',
-      descricao: 'Venda de licor.. A maior venda de licor..... teste texto tesla teto toto',
-      desempenho: 0,
-      meta: 7,
-      conquista: 0,
-      data_inicio: '10/12',
-      data_fim: '10/12',
-      premio: 'Premio misterioso',
-      autor: 'fulano',
-      datahora: '10/12',
-      status: 0,
-    },
-    {
-      id: 3,
-      nomeContest: 'Sobremesa Novembro',
-      objetivo: 'Vendas Sobremesa',
-      descricao: 'Venda de licor.. A maior venda de licor..... teste texto tesla teto toto',
-      desempenho: 0,
-      meta: 7,
-      conquista: 0,
-      data_inicio: '10/12',
-      data_fim: '10/12',
-      premio: 'Premio misterioso',
-      autor: 'fulano',
-      datahora: '10/12',
-      status: 1,
-    },
-    {
-      id: 4,
-      nomeContest: 'Alice Novembro',
-      objetivo: 'Venda Alice almoço',
-      descricao: 'Venda de licor.. A maior venda de licor..... teste texto tesla teto toto',
-      desempenho: 0,
-      meta: 7,
-      conquista: 0,
-      data_inicio: '10/12',
-      data_fim: '10/12',
-      premio: 'Premio misterioso',
-      autor: 'fulano',
-      datahora: '10/12',
-      status: 1,
-    },
-    {
-      id: 5,
-      nomeContest: 'Sirloin Novembro',
-      objetivo: 'Vendas Licor',
-      descricao: 'Venda de licor.. A maior venda de licor..... teste texto tesla teto toto',
-      desempenho: 0,
-      meta: 7,
-      conquista: 0,
-      data_inicio: '10/12',
-      data_fim: '10/12',
-      premio: 'Premio misterioso',
-      autor: 'fulano',
-      datahora: '10/12',
-      status: 2,
-    },
-
+    
     // Adicione mais usuários conforme necessário
   ],
 };

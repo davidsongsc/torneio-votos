@@ -31,7 +31,7 @@ const Perfil: React.FC = () => {
                     </blockquote>
                 </p>
                 <br />
-
+                
                 <br />
                 <div>
                     <p> {employee?.alcunha}</p>

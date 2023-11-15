@@ -85,10 +85,10 @@ const Navbar: React.FC = () => {
         { icon: faTrophy, to: '/regras', text: 'Regras', visible: true },
         { icon: faSignOutAlt, to: '', text: 'Sair', visible: isLoggedIn },
         { icon: faBars, to: '/outros', text: 'Menu', visible: isLoggedIn },
-        { icon: faFileExcel, to: '/contest', text: 'Contest', visible: isLoggedIn },
+        { icon: faFileExcel, to: '/contest', text: 'Contest', visible: true },
         { icon: faTrophy, to: '/ranking', text: 'Ranking', visible: true },
         { icon: faSignInAlt, to: '/login', text: 'Login', visible: !isLoggedIn },
-        { icon: faPoll, to: '/votar', text: `Urna Digital | ${userInfo?.votos}`, visible: isLoggedIn },
+        { icon: faPoll, to: '/votar', text: `URNA | VOTAR | ${userInfo?.votos}`, visible: isLoggedIn },
     ];
 
     return (
