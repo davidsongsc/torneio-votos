@@ -698,7 +698,7 @@ span .atual-icone:active {
 .tela-painel-votos {
   display: flex;
   max-width: 900px;
-  height: 520px;
+  height: 320px;
   min-width: 400px;
   overflow-y: auto;
   flex-direction: row;
