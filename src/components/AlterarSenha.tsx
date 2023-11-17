@@ -120,7 +120,7 @@ const AlterarSenha: React.FC = () => {
                         setLoginError('');
                         handlePasswordReset();
                         alert('Codigo alterado com sucesso!')
-                        navigate('/ranking');
+                        navigate('/regras');
                     })
                     .catch((error) => {
                         // Define a mensagem de erro
@@ -138,7 +138,7 @@ const AlterarSenha: React.FC = () => {
                         // Limpa o erro no caso de sucesso
                         setLoginError('');
                         handlePasswordReset();
-                        navigate('/ranking');
+                        navigate('/votar');
                     })
                     .catch((error) => {
                         // Define a mensagem de erro

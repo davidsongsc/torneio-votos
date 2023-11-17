@@ -305,26 +305,133 @@ canvas {
   transition: 1s;
   flex-wrap: wrap;
   justify-content: center;
+  align-content: flex-start;
 }
 .contest-tabela {
   width: 380px;
   justify-content: flex-start;
   flex-wrap: wrap;
 }
-.main-principal-inicio .contest-tabela {
-  background-color: whitesmoke;
-  width: 306px;
-  margin: 30px 10px;
-  height: 890px;
+.contest-inativ {
+  filter: grayscale(100%) blur(2px);
+  backdrop-filter: blur(10px);
 }
+.icone-area-context-texto {
+  position: relative;
+  top: 5px;
+  z-index: 300;
+  margin-bottom: -20px;
+}
+.icone-area-context-stexto {
+  position: absolute;
+  top: 27px;
+  z-index: 300;
+  left: -6px;
+  background-color: rgba(255, 255, 255, 0.48);
+  width: 40px;
+  border-radius: 5px;
+}
+.titulo-area-contest-t1 {
+  height: 20px;
+  margin-top: 3px;
+  overflow-y: hidden;
+  width: 308px;
+  font-size: 20px;
+  text-indent: 38px;
+  background-color: cadetblue;
+  padding: 4px 0px;
+  color: white;
+  border: none;
+  border-radius: 0px;
+  position: relative;
+  z-index: 200;
+  left: 1px;
+  top: -4px;
+}
+.tituloTh {
+  color: white;
+  font-size: 11px;
+  background-color: cadetblue;
+  padding: 4px 5px;
+  text-align: center;
+}
+
+.text-area-contest-t1 {
+  height: 140px;
+  margin-top: 3px;
+  overflow-y: hidden;
+  width: 289px;
+  font-size: 14px;
+  text-indent: 40px;
+  background-color: rgb(47, 79, 79);
+  padding: 4px 0px;
+  color: white;
+  border: none;
+  border-radius: 0px;
+  position: relative;
+  z-index: 200;
+  left: 1px;
+  top: -26px;
+  font-family: math;
+  text-transform: lowercase;
+  overflow-y: scroll;
+}
+.text-area-contest-t2 {
+  height: 140px;
+  margin-top: 3px;
+  overflow-y: hidden;
+  width: 289px;
+  font-size: 14px;
+  text-indent: 40px;
+  background-color: rgb(47, 79, 79);
+  padding: 4px 0px;
+  color: white;
+  border: none;
+  font-family: math;
+  text-transform: lowercase;
+  border-radius: 0px;
+  position: relative;
+  z-index: 200;
+  left: 1px;
+  margin: 13px 0px;
+  top: 10px;
+  overflow-y: scroll;
+}
+.text-area-contest-div {
+  font-family: math;
+  text-transform: lowercase;
+}
+.text-area-contest-div p{
+  margin: 0;
+}
+.text-area-contest-div h3 {
+  background-color: #086464;
+}
+.text-area-contest-div ul li {
+  text-align: left;
+  text-indent: 0;
+  text-transform: math-auto;
+  font-size: small;
+
+}
+.main-principal-inicio .contest-tabela {
+  background-color: #2f4f4f;
+  width: 307px;
+  margin: 30px 10px;
+  height: 750px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+
 .titulo-barra-contest {
   font-family: "Montserrat", sans-serif;
   position: absolute;
   background-color: #000;
   color: white;
   text-indent: 15px;
-  width: 308px;
+  height: 40px;
   box-shadow: 2px 1px 1px black;
+  z-index: 900;
 }
 
 .titulo-barra-contest input {
@@ -335,26 +442,26 @@ canvas {
 }
 
 .linha-contest-tabela {
-  margin-top: 25px;
+  margin-top: 40px;
   text-align: left;
   position: relative;
+  left: 7px;
   background-color: #2f4f4f;
   /*background-image: url("https://wallpapers.com/images/hd/australian-outback-dirt-road-je5gdd3rfhxrxrl8.jpg");*/
   background-position: -815px -600px;
 }
 
-.linha-contest-tabela div {
+.linha-contest-tabela .linha-tabela-mor {
   background-color: #2f4f4f;
   width: 308px;
-  top: -4px;
+  top: 2px;
   text-indent: 11px;
   box-shadow: 2px 2px 3px black;
-  height: 130px;
+  height: 240px;
   border-bottom-right-radius: 15px;
   border-bottom-left-radius: 15px;
   color: white;
   position: relative;
-  height: 348px;
 }
 .linha-contest-tabela .descricao-contest {
   position: relative;
@@ -437,6 +544,11 @@ span .atual-icone:active {
   top: -3px;
   left: -8px;
 }
+
+.linha-contest-tabela .texto-contest-test {
+  margin-bottom: 20px;
+}
+
 .table-container {
   display: flex;
   flex-wrap: wrap;
@@ -623,15 +735,19 @@ span .atual-icone:active {
 .votante-lista-seletor p {
   font-size: 10px;
 }
+.div-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
 .div-buttons button {
   width: 110px;
   height: 40px;
   border-radius: 0;
   font-size: 11px;
 }
-.div-buttons .equipes {
-  margin: 0 auto;
-  transform: scale(0.9);
+.equipes {
+  width: 330px;
 }
 .equipes button {
   background-color: gray;
@@ -1105,24 +1221,24 @@ span .atual-icone:active {
 /* Altera o fundo da barra de rolagem (a trilha) */
 ::-webkit-scrollbar-track {
   border-bottom-right-radius: 20px;
-  background: black; /* Cor de fundo da trilha da barra de rolagem */
+  background: #2f4f4f; /* Cor de fundo da trilha da barra de rolagem */
 }
 ::-webkit-scrollbar-track:hover {
-  background: white; /* Cor de fundo da trilha da barra de rolagem */
+  background: #2f4f4f; /* Cor de fundo da trilha da barra de rolagem */
   transition: 1.7s;
 }
 
 /* Altera a cor do indicador de rolagem (o thumb) */
 ::-webkit-scrollbar-thumb {
   border-bottom-right-radius: 20px;
-  background-color: #000; /* Cor de fundo do thumb */
+  background-color: #2f4f4f; /* Cor de fundo do thumb */
   border-radius: 1px; /* Arredonda os cantos do thumb */
-  border: 6px solid #b7410e; /* Borda ao redor do thumb */
+  border: 6px solid #000; /* Borda ao redor do thumb */
 }
 
 /* Altera o estado de hover do indicador de rolagem */
 ::-webkit-scrollbar-thumb:hover {
-  background-color: white;
+  background-color: #2f4f4f;
 }
 .link-ranking {
   width: 100%;
