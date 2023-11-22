@@ -4,7 +4,6 @@ import { RootState } from '../reducers';
 import { useDispatch, useSelector } from 'react-redux';
 import { AppDispatch } from '../store';
 import { fetchUsers, fetchMostVoted } from '../actions/userActions';
-import TelaLoading from './loading';
 import Cubo from './Cubo';
 
 const Ranking: React.FC = () => {

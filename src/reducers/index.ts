@@ -1,6 +1,7 @@
 import concretizarVotoReducer from './concretizarVotoReducer';
 import userReducer from '../reducers/userReducer';
 import configReducer from '../reducers/configReducer';
+import listarVotosReducer from '../reducers/listarVotosReducer';
 import usuariosReducer from './usuariosReducer';
 import contestReducer from './contestReducer';
 import { combineReducers } from 'redux';
@@ -11,6 +12,7 @@ const rootReducer = combineReducers({
   userReducer: userReducer,
   configReducer: configReducer,
   user: userReducer,
+  listarVotosReducer,
   usuariosReducer,
   contestReducer,
   votoReducer,

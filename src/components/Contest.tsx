@@ -9,17 +9,12 @@ interface SectionProps {
 }
 
 const SectionContest: React.FC<SectionProps> = ({ content }) => {
-
-
   const { table } = content;
-
   return (
     <section>
-      
       {table && (
         <div className="table-container">{table}</div>
       )}
-
     </section>
   );
 };

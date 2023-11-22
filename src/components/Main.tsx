@@ -1,6 +1,6 @@
 import React from 'react';
 import Tabela from './Tabela';
-import SectionContest from './SectionContest';
+import SectionContest from './Contest';
 
 function Main() {
   const secoes = [

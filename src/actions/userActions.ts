@@ -1,4 +1,4 @@
-import { Dispatch } from 'redux';
+import { Dispatch, AnyAction, Action } from 'redux';
 import * as types from './types';
 import { RootState } from '../reducers';
 import axios, { AxiosResponse } from 'axios';
@@ -9,7 +9,7 @@ export interface ListaCompletaUsers {
 
 export interface SetSessionAction {
   type: typeof types.SET_SESSION;
-  payload: UserData; 
+  payload: UserData;
 }
 
 export const setSession = (userData: UserData): SetSessionAction => ({
@@ -51,6 +51,17 @@ export interface MaisVotado {
   listaVotos: string[];
   datames: string;
   ano: string;
+}
+
+export interface ListaVotos {
+  id: number;
+  idvotante_id: string;
+  idvotado_id: string;
+  datahora_registro: string;
+}
+
+export interface ContarVotosAction extends Action<typeof types.CONTAR_VOTOS> {
+  payload: number;
 }
 
 interface LogoutAction {
@@ -110,13 +121,24 @@ interface FetchMostVotedRequestAction {
 
 interface FetchMostVotedSuccessAction {
   type: typeof types.FETCH_MOST_VOTED_SUCCESS;
-  payload: MaisVotado[]; // Use a nova interface MaisVotado aqui
+  payload: MaisVotado[];
 }
+
+export interface FetchListarVotos {
+  type: typeof types.FETCH_LISTAR_VOTOS;
+  payload: ListaVotos[];
+}
+
 
 interface FetchMostVotedFailureAction {
   type: typeof types.FETCH_MOST_VOTED_FAILURE;
   error: string;
 }
+
+export const contarVotos = (quantidade: number): AnyAction => ({
+  type: types.CONTAR_VOTOS,
+  payload: quantidade,
+});
 
 export const enviarVoto = (idVotante: any, idVotado: any) => {
   return {
@@ -128,6 +150,11 @@ export const enviarVoto = (idVotante: any, idVotado: any) => {
 export const updateListaVotos = (contarVotos: string[]): UpdateListaVotosAction => ({
   type: types.UPDATE_LISTA_VOTOS,
   payload: contarVotos,
+});
+
+export const listarVotosContest = (listar: ListaVotos[]): FetchListarVotos => ({
+  type: types.FETCH_LISTAR_VOTOS,
+  payload: listar,
 });
 
 const fetchMostVotedRequest = (): FetchMostVotedRequestAction => ({
@@ -192,7 +219,8 @@ export type UserActionTypes = LoginRequestAction
   | AlterarLoginRequestAction
   | AlterarLoginSuccessAction
   | ConcretizarVotoAction
-  | SetSessionAction 
+  | SetSessionAction
+  | FetchListarVotos
   | { type: typeof types.CONCRETIZAR_VOTO_INICIO }
   | { type: typeof types.CONCRETIZAR_VOTO_SUCESSO; payload: number }
   | { type: typeof types.CONCRETIZAR_VOTO_FALHA; payload: string }
@@ -227,10 +255,8 @@ export const fetchMostVoted = () => {
 
 export const loginUser = (credentials: { matricula: string; senha: string }) => {
   return (dispatch: Dispatch<UserActionTypes>) => {
-    // Dispare a ação de solicitação de login
     dispatch({ type: types.LOGIN_REQUEST });
 
-    // Retorne a promessa
     return new Promise((resolve, reject) => {
       fetch(types.API_LOGIN, {
         method: 'POST',
@@ -243,18 +269,15 @@ export const loginUser = (credentials: { matricula: string; senha: string }) => 
           if (response.ok) {
             return response.json();
           } else {
-            // Se a resposta não for OK, rejeite a promessa
             response.json().then(json => reject(json.error));
             throw new Error('Credenciais inválidas');
           }
         })
         .then(userData => {
-          // Dispare a ação de sucesso de login com os dados do usuário
           dispatch({ type: types.LOGIN_SUCCESS, payload: userData });
           resolve(userData);
         })
         .catch(error => {
-          // Dispare a ação de falha no login com a mensagem de erro
           dispatch({ type: types.LOGIN_FAILURE, error: error.toString() });
           reject(error);
         });
@@ -264,11 +287,8 @@ export const loginUser = (credentials: { matricula: string; senha: string }) => 
 
 export const alteraLoginUser = (credentials: { matricula: string; senha: string; selectedDay: string; selectedMonth: string; }) => {
   return (dispatch: Dispatch<UserActionTypes>) => {
-    // Dispare a ação de solicitação de login
     dispatch({ type: types.ALTER_LOGIN_REQUEST });
 
-    // Retorne a promessa
-    console.log(credentials);
     return new Promise((resolve, reject) => {
       fetch(types.API_ALTER_LOGIN, {
         method: 'POST',
@@ -281,18 +301,15 @@ export const alteraLoginUser = (credentials: { matricula: string; senha: string;
           if (response.ok) {
             return response.json();
           } else {
-            // Se a resposta não for OK, rejeite a promessa
             response.json().then(json => reject(json.error));
             throw new Error('Credenciais inválidas');
           }
         })
         .then(userData => {
-          // Dispare a ação de sucesso de login com os dados do usuário
           dispatch({ type: types.ALTER_LOGIN_SUCCESS, payload: userData });
           resolve(userData);
         })
         .catch(error => {
-          // Dispare a ação de falha no login com a mensagem de erro
           dispatch({ type: types.ALTER_LOGIN_FAILURE, error: error.toString() });
           reject(error);
         });
@@ -319,6 +336,7 @@ export const fetchUsers = () => {
       .catch(error => dispatch(fetchUsersFailure(error.message)));
   };
 };
+
 
 const fetchUsersAndUpdate = async (dispatch: Dispatch<UserActionTypes>) => {
   try {
@@ -375,6 +393,25 @@ export const concretizarVotoAsync = (idVotado: number) => {
     } catch (error) {
       console.error('Erro ao enviar a confirmação do voto para a API:', error);
       // Trate o erro conforme necessário
+    }
+  };
+};
+
+export const fetchListarVotos = () => {
+  return async (dispatch: Dispatch<AnyAction>) => {
+    try {
+      // Realize a chamada à API aqui (usando axios, fetch, etc.)
+      const response = await fetch(types.API_LISTA_VOTOS );
+      const data = await response.json();
+
+      // Despache a ação com os dados recebidos
+      dispatch({
+        type: types.FETCH_LISTAR_VOTOS,
+        payload: data,
+      });
+    } catch (error) {
+      // Lidere os erros conforme necessário
+      console.error('Erro ao buscar dados da API:', error);
     }
   };
 };

@@ -1,18 +1,28 @@
-import React, { useState } from 'react';
+import React, { useEffect } from 'react';
 import { FaBullseye, FaSortNumericUp, FaCircleNotch, FaArrowAltCircleUp, FaArrowAltCircleDown } from 'react-icons/fa';
 import { RootState } from '../reducers'; // Substitua pelo caminho correto
 import { useSelector } from 'react-redux';
 import { FaEdit, FaHistory, FaMedal, FaCalendarAlt, FaTrophy, FaAward, FaList } from 'react-icons/fa';
+import { useDispatch } from 'react-redux';
+import { fetchListarVotos } from '../actions/userActions';
+import { contarVotos } from '../actions/userActions';
 
 const Tabela: React.FC = () => {
+    const dispatch = useDispatch();
     const data = useSelector((state: RootState) => state.contestReducer.contest);
-    const usuario = useSelector((state: RootState) => state.userReducer.userInfo?.nome);
-    const alcunhaArray = useSelector((state: RootState) => state.userReducer.userInfo?.alcunha?.split(','));
+    const listaVotos = useSelector((state: RootState) => state.listarVotosReducer.listaVotos);
     const tamanhoIconeContestText = 20;
     const contestAtivo = 1;
 
+    useEffect(() => {
+        // Dispatch da ação para buscar os dados quando o componente montar
+        dispatch(fetchListarVotos() as any); // Adicione "as any" temporariamente para evitar erro de tipo
+        dispatch(contarVotos(listaVotos.length));
+
+    }, [dispatch]);
 
 
+    
 
     return (
         <>
@@ -56,57 +66,55 @@ const Tabela: React.FC = () => {
                                 <div className='icone-area-context-texto'>
                                 </div>
                                 <textarea className='text-area-contest-t2' name="texto" value={contest.stextoInicial} placeholder='Descrição' />
-                                
+
 
                                 <div className='text-area-contest-div'>
-                                <h2 style={{
-                                    fontSize: '13px',
-                                    borderRadius: '0px',
-                                }}>
+                                    <h2 style={{
+                                        fontSize: '13px',
+                                        borderRadius: '0px',
+                                    }}>
 
-                                    <FaTrophy />  {contest.ttituloInicial}</h2>
+                                        <FaTrophy />  {contest.ttituloInicial}</h2>
                                     {contest.premiacao.map((premiacao, index) => (
-                                            <p key={index} className='texto-contest-test'>
-                                            
-                                                <h3>  {index + 1}ª Premiação <FaAward size={tamanhoIconeContestText} />:</h3>
-                                                <ul>
-                                                    {premiacao.map((detalhe, detalheIndex) => (
-                                                        <li key={detalheIndex}>{detalhe}</li>
-                                                    ))}
-                                                </ul>
-                                            
-                                            </p>
-                                        ))}
+                                        <p key={index} className='texto-contest-test'>
+
+                                            <h3>  {index + 1}ª Premiação <FaAward size={tamanhoIconeContestText} />:</h3>
+                                            <ul>
+                                                {premiacao.map((detalhe, detalheIndex) => (
+                                                    <li key={detalheIndex}>{detalhe}</li>
+                                                ))}
+                                            </ul>
+
+                                        </p>
+                                    ))}
+                                </div>
+
+
+                                <p className='descricao-contest'>
+                                    <p> </p>
+                                    <p><FaCalendarAlt />inicio : {contest.data_inicio}</p>
+                                    <p><FaCalendarAlt />fim : {contest.data_fim}</p>
+                                    <p><FaHistory />Autor: {contest.autor}</p>
+                                    <p> </p>
+
+                                </p>
+                                <span >
+                                    <img className='img-tb-01' src="https://static.vecteezy.com/system/resources/previews/012/933/205/original/kingdom-red-flag-free-png.png" alt="img" />
+                                    <h4 className='titulo-1'>META </h4>
+
+                                    <img className='img-tb-02' src="https://static.vecteezy.com/system/resources/previews/012/933/205/original/kingdom-red-flag-free-png.png" alt="img" />
+                                    <h4 className='titulo-2'>ATUAL</h4>
+                                </span>
+                                <span >
+                                    <h4 className='meta-icone'> <FaSortNumericUp size={45} /></h4>
+                                    <h4 className='meta-icone'> <FaCircleNotch className='atual-icone' size={45} /></h4>
+                                </span>
+                                <span>
+                                    <h4 className='meta-atual'>{contest.meta} </h4>
+                                    <h4 className='meta-atual'>{contest.conquista} </h4>
+                                </span>
                             </div>
-
-                            
-                            
-
-                            <p className='descricao-contest'>
-                                <p> </p>
-                                <p><FaCalendarAlt />inicio : {contest.data_inicio}</p>
-                                <p><FaCalendarAlt />fim : {contest.data_fim}</p>
-                                <p><FaHistory />Autor: {contest.autor}</p>
-                                <p> </p>
-
-                            </p>
-                            <span >
-                                <img className='img-tb-01' src="https://static.vecteezy.com/system/resources/previews/012/933/205/original/kingdom-red-flag-free-png.png" alt="img" />
-                                <h4 className='titulo-1'>META </h4>
-
-                                <img className='img-tb-02' src="https://static.vecteezy.com/system/resources/previews/012/933/205/original/kingdom-red-flag-free-png.png" alt="img" />
-                                <h4 className='titulo-2'>ATUAL</h4>
-                            </span>
-                            <span >
-                                <h4 className='meta-icone'> <FaSortNumericUp size={45} /></h4>
-                                <h4 className='meta-icone'> <FaCircleNotch className='atual-icone' size={45} /></h4>
-                            </span>
-                            <span>
-                                <h4 className='meta-atual'>{contest.meta} </h4>
-                                <h4 className='meta-atual'>{contest.conquista} </h4>
-                            </span>
                         </div>
-                    </div>
                     </section >
                 ))
             }

@@ -1,5 +1,6 @@
 // usuariosReducer.ts
-import { Action } from 'redux';
+import { ContarVotosAction } from '../actions/userActions';
+import * as types from '../actions/types';
 
 // Defina a estrutura de cada usuário
 interface DadosContest {
@@ -20,15 +21,12 @@ interface DadosContest {
   autor: string;
   datahora: string;
   status: number;
-
 }
 
-// Defina o tipo de estado para armazenar os usuários
 interface ContestState {
-  contest: DadosContest[]; // Array de usuários
+  contest: DadosContest[];
 }
 
-// Estado inicial
 const initialState: ContestState = {
   contest: [
     {
@@ -42,14 +40,14 @@ const initialState: ContestState = {
       ttextoInicial: '',
       premiacao: [],
       desempenho: 0,
-      meta: 10,
+      meta: 30,
       conquista: 0,
       data_inicio: '01/11/2023',
       data_fim: '-',
 
       autor: '',
       datahora: '10/12',
-      status: 1, // ativo
+      status: 1,
     },
     {
       id: 2,
@@ -77,9 +75,29 @@ const initialState: ContestState = {
 };
 
 // Reducer para manipular o estado dos usuários
-const contestReducer = (state = initialState, action: Action) => {
+const contestReducer = (state = initialState, action: ContarVotosAction) => {
   switch (action.type) {
-    // Adicione casos para manipular ações relacionadas aos usuários, se necessário
+    case types.CONTAR_VOTOS:
+      // Verifique se é o contest de ID 1 antes de atualizar a conquista
+      if (state.contest && state.contest.length > 0) {
+        const contestId1Index = state.contest.findIndex((c) => c.id === 1);
+
+        if (contestId1Index !== -1) {
+          return {
+            ...state,
+            contest: [
+              ...state.contest.slice(0, contestId1Index),
+              {
+                ...state.contest[contestId1Index],
+                conquista: action.payload,
+              },
+              ...state.contest.slice(contestId1Index + 1),
+            ],
+          };
+        }
+      }
+
+      return state;
     default:
       return state;
   }
