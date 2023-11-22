@@ -186,7 +186,7 @@ const Votar: React.FC = () => {
             </div>
             <div><h2>{userLogin.userInfo?.nome}  </h2>
             <h2>{alcunhaArray?.[0]?.trim()}</h2>
-            <h2>{alcunhaArray?.[1]?.trim()}</h2></div>
+           {*/ <h2>{alcunhaArray?.[1]?.trim()}</h2>/*}</div>
         </>
     );
 };
