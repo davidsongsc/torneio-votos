@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { RootState } from '../reducers';
 import { useDispatch, useSelector } from 'react-redux';
 import { AppDispatch } from '../store';
-import { fetchUsers, fetchMostVoted } from '../actions/userActions';
+import { fetchUsers, fetchMostVoted, fetchListarVotos } from '../actions/userActions';
 import Cubo from './Cubo';
 
 const Ranking: React.FC = () => {
@@ -18,7 +18,7 @@ const Ranking: React.FC = () => {
   useEffect(() => {
     setLoading(true);
 
-    Promise.all([dispatch(fetchUsers()), dispatch(fetchMostVoted())])
+    Promise.all([dispatch(fetchUsers()), dispatch(fetchMostVoted()), dispatch(fetchListarVotos() as any)])
       .then(() => setLoading(false))
       .catch((error) => {
         console.error('Error fetching data:', error);

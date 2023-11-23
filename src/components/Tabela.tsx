@@ -1,5 +1,12 @@
 import React, { useEffect } from 'react';
 import { FaBullseye, FaSortNumericUp, FaCircleNotch, FaArrowAltCircleUp, FaArrowAltCircleDown } from 'react-icons/fa';
+import {
+    IoIosMedal,
+   // IoMdTrophy,
+   // IoMdRibbon,
+   // IoMdStar,
+   // IoMdStarOutline,
+} from 'react-icons/io';
 import { RootState } from '../reducers'; // Substitua pelo caminho correto
 import { useSelector } from 'react-redux';
 import { FaEdit, FaHistory, FaMedal, FaCalendarAlt, FaTrophy, FaAward, FaList } from 'react-icons/fa';
@@ -19,10 +26,7 @@ const Tabela: React.FC = () => {
         dispatch(fetchListarVotos() as any); // Adicione "as any" temporariamente para evitar erro de tipo
         dispatch(contarVotos(listaVotos.length));
 
-    }, [dispatch]);
-
-
-    
+    }, [dispatch, listaVotos]);
 
     return (
         <>
@@ -49,21 +53,14 @@ const Tabela: React.FC = () => {
                                     lineHeight: '13px',
 
                                 }}>
-                                    <div style={{
-                                        position: 'absolute',
-                                        top: '185px',
-                                        zIndex: '300',
-                                        left: '50px',
-                                        backgroundColor: '#ffffff7a',
-                                        width: `${tamanhoIconeContestText * 2}px`,
-                                        borderRadius: '5px'
-                                    }}>
+                                    <div className='medalhaTexto'>
                                         <FaMedal size={tamanhoIconeContestText} />
                                     </div>  <textarea className='text-area-contest-t1' name="texto" value={contest.textoInicial}> </textarea></p>
 
                                 <div className='icone-area-context-texto'><FaEdit />   </div> <textarea className='titulo-area-contest-t1' name="texto" value={contest.stituloInicial} placeholder='Descrição' />
 
-                                <div className='icone-area-context-texto'>
+                                <div className='medalhaTextoTo'>
+                                    <IoIosMedal size={tamanhoIconeContestText} />
                                 </div>
                                 <textarea className='text-area-contest-t2' name="texto" value={contest.stextoInicial} placeholder='Descrição' />
 

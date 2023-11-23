@@ -129,7 +129,7 @@ const Votar: React.FC = () => {
                                     htmlFor={`radio-${pessoa.id}`}
                                     style={{ display: `${pessoa.id === usuarioLogado ? 'none' : ''}` }}>
                                     <div className='votante-lista-seletor'>
-                                        <img src={`https://dagesico.pythonanywhere.com/static/img/${pessoa.imagem}`} alt="Imagem Perfil" />
+                                        <img src={`https://bz97.pythonanywhere.com/static/img/${pessoa.imagem}`} alt="Imagem Perfil" />
                                         <h3>{pessoa.nome} </h3>
                                         <input
                                             className='radio-input'

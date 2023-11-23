@@ -42,7 +42,7 @@ const PerfilUser: React.FC = () => {
 
         if (files && files.length > 0) {
             const selectedFile = files[0];
-    
+
             // Verifique se o tipo do arquivo é JPEG
             if (selectedFile.type !== 'image/jpeg') {
                 alert('Por favor, selecione um arquivo de imagem JPEG.');
@@ -52,7 +52,7 @@ const PerfilUser: React.FC = () => {
                 }
                 return;
             }
-    
+
             setSelectedFile(selectedFile);
         }
     };
@@ -61,10 +61,10 @@ const PerfilUser: React.FC = () => {
         if (selectedFile) {
             const formData = new FormData();
             formData.append('image', selectedFile);
-            
+
             // Adicione o novo nome do arquivo ao FormData
             formData.append('new_filename', `${userInfo?.matricula}.jpg` || '');
-    
+
             try {
                 const response = await axios.post(API_IMAGEM_UPLOAD, formData, {
                     headers: {
@@ -91,11 +91,10 @@ const PerfilUser: React.FC = () => {
                 <br />
                 <br />
                 <div className='painel'></div>
-                
-                <div>
                 <img className='perfil-image' src={`https://bz97.pythonanywhere.com/static/img/${userInfo?.imagem}`} alt={`${userInfo?.matricula}`} />
-                    <input type="file" accept="image/jpeg" onChange={handleFileChange} />
-                    <button onClick={handleUpload}>Enviar Imagem</button>
+                <div className='perfil-botoes-img'>
+                    <input type="file" accept="image/jpeg" onChange={handleFileChange} disabled/>
+                    <button onClick={handleUpload} disabled>Enviar Imagem</button>
                 </div>
                 <div className='info'>
                     <br />

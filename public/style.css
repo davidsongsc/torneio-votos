@@ -401,7 +401,7 @@ canvas {
   font-family: math;
   text-transform: lowercase;
 }
-.text-area-contest-div p{
+.text-area-contest-div p {
   margin: 0;
 }
 .text-area-contest-div h3 {
@@ -412,13 +412,13 @@ canvas {
   text-indent: 0;
   text-transform: math-auto;
   font-size: small;
-
 }
 .main-principal-inicio .contest-tabela {
   background-color: #2f4f4f;
-  width: 307px;
+  width: 325px;
   margin: 30px 10px;
-  height: 750px;
+  
+  min-height: 26px;
   overflow-y: scroll;
   overflow-x: hidden;
 }
@@ -426,11 +426,14 @@ canvas {
 .titulo-barra-contest {
   font-family: "Montserrat", sans-serif;
   position: absolute;
-  background-color: #000;
+  background-color: black;
   color: white;
   text-indent: 15px;
-  height: 40px;
+  height: 22px;
+  width: 307px;
+  
   box-shadow: 2px 1px 1px black;
+  border-bottom-right-radius: 10px;
   z-index: 900;
 }
 
@@ -445,7 +448,7 @@ canvas {
   margin-top: 40px;
   text-align: left;
   position: relative;
-  left: 7px;
+  height: 750px;
   background-color: #2f4f4f;
   /*background-image: url("https://wallpapers.com/images/hd/australian-outback-dirt-road-je5gdd3rfhxrxrl8.jpg");*/
   background-position: -815px -600px;
@@ -694,6 +697,24 @@ span .atual-icone:active {
   border: 1px solid #000; /* Adiciona uma borda sólida de 1 pixel em torno das células */
   padding: 5px; /* Adiciona espaço interno às células */
   text-align: center; /* Centraliza o conteúdo nas células */
+}
+.medalhaTexto {
+  position: absolute;
+  top: 28px;
+  z-index: 300;
+  left: 2px;
+  background-color: rgba(255, 255, 255, 0.48);
+  width: 40px;
+  border-radius: 5px;
+}
+.medalhaTextoTo {
+  position: absolute;
+  top: 253px;
+  z-index: 300;
+  left: 2px;
+  background-color: rgba(255, 255, 255, 0.48);
+  width: 40px;
+  border-radius: 5px;
 }
 .tela-painel-votos {
   display: flex;
@@ -1066,7 +1087,19 @@ span .atual-icone:active {
   margin-top: 20px;
   color: red;
 }
-
+.perfil-botoes-img {
+  margin: 0 auto;
+  width: 300px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+.perfil-botoes-img button,
+.perfil-botoes-img input {
+  background-color: green;
+  color: white;
+  height: 50px;
+}
 /* login.css */
 
 .login-container {
