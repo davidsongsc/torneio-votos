@@ -8,13 +8,6 @@ export const FETCH_USERS_FAILURE = 'FETCH_USERS_FAILURE';
 
 export const SET_SESSION = 'SET_SESSION';
 
-export const API_USUARIOS = 'https://bz97.pythonanywhere.com/usuarios/';
-export const API_VOTOS = 'https://bz97.pythonanywhere.com/contar-votos/';
-export const API_ENVIAR_VOTOS = 'https://bz97.pythonanywhere.com//urnaeletronica/';
-export const API_LOGIN = 'https://bz97.pythonanywhere.com/api/login';
-export const API_ALTER_LOGIN = 'https://bz97.pythonanywhere.com/alterar-senha/';
-export const API_LISTA_VOTOS = 'https://bz97.pythonanywhere.com/listarv/';
-export const API_IMAGEM_UPLOAD = 'https://bz97.pythonanywhere.com/api/upload-image/'
 
 export const CONTAR_VOTOS = 'CONTAR_VOTOS';
 export const DOBRAR_META = 'DOBRAR_META';
@@ -27,15 +20,6 @@ export const FETCH_LISTAR_VOTOS = 'FETCH_LISTAR_VOTOS';
 export const FETCH_VOTOS_REQUEST = 'FETCH_VOTOS_REQUEST';
 export const FETCH_VOTOS_SUCCESS = 'FETCH_VOTOS_REQUEST';
 export const FETCH_VOTOS_FAILURE = 'FETCH_VOTOS_REQUEST';
-
-//export const API_USUARIOS = 'http://192.168.0.50:5000/usuarios/';
-//export const API_VOTOS = 'http://192.168.0.50:5000/contar-votos/';
-//export const API_ENVIAR_VOTOS = 'http://192.168.0.50:5000/urnaeletronica/';
-//export const API_LOGIN = 'http://192.168.0.50:5000/api/login';
-//export const API_ALTER_LOGIN = 'http://192.168.0.50:5000/alterar-senha/';
-//export const API_LISTA_VOTOS = 'http://192.168.0.50:5000/listarv/';
-//export const API_IMAGEM_UPLOAD = 'http://192.168.0.50:5000/api/upload-image/'
-
 
 export const LOGIN_REQUEST = 'LOGIN_REQUEST';
 export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
@@ -56,3 +40,20 @@ export const UPDATE_LISTA_VOTOS = 'UPDATE_LISTA_VOTOS';
 export const CACHE_CLEAR_KEY = 'lastCacheClear';
 
 
+// api produção
+export const API_USUARIOS = 'https://bz97.pythonanywhere.com/usuarios/';
+export const API_VOTOS = 'https://bz97.pythonanywhere.com/contar-votos/';
+export const API_ENVIAR_VOTOS = 'https://bz97.pythonanywhere.com//urnaeletronica/';
+export const API_LOGIN = 'https://bz97.pythonanywhere.com/api/login';
+export const API_ALTER_LOGIN = 'https://bz97.pythonanywhere.com/alterar-senha/';
+export const API_LISTA_VOTOS = 'https://bz97.pythonanywhere.com/listarv/';
+export const API_IMAGEM_UPLOAD = 'https://bz97.pythonanywhere.com/api/upload-image/'
+
+// api teste
+//export const API_USUARIOS = 'http://192.168.0.50:5000/usuarios/';
+//export const API_VOTOS = 'http://192.168.0.50:5000/contar-votos/';
+//export const API_ENVIAR_VOTOS = 'http://192.168.0.50:5000/urnaeletronica/';
+//export const API_LOGIN = 'http://192.168.0.50:5000/api/login';
+//export const API_ALTER_LOGIN = 'http://192.168.0.50:5000/alterar-senha/';
+//export const API_LISTA_VOTOS = 'http://192.168.0.50:5000/listarv/';
+//export const API_IMAGEM_UPLOAD = 'http://192.168.0.50:5000/api/upload-image/'
