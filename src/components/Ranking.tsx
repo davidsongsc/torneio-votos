@@ -83,7 +83,7 @@ const Ranking: React.FC = () => {
               const position = person.votosRecebidos > 0 ? index + 1 : null;
 
               return (
-                <tr key={index} style={{display: `${person.datames === '3333' || person.votosRecebidos ===0 ? 'none' : ''}`,}}>
+                <tr key={index} style={{display: `${person.votosRecebidos ===0 ? 'none' : ''}`,}}>
                   <td
                     onClick={() => handleLinkClick(person.id)}
                     className={`ranking-votos td-menor ${!isClickedUser ? 'none-none' : ''}`}

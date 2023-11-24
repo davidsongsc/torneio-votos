@@ -62,8 +62,8 @@ const Cubo: React.FC = () => {
     const redSphere: THREE.Mesh = createSphere(0xff0000, -3, 'Sphere 1');
     const blueSphere: THREE.Mesh = createSphere(0x0000ff, 3, 'Sphere 2');
     const greenSphere: THREE.Mesh = createSphere(0x00FF00, 0, 'Sphere 3');
-    const canvasWidth = 200;
-    const canvasHeight = 200;
+    const canvasWidth = 400;
+    const canvasHeight = 400;
 
     renderer.setSize(canvasWidth, canvasHeight);
     renderer.setClearColor(0x000000);

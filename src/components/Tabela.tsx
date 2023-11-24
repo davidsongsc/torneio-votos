@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { FaBullseye, FaSortNumericUp, FaCircleNotch, FaArrowAltCircleUp, FaArrowAltCircleDown } from 'react-icons/fa';
 import {
     IoIosMedal,
@@ -7,19 +7,33 @@ import {
    // IoMdStar,
    // IoMdStarOutline,
 } from 'react-icons/io';
-import { RootState } from '../reducers'; // Substitua pelo caminho correto
+import { RootState } from '../reducers'; 
 import { useSelector } from 'react-redux';
 import { FaEdit, FaHistory, FaMedal, FaCalendarAlt, FaTrophy, FaAward, FaList } from 'react-icons/fa';
 import { useDispatch } from 'react-redux';
 import { fetchListarVotos } from '../actions/userActions';
 import { contarVotos } from '../actions/userActions';
+interface ContestSection {
+    isClicado: boolean;
+  }
 
 const Tabela: React.FC = () => {
     const dispatch = useDispatch();
     const data = useSelector((state: RootState) => state.contestReducer.contest);
     const listaVotos = useSelector((state: RootState) => state.listarVotosReducer.listaVotos);
+    const [sectionStates, setSectionStates] = useState<ContestSection[]>(Array(data.length).fill({ isClicado: false }));
+
     const tamanhoIconeContestText = 20;
     const contestAtivo = 1;
+
+    const handleClick = (index: number) => {
+        // Cria uma cópia do array de estados
+        const newSectionStates = [...sectionStates];
+        // Inverte o valor atual da seção quando o componente é clicado
+        newSectionStates[index] = { isClicado: !newSectionStates[index].isClicado };
+        // Atualiza o estado
+        setSectionStates(newSectionStates);
+    };
 
     useEffect(() => {
         // Dispatch da ação para buscar os dados quando o componente montar
@@ -34,12 +48,12 @@ const Tabela: React.FC = () => {
             {
                 data.slice(0, 17).map((contest, index) => (
                     <section key={index} className={`contest-tabela ${contest.status === 1 ? '' : 'contest-inativ'}`}>
-                        <div className='titulo-barra-contest' style={{ fontSize: '14px' }}>
+                        <div className='titulo-barra-contest' onClick={() => handleClick(index)} style={{ fontSize: '14px' }}>
                             <h1>
                                 <FaList /> <input type="text" value={contest.nomeContest} placeholder='Titulo Contest' /> {contest.status === 0 ? <></> : contest.status !== contestAtivo ? <FaArrowAltCircleDown color='brown' /> : <FaArrowAltCircleUp color='green' />}
                             </h1>
                         </div>
-                        <div className='linha-contest-tabela' >
+                        <div className='linha-contest-tabela' style={{display: `${sectionStates[index].isClicado ? 'block': 'none'}`}}>
                             <div className='linha-tabela-mor'>
                                 <div className='icone-area-context-texto'>
                                     <FaBullseye />
