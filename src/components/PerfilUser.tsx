@@ -93,8 +93,8 @@ const PerfilUser: React.FC = () => {
                 <div className='painel'></div>
                 <img className='perfil-image' src={`https://bz97.pythonanywhere.com/static/img/${userInfo?.imagem}`} alt={`${userInfo?.matricula}`} />
                 <div className='perfil-botoes-img'>
-                    <input type="file" accept="image/jpeg" onChange={handleFileChange} disabled/>
-                    <button onClick={handleUpload} disabled>Enviar Imagem</button>
+                    <input type="file" accept="image/jpeg" onChange={handleFileChange} />
+                    <button onClick={handleUpload} >Enviar Imagem</button>
                 </div>
                 <div className='info'>
                     <br />
