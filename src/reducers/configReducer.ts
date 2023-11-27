@@ -8,10 +8,12 @@ interface UserState {
 const initialState: UserState = {
   config: [
     {
-      ver: '1.05c',
-      valendo: true,
+      ver: '1.06a',
+      serial: '144827n 11202-3',
+      valendo: false,
       unidade: 'bz97',
       prazoManutencao: '2023-11-23T22:50:00',
+      webpage: 'https://bz97.vercel.app/',
     },
   ],
 };

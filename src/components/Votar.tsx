@@ -157,7 +157,7 @@ const Votar: React.FC = () => {
                     </div>
                     <div style={{
                         position: 'relative',
-                        zIndex: '133',
+                        zIndex: '90',
                     }}>
 
                         <h2 style={{ padding: '13px 0' }}>
@@ -185,8 +185,8 @@ const Votar: React.FC = () => {
 
             </div>
             <div><h2>{userLogin.userInfo?.nome}  </h2>
-            <h2>{alcunhaArray?.[0]?.trim()}</h2>
-           {/* <h2>{alcunhaArray?.[1]?.trim()}</h2>*/}</div>
+                <h2>{alcunhaArray?.[0]?.trim()}</h2>
+                {/* <h2>{alcunhaArray?.[1]?.trim()}</h2>*/}</div>
         </>
     );
 };

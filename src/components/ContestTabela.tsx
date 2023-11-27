@@ -2,12 +2,12 @@ import React, { useEffect, useState } from 'react';
 import { FaBullseye, FaSortNumericUp, FaCircleNotch, FaArrowAltCircleUp, FaArrowAltCircleDown } from 'react-icons/fa';
 import {
     IoIosMedal,
-   // IoMdTrophy,
-   // IoMdRibbon,
-   // IoMdStar,
-   // IoMdStarOutline,
+    // IoMdTrophy,
+    // IoMdRibbon,
+    // IoMdStar,
+    // IoMdStarOutline,
 } from 'react-icons/io';
-import { RootState } from '../reducers'; 
+import { RootState } from '../reducers';
 import { useSelector } from 'react-redux';
 import { FaEdit, FaHistory, FaMedal, FaCalendarAlt, FaTrophy, FaAward, FaList } from 'react-icons/fa';
 import { useDispatch } from 'react-redux';
@@ -15,7 +15,7 @@ import { fetchListarVotos } from '../actions/userActions';
 import { contarVotos } from '../actions/userActions';
 interface ContestSection {
     isClicado: boolean;
-  }
+}
 
 const Tabela: React.FC = () => {
     const dispatch = useDispatch();
@@ -40,7 +40,7 @@ const Tabela: React.FC = () => {
         dispatch(fetchListarVotos() as any); // Adicione "as any" temporariamente para evitar erro de tipo
         dispatch(contarVotos(listaVotos.length));
 
-    }, [dispatch, listaVotos]);
+    }, [dispatch]);
 
     return (
         <>
@@ -50,15 +50,38 @@ const Tabela: React.FC = () => {
                     <section key={index} className={`contest-tabela ${contest.status === 1 ? '' : 'contest-inativ'}`}>
                         <div className='titulo-barra-contest' onClick={() => handleClick(index)} style={{ fontSize: '14px' }}>
                             <h1>
-                                <FaList /> <input type="text" value={contest.nomeContest} placeholder='Titulo Contest' /> {contest.status === 0 ? <></> : contest.status !== contestAtivo ? <FaArrowAltCircleDown color='brown' /> : <FaArrowAltCircleUp color='green' />}
+                                <FaList /> <input type="text" value={contest.nomeContest} placeholder='Titulo Contest' />
+                                {contest.status === 0 ?
+                                    <></>
+                                    :
+                                    contest.status !== contestAtivo ?
+                                        <FaArrowAltCircleDown color='brown' />
+                                        :
+                                        <FaArrowAltCircleUp color='green' />}
                             </h1>
+
                         </div>
-                        <div className='linha-contest-tabela' style={{display: `${sectionStates[index].isClicado ? 'block': 'none'}`}}>
+
+                        <p className='descricao-contest' onClick={() => handleClick(index)} style={{ fontSize: '14px' }}>
+                            <p><FaCalendarAlt />inicio : {contest.data_inicio}</p>
+                            <br />
+                            <p><FaCalendarAlt />fim : {contest.data_fim}</p>
+                            <br />
+                            <p ><FaHistory />Autor: {contest.autor}</p>
+                        </p>
+
+                        <div className='linha-contest-tabela' style={{ display: `${sectionStates[index].isClicado ? 'block' : 'none'}` }}>
+
                             <div className='linha-tabela-mor'>
+
                                 <div className='icone-area-context-texto'>
                                     <FaBullseye />
                                 </div>
-                                <textarea className='titulo-area-contest-t1' name="texto" value={contest.tituloInicial} placeholder='Descrição' />
+
+                                <textarea className='titulo-area-contest-t1' name="texto" value={contest.texto[0][0]} placeholder='Descrição' />
+                                <div className='medalhaTexto'>
+                                    <FaMedal size={tamanhoIconeContestText} />
+                                </div>
                                 <p style={{
                                     fontSize: '12px',
                                     letterSpacing: '2px',
@@ -67,16 +90,15 @@ const Tabela: React.FC = () => {
                                     lineHeight: '13px',
 
                                 }}>
-                                    <div className='medalhaTexto'>
-                                        <FaMedal size={tamanhoIconeContestText} />
-                                    </div>  <textarea className='text-area-contest-t1' name="texto" value={contest.textoInicial}> </textarea></p>
+                                    <textarea className='text-area-contest-t1' name="texto" value={contest.texto[0][1]}> </textarea></p>
 
-                                <div className='icone-area-context-texto'><FaEdit />   </div> <textarea className='titulo-area-contest-t1' name="texto" value={contest.stituloInicial} placeholder='Descrição' />
+                                <div className='icone-area-context-texto'><FaEdit />   </div>
+                                <textarea className='titulo-area-contest-t1' name="texto" value={contest.texto[1][0]} placeholder='Descrição' />
 
                                 <div className='medalhaTextoTo'>
                                     <IoIosMedal size={tamanhoIconeContestText} />
                                 </div>
-                                <textarea className='text-area-contest-t2' name="texto" value={contest.stextoInicial} placeholder='Descrição' />
+                                <textarea className='text-area-contest-t2' name="texto" value={contest.texto[1][1]} placeholder='Descrição' />
 
 
                                 <div className='text-area-contest-div'>
@@ -85,11 +107,11 @@ const Tabela: React.FC = () => {
                                         borderRadius: '0px',
                                     }}>
 
-                                        <FaTrophy />  {contest.ttituloInicial}</h2>
+                                        <FaTrophy />  {contest.texto[2][0]}</h2>
                                     {contest.premiacao.map((premiacao, index) => (
                                         <p key={index} className='texto-contest-test'>
 
-                                            <h3>  {index + 1}ª Premiação <FaAward size={tamanhoIconeContestText} />:</h3>
+                                            <h3>  {index + 1}ª {contest.texto[2][1]} <FaAward size={tamanhoIconeContestText} />:</h3>
                                             <ul>
                                                 {premiacao.map((detalhe, detalheIndex) => (
                                                     <li key={detalheIndex}>{detalhe}</li>
@@ -101,14 +123,7 @@ const Tabela: React.FC = () => {
                                 </div>
 
 
-                                <p className='descricao-contest'>
-                                    <p> </p>
-                                    <p><FaCalendarAlt />inicio : {contest.data_inicio}</p>
-                                    <p><FaCalendarAlt />fim : {contest.data_fim}</p>
-                                    <p><FaHistory />Autor: {contest.autor}</p>
-                                    <p> </p>
 
-                                </p>
                                 <span >
                                     <img className='img-tb-01' src="https://static.vecteezy.com/system/resources/previews/012/933/205/original/kingdom-red-flag-free-png.png" alt="img" />
                                     <h4 className='titulo-1'>META </h4>

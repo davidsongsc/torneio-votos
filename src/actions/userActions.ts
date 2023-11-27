@@ -19,9 +19,11 @@ export const setSession = (userData: UserData): SetSessionAction => ({
 
 export interface ConfigInfo {
   ver: string;
+  serial: string;
   valendo: boolean;
   unidade: string;
   prazoManutencao: string;
+  webpage: string;
 }
 export interface UserData {
   id: number;
@@ -338,7 +340,7 @@ export const fetchUsers = () => {
 };
 
 
-const fetchUsersAndUpdate = async (dispatch: Dispatch<UserActionTypes>) => {
+export const fetchUsersAndUpdate = async (dispatch: Dispatch<UserActionTypes>) => {
   try {
     const response: AxiosResponse<UserData[]> = await axios.post<UserData[]>(types.API_USUARIOS, {
       method: 'POST',

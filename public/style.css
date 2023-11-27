@@ -77,26 +77,27 @@ canvas {
 
 .navBar {
   position: fixed;
-  background-color: #111111;
-  box-shadow: 0px 0px 15px brown;
+  background-color: #11111185;
   color: rgb(191, 191, 191);
   padding: 13px;
   list-style: none;
   display: flex;
   cursor: pointer;
-  right: 30px;
-  bottom: 30px;
   overflow: auto;
-  margin-bottom: -6px;
   z-index: 999;
   border-radius: 8px;
-  justify-content: flex-start;
+  justify-content: space-around;
   transition: 0.7s;
   transition-duration: 0.3s;
   transition-delay: 0.1s;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 50px;
+  align-items: flex-start;
 }
 .navBarAberta {
-  left: -25px;
+  height: 556px;
   right: 0;
   bottom: 0;
   top: 0;
@@ -162,19 +163,27 @@ canvas {
 .arrou-chamativo {
   transform-origin: center;
   background-color: brown;
-  padding: 3px;
-  position: absolute;
+  padding: 2px;
   border-radius: 5px;
-  width: 35px;
-  height: 39px;
+  width: 23px;
+  height: 18px;
+  display: flex;
   bottom: 1px;
   right: 3px;
+  transition: 0.7s;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  margin: 5px;
 }
 
 .arrou-bg {
+  background-color: green;
   width: 38px;
-  bottom: 73px;
-  right: 74px;
+  bottom: 60px;
+  right: 10px;
+  transition: 2s;
 }
 
 .contagem {
@@ -301,6 +310,7 @@ canvas {
   border-radius: 5px;
   box-shadow: 1px 1px;
   border-style: groove;
+  margin-top: 12px;
   padding: 1px;
   transition: 1s;
   flex-wrap: wrap;
@@ -318,9 +328,8 @@ canvas {
 }
 .icone-area-context-texto {
   position: relative;
-  top: 5px;
+  top: 25px;
   z-index: 300;
-  margin-bottom: -20px;
 }
 .icone-area-context-stexto {
   position: absolute;
@@ -358,10 +367,10 @@ canvas {
 
 .text-area-contest-t1 {
   height: 140px;
-  margin-top: 3px;
+  margin-top: 26px;
   overflow-y: hidden;
-  width: 289px;
-  font-size: 14px;
+  width: 308px;
+  font-size: 13px;
   text-indent: 40px;
   background-color: rgb(47, 79, 79);
   padding: 4px 0px;
@@ -370,9 +379,11 @@ canvas {
   border-radius: 0px;
   position: relative;
   z-index: 200;
-  left: 1px;
-  top: -26px;
+  left: -21px;
+  top: -9px;
+  line-height: 17px;
   font-family: math;
+  letter-spacing: 0px;
   text-transform: lowercase;
   overflow-y: scroll;
 }
@@ -395,7 +406,11 @@ canvas {
   left: 1px;
   margin: 13px 0px;
   top: 10px;
+  line-height: 17px;
+  font-family: math;
+  letter-spacing: 0px;
   overflow-y: scroll;
+
 }
 .text-area-contest-div {
   font-family: math;
@@ -448,7 +463,7 @@ canvas {
 }
 
 .linha-contest-tabela {
-  margin-top: 40px;
+  margin-top: -19px;
   text-align: left;
   position: relative;
   height: 750px;
@@ -462,27 +477,22 @@ canvas {
   width: 308px;
   top: 2px;
   text-indent: 11px;
-  box-shadow: 2px 2px 3px black;
   height: 240px;
   border-bottom-right-radius: 15px;
   border-bottom-left-radius: 15px;
   color: white;
   position: relative;
 }
-.linha-contest-tabela .descricao-contest {
+.descricao-contest {
   position: relative;
-  z-index: 800;
+  z-index: 100;
   width: 289px;
-  box-shadow: 1px 1px 1px black;
   overflow-y: auto;
+  color: white;
   background-color: #009090;
-  text-indent: 18px;
-  font-size: 15px;
   padding: 10px;
-  left: 0px;
-  top: 7px;
-  border-bottom-right-radius: 20px;
-  border-bottom-left-radius: 20px;
+  top: 1px;
+  margin-top: 26px;
 }
 .linha-contest-tabela h4 {
   position: relative;
@@ -703,7 +713,6 @@ span .atual-icone:active {
 }
 .medalhaTexto {
   position: absolute;
-  top: 28px;
   z-index: 300;
   left: 2px;
   background-color: rgba(255, 255, 255, 0.48);
@@ -712,7 +721,6 @@ span .atual-icone:active {
 }
 .medalhaTextoTo {
   position: absolute;
-  top: 253px;
   z-index: 300;
   left: 2px;
   background-color: rgba(255, 255, 255, 0.48);
@@ -722,7 +730,7 @@ span .atual-icone:active {
 .tela-painel-votos {
   display: flex;
   max-width: 900px;
-  height: 320px;
+  height: 425px;
   min-width: 400px;
   overflow-y: auto;
   flex-direction: row;
@@ -765,8 +773,8 @@ span .atual-icone:active {
   justify-content: center;
 }
 .div-buttons button {
-  width: 110px;
-  height: 40px;
+  width: 66px;
+  height: 28px;
   border-radius: 0;
   font-size: 11px;
 }
@@ -796,7 +804,7 @@ span .atual-icone:active {
 .radio-label-selecionado {
   background-color: white;
   border-radius: 5px;
-  padding: 200px 130px;
+  padding: 85px 130px;
   transition: 0.7s;
   position: absolute;
   z-index: 99;
@@ -966,18 +974,25 @@ span .atual-icone:active {
 }
 
 .sitemap h2 {
-  font-size: 35px;
-  margin-bottom: 10px;
-  text-decoration: overline #2f4f4f;
+  font-size: 25px;
+  width: 100%;
+  background-color: black;
+  text-transform: capitalize;
+  color: white;
+  text-align: center;
+  border-radius: 8px;
+  box-shadow: 1px 1px 1px black;
+
 }
 .sitemap h3 {
-  font-family: "Courier New", Courier, monospace;
-  font-size: 30px;
-  margin-bottom: 10px;
-  text-decoration: 1px underline overline #2f4f4f;
-  padding: 0 10px;
-  text-transform: uppercase;
-  letter-spacing: 10px;
+  font-size: 20px;
+  width: 100%;
+  background-color: goldenrod;
+  text-transform: capitalize;
+  color: white;
+  text-align: center;
+  border-radius: 5px;
+  box-shadow: 1px 1px 1px black;
 }
 
 .sitemap ul {
@@ -986,8 +1001,8 @@ span .atual-icone:active {
 }
 
 .sitemap li {
-  padding: 20px;
-  margin: 5px;
+  
+  margin: 5px 0;
   border-radius: 7px;
   text-align: center;
   transition: 0.7s;
@@ -1052,10 +1067,11 @@ span .atual-icone:active {
 }
 .perfil-container .perfil-image {
   position: relative;
-  width: 200px;
+  width: 159px;
   height: 200px;
   border-radius: 50%;
   object-fit: cover;
+  box-shadow: 8px 4px 3px black, -8px 4px 3px black, 8px -4px 3px black, -8px -4px 3px black;
 }
 
 .perfil-container .perfil-name {
@@ -1289,14 +1305,18 @@ span .atual-icone:active {
   background-color: transparent;
   margin: 0 auto;
   margin-top: 20px;
+  font-size: large;
 }
 .link-ranking img {
   width: 275px;
 }
 footer {
+
+  background-color: rgba(165, 42, 42, 0.607);
   text-align: center;
   margin: 5px auto;
   color: white;
-  width: 90%;
+  
   z-index: 995;
+  height: 600px;
 }

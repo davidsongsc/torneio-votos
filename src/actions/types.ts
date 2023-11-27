@@ -47,7 +47,7 @@ export const API_ENVIAR_VOTOS = 'https://bz97.pythonanywhere.com//urnaeletronica
 export const API_LOGIN = 'https://bz97.pythonanywhere.com/api/login';
 export const API_ALTER_LOGIN = 'https://bz97.pythonanywhere.com/alterar-senha/';
 export const API_LISTA_VOTOS = 'https://bz97.pythonanywhere.com/listarv/';
-export const API_IMAGEM_UPLOAD = 'https://bz97.pythonanywhere.com/api/upload-image/'
+export const API_IMAGEM_UPLOAD = 'https://bz97.pythonanywhere.com/api/upload-image/';
 
 // api teste
 //export const API_USUARIOS = 'http://192.168.0.50:5000/usuarios/';
@@ -56,4 +56,4 @@ export const API_IMAGEM_UPLOAD = 'https://bz97.pythonanywhere.com/api/upload-ima
 //export const API_LOGIN = 'http://192.168.0.50:5000/api/login';
 //export const API_ALTER_LOGIN = 'http://192.168.0.50:5000/alterar-senha/';
 //export const API_LISTA_VOTOS = 'http://192.168.0.50:5000/listarv/';
-//export const API_IMAGEM_UPLOAD = 'http://192.168.0.50:5000/api/upload-image/'
+//export const API_IMAGEM_UPLOAD = 'http://192.168.0.50:5000/api/upload-image/';

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect} from 'react';
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { RootState } from '../reducers';
@@ -6,64 +6,81 @@ import { RootState } from '../reducers';
 const PageOutros: React.FC = () => {
     const userLogin = useSelector((state: RootState) => state.userReducer);
     const { userInfo } = userLogin;
-    const handleInstall = () => {
-        // Obtenha o prompt de instalação do Service Worker
-        let deferredPrompt: any = null;
-
-        if ('serviceWorker' in navigator) {
-            navigator.serviceWorker.register('./service-worker.js')
-                .then((registration) => {
-                    console.log('Service Worker registrado com sucesso:', registration);
-
-                    window.addEventListener('beforeinstallprompt', (event) => {
-                        // Armazene o prompt para uso posterior
-                        deferredPrompt = event as Event;
-                    });
-                })
-                .catch((error) => {
-                    console.error('Erro ao registrar o Service Worker:', error);
-                });
-        }
-
-        if (deferredPrompt) {
-            (deferredPrompt as any).prompt();
-
-            (deferredPrompt as any).userChoice.then((choiceResult: any) => {
-                if (choiceResult.outcome === 'accepted') {
-                    console.log('Usuário aceitou a instalação');
-                } else {
-                    console.log('Usuário recusou a instalação');
-                }
-            });
-
-            deferredPrompt = null;
-        }
-    };
-
+    
+    useEffect(() => {
+        // Rolando para o topo da página quando o componente é montado
+        window.scrollTo(0, 0);
+    }, []);
 
     return (
         <div className="sitemap">
             <br />
             <ul>
-                <h3>APLICATIVO</h3>
-                <li>
-                    <Link to="/codigoacesso"><button>Alterar Codigo</button></Link>
-                </li>
-                <li>
-                    <Link to="/regras"><button>Regulamento</button></Link>
-                </li>
 
-                {(userInfo?.alcunha && userInfo.alcunha.toLowerCase().includes('gerencia')) || (userInfo?.matricula === 970016 && (
+                {userInfo?.matricula === 970016 && (
+
                     <>
+                        <h2>CONTEST MASTER</h2>
                         <li>
-                            <button>
-                                <a href="https://bz97.pythonanywhere.com/admin/">Banco de dados</a>
-                            </button>
+                            <a href="https://bz97.pythonanywhere.com/admin/">Banco de dados</a>
                         </li>
-                 
-                    </>
-                ))}
+                        <li>
+                            <a href="https://bz97.pythonanywhere.com/admin/controle/usuario/add/">Novo Usuario DB</a>
+                        </li>
+                        <li>
+                            <a href="https://bz97.pythonanywhere.com/admin/">Novo Contest DB</a>
+                        </li>
+                        <li>
+                            <a href="https://bz97.pythonanywhere.com/admin/controle/pagina/add/">Nova Pagina DB</a>
+                        </li>
+                        <li>
+                            <a href="https://bz97.pythonanywhere.com/admin/controle/votos/">Votos DB</a>
+                        </li>
+                        <li>
+                            <a href="https://bz97.pythonanywhere.com/admin/auth/user/add/">Liderança DB</a>
+                        </li>
+                        <li>
+                            <a href="https://bz97.pythonanywhere.com/admin/auth/group/">DB Administrador</a>
+                        </li>
+                        <li>
+                            <a href="https://clarity.microsoft.com/projects/view/jmmnp7hmna/dashboard?date=Last%203%20days">microsoft clarity</a>
+                        </li>
+                        <li>
+                            <a href="https://analytics.google.com/analytics/web/#/p415534484/reports/home">google analytics </a>
+                        </li>
 
+                    </>
+                )}
+
+                {(userInfo?.alcunha && userInfo.alcunha.toLowerCase().includes('gerencia')) && (
+
+                    <>
+                        <h3>Contest</h3>
+                        <li>
+                            <Link to="/">Novo</Link>
+                        </li>
+                        <li>
+                            <Link to="/">Pesquisar</Link>
+                        </li>
+                        <li>
+                            <Link to="/">Mais Votos</Link>
+                        </li>
+                        <li>
+                            <Link to="/">Reeiniciar</Link>
+                        </li>
+
+                    </>
+                )}
+                <h3>Noticias</h3>
+                <li>
+                    <Link to="/">Novo Post</Link>
+                </li>
+                <li>
+                    <Link to="/">Threads</Link>
+                </li>
+                <li>
+                    <Link to="/">Pesquisar</Link>
+                </li>
             </ul>
 
         </div>

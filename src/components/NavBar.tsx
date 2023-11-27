@@ -1,16 +1,16 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 
 import { RootState } from '../reducers';
 import { useSelector, useDispatch } from 'react-redux';
 import { AppDispatch } from '../store';
 import { logoutUser } from '../actions/userActions';
-import { faSignInAlt, faSignOutAlt, faUser, faPoll, faTrophy, faBars } from '@fortawesome/free-solid-svg-icons';
+import { faGavel, faHandPointUp, faSignInAlt, faSignOutAlt, faUser, faPoll, faTrophy, faBars, faVoteYea } from '@fortawesome/free-solid-svg-icons';
+
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faFileExcel } from '@fortawesome/free-solid-svg-icons';
 
 interface NavItem {
-    icon: any; 
+    icon: any;
     to: string;
     text: string;
     visible: boolean;
@@ -18,6 +18,7 @@ interface NavItem {
 
 const Navbar: React.FC = () => {
     const navigate = useNavigate();
+    const location = useLocation();
     const userLogin = useSelector((state: RootState) => state.userReducer);
     const { isLoggedIn, userInfo } = userLogin;
     const dispatch: AppDispatch = useDispatch();
@@ -32,7 +33,15 @@ const Navbar: React.FC = () => {
     const handleVisivelNav = () => {
         setVisivel(!visivel);
     };
+    const handleNavegar = (local: string) => {
+        if (local !== 'voltar') {
+            navigate(local);
+        } else {
+            const previousPath = location.state?.from || '/ranking';
+            navigate(previousPath);
+        }
 
+    }
     const clearPendingActions = () => {
         if (timeoutId) {
             clearTimeout(timeoutId);
@@ -81,14 +90,12 @@ const Navbar: React.FC = () => {
     };
 
     const navItems: NavItem[] = [
-        { icon: faUser, to: '/meuperfil', text: `${userInfo?.nome}`, visible: isLoggedIn },
-        { icon: faTrophy, to: '/regras', text: 'Regras', visible: true },
         { icon: faSignOutAlt, to: '', text: 'Sair', visible: isLoggedIn },
-        { icon: faBars, to: '/outros', text: 'Menu', visible: isLoggedIn },
-        { icon: faFileExcel, to: '/contest', text: 'Meu Contest', visible: true },
-        { icon: faTrophy, to: '/ranking', text: 'Ranking', visible: true },
+        { icon: faUser, to: '/meuperfil', text: `${userInfo?.nome}`, visible: isLoggedIn },
+        { icon: faGavel, to: '/regras', text: 'Regras', visible: true },
+        { icon: faBars, to: '/outros', text: 'Ajustes', visible: isLoggedIn },
         { icon: faSignInAlt, to: '/login', text: 'Login', visible: !isLoggedIn },
-        { icon: faPoll, to: '/votar', text: `URNA | VOTAR | ${userInfo?.votos}`, visible: isLoggedIn },
+        { icon: faSignOutAlt, to: '/codigoacesso', text: 'Codigo', visible: isLoggedIn },
     ];
 
     return (
@@ -106,14 +113,31 @@ const Navbar: React.FC = () => {
                     ))}
                 </ul>
                 {visivel ?
-                    <div>
-                        <h1 className='arrou-chamativo arrou-bg' onClick={handleVisivelNav}><FontAwesomeIcon icon={faBars} style={{ fontSize: '43px' }} /></h1>
-                    </div>
+                    <>
+
+                    </>
                     :
-                    <div>
-                        <h1 className='arrou-chamativo' onClick={cancelPendingActions}><FontAwesomeIcon icon={faBars} style={{ fontSize: '40px' }} /></h1>
-                    </div>}
-            </nav>
+                    <>
+
+                        <div className='arrou-chamativo ' onClick={() => handleNavegar('voltar')}>
+                            <h1 ><FontAwesomeIcon color={'gold'} icon={faTrophy} style={{ fontSize: '25px' }} /></h1>
+
+                        </div>
+                        <div className='arrou-chamativo ' onClick={() => handleNavegar('contest')}>
+                            <h1 ><FontAwesomeIcon color={'gray'} icon={faHandPointUp} style={{ fontSize: '25px' }} /></h1>
+
+                        </div>
+                        <div className='arrou-chamativo ' onClick={() => handleNavegar('votar')} style={{ width: '60px', display: isLoggedIn ? 'flex' : 'none' }}>
+                            <h1 ><FontAwesomeIcon icon={faVoteYea} style={{ fontSize: '25px' }} /> {`${userInfo?.votos}`}</h1>
+
+                        </div>
+                        <div className='arrou-chamativo ' onClick={cancelPendingActions}>
+                            <h1 ><FontAwesomeIcon icon={faBars} style={{ fontSize: '25px' }} /></h1>
+
+                        </div>
+                    </>
+                }
+            </nav >
         </>
     );
 };

@@ -1,5 +1,5 @@
 import React from 'react';
-import Tabela from './Tabela';
+import Tabela from './ContestTabela';
 import SectionContest from './Contest';
 
 function Main() {
