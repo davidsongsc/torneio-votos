@@ -94,7 +94,7 @@ canvas {
   bottom: 0;
   left: 0;
   height: 50px;
-  align-items: flex-start;
+  align-items: center;
 }
 .navBarAberta {
   height: 556px;
