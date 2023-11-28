@@ -78,7 +78,7 @@ const Tabela: React.FC = () => {
                             <p ><FaHistory />Autor: {contest.autor}</p>
                         </p>
 
-                        <div className='linha-contest-tabela' style={{ display: `${sectionStates[index].isClicado ? 'block' : 'none'}` }}>
+                        <div className='linha-contest-tabela' style={{ display: `${sectionStates[index]?.isClicado ? 'block' : 'none'}` }}>
 
                             <div className='linha-tabela-mor'>
 
