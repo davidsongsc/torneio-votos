@@ -112,6 +112,7 @@ const Tabela: React.FC = () => {
                                             <ul>
                                                 {premiacao.map((detalhe, detalheIndex) => (
                                                     <li key={detalheIndex}>{index + 1}ª {detalhe.titulo}</li>
+<li>{detalhe.texto}</li>
                                                 ))}
                                             </ul>
                                         </p>
