@@ -1203,6 +1203,7 @@ span .atual-icone:active {
   background-color: green;
   color: white;
   height: 50px;
+  width: 260px;
 }
 /* login.css */
 
