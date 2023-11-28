@@ -167,7 +167,7 @@ const AlterarSenha: React.FC = () => {
 
     return (
         <>
-            <div className="login-container" style={{ display: `${!isLoggedIn ? 'none' : 'block'}`, width: '310px' }}>
+            <div className="login-container" style={{ display: `${!isLoggedIn ? 'none' : 'block'}`, width: '420px' }}>
                 <h2>{userLogin.userInfo?.nome}</h2>
                 <br />
                 <div>
@@ -272,7 +272,7 @@ const AlterarSenha: React.FC = () => {
                             onClick={() => handleCharacterClick(index.toString())}
                             disabled={senha.length >= 6}
                         >
-                            {icons[char] && <FontAwesomeIcon fontSize={iconSize[0]} color={'white'} icon={['fas', icons[char].iconClass as IconName]} />}
+                            {icons[char] && <FontAwesomeIcon fontSize={iconSize[0]} color={'#111111'} icon={['fas', icons[char].iconClass as IconName]} />}
                         </button>
                     ))}
                 </div>

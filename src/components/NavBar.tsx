@@ -5,7 +5,18 @@ import { RootState } from '../reducers';
 import { useSelector, useDispatch } from 'react-redux';
 import { AppDispatch } from '../store';
 import { logoutUser } from '../actions/userActions';
-import { faGavel, faHandPointUp, faSignInAlt, faSignOutAlt, faUser, faPoll, faTrophy, faBars, faVoteYea } from '@fortawesome/free-solid-svg-icons';
+import {
+    faEllipsisH,
+    faTasks,
+    faSignInAlt,
+    faSignOutAlt,
+    faUser,
+    faQuestionCircle,
+    faCog,
+    faTrophy,
+    faBars,
+    faVoteYea
+} from '@fortawesome/free-solid-svg-icons';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
@@ -66,7 +77,7 @@ const Navbar: React.FC = () => {
                     timeoutId = null;
                     navigationAction = null;
                     handleVisivelNav();
-                }, 700);
+                }, 150);
 
                 navigationAction = () => {
                     navigate(to);
@@ -90,12 +101,12 @@ const Navbar: React.FC = () => {
     };
 
     const navItems: NavItem[] = [
-        { icon: faSignOutAlt, to: '', text: 'Sair', visible: isLoggedIn },
-        { icon: faUser, to: '/meuperfil', text: `${userInfo?.nome}`, visible: isLoggedIn },
-        { icon: faGavel, to: '/ajuda', text: 'ajuda', visible: true },
-        { icon: faBars, to: '/outros', text: 'Ajustes', visible: isLoggedIn },
         { icon: faSignInAlt, to: '/login', text: 'Login', visible: !isLoggedIn },
-        { icon: faSignOutAlt, to: '/codigoacesso', text: 'Codigo', visible: isLoggedIn },
+        { icon: faUser, to: '/meuperfil', text: `${userInfo?.nome}`, visible: isLoggedIn },
+        { icon: faCog , to: '/codigoacesso', text: 'Conta', visible: isLoggedIn },
+        { icon: faSignOutAlt, to: '', text: 'Sair', visible: isLoggedIn },
+        { icon: faEllipsisH, to: '/outros', text: 'Outros', visible: isLoggedIn },
+        { icon: faQuestionCircle, to: '/ajuda', text: 'ajuda', visible: true },
     ];
 
     return (
@@ -124,11 +135,11 @@ const Navbar: React.FC = () => {
 
                         </div>
                         <div className='arrou-chamativo ' onClick={() => handleNavegar('contest')}>
-                            <h1 ><FontAwesomeIcon color={'gray'} icon={faHandPointUp} style={{ fontSize: '25px' }} /></h1>
+                            <h1 ><FontAwesomeIcon color={'gray'} icon={faTasks} style={{ fontSize: '25px' }} /></h1>
 
                         </div>
                         <div className='arrou-chamativo ' onClick={() => handleNavegar('votar')} style={{ width: '60px', display: isLoggedIn ? 'flex' : 'none' }}>
-                            <h1 ><FontAwesomeIcon color={`${userInfo?.votos === 0 ? 'black': 'cyan'}`} icon={faVoteYea} style={{ fontSize: '25px'}} /> {`${userInfo?.votos}`}</h1>
+                            <h1 ><FontAwesomeIcon color={`${userInfo?.votos === 0 ? 'black' : 'cyan'}`} icon={faVoteYea} style={{ fontSize: '25px' }} /> {`${userInfo?.votos}`}</h1>
 
                         </div>
                         <div className='arrou-chamativo ' onClick={cancelPendingActions}>

@@ -128,8 +128,8 @@ const Votar: React.FC = () => {
                                     className={`radio-label ${pessoa.id === voto ? 'radio-label-selecionado' : 'radio-label-nao-selecionado'} ${pessoa.id === voto && showConfirmDialog ? 'radio-label-voto' : 'radio-label-voto-nao'}`}
                                     htmlFor={`radio-${pessoa.id}`}
                                     style={{ display: `${pessoa.id === usuarioLogado ? 'none' : ''}` }}>
-                                    <div className='votante-lista-seletor'>
-                                        <img src={`https://bz97.pythonanywhere.com/static/img/${pessoa.imagem}`} alt="Imagem Perfil" />
+                                    <div className={`votante-lista-seletor ${pessoa.id === voto ? 'votando-no' : ''}`}>
+                                        <img className={`imagem-votante ${pessoa.id === voto ? 'imagem-no' : ''}`} src={`https://bz97.pythonanywhere.com/static/img/${pessoa.imagem}`} alt="Imagem Perfil" />
                                         <h3>{pessoa.nome} </h3>
                                         <input
                                             className='radio-input'
@@ -141,7 +141,13 @@ const Votar: React.FC = () => {
                                             onChange={() => handleVotoChange(pessoa.id)}
                                         />
                                         <div className={`radio-custom ${pessoa.id === voto ? ' radio-checked' : ' radio-not-checked'}`} />
+                                        <p style={{ textTransform: 'initial', display: `${pessoa.id === voto ? 'block' : 'none'}`  }}>{pessoa?.votosRecebidos === 0 ? 'Não recebeu voto' : `Recebeu ${pessoa?.votosRecebidos} voto`} e {pessoa?.votosEmitidos === 0 ? 'não votou ainda...' : `votou ${pessoa?.votosEmitidos} vezes.`}
+                                            <blockquote>
+                                                {pessoa?.votos === 0 ? 'Não possui votos!' : <>Possui {pessoa?.votos} votos!</>}
+                                            </blockquote>
+                                        </p>
                                     </div>
+
                                     <div style={{ display: `${pessoa.id === voto ? 'block' : 'none'}` }}>
                                         <button className='btn-voto' type="button" onClick={handleVotar} style={{ display: `${pessoa.id === voto ? 'radio-label-selecionado' : 'radio-label-nao-selecionado'}` }}>
                                             Votar
@@ -160,19 +166,6 @@ const Votar: React.FC = () => {
                         zIndex: '90',
                     }}>
 
-                        <h2 style={{ padding: '13px 0' }}>
-                            <strong style={visual}>
-                                <strong className='qtd-votos'>
-
-                                    {userLogin.userInfo?.votos}
-
-                                </strong>
-                                {userLogin.userInfo?.votos ?? 0 > 1 ? 'votos' : 'voto'}
-
-                            </strong>
-
-                        </h2>
-
                     </div>
 
                 </form>
@@ -184,9 +177,7 @@ const Votar: React.FC = () => {
                 />
 
             </div>
-            <div><h2>{userLogin.userInfo?.nome}  </h2>
-                <h2>{alcunhaArray?.[0]?.trim()}</h2>
-                {/* <h2>{alcunhaArray?.[1]?.trim()}</h2>*/}</div>
+
         </>
     );
 };

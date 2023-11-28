@@ -58,6 +58,12 @@ a {
 /* Defina a cor de fundo padrão para branco */
 
 /* Adicione um cursor de seta padrão a elementos clicáveis */
+#root {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: column;
+}
 a,
 button,
 input,
@@ -71,15 +77,15 @@ body {
   font-family: "Montserrat", sans-serif;
 }
 canvas {
-  width: 400px;
-  height: 80vh;
+  width: 500px;
+  height: 800px;
 }
 
 .navBar {
   position: fixed;
-  background-color: #11111185;
+  background-color: brown;
   color: rgb(191, 191, 191);
-  padding: 13px;
+  padding: 1px;
   list-style: none;
   display: flex;
   cursor: pointer;
@@ -168,6 +174,7 @@ canvas {
   width: 23px;
   height: 18px;
   display: flex;
+  box-shadow: 1px 1px 1px black, 1px -1px 1px black, -1px -1px 1px black;
   bottom: 1px;
   right: 3px;
   transition: 0.7s;
@@ -177,7 +184,11 @@ canvas {
   flex-wrap: wrap;
   margin: 5px;
 }
-
+.arrou-chamativo:active,
+.arrou-chamativo:hover {
+  box-shadow: 1px 1px 1px black, 1px -1px 2px black, -1px -1px 2px black, -1px 1px 2px black;
+  background-color: #2f4f4f;
+}
 .arrou-bg {
   background-color: green;
   width: 38px;
@@ -294,6 +305,7 @@ canvas {
 }
 .main-principal-inicio {
   margin-top: 1vh;
+  margin-bottom: 30vh;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
@@ -410,7 +422,6 @@ canvas {
   font-family: math;
   letter-spacing: 0px;
   overflow-y: scroll;
-
 }
 .text-area-contest-div {
   font-family: math;
@@ -730,12 +741,13 @@ span .atual-icone:active {
 .tela-painel-votos {
   display: flex;
   max-width: 900px;
-  height: 425px;
+  height: 680px;
   min-width: 400px;
   overflow-y: auto;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: center;
+  align-content: flex-start;
 }
 .votante-lista-seletor {
   display: flex;
@@ -746,23 +758,31 @@ span .atual-icone:active {
   box-shadow: 1px 1px;
   border-radius: 5px;
   margin: 1px 1px;
-  padding: 10px;
-  width: 86px;
-  height: 139px;
+  padding: 7px;
+  width: 74px;
+  height: 100px;
+}
+.votando-no{
+  width: 360px;
+  height: 360px;
 }
 
-.votante-lista-seletor img {
-  width: 85px;
+.imagem-votante {
+  width: 50px;
   margin: 0 auto;
-  height: 85px;
+  height: 55px;
   border-radius: 5px;
   box-shadow: 1px 1px;
+}
+.imagem-no{
+  width: 240px;
+  height: 260px;
 }
 
 .votante-lista-seletor h3 {
   text-transform: capitalize;
   text-align: center;
-  font-size: medium;
+  font-size: small;
 }
 .votante-lista-seletor p {
   font-size: 10px;
@@ -982,7 +1002,6 @@ span .atual-icone:active {
   text-align: center;
   border-radius: 8px;
   box-shadow: 1px 1px 1px black;
-
 }
 .sitemap h3 {
   font-size: 20px;
@@ -1001,7 +1020,6 @@ span .atual-icone:active {
 }
 
 .sitemap li {
-  
   margin: 5px 0;
   border-radius: 7px;
   text-align: center;
@@ -1071,7 +1089,8 @@ span .atual-icone:active {
   height: 200px;
   border-radius: 50%;
   object-fit: cover;
-  box-shadow: 8px 4px 3px black, -8px 4px 3px black, 8px -4px 3px black, -8px -4px 3px black;
+  box-shadow: 8px 4px 3px black, -8px 4px 3px black, 8px -4px 3px black,
+    -8px -4px 3px black;
 }
 
 .perfil-container .perfil-name {
@@ -1122,14 +1141,16 @@ span .atual-icone:active {
 /* login.css */
 
 .login-container {
-  width: 300px;
-  margin: 1vh auto;
-  padding: 20px;
+  width: 400px;
+  padding: 87px;
   border: 1px solid #ccc;
   border-radius: 5px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  background-color: #b7b7b7;
+  color: white;
   transform: scale(0.7);
+  background-image: url(https://static.vecteezy.com/ti/vetor-gratis/p3/4141462-montanhas-por-do-sol-papel-de-parede-sol-atras-do-horizonte-imagem-crepusculo-natural-paisagem-ampla-horizontal-bg-deserto-amanhecer-abafado-cor-de-fundo-ilustracao-vetor.jpg);
+  background-position: -2548px -1469px;
+  animation: backgroundContest 90s ease-in-out infinite;
 }
 .regras-container {
   width: 400px;
@@ -1230,13 +1251,13 @@ span .atual-icone:active {
   align-content: flex-start;
 }
 .virtual-keyboard button {
-  width: 90px;
-  height: 70px;
+  width: 129px;
+  height: 116px;
   margin: 2px;
-  color: #eeeeee;
+  color: #111111;
   border-radius: 8px;
   box-shadow: 2px 2px 1px green;
-  background-color: #111111;
+  background-color: #eeeeee;
   transition: 0.3s;
 }
 .virtual-keyboard button:hover {
@@ -1308,12 +1329,11 @@ span .atual-icone:active {
   width: 275px;
 }
 footer {
-
   background-color: rgba(165, 42, 42, 0.607);
   text-align: center;
   margin: 5px auto;
   color: white;
-  
+  width: 100%;
   z-index: 995;
   height: 600px;
 }
