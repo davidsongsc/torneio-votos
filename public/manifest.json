@@ -1,6 +1,6 @@
 {
-  "short_name": "Votoroma",
-  "name": "Torneio de Votos BZ97",
+  "short_name": "Contest",
+  "name": "Votoroma",
   "icons": [
     {
       "src": "votoromaurna.ico",
@@ -20,6 +20,6 @@
   ],
   "start_url": ".",
   "display": "standalone",
-  "theme_color": "#000000",
-  "background_color": "#ffffff"
+  "theme_color": "#fff",
+  "background_color": "#000"
 }
