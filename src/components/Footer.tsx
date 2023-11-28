@@ -11,11 +11,21 @@ const Footer: React.FC = () => {
     return (
         <footer>
             <div className='link-info'>
-                <p>Versão: {firstConfig?.ver} &copy;</p>
-                <QRCodeGenerator link={firstConfig?.webpage} /> 
-                <p>Serial: {firstConfig?.serial} &reg;</p>
-
+                <br />
+                <br />
+                <br />
+                <p>Ver:[ {firstConfig?.ver}.{firstConfig?.serial}] </p>
+                <br />
+                <br />
+                <br />
+                <QRCodeGenerator link={firstConfig?.webpage} /> &copy;
             </div>
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+
         </footer>
     );
 };

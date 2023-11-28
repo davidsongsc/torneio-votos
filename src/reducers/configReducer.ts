@@ -8,8 +8,8 @@ interface UserState {
 const initialState: UserState = {
   config: [
     {
-      ver: '1.06d',
-      serial: '231527n 11202-3',
+      ver: '1.06i',
+      serial: '180028112023',
       valendo: false,
       unidade: 'bz97',
       prazoManutencao: '2023-12-10T22:50:00',

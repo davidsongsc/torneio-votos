@@ -41,13 +41,13 @@ const Tabela: React.FC = () => {
     useEffect(() => {
         console.log('Dispatching carregarContests...');
         dispatch(carregarContests() as any);
-        
+
         console.log('Dispatching fetchListarVotos...');
         dispatch(fetchListarVotos() as any);
-        
+
         console.log('Dispatching contarVotos...');
         dispatch(contarVotos(listaVotos.length));
-    
+
     }, [dispatch]);
 
     return (
@@ -81,72 +81,44 @@ const Tabela: React.FC = () => {
                         <div className='linha-contest-tabela' style={{ display: `${sectionStates[index]?.isClicado ? 'block' : 'none'}` }}>
 
                             <div className='linha-tabela-mor'>
+                                {contest.texto?.map((secao, secaoIndex) => (
+                                    <React.Fragment key={secaoIndex}>
+                                        <div className='icone-area-context-texto'>
+                                            <FaBullseye size={tamanhoIconeContestText} >
+                                                {secao[secaoIndex]?.titulo}</FaBullseye>
+                                        </div>
 
-                                <div className='icone-area-context-texto'>
-                                    <FaBullseye />
-                                </div>
-
-                                <textarea className='titulo-area-contest-t1' name="texto" value={contest.texto[0][0]} placeholder='Descrição' />
-                                <div className='medalhaTexto'>
-                                    <FaMedal size={tamanhoIconeContestText} />
-                                </div>
-                                <p style={{
-                                    fontSize: '12px',
-                                    letterSpacing: '2px',
-                                    padding: '10px',
-                                    borderRadius: '0px',
-                                    lineHeight: '13px',
-
-                                }}>
-                                    <textarea className='text-area-contest-t1' name="texto" value={contest.texto[0][1]}> </textarea></p>
-
-                                <div className='icone-area-context-texto'><FaEdit />   </div>
-                                <textarea className='titulo-area-contest-t1' name="texto" value={contest.texto[1][0]} placeholder='Descrição' />
-
-                                <div className='medalhaTextoTo'>
-                                    <IoIosMedal size={tamanhoIconeContestText} />
-                                </div>
-                                <textarea className='text-area-contest-t2' name="texto" value={contest.texto[1][1]} placeholder='Descrição' />
+                                        <span className='titulo-area-contest-t1'>
+                                            {secao[0]?.titulo}
+                                        </span>
+                                        <span className='text-area-contest-t1'>
+                                            {secao[0]?.texto}
+                                        </span>
 
 
+                                    </React.Fragment>
+                                ))}
+
+                               
                                 <div className='text-area-contest-div'>
                                     <h2 style={{
                                         fontSize: '13px',
                                         borderRadius: '0px',
                                     }}>
-
-                                        <FaTrophy />  {contest.texto[2][0]}</h2>
-                                    {contest.premiacao.map((premiacao, index) => (
+                                        <FaTrophy /> 
+                                    </h2>
+                                    {contest.premiacao?.map((premiacao, index) => (
                                         <p key={index} className='texto-contest-test'>
-
-                                            <h3>  {index + 1}ª {contest.texto[2][1]} <FaAward size={tamanhoIconeContestText} />:</h3>
                                             <ul>
                                                 {premiacao.map((detalhe, detalheIndex) => (
-                                                    <li key={detalheIndex}>{detalhe}</li>
+                                                    <li key={detalheIndex}>{index + 1}ª {detalhe.titulo}</li>
                                                 ))}
                                             </ul>
-
                                         </p>
                                     ))}
                                 </div>
 
 
-
-                                <span >
-                                    <img className='img-tb-01' src="https://static.vecteezy.com/system/resources/previews/012/933/205/original/kingdom-red-flag-free-png.png" alt="img" />
-                                    <h4 className='titulo-1'>META </h4>
-
-                                    <img className='img-tb-02' src="https://static.vecteezy.com/system/resources/previews/012/933/205/original/kingdom-red-flag-free-png.png" alt="img" />
-                                    <h4 className='titulo-2'>ATUAL</h4>
-                                </span>
-                                <span >
-                                    <h4 className='meta-icone'> <FaSortNumericUp size={45} /></h4>
-                                    <h4 className='meta-icone'> <FaCircleNotch className='atual-icone' size={45} /></h4>
-                                </span>
-                                <span>
-                                    <h4 className='meta-atual'>{contest.meta} </h4>
-                                    <h4 className='meta-atual'>{contest.conquista} </h4>
-                                </span>
                             </div>
                         </div>
                     </section >

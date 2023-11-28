@@ -32,6 +32,9 @@ export const ALTER_LOGIN_FAILURE = 'ALTER_LOGIN_FAILURE';
 export const LOGOUT = 'LOGOUT';
 
 export const CARREGAR_CONTESTS = 'CARREGAR_CONTESTS';
+export const CRIAR_CONTEST = 'CRIAR_CONTEST';
+export const CRIAR_CONTEST_FALHA = 'CRIAR_CONTEST_FALHA';
+export const CRIAR_CONTEST_SUCESSO = 'CRIAR_CONTEST_SUCESSO';
 
 export const FETCH_MOST_VOTED_REQUEST = 'FETCH_MOST_VOTED_REQUEST';
 export const FETCH_MOST_VOTED_SUCCESS = 'FETCH_MOST_VOTED_SUCCESS';
@@ -43,21 +46,25 @@ export const CACHE_CLEAR_KEY = 'lastCacheClear';
 
 
 // api produção
-export const API_USUARIOS = 'https://bz97.pythonanywhere.com/usuarios/';
-export const API_VOTOS = 'https://bz97.pythonanywhere.com/contar-votos/';
-export const API_ENVIAR_VOTOS = 'https://bz97.pythonanywhere.com//urnaeletronica/';
-export const API_LOGIN = 'https://bz97.pythonanywhere.com/api/login';
-export const API_ALTER_LOGIN = 'https://bz97.pythonanywhere.com/alterar-senha/';
-export const API_LISTA_VOTOS = 'https://bz97.pythonanywhere.com/listarv/';
-export const API_IMAGEM_UPLOAD = 'https://bz97.pythonanywhere.com/api/upload-image/';
-export const API_CONTEST = 'https://bz97.pythonanywhere.com/todos_contests/';
+//export const API_USUARIOS = 'https://bz97.pythonanywhere.com/usuarios/';
+//export const API_VOTOS = 'https://bz97.pythonanywhere.com/contar-votos/';
+//export const API_ENVIAR_VOTOS = 'https://bz97.pythonanywhere.com//urnaeletronica/';
+////export const API_LOGIN = 'https://bz97.pythonanywhere.com/api/login';
+////////export const API_ALTER_LOGIN = 'https://bz97.pythonanywhere.com/alterar-senha/';
+//export const API_LISTA_VOTOS = 'https://bz97.pythonanywhere.com/listarv/';
+//export const API_IMAGEM_UPLOAD = 'https://bz97.pythonanywhere.com/api/upload-image/';
+//export const API_CRIAR_CONTEST = 'https://bz97.pythonanywhere.com/criar_contest/';
+//export const API_CONTEST = 'https://bz97.pythonanywhere.com/todos_contests/';
+//export const API_CONTROLE_VOTOS = 'https://bz97.pythonanywhere.com/resetar-votos/';
 
 // api teste
-//export const API_USUARIOS = 'http://192.168.0.50:5000/usuarios/';
-//export const API_VOTOS = 'http://192.168.0.50:5000/contar-votos/';
-//export const API_ENVIAR_VOTOS = 'http://192.168.0.50:5000/urnaeletronica/';
-//export const API_LOGIN = 'http://192.168.0.50:5000/api/login';
-//export const API_ALTER_LOGIN = 'http://192.168.0.50:5000/alterar-senha/';
-//export const API_LISTA_VOTOS = 'http://192.168.0.50:5000/listarv/';
-//export const API_IMAGEM_UPLOAD = 'http://192.168.0.50:5000/api/upload-image/';
-//export const API_CONTEST = 'http://192.168.0.50:5000/todos_contests/';
+export const API_USUARIOS = 'http://192.168.0.50:5000/usuarios/';
+export const API_VOTOS = 'http://192.168.0.50:5000/contar-votos/';
+export const API_ENVIAR_VOTOS = 'http://192.168.0.50:5000/urnaeletronica/';
+export const API_LOGIN = 'http://192.168.0.50:5000/api/login';
+export const API_ALTER_LOGIN = 'http://192.168.0.50:5000/alterar-senha/';
+export const API_LISTA_VOTOS = 'http://192.168.0.50:5000/listarv/';
+export const API_IMAGEM_UPLOAD = 'http://192.168.0.50:5000/api/upload-image/';
+export const API_CONTEST = 'http://192.168.0.50:5000/todos_contests/';
+export const API_CRIAR_CONTEST = 'http://192.168.0.50:5000/criar_contest/';
+export const API_CONTROLE_VOTOS = 'http://192.168.0.50:5000/resetar-votos/';

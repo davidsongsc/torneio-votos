@@ -186,7 +186,8 @@ canvas {
 }
 .arrou-chamativo:active,
 .arrou-chamativo:hover {
-  box-shadow: 1px 1px 1px black, 1px -1px 2px black, -1px -1px 2px black, -1px 1px 2px black;
+  box-shadow: 1px 1px 1px black, 1px -1px 2px black, -1px -1px 2px black,
+    -1px 1px 2px black;
   background-color: #2f4f4f;
 }
 .arrou-bg {
@@ -291,6 +292,69 @@ canvas {
   position: relative;
   z-index: 100;
 }
+.contestForm {
+  width: 400px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.contestForm .listaContestform {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.contestForm label {
+  font-size: small;
+  text-align: center;
+}
+.contestForm input {
+  color: white;
+  background-color: black;
+  text-indent: 15px;
+  width: 300px;
+  height: 30px;
+  margin: 0 auto;
+  border-radius: 10px;
+}
+.contestForm textarea {
+  color: white;
+  background-color: black;
+  text-indent: 15px;
+  width: 300px;
+  height: 80px;
+  margin: 0 auto;
+  position: relative;
+  border-radius: 10px;
+}
+.radioLabel {
+  display: inline-block;
+  margin-right: 10px; /* Adapte a margem conforme necessário */
+}
+.radioBotaoContest {
+  width: 40px;
+  height: 40px;
+  margin-right: 5px;
+  border: 2px solid #db6034; /* Cor da borda normal */
+  border-radius: 50%; /* Deixa o botão de rádio redondo */
+  outline: none;
+}
+
+.radioBotaoContest:checked {
+  /* Estilos quando o botão de rádio está marcado */
+  background-color: #3498db; /* Cor de fundo quando marcado */
+  border-color: #3498db; /* Cor da borda quando marcado */
+}
+.contestForm button {
+  color: white;
+  background-color: black;
+  text-indent: 15px;
+  width: 300px;
+  height: 50px;
+  margin: 15px auto;
+  border-radius: 10px;
+  box-shadow: 1px 1px gray;
+}
 @keyframes backgroundContest {
   0% {
     background-position: -2548px -1469px;
@@ -378,8 +442,6 @@ canvas {
 }
 
 .text-area-contest-t1 {
-  height: 140px;
-  margin-top: 26px;
   overflow-y: hidden;
   width: 308px;
   font-size: 13px;
@@ -398,6 +460,7 @@ canvas {
   letter-spacing: 0px;
   text-transform: lowercase;
   overflow-y: scroll;
+  text-align: left;
 }
 .text-area-contest-t2 {
   height: 140px;
@@ -509,7 +572,10 @@ canvas {
   position: relative;
   z-index: 800;
 }
-
+.painel-controlador-votos {
+  color: white;
+  margin: 20px auto;
+}
 @keyframes rotaAtual {
   0% {
     transform: rotateZ(0deg);
@@ -762,7 +828,7 @@ span .atual-icone:active {
   width: 74px;
   height: 100px;
 }
-.votando-no{
+.votando-no {
   width: 360px;
   height: 360px;
 }
@@ -774,7 +840,7 @@ span .atual-icone:active {
   border-radius: 5px;
   box-shadow: 1px 1px;
 }
-.imagem-no{
+.imagem-no {
   width: 240px;
   height: 260px;
 }
@@ -1249,6 +1315,7 @@ span .atual-icone:active {
   flex-wrap: wrap;
   justify-content: space-evenly;
   align-content: flex-start;
+  width: 406px;
 }
 .virtual-keyboard button {
   width: 129px;

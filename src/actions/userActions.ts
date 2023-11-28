@@ -66,16 +66,22 @@ export interface ListaVotos {
 export interface ContarVotosAction extends Action<typeof types.CONTAR_VOTOS> {
   payload: number;
 }
+
+interface ListaItem {
+  titulo: string;
+  texto: string;
+}
+
 export interface DadosContest {
   id: number;
   nomeContest: string;
-  texto: string[][];
+  texto: ListaItem[][];
   desempenho: number;
   meta: number;
   conquista: number;
   data_inicio: string;
   data_fim: string;
-  premiacao: string[][];
+  premiacao: ListaItem[][];
   autor: string;
   datahora: string;
   status: number;
@@ -83,7 +89,7 @@ export interface DadosContest {
 
 export interface ContestDadosAction {
   type: typeof types.CARREGAR_CONTESTS;
-  payload: DadosContest[]; 
+  payload: DadosContest[];
 }
 
 interface LogoutAction {
@@ -243,6 +249,9 @@ export type UserActionTypes = LoginRequestAction
   | ConcretizarVotoAction
   | SetSessionAction
   | FetchListarVotos
+  | { type: typeof types.CRIAR_CONTEST }
+  | { type: typeof types.CRIAR_CONTEST_SUCESSO; payload: DadosContest }
+  | { type: typeof types.CRIAR_CONTEST_FALHA; error: string }
   | { type: typeof types.CONCRETIZAR_VOTO_INICIO }
   | { type: typeof types.CONCRETIZAR_VOTO_SUCESSO; payload: number }
   | { type: typeof types.CONCRETIZAR_VOTO_FALHA; payload: string }
@@ -339,6 +348,41 @@ export const alteraLoginUser = (credentials: { matricula: string; senha: string;
   };
 };
 
+export const postContest = (dataForm: any) => {
+  return async (dispatch: Dispatch<UserActionTypes>) => {
+    dispatch({ type: types.CRIAR_CONTEST });
+
+    try {
+      const response = await fetch(types.API_CRIAR_CONTEST, {
+        
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(dataForm),
+        
+      });
+      console.log(dataForm);
+      if (!response.ok) {
+        throw new Error('Ocorreu um erro inesperado! Verifique a API...');
+      }
+
+      const DadosContest = await response.json();
+      dispatch({ type: types.CRIAR_CONTEST_SUCESSO, payload: DadosContest });
+      return DadosContest;
+    } catch (error) {
+      if (error instanceof Error) {
+        dispatch({ type: types.CRIAR_CONTEST_FALHA, error: error.toString() });
+        throw error;
+      } else {
+        // Manipule caso a variável `error` não seja do tipo `Error`.
+        console.error('Erro desconhecido:', error);
+        throw new Error('Erro desconhecido');
+      }
+    }
+  };
+};
+
 export const fetchUsers = () => {
   return (dispatch: Dispatch<UserActionTypes>) => {
     dispatch(fetchUsersRequest());
@@ -359,6 +403,34 @@ export const fetchUsers = () => {
   };
 };
 
+export const resetVotesWithPassword = (senha: string) => {
+  return (dispatch: Dispatch<UserActionTypes>) => {
+    // Adicione a ação de solicitação (opcional, dependendo do seu caso)
+    dispatch(fetchUsersRequest());
+
+    fetch(types.API_CONTROLE_VOTOS, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ senha }),
+    })
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Falha ao resetar votos');
+        }
+        return response.json();
+      })
+      .then(data => {
+        // Adicione a ação de sucesso (opcional, dependendo do seu caso)
+        dispatch(fetchUsersSuccess(data));
+      })
+      .catch(error => {
+        // Adicione a ação de falha (opcional, dependendo do seu caso)
+        dispatch(fetchUsersFailure(error.message));
+      });
+  };
+};
 
 export const fetchUsersAndUpdate = async (dispatch: Dispatch<UserActionTypes>) => {
   try {

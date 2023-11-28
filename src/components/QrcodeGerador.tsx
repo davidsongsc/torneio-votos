@@ -15,8 +15,17 @@ const QRCodeGenerator: React.FC<QRCodeGeneratorProps> = ({ link }) => {
   return (
     <div>
       <QRCode size={300} value={qrCodeValue} />
+      <br />
+      <br />
+      <br />
       <p>Escaneie o QR Code para acessar a página: </p>
+      <br />
+      <br />
+      <br />
       <p style={{textTransform: 'lowercase'}}>{qrCodeValue}</p>
+      <br />
+      <br />
+      <br />
     </div>
   );
 };

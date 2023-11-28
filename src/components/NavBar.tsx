@@ -14,6 +14,7 @@ import {
     faQuestionCircle,
     faCog,
     faTrophy,
+    faFlag,
     faBars,
     faVoteYea
 } from '@fortawesome/free-solid-svg-icons';
@@ -36,6 +37,7 @@ const Navbar: React.FC = () => {
     const [visivel, setVisivel] = useState(false);
     let timeoutId: NodeJS.Timeout | null = null;
     let navigationAction: (() => void) | null = null;
+    const nivel = userInfo?.alcunha.split(',')[0].trim();
 
     const handleLogout = () => {
         dispatch(logoutUser());
@@ -103,54 +105,55 @@ const Navbar: React.FC = () => {
     const navItems: NavItem[] = [
         { icon: faSignInAlt, to: '/login', text: 'Login', visible: !isLoggedIn },
         { icon: faUser, to: '/meuperfil', text: `${userInfo?.nome}`, visible: isLoggedIn },
-        { icon: faCog , to: '/codigoacesso', text: 'Conta', visible: isLoggedIn },
+        { icon: faCog, to: '/codigoacesso', text: 'Conta', visible: isLoggedIn },
         { icon: faSignOutAlt, to: '', text: 'Sair', visible: isLoggedIn },
         { icon: faEllipsisH, to: '/outros', text: 'Outros', visible: isLoggedIn },
-        { icon: faQuestionCircle, to: '/ajuda', text: 'ajuda', visible: true },
+        { icon: faFlag, to: '/novocontest', text: 'Novo Contest', visible: nivel === 'gerencia' ? true : false } ,
+    { icon: faQuestionCircle, to: '/ajuda', text: 'ajuda', visible: true },
     ];
 
-    return (
-        <>
-            <nav className={`navBar ${visivel ? 'navBarAberta' : ''}`} >
+return (
+    <>
+        <nav className={`navBar ${visivel ? 'navBarAberta' : ''}`} >
 
-                <ul style={{ display: `${visivel ? 'block' : 'none'}` }} className="nav-list">
-                    {navItems.slice(0, navItems.length).map((item) => item.visible && (
-                        <li key={item.to} onClick={() => handleLinkClick(item.to)}>
-                            <FontAwesomeIcon icon={item.icon} style={{ fontSize: '30px' }} />
-                            <span className={item.visible ? 'nav-item-visible' : 'nav-item-hidden'}>
-                                {item.text}
-                            </span>
-                        </li>
-                    ))}
-                </ul>
-                {visivel ?
-                    <>
+            <ul style={{ display: `${visivel ? 'block' : 'none'}` }} className="nav-list">
+                {navItems.slice(0, navItems.length).map((item) => item.visible && (
+                    <li key={item.to} onClick={() => handleLinkClick(item.to)}>
+                        <FontAwesomeIcon icon={item.icon} style={{ fontSize: '30px' }} />
+                        <span className={item.visible ? 'nav-item-visible' : 'nav-item-hidden'}>
+                            {item.text}
+                        </span>
+                    </li>
+                ))}
+            </ul>
+            {visivel ?
+                <>
 
-                    </>
-                    :
-                    <>
+                </>
+                :
+                <>
 
-                        <div className='arrou-chamativo ' onClick={() => handleNavegar('voltar')}>
-                            <h1 ><FontAwesomeIcon color={'gold'} icon={faTrophy} style={{ fontSize: '25px' }} /></h1>
+                    <div className='arrou-chamativo ' onClick={() => handleNavegar('voltar')}>
+                        <h1 ><FontAwesomeIcon color={'gold'} icon={faTrophy} style={{ fontSize: '25px' }} /></h1>
 
-                        </div>
-                        <div className='arrou-chamativo ' onClick={() => handleNavegar('contest')}>
-                            <h1 ><FontAwesomeIcon color={'gray'} icon={faTasks} style={{ fontSize: '25px' }} /></h1>
+                    </div>
+                    <div className='arrou-chamativo ' onClick={() => handleNavegar('contest')}>
+                        <h1 ><FontAwesomeIcon color={'gray'} icon={faTasks} style={{ fontSize: '25px' }} /></h1>
 
-                        </div>
-                        <div className='arrou-chamativo ' onClick={() => handleNavegar('votar')} style={{ width: '60px', display: isLoggedIn ? 'flex' : 'none' }}>
-                            <h1 ><FontAwesomeIcon color={`${userInfo?.votos === 0 ? 'black' : 'cyan'}`} icon={faVoteYea} style={{ fontSize: '25px' }} /> {`${userInfo?.votos}`}</h1>
+                    </div>
+                    <div className='arrou-chamativo ' onClick={() => handleNavegar('votar')} style={{ width: '60px', display: isLoggedIn ? 'flex' : 'none' }}>
+                        <h1 ><FontAwesomeIcon color={`${userInfo?.votos === 0 ? 'black' : 'cyan'}`} icon={faVoteYea} style={{ fontSize: '25px' }} /> {`${userInfo?.votos}`}</h1>
 
-                        </div>
-                        <div className='arrou-chamativo ' onClick={cancelPendingActions}>
-                            <h1 ><FontAwesomeIcon icon={faBars} style={{ fontSize: '25px' }} /></h1>
+                    </div>
+                    <div className='arrou-chamativo ' onClick={cancelPendingActions}>
+                        <h1 ><FontAwesomeIcon icon={faBars} style={{ fontSize: '25px' }} /></h1>
 
-                        </div>
-                    </>
-                }
-            </nav >
-        </>
-    );
+                    </div>
+                </>
+            }
+        </nav >
+    </>
+);
 };
 
 export default Navbar;

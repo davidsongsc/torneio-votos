@@ -48,7 +48,18 @@ const PageOutros: React.FC = () => {
                         <li>
                             <a href="https://analytics.google.com/analytics/web/#/p415534484/reports/home">google analytics </a>
                         </li>
-
+                        <li>
+                            <Link to="/novocontest">Novo Contest</Link>
+                        </li>
+                        <li>
+                            <Link to="/">Pesquisar</Link>
+                        </li>
+                        <li>
+                            <Link to="/controle">Controle Contest</Link>
+                        </li>
+                        <li>
+                            <Link to="/torneio">Reiniciar Contest</Link>
+                        </li>
                     </>
                 )}
 
@@ -57,16 +68,16 @@ const PageOutros: React.FC = () => {
                     <>
                         <h3>Contest</h3>
                         <li>
-                            <Link to="/">Novo</Link>
+                            <Link to="/novocontest">Novo</Link>
                         </li>
                         <li>
                             <Link to="/">Pesquisar</Link>
                         </li>
                         <li>
-                            <Link to="/">Mais Votos</Link>
+                            <Link to="/controle">Controle</Link>
                         </li>
                         <li>
-                            <Link to="/">Reeiniciar</Link>
+                            <Link to="/torneio">Reiniciar</Link>
                         </li>
 
                     </>

@@ -62,11 +62,11 @@ const AlterarSenha: React.FC = () => {
     const characters = [5, 3, 1, 2, 0, 4];
     const userLogin = useSelector((state: RootState) => state.userReducer);
     const { isLoggedIn, mostVoted } = userLogin;
-
+    const dispatch: ThunkDispatch<RootState, any, AnyAction> = useDispatch();
     useEffect(() => {
         window.scrollTo(0, 0);
     }, []);
-    const dispatch: ThunkDispatch<RootState, any, AnyAction> = useDispatch();
+  
 
     const generateDays = (month: string) => {
         const daysInMonth = new Date(2023, parseInt(month, 10), 0).getDate();

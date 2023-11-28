@@ -14,6 +14,9 @@ import AlterarSenha from './components/AlterarSenha';
 import NavPrep from './components/NavTeste';
 import Countdown from './components/Contagem';
 import PageRegulamento from './components/PageRegulamento';
+import MaisVotos from './components/MaisVotos';
+import MenosVotos from './components/MenosVotos';
+import NovoContest from './components/NovoContest';
 
 function App() {
   const modoOperacional = useSelector((state: RootState) => state.configReducer.config?.[0] || null);
@@ -49,6 +52,9 @@ function App() {
       <Routes>
         {showContent && <Route path="/" element={<PageRanking />} />}
         {showContent && <Route path="/contest" element={<Home />} />}
+        {showContent && <Route path="/controle" element={<MaisVotos />} />}
+        {showContent && <Route path="/torneio" element={<MenosVotos />} />}
+        {showContent && <Route path="/novocontest" element={<NovoContest />} />}
         {showContent && <Route path="/votar" element={<MainVoto />} />}
         {showContent && <Route path="/ranking" element={<PageRanking />} />}
         {showContent && <Route path="/outros" element={<PageOutros />} />}
