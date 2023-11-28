@@ -110,8 +110,8 @@ const Votar: React.FC = () => {
                     <button onClick={() => handlePesquisa('dish')}>Dish</button>
                     <button onClick={() => handlePesquisa('clean')}>Clean</button>
                     <button onClick={() => handlePesquisa('prep')}>Prep</button>
-                    <button onClick={() => handlePesquisa('linha fria')}>l. fria</button>
-                    <button onClick={() => handlePesquisa('linha quente')}>l. quente</button>
+                    <button onClick={() => handlePesquisa('linha fria')}>l. cold</button>
+                    <button onClick={() => handlePesquisa('linha quente')}>l. hot</button>
                     <button onClick={() => handlePesquisa('waiter')}>waiter</button>
                     <button onClick={() => handlePesquisa('bartender')}>bar</button>
                     <button onClick={() => handlePesquisa('treinador')}>treinador</button>

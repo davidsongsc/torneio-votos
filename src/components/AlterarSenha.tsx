@@ -9,15 +9,21 @@ import { GiBroom } from 'react-icons/gi';
 import { FaUser, FaLock } from 'react-icons/fa';
 import { fetchUsers, fetchMostVoted } from '../actions/userActions';
 import { useSelector } from 'react-redux';
-const icons = [
-    { id: 1, iconUrl: 'https://static.vecteezy.com/system/resources/previews/012/893/824/non_2x/elephant-large-transparent-background-free-png.png' },
-    { id: 2, iconUrl: 'https://cdn.pixabay.com/photo/2016/07/04/09/05/pyramids-1496253_960_720.png' },
-    { id: 3, iconUrl: 'https://www.urbs.curitiba.pr.gov.br/uploads/galeriaNoticaImagens/a3ae8215b0b2050aba367623ce9d3205ca7a512c.png' },
-    { id: 4, iconUrl: 'https://images.vexels.com/media/users/3/160071/isolated/preview/8a4c9b162a4495af9185c91a57b6334f-cachorro-fofo-com-cauda-de-cachorro-e-lingua-achatada.png' },
-    { id: 5, iconUrl: 'https://i.pinimg.com/originals/63/c2/85/63c285141e9a8f5cbc036b577f56a7dd.png' },
-    { id: 6, iconUrl: 'https://static.wixstatic.com/media/6aef1d_b6dd7a4c993c46b89f5ecf23769bbbe5~mv2_d_1264_1332_s_2.png/v1/fill/w_949,h_1000,al_c,q_90,usm_0.66_1.00_0.01/6aef1d_b6dd7a4c993c46b89f5ecf23769bbbe5~mv2_d_1264_1332_s_2.png' },
-];
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { fas } from '@fortawesome/free-solid-svg-icons';
+import { IconName } from '@fortawesome/fontawesome-svg-core';
 
+library.add(fas);
+const icons = [
+    { id: 1, iconClass: 'fa-square' },
+    { id: 2, iconClass: 'fa-diamond' },
+    { id: 3, iconClass: 'fa-play' },
+    { id: 4, iconClass: 'fa-circle' },
+    { id: 5, iconClass: 'fa-heart' },
+    { id: 6, iconClass: 'fa-star' },
+];
+const iconSize = [48, 'gold'];
 interface ComboBoxProps {
     label: string;
     values: string[];
@@ -51,7 +57,7 @@ const AlterarSenha: React.FC = () => {
     const [matricula, setMatricula] = useState('');
     const [senha, setPassword] = useState('');
     const [liberadoCodigo, setliberadoCodigo] = useState<boolean>(true);
-    
+
     const [loginError, setLoginError] = useState('');
     const characters = [5, 3, 1, 2, 0, 4];
     const userLogin = useSelector((state: RootState) => state.userReducer);
@@ -215,9 +221,7 @@ const AlterarSenha: React.FC = () => {
                                 onClick={() => handleCharacterClick(index.toString())}
                                 disabled={senha.length >= 6}
                             >
-
-                                {icons[char] && <img src={icons[char].iconUrl} alt={`Icon ${char}`} />}
-                            </button>
+                                {icons[char] && <FontAwesomeIcon fontSize={iconSize[0]} icon={['fas', icons[char].iconClass as IconName]} />}                            </button>
                         ))}
                     </div>
                 </div>
@@ -236,6 +240,7 @@ const AlterarSenha: React.FC = () => {
                         required
                         inputMode="numeric"
                         disabled={!isLoggedIn ? false : true}
+                        style={{ border: `4px solid ${liberadoCodigo ? 'transparent' : 'green'}` }}
                     />
 
                 </div>
@@ -265,10 +270,9 @@ const AlterarSenha: React.FC = () => {
                         <button
                             key={index}
                             onClick={() => handleCharacterClick(index.toString())}
-
+                            disabled={senha.length >= 6}
                         >
-
-                            {icons[char] && <img src={icons[char].iconUrl} alt={`Icon ${char}`} />}
+                            {icons[char] && <FontAwesomeIcon fontSize={iconSize[0]} color={'white'} icon={['fas', icons[char].iconClass as IconName]} />}
                         </button>
                     ))}
                 </div>

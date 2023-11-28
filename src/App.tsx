@@ -57,7 +57,7 @@ function App() {
         {showContent && <Route path="/meuperfil" element={<PerfilUser />} />}
         {showContent && <Route path="/login" element={<AlterarSenha />} />}
         {showContent && <Route path="/codigoacesso" element={<AlterarSenha />} />}
-        {showContent && <Route path="/regras" element={<PageRegulamento />} />}
+        {showContent && <Route path="/ajuda" element={<PageRegulamento />} />}
       </Routes>
       {showContent && <Footer />}
     </Router>

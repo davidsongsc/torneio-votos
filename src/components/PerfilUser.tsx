@@ -103,7 +103,13 @@ const PerfilUser: React.FC = () => {
         fetchData();
     }, [imageVersion]);
 
-    if (!userLogin) {
+    useEffect(() => {
+       if (!userInfo){
+        navigate('/ranking');
+       }
+    }, [userInfo, navigate]);
+
+    if (!userInfo) {
         return <div>Funcionário não encontrado</div>;
     }
 

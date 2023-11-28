@@ -92,7 +92,7 @@ const Navbar: React.FC = () => {
     const navItems: NavItem[] = [
         { icon: faSignOutAlt, to: '', text: 'Sair', visible: isLoggedIn },
         { icon: faUser, to: '/meuperfil', text: `${userInfo?.nome}`, visible: isLoggedIn },
-        { icon: faGavel, to: '/regras', text: 'Regras', visible: true },
+        { icon: faGavel, to: '/ajuda', text: 'ajuda', visible: true },
         { icon: faBars, to: '/outros', text: 'Ajustes', visible: isLoggedIn },
         { icon: faSignInAlt, to: '/login', text: 'Login', visible: !isLoggedIn },
         { icon: faSignOutAlt, to: '/codigoacesso', text: 'Codigo', visible: isLoggedIn },
@@ -128,7 +128,7 @@ const Navbar: React.FC = () => {
 
                         </div>
                         <div className='arrou-chamativo ' onClick={() => handleNavegar('votar')} style={{ width: '60px', display: isLoggedIn ? 'flex' : 'none' }}>
-                            <h1 ><FontAwesomeIcon icon={faVoteYea} style={{ fontSize: '25px' }} /> {`${userInfo?.votos}`}</h1>
+                            <h1 ><FontAwesomeIcon color={`${userInfo?.votos === 0 ? 'black': 'cyan'}`} icon={faVoteYea} style={{ fontSize: '25px'}} /> {`${userInfo?.votos}`}</h1>
 
                         </div>
                         <div className='arrou-chamativo ' onClick={cancelPendingActions}>
