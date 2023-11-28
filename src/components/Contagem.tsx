@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import Footer from './Footer';
 import Cubo from './Cubo';
 
 interface CountdownProps {
@@ -47,7 +46,7 @@ function Countdown({ deadline }: CountdownProps) {
 
 
 
-            <Footer />
+  
         </>
     );
 }

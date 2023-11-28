@@ -23,6 +23,7 @@ export interface ConfigInfo {
   valendo: boolean;
   unidade: string;
   prazoManutencao: string;
+  prazoTeste: string;
   webpage: string;
 }
 export interface UserData {
@@ -64,6 +65,25 @@ export interface ListaVotos {
 
 export interface ContarVotosAction extends Action<typeof types.CONTAR_VOTOS> {
   payload: number;
+}
+export interface DadosContest {
+  id: number;
+  nomeContest: string;
+  texto: string[][];
+  desempenho: number;
+  meta: number;
+  conquista: number;
+  data_inicio: string;
+  data_fim: string;
+  premiacao: string[][];
+  autor: string;
+  datahora: string;
+  status: number;
+}
+
+export interface ContestDadosAction {
+  type: typeof types.CARREGAR_CONTESTS;
+  payload: DadosContest[]; 
 }
 
 interface LogoutAction {
@@ -403,7 +423,7 @@ export const fetchListarVotos = () => {
   return async (dispatch: Dispatch<AnyAction>) => {
     try {
       // Realize a chamada à API aqui (usando axios, fetch, etc.)
-      const response = await fetch(types.API_LISTA_VOTOS );
+      const response = await fetch(types.API_LISTA_VOTOS);
       const data = await response.json();
 
       // Despache a ação com os dados recebidos

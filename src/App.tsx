@@ -17,7 +17,7 @@ import PageRegulamento from './components/PageRegulamento';
 
 function App() {
   const modoOperacional = useSelector((state: RootState) => state.configReducer.config?.[0] || null);
-  const deadline = new Date(modoOperacional.prazoManutencao).getTime();
+  const deadline = new Date(modoOperacional.prazoTeste).getTime();
   const [loading, setLoading] = useState(true);
   const [showContent, setShowContent] = useState(false);
 
@@ -37,7 +37,6 @@ function App() {
   }, [deadline]);
 
   if (loading) {
-    // Exibir seu componente de loading aqui
     return <Countdown deadline={deadline}  />;
   }
 

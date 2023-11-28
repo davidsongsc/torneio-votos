@@ -13,40 +13,48 @@ import { FaEdit, FaHistory, FaMedal, FaCalendarAlt, FaTrophy, FaAward, FaList } 
 import { useDispatch } from 'react-redux';
 import { fetchListarVotos } from '../actions/userActions';
 import { contarVotos } from '../actions/userActions';
+import { carregarContests } from '../reducers/contestReducer';
 interface ContestSection {
     isClicado: boolean;
 }
 
 const Tabela: React.FC = () => {
     const dispatch = useDispatch();
-    const data = useSelector((state: RootState) => state.contestReducer.contest);
+    const data = useSelector((state: RootState) => state.contestReducer);
     const listaVotos = useSelector((state: RootState) => state.listarVotosReducer.listaVotos);
-    const [sectionStates, setSectionStates] = useState<ContestSection[]>(Array(data.length).fill({ isClicado: false }));
-
+    const [sectionStates, setSectionStates] = useState<ContestSection[]>(
+        Array(data.contest?.length || 0).fill({ isClicado: false })
+    );
+    console.log(data);
     const tamanhoIconeContestText = 20;
     const contestAtivo = 1;
 
     const handleClick = (index: number) => {
         // Cria uma cópia do array de estados
         const newSectionStates = [...sectionStates];
-        // Inverte o valor atual da seção quando o componente é clicado
-        newSectionStates[index] = { isClicado: !newSectionStates[index].isClicado };
+        // Inicializa o elemento se for undefined
+        newSectionStates[index] = Object.assign({}, newSectionStates[index], { isClicado: !newSectionStates[index]?.isClicado });
         // Atualiza o estado
         setSectionStates(newSectionStates);
     };
 
     useEffect(() => {
-        // Dispatch da ação para buscar os dados quando o componente montar
-        dispatch(fetchListarVotos() as any); // Adicione "as any" temporariamente para evitar erro de tipo
+        console.log('Dispatching carregarContests...');
+        dispatch(carregarContests() as any);
+        
+        console.log('Dispatching fetchListarVotos...');
+        dispatch(fetchListarVotos() as any);
+        
+        console.log('Dispatching contarVotos...');
         dispatch(contarVotos(listaVotos.length));
-
+    
     }, [dispatch]);
 
     return (
         <>
 
             {
-                data.slice(0, 17).map((contest, index) => (
+                data.contest?.slice(0, 17).map((contest, index) => (
                     <section key={index} className={`contest-tabela ${contest.status === 1 ? '' : 'contest-inativ'}`}>
                         <div className='titulo-barra-contest' onClick={() => handleClick(index)} style={{ fontSize: '14px' }}>
                             <h1>
