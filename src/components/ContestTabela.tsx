@@ -111,7 +111,7 @@ const Tabela: React.FC = () => {
                                         <p key={index} className='texto-contest-test'>
                                             <ul>
                                                 {premiacao.map((detalhe, detalheIndex) => (
-                                                    <li key={detalheIndex}>{index + 1}ª {detalhe.titulo}</li>
+                                                    <li key={detalheIndex}>{index + 1}ª {detalhe.titulo}{detalhe.texto}</li>
                                                 ))}
                                             </ul>
                                         </p>

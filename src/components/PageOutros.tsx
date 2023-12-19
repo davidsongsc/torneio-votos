@@ -68,16 +68,16 @@ const PageOutros: React.FC = () => {
                     <>
                         <h3>Contest</h3>
                         <li>
-                            <Link to="/novocontest">Novo</Link>
+                            <Link to="/novocontest">Novo Contest</Link>
                         </li>
                         <li>
                             <Link to="/">Pesquisar</Link>
                         </li>
                         <li>
-                            <Link to="/controle">Controle</Link>
+                            <Link to="/controle">Voto++</Link>
                         </li>
                         <li>
-                            <Link to="/torneio">Reiniciar</Link>
+                            <Link to="/torneio">Adm Votos</Link>
                         </li>
 
                     </>
@@ -87,7 +87,7 @@ const PageOutros: React.FC = () => {
                     <Link to="/">Novo Post</Link>
                 </li>
                 <li>
-                    <Link to="/">Threads</Link>
+                    <Link to="/">Postagens</Link>
                 </li>
                 <li>
                     <Link to="/">Pesquisar</Link>
