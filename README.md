@@ -1,11 +1,19 @@
-# **📱 Projeto de Votação para Funcionário do Mês **
-
 <div align="center" >
 Este projeto visa criar um aplicativo interno para votação do "Funcionário do Mês" em um ambiente corporativo. As principais características são:
 </div>
 </br>
 
 ## 🚀 Votação Interativa:
+
+> - Status: OK
+> - Versão: 1.6I
+
+### :memo: Objetivos do Projeto:
+
+> - ✔ Promover um ambiente de reconhecimento e valorização dos colaboradores.
+> - ✔ Estimular a interação e o engajamento entre os membros da equipe.
+> - ✔ Reforçar a cultura corporativa positiva através do reconhecimento mensal.
+> - ✔ Proporcionar transparência no processo de votação e resultados.
 
 <br/>
 <p align="left"> 
@@ -38,16 +46,6 @@ Este projeto visa criar um aplicativo interno para votação do "Funcionário do
 </p>
 
 ## 📜 Notas
-
-> - Status: OK
-> - Versão: 1.6I
-
-### :memo: Objetivos do Projeto:
-
-> - ✔ Promover um ambiente de reconhecimento e valorização dos colaboradores.
-> - ✔ Estimular a interação e o engajamento entre os membros da equipe.
-> - ✔ Reforçar a cultura corporativa positiva através do reconhecimento mensal.
-> - ✔ Proporcionar transparência no processo de votação e resultados.
 
 ### Tecnologias Utilizadas:
 
