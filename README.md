@@ -3,7 +3,9 @@
 Este projeto visa criar um aplicativo interno para votação do "Funcionário do Mês" em um ambiente corporativo, promovendo o reconhecimento e a valorização dos colaboradores. As principais características são:
 </div>
 </br>
+
 ![Descrição da Imagem](data/anuncios.png)
+
 ## 🚀 Votação Interativa:
 
 > - **Status:** OK
