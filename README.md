@@ -1,46 +1,94 @@
-# Getting Started with Create React App
+# **📱 Projeto de Votação para Funcionário do Mês **
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<div align="center" >
+Este projeto visa criar um aplicativo interno para votação do "Funcionário do Mês" em um ambiente corporativo. As principais características são:
+</div>
+</br>
 
-## Available Scripts
+## 🚀 Votação Interativa:
 
-In the project directory, you can run:
+<br/>
+<p align="left"> 
+  <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank">
+    <img
+      src="https://raw.githubusercontent.com/devicons/devicon/master/icons/javascript/javascript-original.svg"
+      alt="javascript"
+      width="120"
+      height="120"
+    />
+  </a>
+  <a href="https://developer.mozilla.org/pt-BR/docs/Web/CSS" target="_blank">
+    <img
+      src="https://raw.githubusercontent.com/devicons/devicon/master/icons/css3/css3-original.svg"
+      alt="Css3"
+      width="120"
+      height="120"
+    />
+  </a>
 
-### `npm start`
+  <a href="https://developer.mozilla.org/pt-BR/docs/Web/HTML" target="_blank">
+    <img
+      src="https://raw.githubusercontent.com/devicons/devicon/master/icons/html5/html5-original.svg"
+      alt="HTML5"
+      width="120"
+      height="120"
+    />
+  </a>
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+</p>
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## 📜 Notas
 
-### `npm test`
+> - Status: OK
+> - Versão: 1.6I
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### :memo: Objetivos do Projeto:
 
-### `npm run build`
+> - ✔ Promover um ambiente de reconhecimento e valorização dos colaboradores.
+> - ✔ Estimular a interação e o engajamento entre os membros da equipe.
+> - ✔ Reforçar a cultura corporativa positiva através do reconhecimento mensal.
+> - ✔ Proporcionar transparência no processo de votação e resultados.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Tecnologias Utilizadas:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+dependência necessaria:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- Node.js LTS v16 (ou qualquer versão superior)
 
-### `npm run eject`
+Após ter o Node.js Instalado, execute o seguinte comando na pasta raiz do projeto:
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+```bash
+npm install
+```
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+para rodar o projeto localmente, use o seguinte comando:
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+```bash
+npm start
+```
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+<p align="left">
+A aplicação será desenvolvida utilizando React para a criação de interfaces interativas e responsivas.
+Um banco de dados será implementado para armazenar votos e informações dos funcionários.
+Restrições de votação serão controladas através de lógica de backend para garantir a integridade dos resultados.
+</p>
+</br>
 
-## Learn More
+</br>
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## :mortar_board: Autores
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+<table align="center">
+    <tr>
+        <td align="center">
+            <a href="https://github.com/davidsongsc">
+                <img src="https://avatars.githubusercontent.com/u/53156529?v=4" width="150px;" alt="Image do Davidson George" />
+                <br />
+                <sub><b>Davidson George</b></sub>
+            </a>
+        </td>    
+    </tr>
+</table>
+<h4 align="center">
+  linkedin <a href="https://www.linkedin.com/in/davidsongsc/" target="_blank"> Davidson George </a>
+</h4>
