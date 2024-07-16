@@ -163,9 +163,9 @@ const ContestForm: React.FC<ContestFormProps> = ({ onSubmit }) => {
     return (
         <div className='contestForm'>
             <input type="text" name="idContest" placeholder='ID' value={formData.id} onChange={handleChange} />
-            <input type="text" name="nomeContest" placeholder='Nome do Contest' value={formData.nomeContest} onChange={handleChange} />
-            <input type="text" name="data_inicio" placeholder='Data de Início' value={formData.data_inicio} onChange={handleChange} />
-            <input type="text" name="data_fim" placeholder='Data do termino' value={formData.data_fim} onChange={handleChange} />
+            <input type="text" name="nomeContest" placeholder='Titulo' value={formData.nomeContest} onChange={handleChange} />
+            <input type="text" name="data_inicio" placeholder='Inicio Data' value={formData.data_inicio} onChange={handleChange} />
+            <input type="text" name="data_fim" placeholder='Fim Data' value={formData.data_fim} onChange={handleChange} />
 
             {/* Lista de Texto */}
 
@@ -220,7 +220,7 @@ const ContestForm: React.FC<ContestFormProps> = ({ onSubmit }) => {
                 </div>
             ))}
             <button onClick={() => setFormData((prevData) => ({ ...prevData, premiacao: [...prevData.premiacao, [{ titulo: '', texto: '' }]] }))}>
-                Novo Premio
+                Novo Beneficio
             </button>
 
             <button onClick={handleSave}>

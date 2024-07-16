@@ -13,7 +13,7 @@ const Footer: React.FC = () => {
             <div className='link-info'>
                 <br />
 
-                <p>Ver: {firstConfig?.ver}.{firstConfig?.serial} &copy; </p>
+                <p>Ver: {firstConfig?.ver} &copy; </p>
                 <br />
 
                 
