@@ -12,19 +12,14 @@ const Footer: React.FC = () => {
         <footer>
             <div className='link-info'>
                 <br />
+
+                <p>Ver: {firstConfig?.ver}.{firstConfig?.serial} &copy; </p>
                 <br />
-                <br />
-                <p>Ver:[ {firstConfig?.ver}.{firstConfig?.serial}] </p>
-                <br />
-                <br />
-                <br />
-                <QRCodeGenerator link={firstConfig?.webpage} /> &copy;
+
+                
             </div>
             <br />
-            <br />
-            <br />
-            <br />
-            <br />
+
 
         </footer>
     );
