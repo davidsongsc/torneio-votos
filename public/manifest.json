@@ -1,6 +1,6 @@
 {
-  "short_name": "BZDestaque",
-  "name": "Destaque Mês",
+  "short_name": "Vote Certo",
+  "name": "Urna Digital Vote Certo",
   "icons": [
     {
       "src": "votoromaurna.ico",
@@ -20,6 +20,6 @@
   ],
   "start_url": ".",
   "display": "standalone",
-  "theme_color": "#fff",
-  "background_color": "#000"
+  "theme_color": "000",
+  "background_color": "#fff"
 }

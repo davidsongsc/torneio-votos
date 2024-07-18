@@ -73,7 +73,7 @@ textarea {
 }
 
 body {
-  background-color: #000;
+  background-color: #151515;
   font-family: "Montserrat", sans-serif;
 }
 canvas {
@@ -83,7 +83,7 @@ canvas {
 
 .navBar {
   position: fixed;
-  background-color: brown;
+  background-color: #2e8b57;
   color: rgb(191, 191, 191);
   padding: 1px;
   list-style: none;
@@ -168,7 +168,7 @@ canvas {
 
 .arrou-chamativo {
   transform-origin: center;
-  background-color: brown;
+  background-color: #2f4f4f;
   padding: 2px;
   border-radius: 5px;
   width: 23px;
@@ -368,13 +368,13 @@ canvas {
   }
 }
 .main-principal-inicio {
-  margin-top: 1vh;
-  margin-bottom: 30vh;
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-around;
+  justify-content: flex-start;
   position: relative;
   z-index: 790;
+  padding: 8px;
+  width: 88%;
   background-image: url(https://static.vecteezy.com/ti/vetor-gratis/p3/4141462-montanhas-por-do-sol-papel-de-parede-sol-atras-do-horizonte-imagem-crepusculo-natural-paisagem-ampla-horizontal-bg-deserto-amanhecer-abafado-cor-de-fundo-ilustracao-vetor.jpg);
   background-position: -2548px -1469px;
   animation: backgroundContest 90s ease-in-out infinite;
@@ -540,7 +540,6 @@ canvas {
   margin-top: -19px;
   text-align: left;
   position: relative;
-  height: 750px;
   background-color: #2f4f4f;
   /*background-image: url("https://wallpapers.com/images/hd/australian-outback-dirt-road-je5gdd3rfhxrxrl8.jpg");*/
   background-position: -815px -600px;
@@ -652,6 +651,7 @@ span .atual-icone:active {
   background-color: #900000;
   transition: 1s;
   color: #bfbfbf;
+
 }
 .main-principal-inicio h2 {
   color: white;
@@ -696,7 +696,7 @@ span .atual-icone:active {
 .tabela-objetivos {
   max-height: 300px;
   overflow-y: auto;
-  width: 311px;
+  width: 87vw;
 }
 
 .tabela-objetivos-conteste tbody {
@@ -708,13 +708,14 @@ span .atual-icone:active {
   margin: 0px auto;
   table-layout: fixed;
   align-items: flex-start;
+  width: 100%;
 }
 
 .tabela-objetivos-conteste tbody {
   overflow: auto;
   display: flex;
   flex-direction: column;
-  width: 311px;
+  width: 80vw;
 }
 
 .tabela-objetivos-conteste th,
@@ -743,7 +744,7 @@ span .atual-icone:active {
   transition: 0.7s;
   position: relative;
   z-index: 995;
-  width: 350px;
+  width: 35%;
 }
 
 .tabela-objetivos-conteste .td-maior {
@@ -758,7 +759,7 @@ span .atual-icone:active {
   position: relative;
   z-index: 995;
   cursor: pointer;
-  width: 350px;
+  width: 100%;
 }
 
 .tabela-objetivos-conteste td:hover,
@@ -772,7 +773,7 @@ span .atual-icone:active {
   transition: 0.7s;
   background-color: black;
   color: white;
-  width: 311px;
+  width: 100%;
   transition-delay: 1.7s;
   flex-direction: column;
 }
@@ -807,7 +808,7 @@ span .atual-icone:active {
 .tela-painel-votos {
   display: flex;
   max-width: 900px;
-  height: 680px;
+  height: 464px;
   min-width: 400px;
   overflow-y: auto;
   flex-direction: row;
@@ -1389,19 +1390,27 @@ span .atual-icone:active {
 }
 .link-info {
   background-color: transparent;
-  margin: 0 auto;
-  margin-top: 20px;
+  /* margin: 0 auto; */
+  padding-bottom: 20px;
   font-size: large;
 }
 .link-ranking img {
   width: 275px;
 }
 footer {
-  background-color: rgba(165, 42, 42, 0.607);
+  background-color: #292929;
   text-align: center;
   margin: 5px auto;
   color: white;
-  width: 100%;
+  width: 40%;
+  border-radius: 20px;
   z-index: 995;
-  height: 600px;
+  height: 10vh;
+}
+
+
+@media only screen and (min-width: 800px) {
+  .tela-painel-votos {
+    height: 664px;
+  }
 }

@@ -83,7 +83,7 @@ const NovoContest: React.FC = () => {
   return (
     <>{nivel === 'gerencia' || userInfo?.matricula === 970016 ? <div className='painel-controlador-votos'>
 
-      <h1>Criar um novo contest?</h1>
+      <h1>Criar Noticia</h1>
 
       <div style={{ display: `${liberadoCodigo ? 'none' : ''}` }}>
         <label className="radioLabel">

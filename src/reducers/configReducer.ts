@@ -10,7 +10,7 @@ const initialState: UserState = {
     {
       ver: '1.07a',
       serial: '061816072024',
-      valendo: false,
+      valendo: true,
       unidade: 'Escritório',
       prazoManutencao: '2024-10-01T22:50:00',
       prazoTeste: '2023-11-10T22:50:00',

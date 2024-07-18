@@ -93,21 +93,21 @@ const Ranking: React.FC = () => {
                   </td>
                   <td
                     className={`ranking-votos td-menor ${!isClickedUser ? 'none-none' : ''}`}
-                    style={{ width: '143px', letterSpacing: '1px', color: '#eaeaea', backgroundColor: '#1a1a1a', position: 'relative', zIndex: '10' }}
+                    style={{ width: '55%', letterSpacing: '1px', color: '#eaeaea', backgroundColor: '#1a1a1a', position: 'relative', zIndex: '10' }}
                   >
                     <p>{person.alcunha}</p>
                   </td>
                   <td
                     onClick={() => handleLinkClick(person.id)}
                     className={`ranking-votos td-menor ${!isClickedUser ? 'none-none' : ''}`}
-                    style={{ width: '100px', letterSpacing: '1px', borderLeft: '1px solid white', color: '#eaeaea', backgroundColor: '#1a1a1a', position: 'relative', zIndex: '10' }}
+                    style={{ width: '15%', letterSpacing: '1px', borderLeft: '1px solid white', color: '#eaeaea', backgroundColor: '#1a1a1a', position: 'relative', zIndex: '10' }}
                   >
                     perfil
                   </td>
                   <td
                     className={`ranking-index ${isClickedUser ? '' : ''}`}
                     style={{
-                      width: '50px',
+                      width: '10%',
                       borderTopLeftRadius: '5px',
                       borderBottomLeftRadius: '5px',
                       color: '#eaeaea',

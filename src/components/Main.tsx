@@ -22,6 +22,7 @@ function Main() {
   return (
     <>
       <main className='main-principal-inicio'>
+        <h1></h1>
         {secoes.map((section, index) => (
           <SectionContest key={index} content={section} />
         ))}
